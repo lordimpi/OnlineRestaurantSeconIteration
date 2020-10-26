@@ -30,17 +30,16 @@ public class Factory {
      * @return una clase hija de la abstracción IRepositorioClientes
      */
     public ICustomerAccess getCustomerService() {
+        return new CustomerAccessREST();
+    }
 
-        ICustomerAccess result = null;
-        String type = "default";
-        switch (type) {
-            case "default":
-                result = new CustomerAccessREST();
-                break;
-        }
-
-        return result;
-
+    /**
+     * Método que crea una instancia concreta de la jerarquia IMainDishService
+     *
+     * @return una clase hija de la abstracción IRepositorioPlatoPrincipal
+     */
+    public IMainDishAccess getMainDishService() {
+        return new MainDishAccessImplSockets();
     }
 
 }
