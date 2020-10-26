@@ -4,7 +4,7 @@ import co.unicauca.onlinerestaurant.client.access.Factory;
 import co.unicauca.onlinerestaurant.client.access.IRestaurantAccess;
 import co.unicauca.onlinerestaurant.client.domain.services.RestaurantService;
 import static co.unicauca.onlinerestaurant.client.infra.Messages.successMessage;
-import co.unicauca.onlinerestaurant.commons.domain.Restaurant;
+import co.unicauca.common.domain.entity.Restaurant;
 import java.awt.Color;
 import java.awt.Image;
 import java.awt.MouseInfo;

@@ -1,7 +1,7 @@
 package co.unicauca.onlinerestaurant.client.presentation;
 
 import co.unicauca.onlinerestaurant.client.access.Factory;
-import co.unicauca.onlinerestaurant.commons.domain.MainDish;
+import co.unicauca.common.domain.entity.MainDish;
 import co.unicauca.onlinerestaurant.client.domain.services.MainDishService;
 import static co.unicauca.onlinerestaurant.client.infra.Messages.successMessage;
 import co.unicauca.onlinerestaurant.client.access.IMainDishAccess;
@@ -50,17 +50,17 @@ public class GUIFindDishe extends javax.swing.JInternalFrame {
         jPnNorte.setBackground(new java.awt.Color(54, 33, 88));
         jPnNorte.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         jPnNorte.setPreferredSize(new java.awt.Dimension(450, 50));
-        jPnNorte.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLbIdPlato.setBackground(new java.awt.Color(255, 255, 255));
         jLbIdPlato.setForeground(new java.awt.Color(255, 255, 255));
         jLbIdPlato.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLbIdPlato.setText("Id:");
-        jPnNorte.add(jLbIdPlato, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 10, 60, 30));
+        jPnNorte.add(jLbIdPlato);
 
         jTxfId.setBackground(new java.awt.Color(255, 255, 255));
         jTxfId.setForeground(new java.awt.Color(0, 0, 0));
-        jPnNorte.add(jTxfId, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 10, 90, 30));
+        jTxfId.setPreferredSize(new java.awt.Dimension(150, 24));
+        jPnNorte.add(jTxfId);
 
         jBtnBuscar.setText("Buscar");
         jBtnBuscar.addActionListener(new java.awt.event.ActionListener() {
@@ -68,7 +68,7 @@ public class GUIFindDishe extends javax.swing.JInternalFrame {
                 jBtnBuscarActionPerformed(evt);
             }
         });
-        jPnNorte.add(jBtnBuscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 10, -1, -1));
+        jPnNorte.add(jBtnBuscar);
 
         getContentPane().add(jPnNorte, java.awt.BorderLayout.PAGE_START);
 

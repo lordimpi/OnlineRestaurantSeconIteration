@@ -39,7 +39,16 @@ public class Factory {
      * @return una clase hija de la abstracción IRepositorioPlatoPrincipal
      */
     public IMainDishAccess getMainDishService() {
-        return new MainDishAccessImplSockets();
+        return new MainDishAccessREST();
     }
 
+        /**
+     * Método que crea una instancia concreta de la jerarquia IRestaurantService
+     *
+     * @return una clase hija de la abstracción IRepositorioRestaurante
+     */
+    public IRestaurantAccess getRestaurantService() {
+        return new RestaurantAccessREST();
+
+    }
 }

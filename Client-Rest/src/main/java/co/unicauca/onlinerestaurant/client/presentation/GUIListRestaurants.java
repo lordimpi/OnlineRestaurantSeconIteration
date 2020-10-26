@@ -5,7 +5,7 @@ import co.unicauca.onlinerestaurant.client.access.IRestaurantAccess;
 import co.unicauca.onlinerestaurant.client.domain.services.RestaurantService;
 import co.unicauca.onlinerestaurant.client.infra.Messages;
 import static co.unicauca.onlinerestaurant.client.infra.Messages.successMessage;
-import co.unicauca.onlinerestaurant.commons.domain.Restaurant;
+import co.unicauca.common.domain.entity.Restaurant;
 import java.awt.Image;
 import java.beans.PropertyVetoException;
 import java.util.List;
@@ -36,7 +36,7 @@ public class GUIListRestaurants extends javax.swing.JInternalFrame {
         initComponents();
         this.setMaximum(true);
         this.restaurants = restaurants;
-        mostrarTabla();
+//        mostrarTabla();
     }
 
     /**
@@ -275,8 +275,8 @@ public class GUIListRestaurants extends javax.swing.JInternalFrame {
         jLblRestaurantDireccion.setText("Direccion");
         jLblRestaurantTelefono.setText("Telefono");
         addIcon(jLblCargarImg, null);
-        cargarLista();
-        mostrarTabla();
+//        cargarLista();
+//        mostrarTabla();
     }//GEN-LAST:event_jBtnCancelarActionPerformed
 
 
@@ -297,22 +297,22 @@ public class GUIListRestaurants extends javax.swing.JInternalFrame {
     private javax.swing.JTable jTblRestaurants;
     // End of variables declaration//GEN-END:variables
 
-    /**
-     * Metodo encargado de mostrar los datos en un jtable
-     */
-    private void mostrarTabla() {
-        String dataTable[][] = new String[restaurants.size()][3];
-
-        for (int i = 0; i < restaurants.size(); i++) {
-            dataTable[i][0] = restaurants.get(i).getNameRestaurant();
-            dataTable[i][1] = restaurants.get(i).getAddressRestaurant();
-            dataTable[i][2] = restaurants.get(i).getPhone();
-        }
-
-        jTblRestaurants.setModel(new javax.swing.table.DefaultTableModel(
-                dataTable, new String[]{"Nombre", "Direccion", "Telefono"}));
-
-    }
+//    /**
+//     * Metodo encargado de mostrar los datos en un jtable
+//     */
+//    private void mostrarTabla() {
+//        String dataTable[][] = new String[restaurants.size()][3];
+//
+//        for (int i = 0; i < restaurants.size(); i++) {
+//            dataTable[i][0] = restaurants.get(i).getNameRestaurant();
+//            dataTable[i][1] = restaurants.get(i).getAddressRestaurant();
+//            dataTable[i][2] = restaurants.get(i).getPhone();
+//        }
+//
+//        jTblRestaurants.setModel(new javax.swing.table.DefaultTableModel(
+//                dataTable, new String[]{"Nombre", "Direccion", "Telefono"}));
+//
+//    }
 
     /**
      * Metodo encargado de cargar un icono para una etiquetas
@@ -330,18 +330,18 @@ public class GUIListRestaurants extends javax.swing.JInternalFrame {
         this.repaint();
     }
 
-    /**
-     * Carga un lista a traves de un socket
-     */
-    private void cargarLista() {
-        IRestaurantAccess service = Factory.getInstance().getRestaurantService();
-        // Inyecta la dependencia
-        RestaurantService restaurant = new RestaurantService(service);
-
-        try {
-            restaurants = restaurant.listRestaurants();
-        } catch (Exception ex) {
-            successMessage(ex.getMessage(), "Atención");
-        }
-    }
+//    /**
+//     * Carga un lista a traves de un socket
+//     */
+//    private void cargarLista() {
+//        IRestaurantAccess service = Factory.getInstance().getRestaurantService();
+//        // Inyecta la dependencia
+//        RestaurantService restaurant = new RestaurantService(service);
+//
+//        try {
+//            restaurants = restaurant.listRestaurants();
+//        } catch (Exception ex) {
+//            successMessage(ex.getMessage(), "Atención");
+//        }
+//    }
 }

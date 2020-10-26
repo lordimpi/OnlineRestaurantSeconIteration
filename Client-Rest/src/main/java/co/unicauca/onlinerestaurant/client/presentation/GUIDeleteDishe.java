@@ -5,7 +5,7 @@ import co.unicauca.onlinerestaurant.client.access.IMainDishAccess;
 import co.unicauca.onlinerestaurant.client.domain.services.MainDishService;
 import co.unicauca.onlinerestaurant.client.infra.Messages;
 import static co.unicauca.onlinerestaurant.client.infra.Messages.successMessage;
-import co.unicauca.onlinerestaurant.commons.domain.MainDish;
+import co.unicauca.common.domain.entity.MainDish;
 import java.util.ArrayList;
 import java.util.List;
 import javax.swing.table.TableModel;

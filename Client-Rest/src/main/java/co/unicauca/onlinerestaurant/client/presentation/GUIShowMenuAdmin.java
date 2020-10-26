@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package co.unicauca.onlinerestaurant.client.presentation;
 
 import co.unicauca.onlinerestaurant.client.access.Factory;
@@ -20,12 +15,12 @@ import co.unicauca.onlinerestaurant.client.domain.services.MenuService;
 import co.unicauca.onlinerestaurant.client.domain.services.SaladService;
 import co.unicauca.onlinerestaurant.client.infra.Messages;
 import static co.unicauca.onlinerestaurant.client.infra.Messages.successMessage;
-import co.unicauca.onlinerestaurant.commons.domain.Dessert;
-import co.unicauca.onlinerestaurant.commons.domain.DishEntry;
-import co.unicauca.onlinerestaurant.commons.domain.Drink;
-import co.unicauca.onlinerestaurant.commons.domain.MainDish;
-import co.unicauca.onlinerestaurant.commons.domain.Menu;
-import co.unicauca.onlinerestaurant.commons.domain.Salad;
+import co.unicauca.common.domain.entity.Dessert;
+import co.unicauca.common.domain.entity.DishEntry;
+import co.unicauca.common.domain.entity.Drink;
+import co.unicauca.common.domain.entity.MainDish;
+import co.unicauca.common.domain.entity.Menu;
+import co.unicauca.common.domain.entity.Salad;
 
 /**
  *
