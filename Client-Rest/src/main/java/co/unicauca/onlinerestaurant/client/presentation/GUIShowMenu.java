@@ -6,8 +6,8 @@ import co.unicauca.onlinerestaurant.client.access.IMenuAccess;
 import co.unicauca.onlinerestaurant.client.domain.services.MainDishService;
 import co.unicauca.onlinerestaurant.client.domain.services.MenuService;
 import static co.unicauca.onlinerestaurant.client.infra.Messages.successMessage;
-import co.unicauca.onlinerestaurant.commons.domain.MainDish;
-import co.unicauca.onlinerestaurant.commons.domain.Menu;
+import co.unicauca.common.domain.entity.MainDish;
+import co.unicauca.common.domain.entity.Menu;
 
 /**
  * Crea un formulario para mostrar el menu del dia
@@ -31,22 +31,22 @@ public class GUIShowMenu extends javax.swing.JInternalFrame {
         initComponents();
         menu = new Menu();
         restaurantname = RestaurantN;
-        IMenuAccess service = Factory.getInstance().getMenuService();
-        // Inyecta la dependencia
-        MenuService restaurant = new MenuService(service);
-
-        try {
-            menu = restaurant.findbyMenubyRN(restaurantname);
-        } catch (Exception ex) {
-            successMessage(ex.getMessage(), "Atención");
-        }
-
-        maindish.setText(menu.getMaindish().getNameDishe());
-        dessert.setText(menu.getDessert().getName_Dish_Dessert());
-        entry.setText(menu.getEntry().getNameDishEntry());
-        salad.setText(menu.getSalad().getNameSalad());
-        drink.setText(menu.getDrink().getNameDrink());
-        jtxtnamerestaurant.setText(restaurantname);
+//        IMenuAccess service = Factory.getInstance().getMenuService();
+//        // Inyecta la dependencia
+//        MenuService restaurant = new MenuService(service);
+//
+//        try {
+//            menu = restaurant.findbyMenubyRN(restaurantname);
+//        } catch (Exception ex) {
+//            successMessage(ex.getMessage(), "Atención");
+//        }
+//
+//        maindish.setText(menu.getMaindish().getNameDishe());
+//        dessert.setText(menu.getDessert().getName_Dish_Dessert());
+//        entry.setText(menu.getEntry().getNameDishEntry());
+//        salad.setText(menu.getSalad().getNameSalad());
+//        drink.setText(menu.getDrink().getNameDrink());
+//        jtxtnamerestaurant.setText(restaurantname);
 
     }
 
@@ -85,12 +85,6 @@ public class GUIShowMenu extends javax.swing.JInternalFrame {
         jPnNorte.setBackground(new java.awt.Color(54, 33, 88));
         jPnNorte.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         jPnNorte.setPreferredSize(new java.awt.Dimension(450, 50));
-
-        jtxtnamerestaurant.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jtxtnamerestaurantActionPerformed(evt);
-            }
-        });
 
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setText("Menu de la semana del Restaurante:");
@@ -152,12 +146,6 @@ public class GUIShowMenu extends javax.swing.JInternalFrame {
         jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel5.setText("Ensalada:");
         jPnCentro.add(jLabel5);
-
-        salad.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                saladActionPerformed(evt);
-            }
-        });
         jPnCentro.add(salad);
 
         jLabel6.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -174,14 +162,6 @@ public class GUIShowMenu extends javax.swing.JInternalFrame {
 
         this.doDefaultCloseAction();
     }//GEN-LAST:event_jBtnCancelarActionPerformed
-
-    private void jtxtnamerestaurantActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtxtnamerestaurantActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jtxtnamerestaurantActionPerformed
-
-    private void saladActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_saladActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_saladActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

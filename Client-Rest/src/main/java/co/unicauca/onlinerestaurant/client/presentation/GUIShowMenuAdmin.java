@@ -38,7 +38,7 @@ public class GUIShowMenuAdmin extends javax.swing.JInternalFrame {
         initComponents();
         menu = new Menu();
         restaurantname = RestaurantN;
-        imprimirMenu();
+//        imprimirMenu();
     }
 
     /**

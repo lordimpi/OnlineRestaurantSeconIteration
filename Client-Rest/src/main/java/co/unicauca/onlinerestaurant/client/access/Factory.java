@@ -1,5 +1,7 @@
 package co.unicauca.onlinerestaurant.client.access;
 
+import co.unicauca.onlinerestaurant.client.domain.services.MenuService;
+
 /**
  * Fabrica que se encarga de instanciar TypeServiceREST o cualquier otro que se
  * cree en el futuro.
@@ -42,7 +44,7 @@ public class Factory {
         return new MainDishAccessREST();
     }
 
-        /**
+    /**
      * Método que crea una instancia concreta de la jerarquia IRestaurantService
      *
      * @return una clase hija de la abstracción IRepositorioRestaurante
@@ -50,5 +52,50 @@ public class Factory {
     public IRestaurantAccess getRestaurantService() {
         return new RestaurantAccessREST();
 
+    }
+
+    /**
+     * Método que crea una instancia concreta de la jerarquia IMenuService
+     *
+     * @return una clase hija de la abstracción IRepositorioMenu
+     */
+    public IMenuAccess getMenuService() {
+        return new MenuAccessREST();
+    }
+
+    /**
+     * Método que crea una instancia concreta de la jerarquia IDessertService
+     *
+     * @return una clase hija de la abstracción IRepositorioPostre
+     */
+    public IDessertAccess getDessertService() {
+        return new DessertAccessREST();
+    }
+
+    /**
+     * Método que crea una instancia concreta de la jerarquia ISaladService
+     *
+     * @return una clase hija de la abstracción IRepositorioSalad
+     */
+    public ISaladAccess getSaladService() {
+        return new SaladAccessREST();
+    }
+
+    /**
+     * Método que crea una instancia concreta de la jerarquia IDrinkService
+     *
+     * @return una clase hija de la abstracción IRepositorioDrink
+     */
+    public IDrinkAccess getDrinkService() {
+        return new DrinkAccessREST();
+    }
+
+    /**
+     * Método que crea una instancia concreta de la jerarquia IEntryService
+     *
+     * @return una clase hija de la abstracción IRepositorioEntry
+     */
+    public IEntryAccess getEntryService() {
+        return new EntryAccessREST();
     }
 }
