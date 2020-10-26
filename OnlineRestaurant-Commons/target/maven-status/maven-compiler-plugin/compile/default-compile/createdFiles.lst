@@ -1,0 +1,10 @@
+co\unicauca\onlinerestaurant\commons\domain\MainDish.class
+co\unicauca\onlinerestaurant\commons\domain\Customer.class
+co\unicauca\onlinerestaurant\commons\domain\Drink.class
+co\unicauca\onlinerestaurant\commons\domain\Salad.class
+co\unicauca\onlinerestaurant\commons\domain\Restaurant.class
+co\unicauca\common\domain\entity\Product.class
+co\unicauca\onlinerestaurant\commons\domain\Dessert.class
+co\unicauca\onlinerestaurant\commons\domain\Consumible.class
+co\unicauca\onlinerestaurant\commons\domain\DishEntry.class
+co\unicauca\onlinerestaurant\commons\domain\Menu.class

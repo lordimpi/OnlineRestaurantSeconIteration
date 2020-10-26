@@ -1,0 +1,11 @@
+co\unicauca\onlinerestaurant\infra\DomainErrors.class
+co\unicauca\onlinerestaurant\a\ApplicationConfig.class
+co\unicauca\onlinerestaurant\access\Factory.class
+co\unicauca\onlinerestaurant\domain\service\ProductService.class
+co\unicauca\onlinerestaurant\infra\JsonResponse.class
+co\unicauca\onlinerestaurant\presentation\rest\ProductController.class
+co\unicauca\onlinerestaurant\access\IProductRepository.class
+co\unicauca\onlinerestaurant\access\ProductRepository.class
+co\unicauca\onlinerestaurant\domain\validators\ValidationError.class
+co\unicauca\onlinerestaurant\infra\Utilities.class
+co\unicauca\onlinerestaurant\infra\Error.class
