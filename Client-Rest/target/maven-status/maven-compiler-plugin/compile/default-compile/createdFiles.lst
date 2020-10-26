@@ -54,7 +54,6 @@ co\unicauca\onlinerestaurant\client\presentation\GUIFindDishe$1.class
 co\unicauca\onlinerestaurant\client\presentation\GUIModifyDishe$1.class
 co\unicauca\onlinerestaurant\client\presentation\GUIDeleteDishe$3.class
 co\unicauca\onlinerestaurant\client\domain\User.class
-co\unicauca\onlinerestaurant\client\presentation\GUILogin$7.class
 co\unicauca\onlinerestaurant\client\presentation\GUIFindDishe.class
 co\unicauca\onlinerestaurant\client\access\CustomerAccessREST.class
 co\unicauca\onlinerestaurant\client\access\ISaladAccess.class

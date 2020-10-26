@@ -26,8 +26,8 @@ public class GUIDeleteDishe extends javax.swing.JInternalFrame {
      */
     public GUIDeleteDishe() {
         initComponents();
-        cargarLista();
-        mostrarTabla();
+//        cargarLista();
+//        mostrarTabla();
     }
 
     /**

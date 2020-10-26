@@ -53,10 +53,11 @@ public class GUIMenuAdmin extends javax.swing.JFrame {
 
     /**
      * Constructor que inicializa el formulario Menu admin
+     * @throws java.beans.PropertyVetoException
      */
     public GUIMenuAdmin() throws PropertyVetoException {
         initComponents();
-        cargarLista();
+//        cargarLista();
         listRestaurants = new GUIListRestaurants(restaurants);
         setLocationRelativeTo(null);
         initIcons();
@@ -605,7 +606,7 @@ public class GUIMenuAdmin extends javax.swing.JFrame {
         resetColor(BtnUsers);
         resetColor(BtnAccounting);
 
-        cargarLista();
+//        cargarLista();
 
         if (!listRestaurants.isVisible()) {
             listRestaurants.setMaximizable(true);
