@@ -34,13 +34,8 @@ public class Factory {
      * @return una clase hija de la abstracción IProductRepository
      */
     public IProductRepository getRepository(String type) {
-        IProductRepository repo = null;
-
-        switch (type) {
-            case "default":
-                repo = new ProductRepository();
-                break;
-        }
-        return repo;
+        return new ProductRepository();
     }
+    
+    
 }

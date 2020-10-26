@@ -5,6 +5,7 @@ co\unicauca\onlinerestaurant\domain\service\ProductService.class
 co\unicauca\onlinerestaurant\infra\JsonResponse.class
 co\unicauca\onlinerestaurant\presentation\rest\ProductController.class
 co\unicauca\onlinerestaurant\access\IProductRepository.class
+co\unicauca\onlinerestaurant\access\IMainDish.class
 co\unicauca\onlinerestaurant\access\ProductRepository.class
 co\unicauca\onlinerestaurant\domain\validators\ValidationError.class
 co\unicauca\onlinerestaurant\infra\Utilities.class
