@@ -1,8 +1,11 @@
 package co.unicauca.client;
 
+import co.unicauca.common.domain.entity.Product;
+import java.util.List;
 import javax.ws.rs.ClientErrorException;
 import javax.ws.rs.client.Client;
 import javax.ws.rs.client.WebTarget;
+import javax.ws.rs.core.GenericType;
 
 /**
  * Jersey REST client generated for REST resource:ProductController
@@ -61,6 +64,10 @@ public class ProductJerseyClient {
         return resource.request(javax.ws.rs.core.MediaType.APPLICATION_JSON).get(responseType);
     }
 
+    public <T> List<Product> findAll(GenericType<List<Product>> responseType) throws javax.ws.rs.ClientErrorException {
+        WebTarget resource = webTarget;
+        return resource.request(javax.ws.rs.core.MediaType.APPLICATION_JSON).get(responseType);
+    }
     public javax.ws.rs.core.Response delete(String id) throws javax.ws.rs.ClientErrorException {
         return webTarget.path(java.text.MessageFormat.format("{0}", new Object[]{id})).request().delete(javax.ws.rs.core.Response.class);
     }

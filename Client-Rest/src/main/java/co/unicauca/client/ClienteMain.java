@@ -4,6 +4,7 @@ import co.unicauca.common.domain.entity.Product;
 import java.util.ArrayList;
 import java.util.List;
 import javax.ws.rs.core.GenericEntity;
+import javax.ws.rs.core.GenericType;
 import javax.ws.rs.core.Response;
 
 /**
@@ -38,15 +39,15 @@ public class ClienteMain {
         rta = jersey.delete("53");
         System.out.println("Rta " + rta);
 
-//        //LISTANDO PRODUCTOS
-//        List<Product> products = new ArrayList<>();
-//        //GenericEntity<List<Product>> myEntity = new GenericEntity<List<Product>>(products) {};
-//        products = jersey.findAll(Product.class);
-//        for (Product prod : products) {
-//            System.out.println("Id: " + prod.getId());
-//            System.out.println("Nombre: " + prod.getName());
-//            System.out.println("Precio: " + prod.getPrice() + "\n");
-//        }
+        //LISTANDO PRODUCTOS
+        GenericType<List<Product>> listResponseType = new GenericType<List<Product>>() {};
+        List<Product> products = jersey.findAll(listResponseType);
+
+        for (Product prod : products) {
+            System.out.println("Id: " + prod.getId());
+            System.out.println("Nombre: " + prod.getName());
+            System.out.println("Precio: " + prod.getPrice() + "\n");
+        }
 
     }
 }
