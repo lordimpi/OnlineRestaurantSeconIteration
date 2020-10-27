@@ -25,9 +25,7 @@ public class ClienteMain {
 
         // BUSCANDO UN PRODUCTO
         Product product = jersey.findById_JSON(Product.class, "53");
-        System.out.println(product.getId());
-        System.out.println(product.getName());
-        System.out.println(product.getPrice());
+        System.out.println(product.toString());
 
         // MODIFICANDO PRODUCTO
         product.setName("Licuadora inteligente");
@@ -44,9 +42,7 @@ public class ClienteMain {
         List<Product> products = jersey.findAll(listResponseType);
 
         for (Product prod : products) {
-            System.out.println("Id: " + prod.getId());
-            System.out.println("Nombre: " + prod.getName());
-            System.out.println("Precio: " + prod.getPrice() + "\n");
+            System.out.println(prod.toString());
         }
 
     }
