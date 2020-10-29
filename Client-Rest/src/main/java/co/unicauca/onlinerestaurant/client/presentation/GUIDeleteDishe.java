@@ -231,8 +231,8 @@ public class GUIDeleteDishe extends javax.swing.JInternalFrame {
         String dataTable[][] = new String[platos.size()][3];
 
         for (int i = 0; i < platos.size(); i++) {
-            dataTable[i][0] = platos.get(i).getId_mainDishe();
-            dataTable[i][1] = platos.get(i).getNameDishe();
+            dataTable[i][0] = platos.get(i).getId_mainDish();
+            dataTable[i][1] = platos.get(i).getNameDish();
             dataTable[i][2] = Double.toString(platos.get(i).getDishPrice());
         }
 

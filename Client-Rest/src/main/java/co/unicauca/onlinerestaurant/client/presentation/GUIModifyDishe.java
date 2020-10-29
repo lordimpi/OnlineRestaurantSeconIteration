@@ -198,7 +198,7 @@ public class GUIModifyDishe extends javax.swing.JInternalFrame {
      * @param mainDish Objeto plato principal
      */
     private void showData(MainDish mainDish) {
-        jTxfNombre.setText(mainDish.getNameDishe());
+        jTxfNombre.setText(mainDish.getNameDish());
         jTxfPrecio.setText(Double.toString(mainDish.getDishPrice()));
 
     }

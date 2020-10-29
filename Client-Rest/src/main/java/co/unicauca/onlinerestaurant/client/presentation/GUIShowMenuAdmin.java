@@ -350,8 +350,8 @@ public class GUIShowMenuAdmin extends javax.swing.JInternalFrame {
             return;
         }
 
-        jTxIDMainDish.setText(dish.getId_mainDishe());
-        maindish.setText(dish.getNameDishe());
+        jTxIDMainDish.setText(dish.getId_mainDish());
+        maindish.setText(dish.getNameDish());
 
 
     }//GEN-LAST:event_BtnBuscarMainDishActionPerformed
@@ -474,7 +474,7 @@ public class GUIShowMenuAdmin extends javax.swing.JInternalFrame {
             successMessage(ex.getMessage(), "Atención");
         }
 
-        maindish.setText(menu.getMaindish().getNameDishe());
+        maindish.setText(menu.getMaindish().getNameDish());
         txtnamedessert.setText(menu.getDessert().getName_Dish_Dessert());
         entry.setText(menu.getEntry().getNameDishEntry());
         salad.setText(menu.getSalad().getNameSalad());
@@ -484,7 +484,7 @@ public class GUIShowMenuAdmin extends javax.swing.JInternalFrame {
         jTxIDDessert.setText(menu.getDessert().getId_Dish_Dessert());
         jTxIDDrink.setText(menu.getDrink().getId_Drink());
         jTxIDSalad.setText(menu.getSalad().getIdSalad());
-        jTxIDMainDish.setText(menu.getMaindish().getId_mainDishe());
+        jTxIDMainDish.setText(menu.getMaindish().getId_mainDish());
 
         jtxtnamerestaurant.setText(restaurantname);
 

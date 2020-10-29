@@ -148,8 +148,8 @@ public class GUICreateDishe extends javax.swing.JInternalFrame {
         cost = Double.parseDouble(JTxfPrecio.getText());
         MainDishService maindishService = new MainDishService(service);
         MainDish maindish = new MainDish();
-        maindish.setId_mainDishe(jTxfId.getText());
-        maindish.setNameDishe(jTxfNombre.getText());
+        maindish.setId_mainDish(jTxfId.getText());
+        maindish.setNameDish(jTxfNombre.getText());
         maindish.setDishPrice(cost);
 
         try {
@@ -174,8 +174,8 @@ public class GUICreateDishe extends javax.swing.JInternalFrame {
      */
     private void showData(MainDish maindish) {
 
-        jTxfId.setText(maindish.getId_mainDishe());
-        jTxfNombre.setText(maindish.getNameDishe());
+        jTxfId.setText(maindish.getId_mainDish());
+        jTxfNombre.setText(maindish.getNameDish());
         JTxfPrecio.setText(String.valueOf(maindish.getDishPrice()));
 
     }
