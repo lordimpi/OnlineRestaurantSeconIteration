@@ -3,6 +3,7 @@ package co.unicauca.onlinerestaurant.access;
 import co.unicauca.common.domain.entity.MainDish;
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -53,7 +54,7 @@ public class MainDishRepository implements IMainDish {
         MainDish mainDish = null;
         try {
 
-            String sql = "SELECT id_dish, dish_name, dish_price FROM product Where Id=" + id;
+            String sql = "SELECT id_dish, dish_name, dish_price FROM maindish Where id_dish=" + id;
             this.connect();
             Statement stmt = conn.createStatement();
             ResultSet rs = stmt.executeQuery(sql);
@@ -69,11 +70,29 @@ public class MainDishRepository implements IMainDish {
         } catch (SQLException ex) {
             Logger.getLogger(ProductRepository.class.getName()).log(Level.SEVERE, "Error al buscar el plato principal en la base de datos", ex);
         }
-        return mainDish;    }
+        return mainDish;
+    }
 
     @Override
     public boolean create(MainDish newMainDish) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        String sql = "";
+        try {
+            this.connect();
+
+            sql = "INSERT INTO maindish ( id_dish, dish_name, dish_price ) "
+                    + "VALUES ( ?, ?, ? )";
+
+            PreparedStatement pstmt = conn.prepareStatement(sql);
+            pstmt.setInt(1, Integer.parseInt(newMainDish.getId_mainDish()));
+            pstmt.setString(2, newMainDish.getNameDish());
+            pstmt.setDouble(3, newMainDish.getDishPrice());
+            pstmt.executeUpdate();
+            this.disconnect();
+            return true;
+        } catch (SQLException ex) {
+            Logger.getLogger(ProductRepository.class.getName()).log(Level.SEVERE, "Error en el insert into: " + sql, ex);
+        }
+        return false;
     }
 
     @Override
