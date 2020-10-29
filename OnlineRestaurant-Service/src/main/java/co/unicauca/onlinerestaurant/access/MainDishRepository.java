@@ -44,7 +44,7 @@ public class MainDishRepository implements IMainDishRepository {
             this.disconnect();
 
         } catch (SQLException ex) {
-            Logger.getLogger(ProductRepository.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(MainDishRepository.class.getName()).log(Level.SEVERE, null, ex);
         }
         return mainDishes;
     }
@@ -68,7 +68,7 @@ public class MainDishRepository implements IMainDishRepository {
             this.disconnect();
 
         } catch (SQLException ex) {
-            Logger.getLogger(ProductRepository.class.getName()).log(Level.SEVERE, "Error al buscar el plato principal en la base de datos", ex);
+            Logger.getLogger(MainDishRepository.class.getName()).log(Level.SEVERE, "Error al buscar el plato principal en la base de datos", ex);
         }
         return mainDish;
     }
@@ -90,7 +90,7 @@ public class MainDishRepository implements IMainDishRepository {
             this.disconnect();
             return true;
         } catch (SQLException ex) {
-            Logger.getLogger(ProductRepository.class.getName()).log(Level.SEVERE, "Error en el insert into: " + sql, ex);
+            Logger.getLogger(MainDishRepository.class.getName()).log(Level.SEVERE, "Error en el insert into: " + sql, ex);
         }
         return false;
     }
@@ -113,7 +113,7 @@ public class MainDishRepository implements IMainDishRepository {
             this.disconnect();
             return true;
         } catch (SQLException ex) {
-            Logger.getLogger(ProductRepository.class.getName()).log(Level.SEVERE, "Error al actualizar el plato principal", ex);
+            Logger.getLogger(MainDishRepository.class.getName()).log(Level.SEVERE, "Error al actualizar el plato principal", ex);
         }
         return false;
     }
@@ -132,7 +132,7 @@ public class MainDishRepository implements IMainDishRepository {
             this.disconnect();
             return true;
         } catch (SQLException ex) {
-            Logger.getLogger(ProductRepository.class.getName()).log(Level.SEVERE, "Error al eliminar plato principal", ex);
+            Logger.getLogger(MainDishRepository.class.getName()).log(Level.SEVERE, "Error al eliminar plato principal", ex);
         }
         return false;
     }
@@ -149,7 +149,7 @@ public class MainDishRepository implements IMainDishRepository {
             String pwd = "lordimpi315";
             conn = DriverManager.getConnection(url, username, pwd);
         } catch (SQLException ex) {
-            Logger.getLogger(ProductRepository.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(MainDishRepository.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 
@@ -162,7 +162,7 @@ public class MainDishRepository implements IMainDishRepository {
                 conn.close();
             }
         } catch (SQLException ex) {
-            Logger.getLogger(ProductRepository.class.getName()).log(Level.SEVERE, "Error al cerrar conexión de la base de datos", ex);
+            Logger.getLogger(MainDishRepository.class.getName()).log(Level.SEVERE, "Error al cerrar conexión de la base de datos", ex);
         }
     }
 }

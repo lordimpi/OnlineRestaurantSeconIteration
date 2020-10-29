@@ -35,7 +35,7 @@ public class ProductController {
 
     /*
         Su uso desde consola mediante client url:
-        curl -X GET http://localhost:8080/OnlineRestaurant-Service/restaurant-service/products/ 
+        curl -X GET http://localhost:8085/OnlineRestaurant-Service/restaurant-service/products/ 
 
      */
     @GET
@@ -46,7 +46,7 @@ public class ProductController {
 
     /*
         Su uso desde consola mediante client url:
-        curl -X GET http://localhost:8080/OnlineRestaurant-Service/restaurant-service/products/1 
+        curl -X GET http://localhost:8085/OnlineRestaurant-Service/restaurant-service/products/1 
 
      */
     @GET
@@ -59,7 +59,7 @@ public class ProductController {
     /*
         Su uso desde consola mediante client url:
         curl -X POST \
-          http://localhost:8080/OnlineRestaurant-Service/restaurant-service/products/ \
+          http://localhost:8085/OnlineRestaurant-Service/restaurant-service/products/ \
           -H 'Content-Type: application/json' \
           -d '{
                "id":1,
@@ -82,7 +82,7 @@ public class ProductController {
     /*
         Su uso desde consola mediante client url:
         curl -X PUT \
-          http://localhost:8080/OnlineRestaurant-Service/restaurant-service/products/1 \
+          http://localhost:8085/OnlineRestaurant-Service/restaurant-service/products/1 \
           -H 'Content-Type: application/json' \
           -d '{
                "name":"Nevera Lg REF. JDK3-34-343",
@@ -105,7 +105,7 @@ public class ProductController {
 
     /*
         Su uso desde consola mediante client url:
-        curl -X DELETE http://localhost:8080/Product-Service/product-service/products/1 
+        curl -X DELETE http://localhost:8085/Product-Service/product-service/products/1 
 
      */
     @DELETE
