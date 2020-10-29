@@ -50,8 +50,26 @@ public class MainDishRepository implements IMainDish {
 
     @Override
     public MainDish findById(String id) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
+        MainDish mainDish = null;
+        try {
+
+            String sql = "SELECT id_dish, dish_name, dish_price FROM product Where Id=" + id;
+            this.connect();
+            Statement stmt = conn.createStatement();
+            ResultSet rs = stmt.executeQuery(sql);
+
+            if (rs.next()) {
+                mainDish = new MainDish();
+                mainDish.setId_mainDish(Integer.toString(rs.getInt("id_dish")));
+                mainDish.setNameDish(rs.getString("dish_name"));
+                mainDish.setDishPrice(rs.getDouble("dish_price"));
+            }
+            this.disconnect();
+
+        } catch (SQLException ex) {
+            Logger.getLogger(ProductRepository.class.getName()).log(Level.SEVERE, "Error al buscar el plato principal en la base de datos", ex);
+        }
+        return mainDish;    }
 
     @Override
     public boolean create(MainDish newMainDish) {
