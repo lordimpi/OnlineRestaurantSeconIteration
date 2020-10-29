@@ -35,7 +35,7 @@ public class MainDishRepository implements IMainDish {
             ResultSet rs = stmt.executeQuery(sql);
             while (rs.next()) {
                 MainDish newMainDish = new MainDish();
-                newMainDish.setId_mainDish(Integer.toString(rs.getInt("id_dish")));
+                newMainDish.setId_mainDish(rs.getString("id_dish"));
                 newMainDish.setNameDish(rs.getString("dish_name"));
                 newMainDish.setDishPrice(rs.getDouble("dish_price"));
 
@@ -61,7 +61,7 @@ public class MainDishRepository implements IMainDish {
 
             if (rs.next()) {
                 mainDish = new MainDish();
-                mainDish.setId_mainDish(Integer.toString(rs.getInt("id_dish")));
+                mainDish.setId_mainDish(rs.getString("id_dish"));
                 mainDish.setNameDish(rs.getString("dish_name"));
                 mainDish.setDishPrice(rs.getDouble("dish_price"));
             }
@@ -83,7 +83,7 @@ public class MainDishRepository implements IMainDish {
                     + "VALUES ( ?, ?, ? )";
 
             PreparedStatement pstmt = conn.prepareStatement(sql);
-            pstmt.setInt(1, Integer.parseInt(newMainDish.getId_mainDish()));
+            pstmt.setString(1, newMainDish.getId_mainDish());
             pstmt.setString(2, newMainDish.getNameDish());
             pstmt.setDouble(3, newMainDish.getDishPrice());
             pstmt.executeUpdate();
@@ -97,7 +97,25 @@ public class MainDishRepository implements IMainDish {
 
     @Override
     public boolean update(MainDish newMainDish) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        try {
+            this.connect();
+
+            String sql = "UPDATE maindish "
+                    + "SET dish_name = ?, "
+                    + "dish_price = ? "
+                    + "WHERE id_dish = ?";
+
+            PreparedStatement pstmt = conn.prepareStatement(sql);
+            pstmt.setString(1, newMainDish.getNameDish());
+            pstmt.setDouble(2, newMainDish.getDishPrice());
+            pstmt.setString(3, newMainDish.getId_mainDish());
+            pstmt.executeUpdate();
+            this.disconnect();
+            return true;
+        } catch (SQLException ex) {
+            Logger.getLogger(ProductRepository.class.getName()).log(Level.SEVERE, "Error al actualizar el producto", ex);
+        }
+        return false;
     }
 
     @Override
