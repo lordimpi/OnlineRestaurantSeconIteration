@@ -24,7 +24,7 @@ public class ProductJerseyClient {
 
     private javax.ws.rs.client.WebTarget webTarget;
     private javax.ws.rs.client.Client client;
-    private static final String BASE_URI = "http://localhost:8080/OnlineRestaurant-Service/restaurant-service";
+    private static final String BASE_URI = "http://localhost:8085/OnlineRestaurant-Service/restaurant-service";
 
     public ProductJerseyClient() {
         client = javax.ws.rs.client.ClientBuilder.newClient();

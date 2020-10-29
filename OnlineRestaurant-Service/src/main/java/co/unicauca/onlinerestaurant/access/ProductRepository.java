@@ -1,6 +1,7 @@
 package co.unicauca.onlinerestaurant.access;
 
 import co.unicauca.common.domain.entity.Product;
+import co.unicauca.onlinerestaurant.infra.Utilities;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -25,7 +26,6 @@ public class ProductRepository implements IProductRepository {
     private Connection conn;
 
     public ProductRepository() {
-        initDatabase();
     }
 
     @Override
@@ -33,7 +33,7 @@ public class ProductRepository implements IProductRepository {
         List<Product> products = new ArrayList<>();
         try {
 
-            String sql = "SELECT Id, Name, Price FROM Product";
+            String sql = "SELECT Id, Name, Price FROM product";
             this.connect();
 
             Statement stmt = conn.createStatement();
@@ -59,7 +59,7 @@ public class ProductRepository implements IProductRepository {
         Product product = null;
         try {
 
-            String sql = "SELECT Id, Name, Price FROM Product Where Id=" + id;
+            String sql = "SELECT Id, Name, Price FROM product Where Id=" + id;
             this.connect();
             Statement stmt = conn.createStatement();
             ResultSet rs = stmt.executeQuery(sql);
@@ -84,7 +84,7 @@ public class ProductRepository implements IProductRepository {
         try {
             this.connect();
 
-            sql = "INSERT INTO Product ( Id, Name, Price ) "
+            sql = "INSERT INTO product ( Id, Name, Price ) "
                     + "VALUES ( ?, ?, ? )";
 
             PreparedStatement pstmt = conn.prepareStatement(sql);
@@ -105,7 +105,7 @@ public class ProductRepository implements IProductRepository {
         try {
             this.connect();
 
-            String sql = "UPDATE Product "
+            String sql = "UPDATE product "
                     + "SET Name = ?, "
                     + "Price = ? "
                     + "WHERE Id = ?";
@@ -129,7 +129,7 @@ public class ProductRepository implements IProductRepository {
         try {
             this.connect();
 
-            String sql = "DELETE FROM Product "
+            String sql = "DELETE FROM product "
                     + "WHERE Id = ?";
 
             PreparedStatement pstmt = conn.prepareStatement(sql);
@@ -144,41 +144,16 @@ public class ProductRepository implements IProductRepository {
     }
 
     /**
-     * Inicializa la tabla Product e inserta unos registros
-     */
-    private void initDatabase() {
-        // SQL statement for creating a new table
-        String sql = "CREATE TABLE IF NOT EXISTS Product (\n"
-                + "	Id integer PRIMARY KEY,\n"
-                + "	Name text NOT NULL,\n"
-                + "	Price real\n"
-                + ");";
-        try {
-            this.connect();
-            Statement stmt = conn.createStatement();
-            stmt.execute(sql);
-            // Datos de inicialización
-            stmt.execute("INSERT INTO Product(Id, Name, Price) values(1,'Tv samsung',1000000); INSERT INTO Product(Id, Name, Price) values(2,'Nevera Lg',2500000);");
-            stmt.execute("INSERT INTO Product(Id, Name, Price) values(2,'Nevera Lg',2000000);");
-            stmt.execute("INSERT INTO Product(Id, Name, Price) values(3,'Celular motorola one macro',3000000);");
-            this.disconnect();
-
-        } catch (SQLException ex) {
-            Logger.getLogger(ProductRepository.class.getName()).log(Level.SEVERE, null, ex);
-        }
-    }
-
-    /**
      * Conectar a la bd
      */
     public void connect() {
-        // SQLite connection string
-        String url = "jdbc:sqlite:./mydatabase.db";
-        //String url = "jdbc:sqlite::memory:";
-
         try {
-            conn = DriverManager.getConnection(url);
-
+//            Class.forName(Utilities.loadProperty("server.db.driver"));
+            //crea una instancia de la controlador de la base de datos
+            String url = "jdbc:mysql://localhost:3306/restaurante";
+            String username = "lordimpi";
+            String pwd = "lordimpi315";
+            conn = DriverManager.getConnection(url, username, pwd);
         } catch (SQLException ex) {
             Logger.getLogger(ProductRepository.class.getName()).log(Level.SEVERE, null, ex);
         }
