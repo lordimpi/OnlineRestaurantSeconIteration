@@ -7,7 +7,7 @@ import java.util.List;
  *
  * @author Santiago Acuña
  */
-public interface IMainDish {
+public interface IMainDishRepository {
 
     List<MainDish> findAll();
 

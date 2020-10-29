@@ -19,7 +19,7 @@ public class MainDish {
     /**
      * Precio del plato principal
      */
-    private double dishPrice;
+    private Double dishPrice;
 
     /**
      * Constructor parametrizado
@@ -28,7 +28,7 @@ public class MainDish {
      * @param nameDish Nombre del plato principal
      * @param dishPrice Precio del plato prinicipal
      */
-    public MainDish(String id_mainDish, String nameDish, double dishPrice) {
+    public MainDish(String id_mainDish, String nameDish, Double dishPrice) {
         this.id_mainDish = id_mainDish;
         this.nameDish = nameDish;
         this.dishPrice = dishPrice;
@@ -57,11 +57,11 @@ public class MainDish {
         this.nameDish = nameDish;
     }
 
-    public double getDishPrice() {
+    public Double getDishPrice() {
         return dishPrice;
     }
 
-    public void setDishPrice(double dishPrice) {
+    public void setDishPrice(Double dishPrice) {
         this.dishPrice = dishPrice;
     }
 

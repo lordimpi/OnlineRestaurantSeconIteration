@@ -18,7 +18,7 @@ import java.util.logging.Logger;
  *
  * @author Santiago Acuña
  */
-public class MainDishRepository implements IMainDish {
+public class MainDishRepository implements IMainDishRepository {
 
     private Connection conn;
 
@@ -113,14 +113,28 @@ public class MainDishRepository implements IMainDish {
             this.disconnect();
             return true;
         } catch (SQLException ex) {
-            Logger.getLogger(ProductRepository.class.getName()).log(Level.SEVERE, "Error al actualizar el producto", ex);
+            Logger.getLogger(ProductRepository.class.getName()).log(Level.SEVERE, "Error al actualizar el plato principal", ex);
         }
         return false;
     }
 
     @Override
     public boolean delete(String id) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        try {
+            this.connect();
+
+            String sql = "DELETE FROM maindish "
+                    + "WHERE id_dish = ?";
+
+            PreparedStatement pstmt = conn.prepareStatement(sql);
+            pstmt.setString(1, id);
+            pstmt.executeUpdate();
+            this.disconnect();
+            return true;
+        } catch (SQLException ex) {
+            Logger.getLogger(ProductRepository.class.getName()).log(Level.SEVERE, "Error al eliminar plato principal", ex);
+        }
+        return false;
     }
 
     /**
