@@ -40,7 +40,7 @@ public class MainDishAccessREST implements IMainDishAccess {
     @Override
     public boolean deleteMainDish(String id) throws Exception {
         MainDish mainDish = findMainDish(id);
-        if (mainDish != null) {
+        if (mainDish == null) {
             return false;
         }
         rta = jersey.delete(id);

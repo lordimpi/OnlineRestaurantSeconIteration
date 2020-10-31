@@ -26,8 +26,8 @@ public class GUIDeleteDishe extends javax.swing.JInternalFrame {
      */
     public GUIDeleteDishe() {
         initComponents();
-//        cargarLista();
-//        mostrarTabla();
+        cargarLista();
+        mostrarTabla();
     }
 
     /**
@@ -170,15 +170,17 @@ public class GUIDeleteDishe extends javax.swing.JInternalFrame {
         }
         try {
             if (Messages.confirmMessage("¿ Desea borrar el registro ?", "Confirm") != 1) {
-                boolean a = mainDishService.deleteMainDish(id);
-                if (a) {
-                    Messages.successMessage("El plato " + id + " fue elimado", "EXITO");
+                boolean aux = mainDishService.deleteMainDish(id);
+                if (aux == false) {
+                    Messages.warningMessage("No se pudo borrar el plato", "Warning");
+                    return;
                 }
 
             }
         } catch (Exception ex) {
             successMessage(ex.getMessage(), "Atención");
         }
+        Messages.successMessage("El plato " + id + " fue elimado", "EXITO");
         cargarLista();
         mostrarTabla();
     }//GEN-LAST:event_jBtnEliminarActionPerformed
