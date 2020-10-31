@@ -11,8 +11,12 @@ import java.util.List;
  */
 public class DomainErrors {
 
+    /**
+     * Lista de errores
+     */
     private static List<Error> errors = new ArrayList<>();
 
+    // GETTERS AND SETTERS
     public static List<Error> getErrors() {
         return errors;
     }

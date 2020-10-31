@@ -23,7 +23,7 @@ public class MainDishService {
     }
 
     /**
-     * Busca un plato en el servidor remoto
+     * Busca un plato principal
      *
      * @param id identificador del plato
      * @return Objeto tipo Plato, null si no lo encuentra
