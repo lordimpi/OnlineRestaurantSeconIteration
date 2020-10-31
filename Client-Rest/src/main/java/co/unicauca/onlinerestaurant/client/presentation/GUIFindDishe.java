@@ -144,6 +144,11 @@ public class GUIFindDishe extends javax.swing.JInternalFrame {
         MainDish dish;
         try {
             dish = mainDishService.findMainDish(id);
+            if (dish != null) {
+                jTxfId.requestFocus();
+                Messages.warningMessage("ERROR: No se econtro el plato.", "Warning");
+                return;
+            }
         } catch (Exception ex) {
             clearControls();
             successMessage(ex.getMessage(), "Atención");

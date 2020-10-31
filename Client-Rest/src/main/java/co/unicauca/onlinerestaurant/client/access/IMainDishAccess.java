@@ -27,10 +27,10 @@ public interface IMainDishAccess {
      * @return objeto plato
      * @throws Exception error al actualizar el plato
      */
-    public MainDish updateMainDish(String id, String name, String price) throws Exception;
+    public boolean updateMainDish(String id, String name, Double price) throws Exception;
 
     /**
-     * Elimina un plato utilizando un socket
+     * Elimina un plato utilizando un una api rest
      *
      * @param id Identificador del plato
      * @return true si se elimino correctamente el plato o false en caso

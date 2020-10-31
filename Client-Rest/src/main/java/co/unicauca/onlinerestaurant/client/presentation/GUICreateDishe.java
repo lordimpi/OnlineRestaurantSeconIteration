@@ -153,32 +153,16 @@ public class GUICreateDishe extends javax.swing.JInternalFrame {
         maindish.setDishPrice(cost);
 
         try {
-            boolean response = maindishService.createMainDish(maindish);
-            if(response){
+            if(maindishService.createMainDish(maindish)){
                 successMessage("Plato agregado con éxito.", "Atención");
             }else{
                 Messages.warningMessage("el planto no pudo ser agregado", "Warning");
             }
             clearControls();
-            jTxfId.setText("");
-
         } catch (Exception ex) {
             successMessage(ex.getMessage(), "Atención");
         }
     }//GEN-LAST:event_jBtnAgregarActionPerformed
-
-    /**
-     * Metodo que muestra los datos en el formulario
-     *
-     * @param maindish Plato que contiene los datos a mostrar
-     */
-    private void showData(MainDish maindish) {
-
-        jTxfId.setText(maindish.getId_mainDish());
-        jTxfNombre.setText(maindish.getNameDish());
-        JTxfPrecio.setText(String.valueOf(maindish.getDishPrice()));
-
-    }
 
     /**
      * Limpia los controlles del formulario

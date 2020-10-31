@@ -139,14 +139,24 @@ public class GUIModifyDishe extends javax.swing.JInternalFrame {
         IMainDishAccess service = Factory.getInstance().getMainDishService();
         // Inyecta la dependencia
         MainDishService mainDishService = new MainDishService(service);
-        MainDish dish;
+        boolean dish;
         if (nombre.equals("") || precio.equals("")) {
             jTxfNombre.requestFocus();
             Messages.warningMessage("Campos vacios: Error al modificar", "Warning");
             return;
         }
         try {
-            dish = mainDishService.updateMainDish(this.jTxfId.getText().trim(), this.jTxfNombre.getText(), this.jTxfPrecio.getText());
+            dish = mainDishService.updateMainDish(
+                    this.jTxfId.getText().trim(),
+                    this.jTxfNombre.getText(),
+                    Double.parseDouble(this.jTxfPrecio.getText()));
+            if (dish != false) {
+                clearControls();
+                this.jTxfId.requestFocus();
+                Messages.warningMessage("No se pudo modificar el Plato", "Warning");
+                this.jBtnModificar.setVisible(false);
+                return;
+            }
         } catch (Exception ex) {
             clearControls();
             successMessage(ex.getMessage(), "Atención");
@@ -154,7 +164,6 @@ public class GUIModifyDishe extends javax.swing.JInternalFrame {
         }
         clearControls();
         this.jTxfId.requestFocus();
-        dish = null;
         successMessage("Se modifico el plato con exito.", "EXITO");
         this.jBtnModificar.setVisible(false);
     }//GEN-LAST:event_jBtnModificarActionPerformed
@@ -181,6 +190,12 @@ public class GUIModifyDishe extends javax.swing.JInternalFrame {
         MainDish dish;
         try {
             dish = mainDishService.findMainDish(id);
+            if (dish != null) {
+                jTxfId.requestFocus();
+                clearControls();
+                Messages.warningMessage("ERROR: No se encontro el plato.", "Warning");
+                return;
+            }
         } catch (Exception ex) {
             clearControls();
             successMessage(ex.getMessage(), "Atención");
