@@ -28,9 +28,11 @@ public class MainDishAccessREST implements IMainDishAccess {
     @Override
     public boolean updateMainDish(String id, String name, Double price) throws Exception {
         MainDish mainDish = findMainDish(id);
-        if (mainDish != null) {
+        if (mainDish == null) {
             return false;
         }
+        mainDish.setDishPrice(price);
+        mainDish.setNameDish(name);
         rta = jersey.edit_JSON(mainDish, id);
         return true;
     }

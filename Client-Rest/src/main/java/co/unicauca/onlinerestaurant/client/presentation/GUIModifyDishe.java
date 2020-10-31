@@ -150,7 +150,7 @@ public class GUIModifyDishe extends javax.swing.JInternalFrame {
                     this.jTxfId.getText().trim(),
                     this.jTxfNombre.getText(),
                     Double.parseDouble(this.jTxfPrecio.getText()));
-            if (dish != false) {
+            if (dish == false) {
                 clearControls();
                 this.jTxfId.requestFocus();
                 Messages.warningMessage("No se pudo modificar el Plato", "Warning");
@@ -190,7 +190,7 @@ public class GUIModifyDishe extends javax.swing.JInternalFrame {
         MainDish dish;
         try {
             dish = mainDishService.findMainDish(id);
-            if (dish != null) {
+            if (dish == null) {
                 jTxfId.requestFocus();
                 clearControls();
                 Messages.warningMessage("ERROR: No se encontro el plato.", "Warning");
