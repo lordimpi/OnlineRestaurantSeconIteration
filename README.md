@@ -1,20 +1,9 @@
-## In OnlineRestaurant files 
+## In OnlineRestaurant-Service project 
 
-modify config.properties
+modify Utilities.java
 ```ssh
-	server.port=5000
-	server.db.driver=com.mysql.cj.jdbc.Driver
-	server.db.url=jdbc:mysql://localhost/restaurante
-	server.db.username="Insert here your user mysql"
-	server.db.password="Insert here your password mysql"
-	#customer.repository=default
-	customer.repository=mysql
-	maindish.repository=mysql
-	dishentry.repository=mysql
-	dessert.repository=mysql
-	restaurant.repository=mysql
-	menu.repository=mysql
-	salad.repository=mysql
+    private final String username = "Insert here your user from MySql";
+    private final String pwd = "Insert here you password from MySql";
 ```
 
 ## Run this script in mysql
@@ -118,10 +107,10 @@ Inserts
 	INSERT INTO `salad`(`idsalad`, `namesalad`, `pricesalada`) VALUES ("3","ensalada frutas",1000);
 	INSERT INTO `salad`(`idsalad`, `namesalad`, `pricesalada`) VALUES ("4","ensalada",1000);
 
-	INSERT INTO `users`(`id_user`, `first_name`, `last_name`, `address`, `mobile`, `email`, `rol`,`pws`) VALUES ("1","alejo","rodriguez","calle 10","3166161700","alejo@rc.com","admin","123");
-	INSERT INTO `users`(`id_user`, `first_name`, `last_name`, `address`, `mobile`, `email`, `rol`,`pws`) VALUES ("2","Admin","rodriguez","calle 10","3166161700","alejo@rc.com","admin","123");
-	INSERT INTO `users`(`id_user`, `first_name`, `last_name`, `address`, `mobile`, `email`, `rol`,`pws`) VALUES ("3","User","rodriguez","calle 10","3166161700","alejo@rc.com","user","123");
-	INSERT INTO `users`(`id_user`, `first_name`, `last_name`, `address`, `mobile`, `email`, `rol`,`pws`) VALUES ("4","user2","rodriguez","calle 10","3166161700","alejo@rc.com","user","123");
+	INSERT INTO `user`(`id_user`, `first_name`, `last_name`, `address`, `mobile`, `email`, `rol`,`pws`) VALUES ("1","alejo","rodriguez","calle 10","3166161700","alejo@rc.com","admin","123");
+	INSERT INTO `user`(`id_user`, `first_name`, `last_name`, `address`, `mobile`, `email`, `rol`,`pws`) VALUES ("2","Admin","rodriguez","calle 10","3166161700","alejo@rc.com","admin","123");
+	INSERT INTO `user`(`id_user`, `first_name`, `last_name`, `address`, `mobile`, `email`, `rol`,`pws`) VALUES ("3","User","rodriguez","calle 10","3166161700","alejo@rc.com","user","123");
+	INSERT INTO `user`(`id_user`, `first_name`, `last_name`, `address`, `mobile`, `email`, `rol`,`pws`) VALUES ("4","user2","rodriguez","calle 10","3166161700","alejo@rc.com","user","123");
 
 	INSERT INTO `menu`(`id_menu`, `id_maindish`, `id_drink`, `id_salad`, `id_entry`, `id_dessert`) VALUES ("1","1","1","1","1","1");
 	INSERT INTO `menu`(`id_menu`, `id_maindish`, `id_drink`, `id_salad`, `id_entry`, `id_dessert`) VALUES ("2","1","2","1","1","1");
