@@ -8,11 +8,14 @@ import co.unicauca.onlinerestaurant.infra.Error;
 import co.unicauca.onlinerestaurant.infra.DomainErrors;
 import java.util.ArrayList;
 import java.util.List;
+
 /**
- * Servicio de Platos de Entrada. Es una fachada de acceso al negocio. 
+ * Servicio de Platos de Entrada. Es una fachada de acceso al negocio.
+ *
  * @author Ximena Gallego
  */
 public class DishEntryService {
+
     /**
      * Dependencia de una abstacción No es algo concreto. No se sabe como será
      * implementado
@@ -47,7 +50,7 @@ public class DishEntryService {
     /**
      * Crea un nuevo plato de entrada
      *
-     * @param newDishEntry Plato de entrada 
+     * @param newDishEntry Plato de entrada
      * @return true si lo crea, false si no
      */
     public boolean createDishEntry(DishEntry newDishEntry) {
@@ -155,9 +158,9 @@ public class DishEntryService {
 //        }
 
         // Validar que exista el producto
-         DishEntry dishEntryAux = repository.findByIdDishEntry(id);
+        DishEntry dishEntryAux = repository.findByIdDishEntry(id);
 
-        if (dishEntryAux  == null) {
+        if (dishEntryAux == null) {
             // El producto no existe
             Error error = new Error(ValidationError.INVALID_FIELD, "id", "El id del plato de Entrada existe");
             errors.add(error);
@@ -179,5 +182,5 @@ public class DishEntryService {
 
         return errors;
     }
-    
+
 }
