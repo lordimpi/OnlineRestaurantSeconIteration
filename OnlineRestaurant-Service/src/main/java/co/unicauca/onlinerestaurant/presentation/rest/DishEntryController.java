@@ -23,7 +23,7 @@ import javax.ws.rs.core.Response;
  * @author Ximena Gallego 
  */
 @Stateless
-@Path("/dishentry")
+@Path("/dishentrys")
 public class DishEntryController {
     
     @Inject
@@ -34,7 +34,7 @@ public class DishEntryController {
     }
     /*
         Su uso desde consola mediante client url:
-        curl -X GET http://localhost:8085/OnlineRestaurant-Service/restaurant-service/dishentry/ 
+        curl -X GET http://localhost:8085/OnlineRestaurant-Service/restaurant-service/dishentrys/ 
 
      */
     @GET
@@ -44,7 +44,7 @@ public class DishEntryController {
     }
     /*
         Su uso desde consola mediante client url:
-        curl -X GET http://localhost:8085/OnlineRestaurant-Service/restaurant-service/dishentry/1 
+        curl -X GET http://localhost:8085/OnlineRestaurant-Service/restaurant-service/dishentrys/1 
 
      */
     @GET
@@ -57,7 +57,7 @@ public class DishEntryController {
     /*
         Su uso desde consola mediante client url:
         curl -X POST \
-          http://localhost:8085/OnlineRestaurant-Service/restaurant-service/dishentry/ \
+          http://localhost:8085/OnlineRestaurant-Service/restaurant-service/dishentrys/ \
           -H 'Content-Type: application/json' \
           -d '{
                "id":10,
@@ -80,7 +80,7 @@ public class DishEntryController {
       /*
         Su uso desde consola mediante client url:
         curl -X PUT \
-          http://localhost:8085/OnlineRestaurant-Service/restaurant-service/dishentry/103 \
+          http://localhost:8085/OnlineRestaurant-Service/restaurant-service/dishentrys/103 \
           -H 'Content-Type: application/json' \
           -d '{
                "name":"caldo de huevo",
@@ -102,7 +102,7 @@ public class DishEntryController {
     }
     /*
         Su uso desde consola mediante client url:
-        curl -X DELETE http://localhost:8080/Product-Service/product-service/dishentry/103 
+        curl -X DELETE http://localhost:8080/Product-Service/product-service/dishentrys/103 
 
      */
     @DELETE

@@ -16,6 +16,7 @@ D:\RestauranOnline2\OnlineRestaurantSecondIteration\Client-Rest\src\main\java\co
 D:\RestauranOnline2\OnlineRestaurantSecondIteration\Client-Rest\src\main\java\co\unicauca\onlinerestaurant\client\access\SaladAccessREST.java
 D:\RestauranOnline2\OnlineRestaurantSecondIteration\Client-Rest\src\main\java\co\unicauca\onlinerestaurant\client\domain\services\SaladService.java
 D:\RestauranOnline2\OnlineRestaurantSecondIteration\Client-Rest\src\main\java\co\unicauca\onlinerestaurant\client\presentation\GUIShowMenu.java
+D:\RestauranOnline2\OnlineRestaurantSecondIteration\Client-Rest\src\main\java\co\unicauca\client\SaladJerseyClient.java
 D:\RestauranOnline2\OnlineRestaurantSecondIteration\Client-Rest\src\main\java\co\unicauca\onlinerestaurant\client\access\DrinkAccessREST.java
 D:\RestauranOnline2\OnlineRestaurantSecondIteration\Client-Rest\src\main\java\co\unicauca\onlinerestaurant\client\access\RestaurantAccessREST.java
 D:\RestauranOnline2\OnlineRestaurantSecondIteration\Client-Rest\src\main\java\co\unicauca\onlinerestaurant\client\domain\services\EntryService.java
@@ -25,6 +26,7 @@ D:\RestauranOnline2\OnlineRestaurantSecondIteration\Client-Rest\src\main\java\co
 D:\RestauranOnline2\OnlineRestaurantSecondIteration\Client-Rest\src\main\java\co\unicauca\onlinerestaurant\client\access\EntryAccessREST.java
 D:\RestauranOnline2\OnlineRestaurantSecondIteration\Client-Rest\src\main\java\co\unicauca\onlinerestaurant\client\access\MainDishAccessREST.java
 D:\RestauranOnline2\OnlineRestaurantSecondIteration\Client-Rest\src\main\java\co\unicauca\onlinerestaurant\client\domain\services\MenuService.java
+D:\RestauranOnline2\OnlineRestaurantSecondIteration\Client-Rest\src\main\java\co\unicauca\client\DishEntryJerseyClient.java
 D:\RestauranOnline2\OnlineRestaurantSecondIteration\Client-Rest\src\main\java\co\unicauca\onlinerestaurant\client\presentation\GUIDeleteDishe.java
 D:\RestauranOnline2\OnlineRestaurantSecondIteration\Client-Rest\src\main\java\co\unicauca\onlinerestaurant\client\presentation\GUIMenuAdmin.java
 D:\RestauranOnline2\OnlineRestaurantSecondIteration\Client-Rest\src\main\java\co\unicauca\onlinerestaurant\client\presentation\GUILogin.java

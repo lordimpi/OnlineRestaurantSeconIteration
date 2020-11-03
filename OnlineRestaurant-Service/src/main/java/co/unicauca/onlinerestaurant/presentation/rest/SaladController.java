@@ -23,7 +23,7 @@ import javax.ws.rs.core.Response;
  * @author Ximena Gallego
  */
 @Stateless
-@Path("/salad")
+@Path("/salads")
 public class SaladController {
      @Inject
     private SaladService service;
@@ -34,7 +34,7 @@ public class SaladController {
 
     /*
         Su uso desde consola mediante client url:
-        curl -X GET http://localhost:8085/OnlineRestaurant-Service/restaurant-service/salad/ 
+        curl -X GET http://localhost:8085/OnlineRestaurant-Service/restaurant-service/salads/ 
 
      */
     @GET
@@ -45,7 +45,7 @@ public class SaladController {
 
     /*
         Su uso desde consola mediante client url:
-        curl -X GET http://localhost:8085/OnlineRestaurant-Service/restaurant-service/salad/1 
+        curl -X GET http://localhost:8085/OnlineRestaurant-Service/restaurant-service/salads/1 
 
      */
     @GET
@@ -58,7 +58,7 @@ public class SaladController {
     /*
         Su uso desde consola mediante client url:
         curl -X POST \
-          http://localhost:8085/OnlineRestaurant-Service/restaurant-service/salad/ \
+          http://localhost:8085/OnlineRestaurant-Service/restaurant-service/salads/ \
           -H 'Content-Type: application/json' \
           -d '{
                "id":1,
@@ -81,7 +81,7 @@ public class SaladController {
     /*
         Su uso desde consola mediante client url:
         curl -X PUT \
-          http://localhost:8085/OnlineRestaurant-Service/restaurant-service/salad/1 \
+          http://localhost:8085/OnlineRestaurant-Service/restaurant-service/salads/1 \
           -H 'Content-Type: application/json' \
           -d '{
                "name":"Ensalada verde",
@@ -104,7 +104,7 @@ public class SaladController {
 
     /*
         Su uso desde consola mediante client url:
-        curl -X DELETE http://localhost:8085/Product-Service/product-service/salad/1 
+        curl -X DELETE http://localhost:8085/Product-Service/product-service/salads/1 
 
      */
     @DELETE
