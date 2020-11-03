@@ -7,7 +7,7 @@ import java.util.Date;
  *
  * @author Santiago Acuña
  */
-public class Customer {
+public class User {
 
     /**
      * Password
@@ -118,7 +118,7 @@ public class Customer {
      * @param email email
      * @param rol rol
      */
-    public Customer(String id, String firstName, String lastName, String address, String mobile, String email, String rol, String pws) {
+    public User(String id, String firstName, String lastName, String address, String mobile, String email, String rol, String pws) {
         this.id = id;
         this.firstName = firstName;
         this.lastName = lastName;
@@ -132,7 +132,7 @@ public class Customer {
     /**
      * Constructor por defecto
      */
-    public Customer() {
+    public User() {
 
     }
 }

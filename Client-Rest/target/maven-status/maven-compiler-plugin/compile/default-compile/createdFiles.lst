@@ -4,6 +4,7 @@ co\unicauca\onlinerestaurant\client\presentation\GUIMenuAdmin$6.class
 co\unicauca\onlinerestaurant\client\presentation\GUIMenuAdmin$3.class
 co\unicauca\onlinerestaurant\client\domain\services\DrinkService.class
 co\unicauca\onlinerestaurant\client\access\EntryAccessREST.class
+co\unicauca\client\DessertJerseyClient.class
 co\unicauca\onlinerestaurant\client\access\IDrinkAccess.class
 co\unicauca\onlinerestaurant\client\presentation\GUIMenuAdmin$1.class
 co\unicauca\onlinerestaurant\client\presentation\GUIMenuAdmin$12.class
@@ -16,11 +17,15 @@ co\unicauca\onlinerestaurant\client\domain\User.class
 co\unicauca\onlinerestaurant\client\access\IEntryAccess.class
 co\unicauca\onlinerestaurant\client\presentation\GUIMenuFoodDishes$4.class
 co\unicauca\onlinerestaurant\client\presentation\GUIMenuAdmin$14.class
+co\unicauca\onlinerestaurant\client\access\UserAccessREST.class
 co\unicauca\onlinerestaurant\client\infra\Messages.class
 co\unicauca\onlinerestaurant\client\presentation\GUIMenuFoodDishes$1.class
 co\unicauca\onlinerestaurant\client\presentation\GUIMenuAdmin$7.class
 co\unicauca\onlinerestaurant\client\presentation\GUIMenuAdmin$11.class
+co\unicauca\onlinerestaurant\client\access\IUserAccess.class
 co\unicauca\onlinerestaurant\client\presentation\GUIMenuAdmin$4.class
+co\unicauca\onlinerestaurant\client\domain\services\UserService.class
 co\unicauca\onlinerestaurant\client\presentation\GUIMenuFoodDishes$2.class
 co\unicauca\onlinerestaurant\client\presentation\GUIMenuAdmin$5.class
 co\unicauca\onlinerestaurant\client\presentation\GUIMenuFoodDishes$3.class
+co\unicauca\client\UserJerseyClient.class

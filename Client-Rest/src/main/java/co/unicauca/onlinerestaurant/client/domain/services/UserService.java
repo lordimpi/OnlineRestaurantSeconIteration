@@ -1,23 +1,23 @@
 package co.unicauca.onlinerestaurant.client.domain.services;
 
-import co.unicauca.common.domain.entity.Customer;
-import co.unicauca.onlinerestaurant.client.access.ICustomerAccess;
+import co.unicauca.common.domain.entity.User;
+import co.unicauca.onlinerestaurant.client.access.IUserAccess;
 
 /**
  * Es una fachada para comunicar la presentación con el dominio
  *
  * @author Santiago Acuña
  */
-public class CustomerService {
+public class UserService {
 
-    private final ICustomerAccess service;
+    private final IUserAccess service;
 
     /**
      * Constructor privado que evita que otros objetos instancien
      *
      * @param service implementacion de tipo ICustomerService
      */
-    public CustomerService(ICustomerAccess service) {
+    public UserService(IUserAccess service) {
         this.service = service;
     }
 
@@ -29,31 +29,34 @@ public class CustomerService {
      * @throws java.lang.Exception la excepcio se lanza cuando no logra conexión
      * con el servidor
      */
-    public Customer findCustomer(String id) throws Exception {
+    public User findCustomer(String id) throws Exception {
         return service.findCustomer(id);
 
     }
+
     /**
      * Busca un cliente en el servidor remoto
+     *
      * @param name
      * @param pws
      * @return
      * @throws java.lang.Exception la excepcio se lanza cuando no logra conexión
      * con el servidor
      */
-    public Customer findCustomer(String name,String pws) throws Exception {
-        return service.findCustomer(name,pws);
+    public User findCustomer(String name, String pws) throws Exception {
+        return service.findCustomer(name, pws);
 
     }
 
     /**
-     * Creacion de un Customer
-     * @param customer
+     * Creacion de un user
+     *
+     * @param user
      * @return
-     * @throws Exception 
+     * @throws Exception
      */
-    public boolean createCustomer(Customer customer) throws Exception {
-        return service.createCustomer(customer);
+    public boolean createCustomer(User user) throws Exception {
+        return service.createCustomer(user);
 
     }
 

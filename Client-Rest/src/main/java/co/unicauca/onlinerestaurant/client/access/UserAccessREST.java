@@ -1,26 +1,30 @@
 package co.unicauca.onlinerestaurant.client.access;
 
-import co.unicauca.common.domain.entity.Customer;
+import co.unicauca.common.domain.entity.User;
 
 /**
  * 
  * @author Santiago Acuña
  */
-public class CustomerAccessREST implements ICustomerAccess{
+public class UserAccessREST implements IUserAccess{
 
     @Override
-    public Customer findCustomer(String id) throws Exception {
+    public User findCustomer(String id) throws Exception {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
-    public Customer findCustomer(String name, String pws) throws Exception {
+    public User findCustomer(String name, String pws) throws Exception {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
-    public boolean createCustomer(Customer customer) throws Exception {
+    public boolean createCustomer(User user) throws Exception {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
+
+    
+
+    
 
 }

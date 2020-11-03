@@ -1,11 +1,10 @@
 package co.unicauca.onlinerestaurant.client.presentation;
 
 import co.unicauca.onlinerestaurant.client.access.Factory;
-import co.unicauca.onlinerestaurant.client.access.ICustomerAccess;
-import co.unicauca.onlinerestaurant.client.domain.services.CustomerService;
+import co.unicauca.onlinerestaurant.client.domain.services.UserService;
 import static co.unicauca.onlinerestaurant.client.infra.Messages.successMessage;
 import static co.unicauca.onlinerestaurant.client.infra.Messages.warningMessage;
-import co.unicauca.common.domain.entity.Customer;
+import co.unicauca.common.domain.entity.User;
 import java.awt.Image;
 import java.awt.MouseInfo;
 import java.awt.Point;
@@ -15,6 +14,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
+import co.unicauca.onlinerestaurant.client.access.IUserAccess;
 
 /**
  * Crea un formulario para el login

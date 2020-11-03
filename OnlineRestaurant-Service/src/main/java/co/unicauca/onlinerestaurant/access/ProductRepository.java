@@ -147,13 +147,13 @@ public class ProductRepository implements IProductRepository {
      * Conectar a la bd
      */
     public void connect() {
+        // SQLite connection string
+        String url = "jdbc:sqlite:./mydatabase.db";
+        //String url = "jdbc:sqlite::memory:";
+
         try {
-//            Class.forName(Utilities.loadProperty("server.db.driver"));
-            //crea una instancia de la controlador de la base de datos
-            String url = "jdbc:mysql://localhost:3306/restaurante";
-            String username = "lordimpi";
-            String pwd = "lordimpi315";
-            conn = DriverManager.getConnection(url, username, pwd);
+            conn = DriverManager.getConnection(url);
+
         } catch (SQLException ex) {
             Logger.getLogger(ProductRepository.class.getName()).log(Level.SEVERE, null, ex);
         }

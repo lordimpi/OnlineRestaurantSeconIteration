@@ -1,5 +1,5 @@
 co\unicauca\common\domain\entity\Salad.class
-co\unicauca\common\domain\entity\Customer.class
+co\unicauca\common\domain\entity\User.class
 co\unicauca\common\domain\entity\Dessert.class
 co\unicauca\common\domain\entity\Restaurant.class
 co\unicauca\common\domain\entity\MainDish.class
