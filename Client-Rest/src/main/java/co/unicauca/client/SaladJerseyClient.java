@@ -29,7 +29,7 @@ public class SaladJerseyClient {
 
     public SaladJerseyClient() {
         client = javax.ws.rs.client.ClientBuilder.newClient();
-        webTarget = client.target(BASE_URI).path("salad");
+        webTarget = client.target(BASE_URI).path("salads");
     }
 
     public Response edit_XML(Object requestEntity, String id) throws ClientErrorException {
