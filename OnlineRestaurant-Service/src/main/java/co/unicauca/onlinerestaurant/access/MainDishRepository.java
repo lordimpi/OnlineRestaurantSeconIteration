@@ -1,6 +1,7 @@
 package co.unicauca.onlinerestaurant.access;
 
 import co.unicauca.common.domain.entity.MainDish;
+import co.unicauca.onlinerestaurant.infra.Utilities;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -20,8 +21,16 @@ import java.util.logging.Logger;
  */
 public class MainDishRepository implements IMainDishRepository {
 
+    /**
+     * Guarda la conexion a la base de datos
+     */
     private Connection conn;
 
+    /**
+     * Lista todos los platos principales de la base de datos
+     *
+     * @return Lista de platos principales
+     */
     @Override
     public List<MainDish> findAll() {
 
@@ -49,6 +58,12 @@ public class MainDishRepository implements IMainDishRepository {
         return mainDishes;
     }
 
+    /**
+     * Busca un plato principal de la base de datos
+     *
+     * @param id Identificador del plato principal
+     * @return Objeto de tipo MainDish
+     */
     @Override
     public MainDish findById(String id) {
         MainDish mainDish = null;
@@ -73,6 +88,12 @@ public class MainDishRepository implements IMainDishRepository {
         return mainDish;
     }
 
+    /**
+     * Crea un plato principal y lo guarda en la base de datos
+     *
+     * @param newMainDish Objeto de tipo MainDish a guardar
+     * @return True si puedo crear, false de lo contrario
+     */
     @Override
     public boolean create(MainDish newMainDish) {
         String sql = "";
@@ -95,6 +116,12 @@ public class MainDishRepository implements IMainDishRepository {
         return false;
     }
 
+    /**
+     * Actualiza un plato principal en la base de datos
+     *
+     * @param newMainDish Objeto de tipo MainDish a actualizar
+     * @return True si pudo actualizar, false de lo contrario
+     */
     @Override
     public boolean update(MainDish newMainDish) {
         try {
@@ -118,6 +145,12 @@ public class MainDishRepository implements IMainDishRepository {
         return false;
     }
 
+    /**
+     * Elimina un plato principal de la base de datos
+     *
+     * @param id Identificador del plato a eliminar
+     * @return True si pudo eliminar, false de lo contrario
+     */
     @Override
     public boolean delete(String id) {
         try {
@@ -138,16 +171,14 @@ public class MainDishRepository implements IMainDishRepository {
     }
 
     /**
-     * Conectar a la bd
+     * Conecta a la bd
      */
     public void connect() {
         try {
             //Class.forName(Utilities.loadProperty("server.db.driver"));
             //crea una instancia de la controlador de la base de datos
-            String url = "jdbc:mysql://localhost:3306/restaurante";
-            String username = "lordimpi";
-            String pwd = "lordimpi315";
-            conn = DriverManager.getConnection(url, username, pwd);
+            Utilities ut = new Utilities();
+            conn = DriverManager.getConnection(ut.getUrl(), ut.getUsername(), ut.getPwd());
         } catch (SQLException ex) {
             Logger.getLogger(MainDishRepository.class.getName()).log(Level.SEVERE, null, ex);
         }

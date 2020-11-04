@@ -32,7 +32,7 @@ public class GUIMenuAdmin extends javax.swing.JFrame {
     /**
      * Guarda la instancia del formulario Menu platos principales
      */
-    private GUIMenuFoodDishes MenuFoodDishes = new GUIMenuFoodDishes();
+    private GUIMenuFood MenuFoodDishes = new GUIMenuFood();
 
     private GUIShowMenuAdmin ShowMenu;
 
@@ -77,9 +77,6 @@ public class GUIMenuAdmin extends javax.swing.JFrame {
         BtnHomePage = new javax.swing.JPanel();
         jLbHomePageIcono = new javax.swing.JLabel();
         jLbHomePage = new javax.swing.JLabel();
-        BtnDrinks = new javax.swing.JPanel();
-        jLbDrinksIcon = new javax.swing.JLabel();
-        jLbDrinks = new javax.swing.JLabel();
         BtnMenus = new javax.swing.JPanel();
         jLbMenusIcon = new javax.swing.JLabel();
         jLbMenus = new javax.swing.JLabel();
@@ -153,44 +150,7 @@ public class GUIMenuAdmin extends javax.swing.JFrame {
                 .addGap(21, 21, 21))
         );
 
-        jPnlSide.add(BtnHomePage, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 190, 280, 40));
-
-        BtnDrinks.setBackground(new java.awt.Color(64, 43, 100));
-        BtnDrinks.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mousePressed(java.awt.event.MouseEvent evt) {
-                BtnDrinksMousePressed(evt);
-            }
-        });
-
-        jLbDrinksIcon.setPreferredSize(new java.awt.Dimension(34, 35));
-
-        jLbDrinks.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jLbDrinks.setForeground(new java.awt.Color(204, 204, 204));
-        jLbDrinks.setText("Drinks");
-
-        javax.swing.GroupLayout BtnDrinksLayout = new javax.swing.GroupLayout(BtnDrinks);
-        BtnDrinks.setLayout(BtnDrinksLayout);
-        BtnDrinksLayout.setHorizontalGroup(
-            BtnDrinksLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(BtnDrinksLayout.createSequentialGroup()
-                .addGap(35, 35, 35)
-                .addComponent(jLbDrinksIcon, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jLbDrinks, javax.swing.GroupLayout.PREFERRED_SIZE, 163, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(36, Short.MAX_VALUE))
-        );
-        BtnDrinksLayout.setVerticalGroup(
-            BtnDrinksLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(BtnDrinksLayout.createSequentialGroup()
-                .addGroup(BtnDrinksLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLbDrinksIcon, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(BtnDrinksLayout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jLbDrinks)))
-                .addGap(21, 21, 21))
-        );
-
-        jPnlSide.add(BtnDrinks, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 350, -1, 40));
+        jPnlSide.add(BtnHomePage, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 230, 280, 40));
 
         BtnMenus.setBackground(new java.awt.Color(64, 43, 100));
         BtnMenus.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -227,7 +187,7 @@ public class GUIMenuAdmin extends javax.swing.JFrame {
                 .addGap(21, 21, 21))
         );
 
-        jPnlSide.add(BtnMenus, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 270, -1, 40));
+        jPnlSide.add(BtnMenus, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 310, -1, 40));
 
         BtnRestaurant.setBackground(new java.awt.Color(64, 43, 100));
         BtnRestaurant.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -264,7 +224,7 @@ public class GUIMenuAdmin extends javax.swing.JFrame {
                 .addGap(21, 21, 21))
         );
 
-        jPnlSide.add(BtnRestaurant, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 230, -1, 40));
+        jPnlSide.add(BtnRestaurant, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 270, -1, 40));
 
         BtnFoodDishes.setBackground(new java.awt.Color(64, 43, 100));
         BtnFoodDishes.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -301,7 +261,7 @@ public class GUIMenuAdmin extends javax.swing.JFrame {
                 .addGap(21, 21, 21))
         );
 
-        jPnlSide.add(BtnFoodDishes, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 310, -1, 40));
+        jPnlSide.add(BtnFoodDishes, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 350, -1, 40));
 
         BtnAccounting.setBackground(new java.awt.Color(64, 43, 100));
         BtnAccounting.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -584,7 +544,6 @@ public class GUIMenuAdmin extends javax.swing.JFrame {
         resetColor(BtnRestaurant);
         resetColor(BtnMenus);
         resetColor(BtnFoodDishes);
-        resetColor(BtnDrinks);
         resetColor(BtnCustomers);
         resetColor(BtnUsers);
         resetColor(BtnAccounting);
@@ -601,7 +560,6 @@ public class GUIMenuAdmin extends javax.swing.JFrame {
         setColor(BtnRestaurant);
         resetColor(BtnMenus);
         resetColor(BtnFoodDishes);
-        resetColor(BtnDrinks);
         resetColor(BtnCustomers);
         resetColor(BtnUsers);
         resetColor(BtnAccounting);
@@ -627,7 +585,6 @@ public class GUIMenuAdmin extends javax.swing.JFrame {
         resetColor(BtnRestaurant);
         setColor(BtnMenus);
         resetColor(BtnFoodDishes);
-        resetColor(BtnDrinks);
         resetColor(BtnCustomers);
         resetColor(BtnUsers);
         resetColor(BtnAccounting);
@@ -657,7 +614,6 @@ public class GUIMenuAdmin extends javax.swing.JFrame {
         resetColor(BtnRestaurant);
         resetColor(BtnMenus);
         resetColor(BtnFoodDishes);
-        resetColor(BtnDrinks);
         setColor(BtnCustomers);
         resetColor(BtnUsers);
         resetColor(BtnAccounting);
@@ -674,7 +630,6 @@ public class GUIMenuAdmin extends javax.swing.JFrame {
         resetColor(BtnRestaurant);
         resetColor(BtnMenus);
         resetColor(BtnFoodDishes);
-        resetColor(BtnDrinks);
         resetColor(BtnCustomers);
         resetColor(BtnUsers);
         setColor(BtnAccounting);
@@ -691,7 +646,6 @@ public class GUIMenuAdmin extends javax.swing.JFrame {
         resetColor(BtnRestaurant);
         resetColor(BtnMenus);
         setColor(BtnFoodDishes);
-        resetColor(BtnDrinks);
         resetColor(BtnCustomers);
         resetColor(BtnUsers);
         resetColor(BtnAccounting);
@@ -705,23 +659,6 @@ public class GUIMenuAdmin extends javax.swing.JFrame {
     }//GEN-LAST:event_BtnFoodDishesMousePressed
 
     /**
-     * Boton que despliega las opciones para bebidas
-     *
-     * @param evt Evento del boton Bebidas
-     */
-    private void BtnDrinksMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BtnDrinksMousePressed
-        resetColor(BtnHomePage);
-        resetColor(BtnRestaurant);
-        resetColor(BtnMenus);
-        resetColor(BtnFoodDishes);
-        setColor(BtnDrinks);
-        resetColor(BtnCustomers);
-        resetColor(BtnUsers);
-        resetColor(BtnAccounting);
-
-    }//GEN-LAST:event_BtnDrinksMousePressed
-
-    /**
      * Boton que despliega las opcciones de usuario
      *
      * @param evt Evento del boton
@@ -731,7 +668,6 @@ public class GUIMenuAdmin extends javax.swing.JFrame {
         resetColor(BtnRestaurant);
         resetColor(BtnMenus);
         resetColor(BtnFoodDishes);
-        resetColor(BtnDrinks);
         resetColor(BtnCustomers);
         setColor(BtnUsers);
         resetColor(BtnAccounting);
@@ -782,7 +718,6 @@ public class GUIMenuAdmin extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel BtnAccounting;
     private javax.swing.JPanel BtnCustomers;
-    private javax.swing.JPanel BtnDrinks;
     private javax.swing.JPanel BtnFoodDishes;
     private javax.swing.JPanel BtnHomePage;
     private javax.swing.JPanel BtnMenus;
@@ -794,8 +729,6 @@ public class GUIMenuAdmin extends javax.swing.JFrame {
     private javax.swing.JLabel jLbClose1;
     private javax.swing.JLabel jLbCurtomers;
     private javax.swing.JLabel jLbCustomersIcon;
-    private javax.swing.JLabel jLbDrinks;
-    private javax.swing.JLabel jLbDrinksIcon;
     private javax.swing.JLabel jLbFoodDishes;
     private javax.swing.JLabel jLbFoodDishesIcon;
     private javax.swing.JLabel jLbHide;
@@ -846,7 +779,6 @@ public class GUIMenuAdmin extends javax.swing.JFrame {
         addIcon(jLbRestaurantIcon, "src/main/java/resources/restaurant.png");
         addIcon(jLbMenusIcon, "src/main/java/resources/restaurantMenu.png");
         addIcon(jLbFoodDishesIcon, "src/main/java/resources/foodDishes.png");
-        addIcon(jLbDrinksIcon, "src/main/java/resources/drinks.png");
         addIcon(jLbCustomersIcon, "src/main/java/resources/customers.png");
         addIcon(jLbUsersIcon, "src/main/java/resources/users.png");
         addIcon(jLbAccountingIcon, "src/main/java/resources/accounting.png");

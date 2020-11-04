@@ -4,6 +4,7 @@ import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 
 /**
+ * Clase de mensajeria para utilizar en metodos
  *
  * @author Santiago Acuña
  */
