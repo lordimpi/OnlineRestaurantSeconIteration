@@ -1,10 +1,10 @@
-D:\Unicauca\Ingenieria de Software\Software 2\Laboratorio\Parcial\P2\OnlineRestaurantSecondIteration\OnlineRestaurant-Commons\src\main\java\co\unicauca\common\domain\entity\Drink.java
-D:\Unicauca\Ingenieria de Software\Software 2\Laboratorio\Parcial\P2\OnlineRestaurantSecondIteration\OnlineRestaurant-Commons\src\main\java\co\unicauca\common\domain\entity\Menu.java
-D:\Unicauca\Ingenieria de Software\Software 2\Laboratorio\Parcial\P2\OnlineRestaurantSecondIteration\OnlineRestaurant-Commons\src\main\java\co\unicauca\common\domain\entity\Dessert.java
-D:\Unicauca\Ingenieria de Software\Software 2\Laboratorio\Parcial\P2\OnlineRestaurantSecondIteration\OnlineRestaurant-Commons\src\main\java\co\unicauca\common\domain\entity\MainDish.java
-D:\Unicauca\Ingenieria de Software\Software 2\Laboratorio\Parcial\P2\OnlineRestaurantSecondIteration\OnlineRestaurant-Commons\src\main\java\co\unicauca\common\domain\entity\Consumible.java
-D:\Unicauca\Ingenieria de Software\Software 2\Laboratorio\Parcial\P2\OnlineRestaurantSecondIteration\OnlineRestaurant-Commons\src\main\java\co\unicauca\common\domain\entity\DishEntry.java
-D:\Unicauca\Ingenieria de Software\Software 2\Laboratorio\Parcial\P2\OnlineRestaurantSecondIteration\OnlineRestaurant-Commons\src\main\java\co\unicauca\common\domain\entity\Product.java
-D:\Unicauca\Ingenieria de Software\Software 2\Laboratorio\Parcial\P2\OnlineRestaurantSecondIteration\OnlineRestaurant-Commons\src\main\java\co\unicauca\common\domain\entity\Salad.java
-D:\Unicauca\Ingenieria de Software\Software 2\Laboratorio\Parcial\P2\OnlineRestaurantSecondIteration\OnlineRestaurant-Commons\src\main\java\co\unicauca\common\domain\entity\Restaurant.java
-D:\Unicauca\Ingenieria de Software\Software 2\Laboratorio\Parcial\P2\OnlineRestaurantSecondIteration\OnlineRestaurant-Commons\src\main\java\co\unicauca\common\domain\entity\Customer.java
+D:\RestauranOnline2\OnlineRestaurantSecondIteration\OnlineRestaurant-Commons\src\main\java\co\unicauca\common\domain\entity\Dessert.java
+D:\RestauranOnline2\OnlineRestaurantSecondIteration\OnlineRestaurant-Commons\src\main\java\co\unicauca\common\domain\entity\Customer.java
+D:\RestauranOnline2\OnlineRestaurantSecondIteration\OnlineRestaurant-Commons\src\main\java\co\unicauca\common\domain\entity\Salad.java
+D:\RestauranOnline2\OnlineRestaurantSecondIteration\OnlineRestaurant-Commons\src\main\java\co\unicauca\common\domain\entity\MainDish.java
+D:\RestauranOnline2\OnlineRestaurantSecondIteration\OnlineRestaurant-Commons\src\main\java\co\unicauca\common\domain\entity\Restaurant.java
+D:\RestauranOnline2\OnlineRestaurantSecondIteration\OnlineRestaurant-Commons\src\main\java\co\unicauca\common\domain\entity\Consumible.java
+D:\RestauranOnline2\OnlineRestaurantSecondIteration\OnlineRestaurant-Commons\src\main\java\co\unicauca\common\domain\entity\Drink.java
+D:\RestauranOnline2\OnlineRestaurantSecondIteration\OnlineRestaurant-Commons\src\main\java\co\unicauca\common\domain\entity\Menu.java
+D:\RestauranOnline2\OnlineRestaurantSecondIteration\OnlineRestaurant-Commons\src\main\java\co\unicauca\common\domain\entity\Product.java
+D:\RestauranOnline2\OnlineRestaurantSecondIteration\OnlineRestaurant-Commons\src\main\java\co\unicauca\common\domain\entity\DishEntry.java
