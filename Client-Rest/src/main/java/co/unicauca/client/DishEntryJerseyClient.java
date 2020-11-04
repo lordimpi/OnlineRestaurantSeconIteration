@@ -10,7 +10,7 @@ import javax.ws.rs.core.Response;
 
 /**
  * Jersey REST client generated for REST resource:DishEntryController
- * [/dishentry]<br>
+ * [/dishentrys]<br>
  * USAGE:
  * <pre>
  *        DishEntryJerseyClient client = new DishEntryJerseyClient();
@@ -29,7 +29,7 @@ public class DishEntryJerseyClient {
 
     public DishEntryJerseyClient() {
         client = javax.ws.rs.client.ClientBuilder.newClient();
-        webTarget = client.target(BASE_URI).path("dishentry");
+        webTarget = client.target(BASE_URI).path("dishentrys");
     }
 
     public Response edit_XML(Object requestEntity, String id) throws ClientErrorException {
@@ -64,7 +64,6 @@ public class DishEntryJerseyClient {
         WebTarget resource = webTarget;
         return resource.request(javax.ws.rs.core.MediaType.APPLICATION_JSON).get(responseType);
     }
-    
     public <T> List<DishEntry> findAll(GenericType<List<DishEntry>> responseType) throws javax.ws.rs.ClientErrorException {
         WebTarget resource = webTarget;
         return resource.request(javax.ws.rs.core.MediaType.APPLICATION_JSON).get(responseType);

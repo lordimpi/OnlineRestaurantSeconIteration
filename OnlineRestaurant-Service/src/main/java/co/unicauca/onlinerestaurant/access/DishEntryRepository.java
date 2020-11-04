@@ -160,7 +160,7 @@ public class DishEntryRepository implements IDishEntryRepository {
         try {
 
             this.connect();
-            String sql = "DELETE FROM dishentry WHERE=";
+            String sql = "DELETE FROM dishentry WHERE idDishEntry = ?";
             PreparedStatement pstmt = conn.prepareStatement(sql);
             pstmt.setString(1, id);
             pstmt.executeUpdate();

@@ -1,4 +1,3 @@
-
 package co.unicauca.client;
 
 import co.unicauca.common.domain.entity.Salad;
@@ -10,7 +9,7 @@ import javax.ws.rs.core.GenericType;
 import javax.ws.rs.core.Response;
 
 /**
- * Jersey REST client generated for REST resource:SaladController [/salad]<br>
+ * Jersey REST client generated for REST resource:SaladController [/salads]<br>
  * USAGE:
  * <pre>
  *        SaladJerseyClient client = new SaladJerseyClient();
@@ -22,7 +21,7 @@ import javax.ws.rs.core.Response;
  * @author Ximena Gallego
  */
 public class SaladJerseyClient {
- 
+
     private WebTarget webTarget;
     private Client client;
     private static final String BASE_URI = "http://localhost:8085/OnlineRestaurant-Service/restaurant-service";
@@ -69,7 +68,6 @@ public class SaladJerseyClient {
         WebTarget resource = webTarget;
         return resource.request(javax.ws.rs.core.MediaType.APPLICATION_JSON).get(responseType);
     }
-
     public Response delete(String id) throws ClientErrorException {
         return webTarget.path(java.text.MessageFormat.format("{0}", new Object[]{id})).request().delete(Response.class);
     }
@@ -77,5 +75,5 @@ public class SaladJerseyClient {
     public void close() {
         client.close();
     }
-   
+    
 }

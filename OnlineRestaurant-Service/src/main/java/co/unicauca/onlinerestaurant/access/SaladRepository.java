@@ -41,18 +41,18 @@ public class SaladRepository implements ISaladRepository {
         List<Salad> salad = new ArrayList<>();
         try {
 
-            String sql = "SELECT idsalad, namesalad, pricesalada from salad";
+            String sql = "SELECT idsalad, namesalad, pricesalada FROM salad";
             this.connect();
 
             PreparedStatement pstmt = conn.prepareStatement(sql);
             ResultSet res = pstmt.executeQuery();
-
             while (res.next()) {
                 Salad newSalad = new Salad();
                 newSalad.setIdhSalad(res.getString("idsalad"));
                 newSalad.setNameDishSalad(res.getString("namesalad"));
                 newSalad.setCostSalad(res.getDouble("pricesalada"));
-
+                
+                salad.add(newSalad);               
             }
             this.disconnect();
 
@@ -101,10 +101,11 @@ public class SaladRepository implements ISaladRepository {
      */
     @Override
     public boolean createSalad(Salad newSalad) {
+        String sql = "";
         try {
-
+             
             this.connect();
-            String sql = "INSERT INTO salad(idsalad, namesalad, pricesalada) VALUES (?,?,?)";
+            sql = "INSERT INTO salad(idsalad, namesalad, pricesalada)"+" VALUES (?,?,?)";
             PreparedStatement pstmt = conn.prepareStatement(sql);
             pstmt.setString(1, newSalad.getIdSalad());
             pstmt.setString(2, newSalad.getNameSalad());
@@ -159,7 +160,7 @@ public class SaladRepository implements ISaladRepository {
         try {
 
             this.connect();
-            String sql = "DELETE FROM salad WHERE=";
+            String sql = "DELETE FROM salad WHERE idsalad = ?";
             PreparedStatement pstmt = conn.prepareStatement(sql);
             pstmt.setString(1, id);
             pstmt.executeUpdate();
