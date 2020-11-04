@@ -1,134 +1,125 @@
 package co.unicauca.onlinerestaurant.access;
 
 import co.unicauca.common.domain.entity.Salad;
+import co.unicauca.onlinerestaurant.infra.Utilities;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import java.sql.Statement;
 
 /**
- * Repositorio Ensalada Mysql
- *
+ *Es una implementación que tiene libertad de hacer una implementación del
+ * contrato. Lo puede hacer con Sqlite, postgres, mysql, u otra tecnología
  * @author Ximena Gallego
  */
 public class SaladRepository implements ISaladRepository {
-
-    /**
-     * Conección con Mysql
+     /**
+     * Guarda la conexion a la base de datos
      */
     private Connection conn;
 
     /**
-     * Constructor por defecto
-     */
-    public SaladRepository() {
-
-    }
-
-    /**
-     * Lista todas las Ensaladas que hay en la base de tados
+     * Lista todos las Ensaladas de la base de datos
      *
-     * @return Retorna una lista de Ensaladas.
+     * @return Lista ensaladas
      */
     @Override
-    public List<Salad> findAllSalad() {
+    public List<Salad> findAll() {
+       
         List<Salad> salad = new ArrayList<>();
         try {
 
             String sql = "SELECT idsalad, namesalad, pricesalada FROM salad";
             this.connect();
 
-            PreparedStatement pstmt = conn.prepareStatement(sql);
-            ResultSet res = pstmt.executeQuery();
-            while (res.next()) {
+            Statement stmt = conn.createStatement();
+            ResultSet rs = stmt.executeQuery(sql);
+            while (rs.next()) {
                 Salad newSalad = new Salad();
-                newSalad.setIdhSalad(res.getString("idsalad"));
-                newSalad.setNameDishSalad(res.getString("namesalad"));
-                newSalad.setCostSalad(res.getDouble("pricesalada"));
+                newSalad.setIdSalad(rs.getString("idsalad"));
+                newSalad.setNameDishSalad(rs.getString("namesalad"));
+                newSalad.setCostSalad(rs.getDouble("pricesalada"));               
                 
-                salad.add(newSalad);               
+                salad.add(newSalad);              
             }
             this.disconnect();
 
         } catch (SQLException ex) {
-            Logger.getLogger(SaladRepository.class.getName()).log(Level.SEVERE, "Error al listar las Ensalas de la base de datos", ex);
+            Logger.getLogger(SaladRepository.class.getName()).log(Level.SEVERE, null, ex);
         }
         return salad;
     }
-
-    /**
-     * Metodo encargado de buscar una Ensalada en BD
+      /**
+     * Busca una Ensalada de la base de datos
      *
-     * @param id identificador de una ensalada
-     * @return un objeto Ensalada
+     * @param id Identificador de Ensalada
+     * @return Objeto de tipo Salad
      */
     @Override
-    public Salad findByIdSalad(String id) {
-        Salad salad = null;
-
-        this.connect();
+    public Salad findById(String id) {
+      Salad salad = null;
         try {
-            String sql = "SELECT * from salad where idsalad=? ";
-            PreparedStatement pstmt = conn.prepareStatement(sql);
-            pstmt.setString(1, id);
-            ResultSet res = pstmt.executeQuery();
-            if (res.next()) {
-                salad = new Salad();
-                salad.setIdhSalad(res.getString("idsalad"));
-                salad.setNameDishSalad(res.getString("namesalad"));
-                salad.setCostSalad(res.getDouble("pricesalada"));
 
+            String sql = "SELECT idsalad, namesalad, pricesalada FROM salad Where idsalad=" + id;
+            this.connect();
+            Statement stmt = conn.createStatement();
+            ResultSet rs = stmt.executeQuery(sql);
+
+            if (rs.next()) {
+                salad = new Salad();
+                salad.setIdSalad(rs.getString("idsalad"));
+                salad.setNameDishSalad(rs.getString("namesalad"));
+                salad.setCostSalad(rs.getDouble("pricesalada"));               
             }
-            pstmt.close();
             this.disconnect();
+
         } catch (SQLException ex) {
-            Logger.getLogger(SaladRepository.class.getName()).log(Level.SEVERE, "Error al consultar Ensalada en la base de datos", ex);
+            Logger.getLogger(SaladRepository.class.getName()).log(Level.SEVERE, "Error al buscar ensalada en la base de datos", ex);
         }
         return salad;
     }
-
     /**
-     * Crea una Ensalada y la guarda en la base de datos
+     * Crea una ensalada y lo guarda en la base de datos
      *
-     * @param newSalad Objeto Ensalada
-     * @return Retorna true si puedo crear ensalada, false de lo contrario
+     * @param newMSalad Objeto de tipo salad a guardar
+     * @return True si puedo crear, false de lo contrario
      */
     @Override
-    public boolean createSalad(Salad newSalad) {
+    public boolean create(Salad newSalad) {
         String sql = "";
         try {
-             
             this.connect();
-            sql = "INSERT INTO salad(idsalad, namesalad, pricesalada)"+" VALUES (?,?,?)";
+
+            sql = "INSERT INTO salad ( idsalad, namesalad, pricesalada ) "
+                    + "VALUES ( ?, ?, ? )";
+
             PreparedStatement pstmt = conn.prepareStatement(sql);
             pstmt.setString(1, newSalad.getIdSalad());
             pstmt.setString(2, newSalad.getNameSalad());
-            pstmt.setDouble(3, newSalad.getCostSalad());
+            pstmt.setDouble(3, newSalad.getCostSalad());            
             pstmt.executeUpdate();
-            pstmt.close();
             this.disconnect();
             return true;
         } catch (SQLException ex) {
-            Logger.getLogger(SaladRepository.class.getName()).log(Level.SEVERE, "Error al insertar el registro", ex);
+            Logger.getLogger(SaladRepository.class.getName()).log(Level.SEVERE, "Error en el insert into: " + sql, ex);
         }
         return false;
     }
-
-    /**
-     * Actualiza una Ensalada
+     /**
+     * Actualiza una Ensalada en la base de datos
      *
-     * @param newSalad objeto de tipo Ensalada
-     * @return true si lo actualizo correctamente, false de lo contrario
+     * @param newSalad Objeto de tipo Salad a actualizar
+     * @return True si pudo actualizar, false de lo contrario
      */
     @Override
-    public boolean updateSalad(Salad newSalad) {
-        try {
+    public boolean update(Salad newSalad) {
+         try {
             this.connect();
 
             String sql = "UPDATE salad "
@@ -136,69 +127,68 @@ public class SaladRepository implements ISaladRepository {
                     + "pricesalada = ? "
                     + "WHERE idsalad = ?";
 
-            PreparedStatement pstmt = conn.prepareStatement(sql);
+            PreparedStatement pstmt = conn.prepareStatement(sql);           
             pstmt.setString(1, newSalad.getNameSalad());
-            pstmt.setDouble(2, newSalad.getCostSalad());
+            pstmt.setDouble(2, newSalad.getCostSalad());  
             pstmt.setString(3, newSalad.getIdSalad());
             pstmt.executeUpdate();
             this.disconnect();
             return true;
         } catch (SQLException ex) {
-            Logger.getLogger(SaladRepository.class.getName()).log(Level.SEVERE, "Error al actualizar la Ensalada", ex);
+            Logger.getLogger(SaladRepository.class.getName()).log(Level.SEVERE, "Error al actualizar ensalada principal", ex);
         }
         return false;
     }
-
+     
     /**
-     * Elimina una Ensalada en la base de datos
+     * Elimina una ensalada de la base de datos
      *
-     * @param id Identificador de una Ensalada
-     * @return Retora true si pudo borrar, false de lo contrario
+     * @param id Identificador de ensalada a eliminar
+     * @return True si pudo eliminar, false de lo contrario
      */
     @Override
-    public boolean deleteSalad(String id) {
-        try {
-
+    public boolean delete(String id) {
+         try {
             this.connect();
-            String sql = "DELETE FROM salad WHERE idsalad = ?";
+
+            String sql = "DELETE FROM salad "
+                    + "WHERE idsalad = ?"+id;
+
             PreparedStatement pstmt = conn.prepareStatement(sql);
             pstmt.setString(1, id);
             pstmt.executeUpdate();
-            pstmt.close();
             this.disconnect();
             return true;
         } catch (SQLException ex) {
-            Logger.getLogger(SaladRepository.class.getName()).log(Level.SEVERE, "Error al Eliminar el registro", ex);
+            Logger.getLogger(SaladRepository.class.getName()).log(Level.SEVERE, "Error al eliminar Ensalada", ex);
         }
         return false;
     }
 
-    /**
-     * Conectar a la bd
+     /**
+     * Conecta a la bd
      */
     private void connect() {
-        try {
+         try {
             //Class.forName(Utilities.loadProperty("server.db.driver"));
             //crea una instancia de la controlador de la base de datos
-            String url = "jdbc:mysql://localhost:3306/restaurante";
-            String username = "lordimpi";
-            String pwd = "lordimpi315";
-            conn = DriverManager.getConnection(url, username, pwd);
+            Utilities ut = new Utilities();
+            conn = DriverManager.getConnection(ut.getUrl(), ut.getUsername(), ut.getPwd());
         } catch (SQLException ex) {
-            Logger.getLogger(MainDishRepository.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(SaladRepository.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-
     /**
      * Desconecta de la base de datos
      */
-    private void disconnect() {
+    public void disconnect() {
         try {
             if (conn != null) {
                 conn.close();
             }
         } catch (SQLException ex) {
-            Logger.getLogger(MainDishRepository.class.getName()).log(Level.SEVERE, "Error al cerrar conexión de la base de datos", ex);
+            Logger.getLogger(SaladRepository.class.getName()).log(Level.SEVERE, "Error al cerrar conexión de la base de datos", ex);
         }
     }
+
 }

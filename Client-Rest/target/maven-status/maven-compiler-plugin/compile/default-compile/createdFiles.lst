@@ -25,7 +25,6 @@ co\unicauca\onlinerestaurant\client\presentation\GUIListRestaurants.class
 co\unicauca\onlinerestaurant\client\presentation\GUIMenuFood$3.class
 co\unicauca\onlinerestaurant\client\access\EntryAccessREST.class
 co\unicauca\onlinerestaurant\client\presentation\GUIMenuCustomer$7.class
-co\unicauca\client\SaladJerseyClient.class
 co\unicauca\onlinerestaurant\client\domain\services\MenuService.class
 co\unicauca\onlinerestaurant\client\domain\services\MainDishService.class
 co\unicauca\onlinerestaurant\client\presentation\GUIShowMenuAdmin$5.class

@@ -1,3 +1,8 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
 package co.unicauca.client;
 
 import co.unicauca.common.domain.entity.Salad;
@@ -18,7 +23,7 @@ import javax.ws.rs.core.Response;
  *        client.close();
  * </pre>
  *
- * @author Ximena Gallego
+ * @author JOTA
  */
 public class SaladJerseyClient {
 
@@ -63,11 +68,11 @@ public class SaladJerseyClient {
         WebTarget resource = webTarget;
         return resource.request(javax.ws.rs.core.MediaType.APPLICATION_JSON).get(responseType);
     }
-    
     public <T> List<Salad> findAll(GenericType<List<Salad>> responseType) throws javax.ws.rs.ClientErrorException {
         WebTarget resource = webTarget;
         return resource.request(javax.ws.rs.core.MediaType.APPLICATION_JSON).get(responseType);
     }
+
     public Response delete(String id) throws ClientErrorException {
         return webTarget.path(java.text.MessageFormat.format("{0}", new Object[]{id})).request().delete(Response.class);
     }

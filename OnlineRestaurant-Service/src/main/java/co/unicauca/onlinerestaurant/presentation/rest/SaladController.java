@@ -1,7 +1,12 @@
 package co.unicauca.onlinerestaurant.presentation.rest;
 
+import co.unicauca.common.domain.entity.Salad;
+import co.unicauca.onlinerestaurant.domain.service.SaladService;
+import co.unicauca.onlinerestaurant.infra.DomainErrors;
+import co.unicauca.onlinerestaurant.infra.JsonResponse;
 import java.util.List;
 import javax.ejb.Stateless;
+import javax.inject.Inject;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.DELETE;
 import javax.ws.rs.GET;
@@ -11,21 +16,16 @@ import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
-import co.unicauca.onlinerestaurant.domain.service.SaladService;
-import co.unicauca.common.domain.entity.Salad;
-import co.unicauca.onlinerestaurant.infra.DomainErrors;
-import co.unicauca.onlinerestaurant.infra.JsonResponse;
-import javax.inject.Inject;
 import javax.ws.rs.core.Response;
 /**
- * API-Rest Ensalada
- *
+ * API REST
  * @author Ximena Gallego
  */
 @Stateless
 @Path("/salads")
 public class SaladController {
-     @Inject
+    
+    @Inject
     private SaladService service;
 
     public SaladController() {
@@ -61,19 +61,19 @@ public class SaladController {
           http://localhost:8085/OnlineRestaurant-Service/restaurant-service/salads/ \
           -H 'Content-Type: application/json' \
           -d '{
-               "id":1,
-               "name":"frutos tropicales",
-               "price":6700
+               "id":20,
+               "name":"ensalada vegetales tropicales",
+               "price":2000
         }'
-    */
+     */
     @POST
     @Consumes({MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON})
     public Response create(Salad salad) {
         JsonResponse resp;
-        if (service.createSalad(salad)) {
+        if (service.create(salad)) {
             resp = new JsonResponse(true, "Ensalada creada con éxito", null);
         } else {
-            resp = new JsonResponse(false, "No se pudo crear la Ensalada", DomainErrors.getErrors());
+            resp = new JsonResponse(false, "No se pudo crear Ensalada", DomainErrors.getErrors());
         }
         return Response.ok().entity(resp).build();
     }
@@ -81,13 +81,13 @@ public class SaladController {
     /*
         Su uso desde consola mediante client url:
         curl -X PUT \
-          http://localhost:8085/OnlineRestaurant-Service/restaurant-service/salads/1 \
+          http://localhost:8085/OnlineRestaurant-Service/restaurant-service/salads/20 \
           -H 'Content-Type: application/json' \
           -d '{
-               "name":"Ensalada verde",
-               "price":2450
+               "name":"frutos rojos",
+               "price":2400
         }'
-    */
+     */
     @PUT
     @Path("{id}")
     @Consumes({MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON})
@@ -96,7 +96,7 @@ public class SaladController {
         if (service.update(id, salad)) {
             resp = new JsonResponse(true, "Ensalada modificada con éxito", null);
         } else {
-            resp = new JsonResponse(false, "No se pudo modificar la Ensalada", DomainErrors.getErrors());
+            resp = new JsonResponse(false, "No se pudo modificar ensalada", DomainErrors.getErrors());
         }
         return Response.ok().entity(resp).build();
 
@@ -104,7 +104,7 @@ public class SaladController {
 
     /*
         Su uso desde consola mediante client url:
-        curl -X DELETE http://localhost:8085/Product-Service/product-service/salads/1 
+        curl -X DELETE http://localhost:8080/Product-Service/product-service/salads/20 
 
      */
     @DELETE
@@ -116,12 +116,11 @@ public class SaladController {
             resp = new JsonResponse(true, "Ensalada eliminada con éxito", null);
 
         } else {
-            resp = new JsonResponse(false, "No se pudo eliminar la ensalada", DomainErrors.getErrors());
+            resp = new JsonResponse(false, "No se pudo eliminar Ensalada", DomainErrors.getErrors());
         }
         service.delete(id);
 
         return Response.ok().entity(resp).build();
 
     }
-
 }

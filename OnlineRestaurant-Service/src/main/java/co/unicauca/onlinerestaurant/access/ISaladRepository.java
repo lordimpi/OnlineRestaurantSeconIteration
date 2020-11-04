@@ -4,49 +4,50 @@ import co.unicauca.common.domain.entity.Salad;
 import java.util.List;
 
 /**
- * Interfaz de repositorio de Ensalada
+ * Interfaz de repositorio de ensalada
  *
  * @author Ximena Gallego
  */
 public interface ISaladRepository {
 
     /**
-     * Metodo encargado de listar los objetos Ensalada
+     * Declaracion del metodo listar Ensalada para ser utilizado por la API REST
      *
-     * @return lista de Ensaladas
+     * @return Retorna lista de Ensaladas
      */
-    public List<Salad> findAllSalad();
+    List<Salad> findAll();
 
     /**
-     * Busca una Ensalada por su identificador
+     * Declaacion del metodo buscar Ensalada por Id para ser utilizado por la
+     * API REST
      *
-     * @param id identificador de Ensalada
-     * @return objeto Ensalada
+     * @param id Identificador de Ensalada
+     * @return Retorna una Ensalada
      */
-    public Salad findByIdSalad(String id);
+    Salad findById(String id);
 
     /**
-     * metodo encargado de crear una Ensalada
+     * Declaracion del metodo crear Ensalada para ser utilizado por la API REST
      *
-     * @param newSalad objeto Ensalada
-     * @return true si pudo crear, false de lo contrario
+     * @param newSalad Objeto de tipo Ensalada a crear
+     * @return Retorna true si puedo crear la Ensalada, false de lo contrario
      */
-    public boolean createSalad(Salad newSalad);
+    boolean create(Salad newSalad);
 
     /**
-     * Metodo encargado de modificar una Ensalada
+     * Declaracion del metodo actualizar Ensalada para ser utilizado por la API
+     * REST
      *
-     * @param newSalad objeto de tipo Salad
-     * @return true si se actualizo correctamente, false de lo contrario
+     * @param newSalad Objeto de tipo Ensalada que sera actualizado
+     * @return Retorna true si pido actualizar, false de lo contrario
      */
-    public boolean updateSalad(Salad newSalad);
+    boolean update(Salad newSalad);
 
     /**
-     * Metodo encargado de Eliminar una ensalada
+     * Declaracion del metodo borrar Ensalada para ser utilizado por la API REST
      *
-     * @param id identificador de una ensalada
-     * @return true si se elimino correctamente, false de lo contrario
+     * @param id Identificador de Ensalada
+     * @return Retorna true si pudo eliminar, false de lo contrario
      */
-    public boolean deleteSalad(String id);
-
+    boolean delete(String id);
 }

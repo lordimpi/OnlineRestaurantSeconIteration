@@ -18,13 +18,25 @@ public class Salad {
      * valor
      */
     private double costSalad;
+    
 
+
+    public Salad(String idSalad, String nameSalad, int costSalad) {
+        this.idSalad = idSalad;
+        this.nameSalad = nameSalad;
+        this.costSalad = costSalad;
+    }
+
+    public Salad() {
+    }
+
+    
     //GETER AND SETTER
     public String getIdSalad() {
         return idSalad;
     }
 
-    public void setIdhSalad(String idSalad) {
+    public void setIdSalad(String idSalad) {
         this.idSalad = idSalad;
     }
 
@@ -43,5 +55,9 @@ public class Salad {
     public void setCostSalad(double costSalad) {
         this.costSalad = costSalad;
     }
-
+    
+    @Override
+    public String toString() {
+        return "Salad {" + "id=" + idSalad + ", name=" + nameSalad + ", price=" + costSalad + '}';
+    }
 }
