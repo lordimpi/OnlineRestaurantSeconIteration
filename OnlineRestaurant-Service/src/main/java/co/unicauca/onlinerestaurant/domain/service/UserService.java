@@ -128,15 +128,15 @@ public class UserService {
             errors.add(error);
         }
         if (newUser.getLastName() == null || newUser.getLastName().isEmpty()) {
-            Error error = new Error(ValidationError.EMPTY_FIELD, "Apellido", "El apellido del usuario es obligatorio");
+            Error error = new Error(ValidationError.EMPTY_FIELD, "Last_Name", "El apellido del usuario es obligatorio");
             errors.add(error);
         }
         if (newUser.getAddress() == null || newUser.getAddress().isEmpty()) {
-            Error error = new Error(ValidationError.EMPTY_FIELD, "Dirección", "La dirección del usuario es obligatorio");
+            Error error = new Error(ValidationError.EMPTY_FIELD, "Address", "La dirección del usuario es obligatorio");
             errors.add(error);
         }
         if (newUser.getMobile() == null || newUser.getMobile().isEmpty()) {
-            Error error = new Error(ValidationError.EMPTY_FIELD, "telefono", "El número de telefono del usuario es obligatorio");
+            Error error = new Error(ValidationError.EMPTY_FIELD, "Mobile", "El número de telefono del usuario es obligatorio");
             errors.add(error);
         }
         if (newUser.getEmail() == null || newUser.getEmail().isEmpty()) {

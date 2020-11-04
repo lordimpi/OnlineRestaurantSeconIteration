@@ -23,7 +23,7 @@ public class MainDishService {
     }
 
     /**
-     * Busca un plato en el servidor remoto
+     * Busca un plato principal
      *
      * @param id identificador del plato
      * @return Objeto tipo Plato, null si no lo encuentra
@@ -55,7 +55,7 @@ public class MainDishService {
      * @throws Exception la excepcio se lanza cuando no logra conexión con el
      * servidor
      */
-    public MainDish updateMainDish(String id, String name, String price) throws Exception {
+    public boolean updateMainDish(String id, String name, Double price) throws Exception {
         return service.updateMainDish(id, name, price);
     }
 

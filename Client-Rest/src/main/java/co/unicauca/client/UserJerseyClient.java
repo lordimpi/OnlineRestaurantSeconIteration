@@ -28,7 +28,7 @@ public class UserJerseyClient {
 
     public UserJerseyClient() {
         client = javax.ws.rs.client.ClientBuilder.newClient();
-        webTarget = client.target(BASE_URI).path("Users");
+        webTarget = client.target(BASE_URI).path("users");
     }
 
     public Response edit_XML(Object requestEntity, String id) throws ClientErrorException {

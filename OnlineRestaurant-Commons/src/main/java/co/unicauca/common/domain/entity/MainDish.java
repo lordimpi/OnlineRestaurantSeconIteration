@@ -10,27 +10,27 @@ public class MainDish {
     /**
      * Identificador del plato principal
      */
-    private String id_mainDishe;
+    private String id_mainDish;
     /**
      * Nombre del plato principal
      */
-    private String nameDishe;
+    private String nameDish;
 
     /**
      * Precio del plato principal
      */
-    private double dishPrice;
+    private Double dishPrice;
 
     /**
      * Constructor parametrizado
      *
-     * @param id_mainDishe Identificador del plato principal
-     * @param nameDishe Nombre del plato principal
+     * @param id_mainDish Identificador del plato principal
+     * @param nameDish Nombre del plato principal
      * @param dishPrice Precio del plato prinicipal
      */
-    public MainDish(String id_mainDishe, String nameDishe, double dishPrice) {
-        this.id_mainDishe = id_mainDishe;
-        this.nameDishe = nameDishe;
+    public MainDish(String id_mainDish, String nameDish, Double dishPrice) {
+        this.id_mainDish = id_mainDish;
+        this.nameDish = nameDish;
         this.dishPrice = dishPrice;
     }
 
@@ -41,28 +41,33 @@ public class MainDish {
     }
 
     //GETER AND SETTER
-    public String getId_mainDishe() {
-        return id_mainDishe;
+    public String getId_mainDish() {
+        return id_mainDish;
     }
 
-    public void setId_mainDishe(String id_mainDishe) {
-        this.id_mainDishe = id_mainDishe;
+    public void setId_mainDish(String id_mainDish) {
+        this.id_mainDish = id_mainDish;
     }
 
-    public String getNameDishe() {
-        return nameDishe;
+    public String getNameDish() {
+        return nameDish;
     }
 
-    public void setNameDishe(String nameDishe) {
-        this.nameDishe = nameDishe;
+    public void setNameDish(String nameDish) {
+        this.nameDish = nameDish;
     }
 
-    public double getDishPrice() {
+    public Double getDishPrice() {
         return dishPrice;
     }
 
-    public void setDishPrice(double dishPrice) {
+    public void setDishPrice(Double dishPrice) {
         this.dishPrice = dishPrice;
     }
 
+        @Override
+    public String toString() {
+        return "Main Dish{" + "id=" + id_mainDish + ", name=" + nameDish + ", price=" + dishPrice + '}';
+    }
+    
 }

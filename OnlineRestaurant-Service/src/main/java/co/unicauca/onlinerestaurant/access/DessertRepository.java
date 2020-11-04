@@ -1,6 +1,7 @@
 package co.unicauca.onlinerestaurant.access;
 
 import co.unicauca.common.domain.entity.Dessert;
+import co.unicauca.onlinerestaurant.infra.Utilities;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -142,14 +143,12 @@ public class DessertRepository implements IDessertRepository {
      */
     public void connect() {
         try {
-//            Class.forName(Utilities.loadProperty("server.db.driver"));
+//            //Class.forName(Utilities.loadProperty("server.db.driver"));
             //crea una instancia de la controlador de la base de datos
-            String url = "jdbc:mysql://localhost:3306/restaurante";
-            String username = "sc";
-            String pwd = "1234";
-            conn = DriverManager.getConnection(url, username, pwd);
+            Utilities ut = new Utilities();
+            conn = DriverManager.getConnection(ut.getUrl(), ut.getUsername(), ut.getPwd());
         } catch (SQLException ex) {
-            Logger.getLogger(ProductRepository.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(DessertRepository.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 
@@ -162,7 +161,7 @@ public class DessertRepository implements IDessertRepository {
                 conn.close();
             }
         } catch (SQLException ex) {
-            Logger.getLogger(ProductRepository.class.getName()).log(Level.SEVERE, "Error al cerrar conexión de la base de datos", ex);
+            Logger.getLogger(DessertRepository.class.getName()).log(Level.SEVERE, "Error al cerrar conexión de la base de datos", ex);
         }
 
     }

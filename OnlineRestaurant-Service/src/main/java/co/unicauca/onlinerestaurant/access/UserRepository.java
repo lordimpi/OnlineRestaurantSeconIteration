@@ -1,6 +1,7 @@
 package co.unicauca.onlinerestaurant.access;
 
 import co.unicauca.common.domain.entity.User;
+import co.unicauca.onlinerestaurant.infra.Utilities;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -169,12 +170,10 @@ public class UserRepository implements IUserRepository {
      */
     public void connect() {
         try {
-//            Class.forName(Utilities.loadProperty("server.db.driver"));
+//           //Class.forName(Utilities.loadProperty("server.db.driver"));
             //crea una instancia de la controlador de la base de datos
-            String url = "jdbc:mysql://localhost:3306/restaurante";
-            String username = "sc";
-            String pwd = "1234";
-            conn = DriverManager.getConnection(url, username, pwd);
+            Utilities ut = new Utilities();
+            conn = DriverManager.getConnection(ut.getUrl(), ut.getUsername(), ut.getPwd());
         } catch (SQLException ex) {
             Logger.getLogger(UserRepository.class.getName()).log(Level.SEVERE, null, ex);
         }
