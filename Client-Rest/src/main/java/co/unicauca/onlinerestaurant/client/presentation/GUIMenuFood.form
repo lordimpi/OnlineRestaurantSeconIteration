@@ -270,6 +270,9 @@
                 </Property>
                 <Property name="text" type="java.lang.String" value="Create Dish  Entry"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jMenuItemCreateDishEntryActionPerformed"/>
+              </Events>
             </MenuItem>
             <MenuItem class="javax.swing.JMenuItem" name="jMenuItemFindDishEntry">
               <Properties>
@@ -281,6 +284,9 @@
                 </Property>
                 <Property name="text" type="java.lang.String" value="Find Dish Entry"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jMenuItemFindDishEntryActionPerformed"/>
+              </Events>
             </MenuItem>
             <MenuItem class="javax.swing.JMenuItem" name="jMenuItemModifyDishEntry">
               <Properties>
@@ -292,6 +298,9 @@
                 </Property>
                 <Property name="text" type="java.lang.String" value="Modify Dish Entry"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jMenuItemModifyDishEntryActionPerformed"/>
+              </Events>
             </MenuItem>
             <MenuItem class="javax.swing.JMenuItem" name="jMenuItemDeleteDishEntry">
               <Properties>
@@ -303,6 +312,9 @@
                 </Property>
                 <Property name="text" type="java.lang.String" value="Delete Dish Entry"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jMenuItemDeleteDishEntryActionPerformed"/>
+              </Events>
             </MenuItem>
           </SubComponents>
         </Menu>
