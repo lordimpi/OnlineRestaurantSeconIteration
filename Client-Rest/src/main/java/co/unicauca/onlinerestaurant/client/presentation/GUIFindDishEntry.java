@@ -3,6 +3,11 @@ package co.unicauca.onlinerestaurant.client.presentation;
 import co.unicauca.common.domain.entity.DishEntry;
 import static co.unicauca.onlinerestaurant.client.infra.Messages.successMessage;
 import co.unicauca.onlinerestaurant.client.infra.Messages;
+import co.unicauca.onlinerestaurant.client.access.Factory;
+import co.unicauca.onlinerestaurant.client.domain.services.EntryService;
+import co.unicauca.onlinerestaurant.client.access.IEntryAccess;
+import co.unicauca.onlinerestaurant.client.infra.Messages;
+
 
 /**
  * Crea un formulario para buscar un plato de entrada en la base de datos
@@ -127,7 +132,33 @@ public class GUIFindDishEntry extends javax.swing.JInternalFrame {
      * @param evt Evento del boton
      */
     private void jBtnBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnBuscarActionPerformed
+         String id = jTxfId.getText().trim();
 
+        IEntryAccess service = Factory.getInstance().getEntryService();
+        // Inyecta la dependencia
+        EntryService entryService = new EntryService(service);
+        if (id.equals("")) {
+            jTxfId.requestFocus();
+            Messages.warningMessage("ERROR: El campo Id esta vacio.", "Warning");
+            return;
+        }
+
+        DishEntry dishentry;
+        try {
+            dishentry = entryService.findEntry(id);
+            if (dishentry == null) {
+                jTxfId.requestFocus();
+                clearControls();
+                Messages.warningMessage("ERROR: No se econtro el plato de Entrada.", "Warning");
+                return;
+            }
+        } catch (Exception ex) {
+            clearControls();
+            successMessage(ex.getMessage(), "Atención");
+            return;
+        }
+        clearControls();
+        showData(dishentry);
 
     }//GEN-LAST:event_jBtnBuscarActionPerformed
 

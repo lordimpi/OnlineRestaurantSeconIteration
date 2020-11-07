@@ -1,5 +1,9 @@
 package co.unicauca.onlinerestaurant.client.presentation;
 
+import co.unicauca.common.domain.entity.DishEntry;
+import co.unicauca.onlinerestaurant.client.access.Factory;
+import co.unicauca.onlinerestaurant.client.access.IEntryAccess;
+import co.unicauca.onlinerestaurant.client.domain.services.EntryService;
 import co.unicauca.onlinerestaurant.client.infra.Messages;
 import static co.unicauca.onlinerestaurant.client.infra.Messages.successMessage;
 import java.util.ArrayList;
@@ -12,6 +16,8 @@ import javax.swing.table.TableModel;
  * @author Santiago Acuña
  */
 public class GUIDeleteDishEntry extends javax.swing.JInternalFrame {
+    
+     private List<DishEntry> platosEntrada = new ArrayList<>();
 
     /**
      * Creates new form GUIUpdateDishe
@@ -145,13 +151,37 @@ public class GUIDeleteDishEntry extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_jBtnRecargarTablaActionPerformed
 
     /**
-     * Boton encargado de eliminar Ensaladas
+     * Boton encargado de eliminar plato de entrada
      *
      * @param evt evento del boton
      */
     private void jBtnEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnEliminarActionPerformed
 
-        
+        String id = jTxfID.getText().trim();
+
+        IEntryAccess service = Factory.getInstance().getEntryService();
+        // Inyecta la dependencia
+        EntryService EntryService = new  EntryService(service);
+        if (id.equals("")) {
+            jTxfID.requestFocus();
+            Messages.warningMessage("Debe ingresar un ID para poder borrar un registro", "Warning");
+            return;
+        }
+        try {
+            if (Messages.confirmMessage("¿ Desea borrar el registro ?", "Confirm") != 1) {
+                boolean aux = EntryService.deleteDishEntry(id);
+                if (aux == false) {
+                    Messages.warningMessage("No se pudo borrar el plato de Entrada", "Warning");
+                    return;
+                }
+
+            }
+        } catch (Exception ex) {
+            successMessage(ex.getMessage(), "Atención");
+        }
+        Messages.successMessage("El plato de Entrada " + id + " fue elimado", "EXITO");
+        cargarLista();
+        mostrarTabla();
     }//GEN-LAST:event_jBtnEliminarActionPerformed
 
     /**
@@ -184,13 +214,31 @@ public class GUIDeleteDishEntry extends javax.swing.JInternalFrame {
      * Carga un lista a traves de un socket
      */
     private void cargarLista() {
+        IEntryAccess service = Factory.getInstance().getEntryService();
+        // Inyecta la dependencia
+        EntryService entryservice = new EntryService(service);
+
+        try {
+            platosEntrada = entryservice.listEntrys();
+        } catch (Exception ex) {
+            successMessage(ex.getMessage(), "Atención");
+        }
     }
 
     /**
      * Metodo encargado de mostrar los datos en un jtable
      */
     private void mostrarTabla() {
+        String dataTable[][] = new String[platosEntrada.size()][3];
 
+        for (int i = 0; i < platosEntrada.size(); i++) {
+            dataTable[i][0] = platosEntrada.get(i).getIdDishEntry();
+            dataTable[i][1] = platosEntrada.get(i).getNameDishEntry();
+            dataTable[i][2] = Double.toString(platosEntrada.get(i).getCostDishEntry());
+        }
+
+        jTblPlatoEntrada.setModel(new javax.swing.table.DefaultTableModel(
+                dataTable, new String[]{"ID", "Nombre", "Precio"}));
     }
 
 }

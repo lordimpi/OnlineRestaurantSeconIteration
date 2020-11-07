@@ -20,12 +20,22 @@ public class Salad {
      */
     private Double costSalad;
 
-    public Salad(String idSalad, String nameSalad, Double costSalad) {
+    /**
+     * Constructor parametrizado
+     *
+     * @param idSalad
+     * @param nameSalad
+     * @param costSalad
+     */
+    public Salad(String idSalad, String nameSalad, double costSalad) {
         this.idSalad = idSalad;
         this.nameSalad = nameSalad;
         this.costSalad = costSalad;
     }
 
+    /**
+     * constructor por defecto
+     */
     public Salad() {
     }
 
@@ -53,7 +63,7 @@ public class Salad {
     public void setCostSalad(Double costSalad) {
         this.costSalad = costSalad;
     }
-    
+
     @Override
     public String toString() {
         return "Salad {" + "id=" + idSalad + ", name=" + nameSalad + ", price=" + costSalad + '}';
