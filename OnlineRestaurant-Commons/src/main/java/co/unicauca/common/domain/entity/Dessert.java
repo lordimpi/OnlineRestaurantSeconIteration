@@ -18,7 +18,7 @@ public class Dessert {
     /**
      * valor
      */
-    private int cost_Dish_Dessert;
+    private Double cost_Dish_Dessert;
 
     /**
      * Constructor parametrizado id del postre nombre del postre costo del
@@ -28,7 +28,7 @@ public class Dessert {
      * @param name_Dish_Dessert
      * @param cost_Dish_Dessert
      */
-    public Dessert(String id_Dish_Dessert, String name_Dish_Dessert, int cost_Dish_Dessert) {
+    public Dessert(String id_Dish_Dessert, String name_Dish_Dessert, Double cost_Dish_Dessert) {
         this.id_Dish_Dessert = id_Dish_Dessert;
         this.name_Dish_Dessert = name_Dish_Dessert;
         this.cost_Dish_Dessert = cost_Dish_Dessert;
@@ -57,11 +57,11 @@ public class Dessert {
         this.name_Dish_Dessert = name_Dish_Dessert;
     }
 
-    public int getCost_Dish_Dessert() {
+    public Double getCost_Dish_Dessert() {
         return cost_Dish_Dessert;
     }
 
-    public void setCost_Dish_Dessert(int cost_Dish_Dessert) {
+    public void setCost_Dish_Dessert(Double cost_Dish_Dessert) {
         this.cost_Dish_Dessert = cost_Dish_Dessert;
     }
 

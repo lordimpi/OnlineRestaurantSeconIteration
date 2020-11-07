@@ -213,6 +213,9 @@
                 </Property>
                 <Property name="text" type="java.lang.String" value="Create Dessert"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jMenuItemCreateDessertActionPerformed"/>
+              </Events>
             </MenuItem>
             <MenuItem class="javax.swing.JMenuItem" name="jMenuItemFindDessert">
               <Properties>
@@ -224,6 +227,9 @@
                 </Property>
                 <Property name="text" type="java.lang.String" value="Find Desert"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jMenuItemFindDessertActionPerformed"/>
+              </Events>
             </MenuItem>
             <MenuItem class="javax.swing.JMenuItem" name="jMenuItemModifyDessert">
               <Properties>
@@ -235,6 +241,9 @@
                 </Property>
                 <Property name="text" type="java.lang.String" value="Modify Desert"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jMenuItemModifyDessertActionPerformed"/>
+              </Events>
             </MenuItem>
             <MenuItem class="javax.swing.JMenuItem" name="jMenuItemDeleteDessert">
               <Properties>
@@ -246,6 +255,9 @@
                 </Property>
                 <Property name="text" type="java.lang.String" value="Delete Desert"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jMenuItemDeleteDessertActionPerformed"/>
+              </Events>
             </MenuItem>
           </SubComponents>
         </Menu>

@@ -120,11 +120,10 @@ public class DessertService {
             Error error = new Error(ValidationError.EMPTY_FIELD, "Nombre", "El  nombre del postre es obligatorio");
             errors.add(error);
         }
-        if (newDessert.getCost_Dish_Dessert() <= 0) {
+        if (newDessert.getCost_Dish_Dessert() == null || newDessert.getCost_Dish_Dessert() <= 0) {
             Error error = new Error(ValidationError.EMPTY_FIELD, "Precio", "El precio del postre es obligatorio");
             errors.add(error);
         }
-        
 
         //Validar que no exista el postre
         if (newDessert.getId_Dish_Dessert() != null) {
@@ -154,11 +153,10 @@ public class DessertService {
             Error error = new Error(ValidationError.EMPTY_FIELD, "Nombre", "El nombre del postre es obligatorio");
             errors.add(error);
         }
-        if ( newDessert.getCost_Dish_Dessert() <= 0){
-            Error error = new Error(ValidationError.EMPTY_FIELD, "Apellido", "El precio del postre es obligatorio");
+        if (newDessert.getCost_Dish_Dessert() == null || newDessert.getCost_Dish_Dessert() <= 0) {
+            Error error = new Error(ValidationError.EMPTY_FIELD, "Precio", "El precio del postre es obligatorio");
             errors.add(error);
         }
-        
 
         // Validar que exista el postre
         Dessert dessertAux = repository.findById(id);

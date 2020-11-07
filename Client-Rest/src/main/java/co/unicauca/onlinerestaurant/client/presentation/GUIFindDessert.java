@@ -1,18 +1,21 @@
 package co.unicauca.onlinerestaurant.client.presentation;
 
 import co.unicauca.common.domain.entity.Dessert;
+import co.unicauca.onlinerestaurant.client.access.Factory;
+import co.unicauca.onlinerestaurant.client.access.IDessertAccess;
+import co.unicauca.onlinerestaurant.client.domain.services.DessertService;
 import static co.unicauca.onlinerestaurant.client.infra.Messages.successMessage;
 import co.unicauca.onlinerestaurant.client.infra.Messages;
 
 /**
- * Crea un formulario para buscar un plato en la base de datos
+ * Crea un formulario para buscar un postre en la base de datos
  *
- * @author Santiago Acuña
+ * @author Camilo Otaya
  */
 public class GUIFindDessert extends javax.swing.JInternalFrame {
 
     /**
-     * Creates new form GUIFindDishe
+     * Creates new form GUIFindDessert
      */
     public GUIFindDessert() {
         initComponents();
@@ -128,14 +131,40 @@ public class GUIFindDessert extends javax.swing.JInternalFrame {
      */
     private void jBtnBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnBuscarActionPerformed
 
+        String id = jTxfId.getText().trim();
+
+        IDessertAccess service = Factory.getInstance().getDessertService();
+        // Inyecta la dependencia
+        DessertService dessertService = new DessertService(service);
+        if (id.equals("")) {
+            jTxfId.requestFocus();
+            Messages.warningMessage("ERROR: El campo Id esta vacio.", "Warning");
+            return;
+        }
+
+        Dessert dish;
+        try {
+            dish = dessertService.findDessert(id);
+            if (dish == null) {
+                jTxfId.requestFocus();
+                clearControls();
+                Messages.warningMessage("ERROR: No se econtro el postre.", "Warning");
+                return;
+            }
+        } catch (Exception ex) {
+            clearControls();
+            successMessage(ex.getMessage(), "Atención");
+            return;
+        }
+        clearControls();
+        showData(dish);
 
     }//GEN-LAST:event_jBtnBuscarActionPerformed
 
     /**
-     * Metodo encargado de mostrar los datos del plato principal en el
-     * formulario
+     * Metodo encargado de mostrar los datos del postre en el formulario
      *
-     * @param mainDish Objeto plato principal para mostrar datos
+     * @param dessert Objeto postre para mostrar datos
      */
     private void showData(Dessert dessert) {
         jTxfNombre.setText(dessert.getName_Dish_Dessert());

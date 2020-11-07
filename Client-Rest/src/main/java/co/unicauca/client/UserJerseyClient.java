@@ -9,7 +9,7 @@ import javax.ws.rs.core.GenericType;
 import javax.ws.rs.core.Response;
 
 /**
- * Jersey REST client generated for REST resource:UserController [/Users]<br>
+ * Jersey REST client generated for REST resource:UserController [/users]<br>
  * USAGE:
  * <pre>
  *        UserJerseyClient client = new UserJerseyClient();
@@ -18,7 +18,7 @@ import javax.ws.rs.core.Response;
  *        client.close();
  * </pre>
  *
- * @author Personal
+ * @author Camilo Otaya
  */
 public class UserJerseyClient {
 
@@ -63,7 +63,6 @@ public class UserJerseyClient {
         WebTarget resource = webTarget;
         return resource.request(javax.ws.rs.core.MediaType.APPLICATION_JSON).get(responseType);
     }
-
     public <T> List<User> findAll(GenericType<List<User>> responseType) throws javax.ws.rs.ClientErrorException {
         WebTarget resource = webTarget;
         return resource.request(javax.ws.rs.core.MediaType.APPLICATION_JSON).get(responseType);
@@ -76,5 +75,5 @@ public class UserJerseyClient {
     public void close() {
         client.close();
     }
-
+    
 }

@@ -14,20 +14,26 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 /**
- * * Es una implementación que tiene libertad de hacer una implementación del
+ * Es una implementación que tiene libertad de hacer una implementación del
  * contrato. Lo puede hacer con Sqlite, postgres, mysql, u otra tecnología
  *
- * @author Camilo Otaya
+ * @author Camilo Otaya Bravo
  */
 public class UserRepository implements IUserRepository {
 
+    /**
+     * Guarda la conexion a la base de datos
+     */
     private Connection conn;
 
-    public UserRepository() {
-    }
-
+    /**
+     * Lista todos los usuarios de la base de datos
+     *
+     * @return Lista de usuarios
+     */
     @Override
     public List<User> findAll() {
+
         List<User> users = new ArrayList<>();
         try {
 
@@ -57,18 +63,25 @@ public class UserRepository implements IUserRepository {
         return users;
     }
 
+    /**
+     * Busca un usuario de la base de datos
+     *
+     * @param id Identificador del usuario
+     * @return Objeto de tipo usuario
+     */
     @Override
     public User findById(String id) {
         User user = null;
         try {
 
-            String sql = "SELECT id_user, first_name, last_name, address, mobile, email, rol, pws FROM user Where id_user=" + id;
+            String sql = "SELECT id_user, first_name, last_name, address, mobile, email, rol, pws FROM user where id_user=" + id;
             this.connect();
             Statement stmt = conn.createStatement();
             ResultSet rs = stmt.executeQuery(sql);
 
             if (rs.next()) {
                 user = new User();
+                user.setId(rs.getString("id_user"));
                 user.setFirstName(rs.getString("first_name"));
                 user.setLastName(rs.getString("last_name"));
                 user.setAddress(rs.getString("address"));
@@ -85,6 +98,12 @@ public class UserRepository implements IUserRepository {
         return user;
     }
 
+    /**
+     * Crea un usuario y lo guarda en la base de datos
+     *
+     * @param newUser Objeto de tipo User a guardar
+     * @return True si puedo crear, false de lo contrario
+     */
     @Override
     public boolean create(User newUser) {
         String sql = "";
@@ -112,12 +131,18 @@ public class UserRepository implements IUserRepository {
         return false;
     }
 
+    /**
+     * Actualiza un usuario en la base de datos
+     *
+     * @param newUser Objeto de tipo User a actualizar
+     * @return True si pudo actualizar, false de lo contrario
+     */
     @Override
     public boolean update(User newUser) {
         try {
             this.connect();
 
-            String sql = "UPDATE `user`"
+            String sql = "UPDATE user "
                     + "SET first_name = ?, "
                     + "last_name = ?, "
                     + "address = ?, "
@@ -143,9 +168,14 @@ public class UserRepository implements IUserRepository {
             Logger.getLogger(UserRepository.class.getName()).log(Level.SEVERE, "Error al actualizar el usuario", ex);
         }
         return false;
-
     }
 
+    /**
+     * Elimina un usuario de la base de datos
+     *
+     * @param id Identificador del usuario a eliminar
+     * @return True si pudo eliminar, false de lo contrario
+     */
     @Override
     public boolean delete(String id) {
         try {
@@ -160,17 +190,17 @@ public class UserRepository implements IUserRepository {
             this.disconnect();
             return true;
         } catch (SQLException ex) {
-            Logger.getLogger(UserRepository.class.getName()).log(Level.SEVERE, "Error al eliminar usuario", ex);
+            Logger.getLogger(UserRepository.class.getName()).log(Level.SEVERE, "Error al eliminar el usuario", ex);
         }
         return false;
     }
 
     /**
-     * Conectar a la bd
+     * Conecta a la bd
      */
     public void connect() {
         try {
-//           //Class.forName(Utilities.loadProperty("server.db.driver"));
+            //Class.forName(Utilities.loadProperty("server.db.driver"));
             //crea una instancia de la controlador de la base de datos
             Utilities ut = new Utilities();
             conn = DriverManager.getConnection(ut.getUrl(), ut.getUsername(), ut.getPwd());
@@ -190,7 +220,6 @@ public class UserRepository implements IUserRepository {
         } catch (SQLException ex) {
             Logger.getLogger(UserRepository.class.getName()).log(Level.SEVERE, "Error al cerrar conexión de la base de datos", ex);
         }
-
     }
 
 }

@@ -84,7 +84,7 @@ public class DessertController {
     /*
         Su uso desde consola mediante client url:
         curl -X PUT \
-          http://localhost:8085/OnlineRestaurant-Service/restaurant-service/products/1 \
+          http://localhost:8085/OnlineRestaurant-Service/restaurant-service/desserts/1 \
           -H 'Content-Type: application/json' \
           -d '{
                "name":"Postre de fres REF. JDK3-34-343",

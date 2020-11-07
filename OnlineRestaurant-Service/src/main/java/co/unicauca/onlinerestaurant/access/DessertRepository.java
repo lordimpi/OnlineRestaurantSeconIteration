@@ -40,7 +40,7 @@ public class DessertRepository implements IDessertRepository {
                 Dessert newDessert = new Dessert();
                 newDessert.setId_Dish_Dessert(rs.getString("id_dessert"));
                 newDessert.setName_Dish_Dessert(rs.getString("dessert_name"));
-                newDessert.setCost_Dish_Dessert(rs.getInt("dessert_price"));
+                newDessert.setCost_Dish_Dessert(rs.getDouble("dessert_price"));
 
                 desserts.add(newDessert);
             }
@@ -64,8 +64,9 @@ public class DessertRepository implements IDessertRepository {
 
             if (rs.next()) {
                 dessert = new Dessert();
+                 dessert.setId_Dish_Dessert(rs.getString("id_dessert"));
                 dessert.setName_Dish_Dessert(rs.getString("dessert_name"));
-                dessert.setCost_Dish_Dessert(rs.getInt("dessert_price"));
+                dessert.setCost_Dish_Dessert(rs.getDouble("dessert_price"));
             }
             this.disconnect();
 
@@ -87,7 +88,7 @@ public class DessertRepository implements IDessertRepository {
             PreparedStatement pstmt = conn.prepareStatement(sql);
             pstmt.setString(1, newDessert.getId_Dish_Dessert());
             pstmt.setString(2, newDessert.getName_Dish_Dessert());
-            pstmt.setInt(3, newDessert.getCost_Dish_Dessert());
+            pstmt.setDouble(3, newDessert.getCost_Dish_Dessert());
             pstmt.executeUpdate();
             this.disconnect();
             return true;
@@ -104,11 +105,13 @@ public class DessertRepository implements IDessertRepository {
 
             String sql = "UPDATE dessert "
                     + "SET dessert_name = ?, "
-                    + "dessert_price = ? ";
+                    + "dessert_price = ? "
+                    + "WHERE id_dessert = ?";
 
             PreparedStatement pstmt = conn.prepareStatement(sql);
             pstmt.setString(1, newDessert.getName_Dish_Dessert());
-            pstmt.setInt(2, newDessert.getCost_Dish_Dessert());
+            pstmt.setDouble(2, newDessert.getCost_Dish_Dessert());
+            pstmt.setString(3, newDessert.getId_Dish_Dessert());
             pstmt.executeUpdate();
             this.disconnect();
             return true;

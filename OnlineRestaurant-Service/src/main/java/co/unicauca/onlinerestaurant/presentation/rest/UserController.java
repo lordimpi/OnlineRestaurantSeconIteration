@@ -1,5 +1,7 @@
 package co.unicauca.onlinerestaurant.presentation.rest;
 
+import co.unicauca.common.domain.entity.User;
+import co.unicauca.onlinerestaurant.domain.service.UserService;
 import co.unicauca.onlinerestaurant.infra.DomainErrors;
 import co.unicauca.onlinerestaurant.infra.JsonResponse;
 import java.util.List;
@@ -14,8 +16,6 @@ import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
-import co.unicauca.onlinerestaurant.domain.service.UserService;
-import co.unicauca.common.domain.entity.User;
 import javax.ws.rs.core.Response;
 
 /**
@@ -60,18 +60,18 @@ public class UserController {
     /*
         Su uso desde consola mediante client url:
         curl -X POST \
-          http://localhost:8085/OnlineRestaurant-Service/restaurant-service/users/
+          http://localhost:8085/OnlineRestaurant-Service/restaurant-service/users/ \
           -H 'Content-Type: application/json' \
           -d '{
-               "id_user":1,
-               "first_name":"Carlos",
-               "last_name":"Anacona",
-               "address":"Calle 5 #25-50",
-               "mobile":"3122321234",
-               "email":"carlosanacona@gmail.com",
-               "rol":"Admin",
-               "pws":"1"
-            }'
+        "address": "calle 10",
+        "email": "alejo@rc.com",
+        "firstName": "camilo",
+        "id": "40",
+        "lastName": "rodriguez",
+        "mobile": "3166161700",
+        "pws": "123",
+        "rol": "admin"
+    }'
      */
     @POST
     @Consumes({MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON})
@@ -88,17 +88,16 @@ public class UserController {
     /*
         Su uso desde consola mediante client url:
         curl -X PUT \
-          http://localhost:8080/OnlineRestaurant-Service/restaurant-service/users/1 \
+          http://localhost:8085/OnlineRestaurant-Service/restaurant-service/users/40 \
           -H 'Content-Type: application/json' \
           -d '{
-               "id_user":"40",
-               "first_name":"Carlos",
-               "last_name":"Anacona",
-               "address":"Calle 5 #25-50",
-               "mobile":"3122321234",
-               "email":"carlosanacona@gmail.com",
-               "rol":"Admin",
-               "password":"1"
+               "firstName": "Andrés",
+               "lastName": "Valverde",
+               "address": "Calle 26",
+               "mobile": "31232323",
+               "email": "sabastianco@unicauca.edu.co",
+               "rol": "Admin",
+               "pws": "1234"
         }'
      */
     @PUT
@@ -117,7 +116,7 @@ public class UserController {
 
     /*
         Su uso desde consola mediante client url:
-        curl -X DELETE http://localhost:8080/Product-Service/product-service/users/1 
+        curl -X DELETE http://localhost:8085/OnlineRestaurant-Service/restaurant-service/users/40
 
      */
     @DELETE
@@ -136,5 +135,4 @@ public class UserController {
         return Response.ok().entity(resp).build();
 
     }
-
 }

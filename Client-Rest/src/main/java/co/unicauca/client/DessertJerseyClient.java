@@ -1,3 +1,8 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
 package co.unicauca.client;
 
 import co.unicauca.common.domain.entity.Dessert;
@@ -19,7 +24,7 @@ import javax.ws.rs.core.Response;
  *        client.close();
  * </pre>
  *
- * @author Camilo Otaya
+ * @author Personal
  */
 public class DessertJerseyClient {
 
@@ -64,7 +69,6 @@ public class DessertJerseyClient {
         WebTarget resource = webTarget;
         return resource.request(javax.ws.rs.core.MediaType.APPLICATION_JSON).get(responseType);
     }
-
     public <T> List<Dessert> findAll(GenericType<List<Dessert>> responseType) throws javax.ws.rs.ClientErrorException {
         WebTarget resource = webTarget;
         return resource.request(javax.ws.rs.core.MediaType.APPLICATION_JSON).get(responseType);
@@ -77,5 +81,5 @@ public class DessertJerseyClient {
     public void close() {
         client.close();
     }
-
+    
 }

@@ -6,7 +6,7 @@ import co.unicauca.onlinerestaurant.client.access.IUserAccess;
 /**
  * Es una fachada para comunicar la presentación con el dominio
  *
- * @author Santiago Acuña
+ * @author Camilo Otaya
  */
 public class UserService {
 
@@ -29,22 +29,28 @@ public class UserService {
      * @throws java.lang.Exception la excepcio se lanza cuando no logra conexión
      * con el servidor
      */
-    public User findCustomer(String id) throws Exception {
-        return service.findCustomer(id);
+    public User findUser(String id) throws Exception {
+        return service.findUser(id);
 
     }
 
     /**
      * Busca un cliente en el servidor remoto
      *
-     * @param name
-     * @param pws
+     * @param id Identificador del usuario
+     * @param firstname nombre del usuario
+     * @param lastname apellido del usuario
+     * @param address dirección del usuario
+     * @param mobile telefono del usuario
+     * @param email email del usuario
+     * @param rol rol del usuario
+     * @param pws contraseña del usuario
      * @return
      * @throws java.lang.Exception la excepcio se lanza cuando no logra conexión
      * con el servidor
      */
-    public User findCustomer(String name, String pws) throws Exception {
-        return service.findCustomer(name, pws);
+    public User findUser(String id, String firstname, String lastname, String address, String mobile, String email, String rol, String pws) throws Exception {
+        return service.findUser(id);
 
     }
 
@@ -55,8 +61,8 @@ public class UserService {
      * @return
      * @throws Exception
      */
-    public boolean createCustomer(User user) throws Exception {
-        return service.createCustomer(user);
+    public boolean createUser(User user) throws Exception {
+        return service.createUser(user);
 
     }
 
