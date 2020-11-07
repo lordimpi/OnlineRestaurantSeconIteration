@@ -14,12 +14,14 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 /**
- *Es una implementación que tiene libertad de hacer una implementación del
+ * Es una implementación que tiene libertad de hacer una implementación del
  * contrato. Lo puede hacer con Sqlite, postgres, mysql, u otra tecnología
+ *
  * @author Ximena Gallego
  */
 public class SaladRepository implements ISaladRepository {
-     /**
+
+    /**
      * Guarda la conexion a la base de datos
      */
     private Connection conn;
@@ -31,7 +33,7 @@ public class SaladRepository implements ISaladRepository {
      */
     @Override
     public List<Salad> findAll() {
-       
+
         List<Salad> salad = new ArrayList<>();
         try {
 
@@ -43,10 +45,10 @@ public class SaladRepository implements ISaladRepository {
             while (rs.next()) {
                 Salad newSalad = new Salad();
                 newSalad.setIdSalad(rs.getString("idsalad"));
-                newSalad.setNameDishSalad(rs.getString("namesalad"));
-                newSalad.setCostSalad(rs.getDouble("pricesalada"));               
-                
-                salad.add(newSalad);              
+                newSalad.setNameSalad(rs.getString("namesalad"));
+                newSalad.setCostSalad(rs.getDouble("pricesalada"));
+
+                salad.add(newSalad);
             }
             this.disconnect();
 
@@ -55,7 +57,8 @@ public class SaladRepository implements ISaladRepository {
         }
         return salad;
     }
-      /**
+
+    /**
      * Busca una Ensalada de la base de datos
      *
      * @param id Identificador de Ensalada
@@ -63,7 +66,7 @@ public class SaladRepository implements ISaladRepository {
      */
     @Override
     public Salad findById(String id) {
-      Salad salad = null;
+        Salad salad = null;
         try {
 
             String sql = "SELECT idsalad, namesalad, pricesalada FROM salad Where idsalad=" + id;
@@ -74,8 +77,8 @@ public class SaladRepository implements ISaladRepository {
             if (rs.next()) {
                 salad = new Salad();
                 salad.setIdSalad(rs.getString("idsalad"));
-                salad.setNameDishSalad(rs.getString("namesalad"));
-                salad.setCostSalad(rs.getDouble("pricesalada"));               
+                salad.setNameSalad(rs.getString("namesalad"));
+                salad.setCostSalad(rs.getDouble("pricesalada"));
             }
             this.disconnect();
 
@@ -84,10 +87,11 @@ public class SaladRepository implements ISaladRepository {
         }
         return salad;
     }
+
     /**
      * Crea una ensalada y lo guarda en la base de datos
      *
-     * @param newMSalad Objeto de tipo salad a guardar
+     * @param newSalad Objeto de tipo salad a guardar
      * @return True si puedo crear, false de lo contrario
      */
     @Override
@@ -102,7 +106,7 @@ public class SaladRepository implements ISaladRepository {
             PreparedStatement pstmt = conn.prepareStatement(sql);
             pstmt.setString(1, newSalad.getIdSalad());
             pstmt.setString(2, newSalad.getNameSalad());
-            pstmt.setDouble(3, newSalad.getCostSalad());            
+            pstmt.setDouble(3, newSalad.getCostSalad());
             pstmt.executeUpdate();
             this.disconnect();
             return true;
@@ -111,7 +115,8 @@ public class SaladRepository implements ISaladRepository {
         }
         return false;
     }
-     /**
+
+    /**
      * Actualiza una Ensalada en la base de datos
      *
      * @param newSalad Objeto de tipo Salad a actualizar
@@ -119,7 +124,7 @@ public class SaladRepository implements ISaladRepository {
      */
     @Override
     public boolean update(Salad newSalad) {
-         try {
+        try {
             this.connect();
 
             String sql = "UPDATE salad "
@@ -127,9 +132,9 @@ public class SaladRepository implements ISaladRepository {
                     + "pricesalada = ? "
                     + "WHERE idsalad = ?";
 
-            PreparedStatement pstmt = conn.prepareStatement(sql);           
+            PreparedStatement pstmt = conn.prepareStatement(sql);
             pstmt.setString(1, newSalad.getNameSalad());
-            pstmt.setDouble(2, newSalad.getCostSalad());  
+            pstmt.setDouble(2, newSalad.getCostSalad());
             pstmt.setString(3, newSalad.getIdSalad());
             pstmt.executeUpdate();
             this.disconnect();
@@ -139,7 +144,7 @@ public class SaladRepository implements ISaladRepository {
         }
         return false;
     }
-     
+
     /**
      * Elimina una ensalada de la base de datos
      *
@@ -148,11 +153,11 @@ public class SaladRepository implements ISaladRepository {
      */
     @Override
     public boolean delete(String id) {
-         try {
+        try {
             this.connect();
 
             String sql = "DELETE FROM salad "
-                    + "WHERE idsalad = ?"+id;
+                    + "WHERE idsalad = ?";
 
             PreparedStatement pstmt = conn.prepareStatement(sql);
             pstmt.setString(1, id);
@@ -165,11 +170,11 @@ public class SaladRepository implements ISaladRepository {
         return false;
     }
 
-     /**
+    /**
      * Conecta a la bd
      */
     private void connect() {
-         try {
+        try {
             //Class.forName(Utilities.loadProperty("server.db.driver"));
             //crea una instancia de la controlador de la base de datos
             Utilities ut = new Utilities();
@@ -178,6 +183,7 @@ public class SaladRepository implements ISaladRepository {
             Logger.getLogger(SaladRepository.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
+
     /**
      * Desconecta de la base de datos
      */

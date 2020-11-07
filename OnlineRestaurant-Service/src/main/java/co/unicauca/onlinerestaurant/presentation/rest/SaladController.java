@@ -58,12 +58,12 @@ public class SaladController {
     /*
         Su uso desde consola mediante client url:
         curl -X POST \
-          http://localhost:8085/OnlineRestaurant-Service/restaurant-service/salads/ \
+          http://localhost:8085/OnlineRestaurant-Service/restaurant-service/maindishes/ \
           -H 'Content-Type: application/json' \
           -d '{
-               "id":20,
-               "name":"ensalada vegetales tropicales",
-               "price":2000
+               "id":101,
+               "name":"Alitas de pollo",
+               "price":20000
         }'
      */
     @POST
@@ -73,7 +73,7 @@ public class SaladController {
         if (service.create(salad)) {
             resp = new JsonResponse(true, "Ensalada creada con éxito", null);
         } else {
-            resp = new JsonResponse(false, "No se pudo crear Ensalada", DomainErrors.getErrors());
+            resp = new JsonResponse(false, "No se pudo crear la ensalada", DomainErrors.getErrors());
         }
         return Response.ok().entity(resp).build();
     }

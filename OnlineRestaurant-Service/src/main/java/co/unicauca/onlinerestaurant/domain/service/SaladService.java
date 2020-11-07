@@ -49,8 +49,8 @@ public class SaladService {
      * @return lista de las ensaladas
      */
     public List<Salad> findAll() {
-        List<Salad> salad = repository.findAll();
-        return salad;
+        List<Salad> salads = repository.findAll();
+        return salads;
     }
      /**
      * Crea un nueva Ensalada
@@ -83,7 +83,7 @@ public class SaladService {
             return false;
         }
         Salad saladAux = this.findById(id);
-        saladAux.setNameDishSalad(newSalad.getNameSalad());
+        saladAux.setNameSalad(newSalad.getNameSalad());
         saladAux.setCostSalad(newSalad.getCostSalad());        
         repository.update(saladAux);
         return true;
@@ -114,7 +114,7 @@ public class SaladService {
      */
     private List<Error> validateCreate(Salad newSalad) {
         List<Error> errors = new ArrayList<>();
-        //Validate MainDish
+        //Validate Salad
         if (newSalad.getIdSalad() == null || newSalad.getIdSalad().isEmpty()) {
             Error error = new Error(ValidationError.EMPTY_FIELD, "Id", "El id de la ensalada es obligatorio");
             errors.add(error);
@@ -123,10 +123,10 @@ public class SaladService {
             Error error = new Error(ValidationError.EMPTY_FIELD, "Nombre", "El nombre de la ensalada es obligatorio");
             errors.add(error);
         }
-//        if (newSalad.getCostSalad() == null || newSalad.getCostSalad() <= 0) {
-//            Error error = new Error(ValidationError.EMPTY_FIELD, "Precio", "El precio del plato principal es obligatorio");
-//            errors.add(error);
-//        }
+        if (newSalad.getCostSalad() == null || newSalad.getCostSalad() <= 0) {
+            Error error = new Error(ValidationError.EMPTY_FIELD, "Precio", "El precio del plato principal es obligatorio");
+            errors.add(error);
+        }
 
         //Validar que no exista el plato principal
         if (newSalad.getIdSalad() != null) {
