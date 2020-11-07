@@ -3,9 +3,12 @@ package co.unicauca.onlinerestaurant.client.presentation;
 import co.unicauca.onlinerestaurant.client.infra.Messages;
 import static co.unicauca.onlinerestaurant.client.infra.Messages.successMessage;
 import co.unicauca.common.domain.entity.DishEntry;
+import co.unicauca.onlinerestaurant.client.access.Factory;
+import co.unicauca.onlinerestaurant.client.access.IEntryAccess;
+import co.unicauca.onlinerestaurant.client.domain.services.EntryService;
 
 /**
- * Crea un jframe para modificar una bebida
+ * Crea un jframe para modificar una plato de entrada
  *
  * @author Santiago Acuña
  */
@@ -131,7 +134,38 @@ public class GUIModifyDishEntry extends javax.swing.JInternalFrame {
      * @param evt evento del boton
      */
     private void jBtnModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnModificarActionPerformed
-
+        String nombre = jTxfNombre.getText();
+        String precio = jTxfPrecio.getText();
+        IEntryAccess service = Factory.getInstance().getEntryService();
+        // Inyecta la dependencia
+        EntryService entryService = new EntryService(service);
+        boolean dishentry;
+        if (nombre.equals("") || precio.equals("")) {
+            jTxfNombre.requestFocus();
+            Messages.warningMessage("Campos vacios: Error al modificar", "Warning");
+            return;
+        }
+        try {
+            dishentry = entryService.updateDishEntry(
+                    this.jTxfId.getText().trim(),
+                    this.jTxfNombre.getText(),
+                    Double.parseDouble(this.jTxfPrecio.getText()));
+            if (dishentry == false) {
+                clearControls();
+                this.jTxfId.requestFocus();
+                Messages.warningMessage("No se pudo modificar el Plato de Entrada", "Warning");
+                this.jBtnModificar.setVisible(false);
+                return;
+            }
+        } catch (Exception ex) {
+            clearControls();
+            successMessage(ex.getMessage(), "Atención");
+            return;
+        }
+        clearControls();
+        this.jTxfId.requestFocus();
+        successMessage("Se modifico el plato de Entrada con exito.", "EXITO");
+        this.jBtnModificar.setVisible(false);
         
     }//GEN-LAST:event_jBtnModificarActionPerformed
 
@@ -141,7 +175,35 @@ public class GUIModifyDishEntry extends javax.swing.JInternalFrame {
      * @param evt Accion evento del formulario, en este caso accion buscar
      */
     private void jBtnBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnBuscarActionPerformed
+        
+        String id = jTxfId.getText().trim();
 
+        IEntryAccess service = Factory.getInstance().getEntryService();
+        // Inyecta la dependencia
+        EntryService dishEntryService = new EntryService(service);
+
+        if (id.equals("")) {
+            jTxfId.requestFocus();
+            Messages.warningMessage("ERROR: El campo Id esta vacio.", "Warning");
+            return;
+        }
+        DishEntry dish;
+        try {
+            dish = dishEntryService.findEntry(id);
+            if (dish == null) {
+                jTxfId.requestFocus();
+                clearControls();
+                Messages.warningMessage("ERROR: No se encontro el plato de Entrada.", "Warning");
+                return;
+            }
+        } catch (Exception ex) {
+            clearControls();
+            successMessage(ex.getMessage(), "Atención");
+            return;
+        }
+        clearControls();
+        showData(dish);
+        this.jBtnModificar.setVisible(true);
 
     }//GEN-LAST:event_jBtnBuscarActionPerformed
 

@@ -1,5 +1,9 @@
 package co.unicauca.onlinerestaurant.client.presentation;
 
+import co.unicauca.common.domain.entity.DishEntry;
+import co.unicauca.onlinerestaurant.client.access.Factory;
+import co.unicauca.onlinerestaurant.client.access.IEntryAccess;
+import co.unicauca.onlinerestaurant.client.domain.services.EntryService;
 import co.unicauca.onlinerestaurant.client.infra.Messages;
 import static co.unicauca.onlinerestaurant.client.infra.Messages.successMessage;
 
@@ -112,7 +116,7 @@ public class GUICreateDishEntry extends javax.swing.JInternalFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     /**
-     * Boton para cancelar la creacion de un plato
+     * Boton para cancelar la creacion de un plato de entrada
      *
      * @param evt Evento para crear un plato
      */
@@ -123,7 +127,38 @@ public class GUICreateDishEntry extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_jBtnCancelarActionPerformed
 
     private void jBtnAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnAgregarActionPerformed
-        // TODO add your handling code here:
+       IEntryAccess service = Factory.getInstance().getEntryService();
+        // Inyecta la dependencia
+
+        String nombre = jTxfNombre.getText();
+        String id = jTxfId.getText().trim();
+        String precio = JTxfPrecio.getText();
+
+        if (id.equals("") || nombre.equals("") || precio.equals("")) {
+            jTxfId.requestFocus();
+            Messages.warningMessage("ERROR AL CREAR PLATO DE ENTRADA: \nCampos vacios", "Warning");
+            return;
+        }
+
+        Double cost;
+        cost = Double.parseDouble(JTxfPrecio.getText());
+        EntryService dishEntryService = new EntryService(service);
+        DishEntry dishentry = new DishEntry();
+        dishentry.setIdDishEntry(jTxfId.getText());
+        dishentry.setNameDishEntry(jTxfNombre.getText());
+        dishentry.setCostDishEntry(cost);
+     
+
+        try {
+            if(dishEntryService.createDishEntry(dishentry)){
+                successMessage("Plato de Entrada agregado con éxito.", "Atención");
+            }else{
+                Messages.warningMessage("el plato de Entrada no pudo ser agregado", "Warning");
+            }
+            clearControls();
+        } catch (Exception ex) {
+            successMessage(ex.getMessage(), "Atención");
+        }
         
     }//GEN-LAST:event_jBtnAgregarActionPerformed
 
