@@ -11,7 +11,7 @@
             <name>A temporary repository created by NetBeans for libraries and jars it could not identify. Please replace the dependencies in this repository with correct ones and delete this repository.</name>
             <url>file:${project.basedir}/lib</url>
         </repository>
-    </repositories>
+    </repositories>   
     <dependencies>
         <dependency>
             <groupId>unknown.binary</groupId>

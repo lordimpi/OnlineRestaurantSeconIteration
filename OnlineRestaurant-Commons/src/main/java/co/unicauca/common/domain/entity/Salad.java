@@ -1,6 +1,7 @@
 package co.unicauca.common.domain.entity;
 
 /**
+ * Clase Ensalada
  *
  * @author alejo
  */
@@ -17,14 +18,23 @@ public class Salad {
     /**
      * valor
      */
-    private double costSalad;
+    private Double costSalad;
+
+    public Salad(String idSalad, String nameSalad, Double costSalad) {
+        this.idSalad = idSalad;
+        this.nameSalad = nameSalad;
+        this.costSalad = costSalad;
+    }
+
+    public Salad() {
+    }
 
     //GETER AND SETTER
     public String getIdSalad() {
         return idSalad;
     }
 
-    public void setIdhSalad(String idSalad) {
+    public void setIdSalad(String idSalad) {
         this.idSalad = idSalad;
     }
 
@@ -32,16 +42,20 @@ public class Salad {
         return nameSalad;
     }
 
-    public void setNameDishSalad(String nameSalad) {
+    public void setNameSalad(String nameSalad) {
         this.nameSalad = nameSalad;
     }
 
-    public double getCostSalad() {
+    public Double getCostSalad() {
         return costSalad;
     }
 
-    public void setCostSalad(double costSalad) {
+    public void setCostSalad(Double costSalad) {
         this.costSalad = costSalad;
     }
-
+    
+    @Override
+    public String toString() {
+        return "Salad {" + "id=" + idSalad + ", name=" + nameSalad + ", price=" + costSalad + '}';
+    }
 }
