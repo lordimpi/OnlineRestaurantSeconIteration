@@ -27,15 +27,4 @@ public class Factory {
         return instance;
     }
 
-    /**
-     * Método que crea una instancia concreta de la jerarquia IProductRepository
-     *
-     * @param type tipo de repositorio
-     * @return una clase hija de la abstracción IProductRepository
-     */
-    public IProductRepository getRepository(String type) {
-        return new ProductRepository();
-    }
-    
-    
 }
