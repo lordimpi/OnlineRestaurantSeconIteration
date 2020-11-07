@@ -1,18 +1,22 @@
 package co.unicauca.onlinerestaurant.client.presentation;
 
+import co.unicauca.common.domain.entity.Dessert;
 import co.unicauca.onlinerestaurant.client.infra.Messages;
 import static co.unicauca.onlinerestaurant.client.infra.Messages.successMessage;
 import co.unicauca.common.domain.entity.Drink;
+import co.unicauca.onlinerestaurant.client.access.Factory;
+import co.unicauca.onlinerestaurant.client.access.IDessertAccess;
+import co.unicauca.onlinerestaurant.client.domain.services.DessertService;
 
 /**
- * Crea un jframe para modificar una bebida
+ * Crea un jframe para modificar un postre
  *
- * @author Santiago Acuña
+ * @author Camilo Otaya
  */
 public class GUIModifyDessert extends javax.swing.JInternalFrame {
 
     /**
-     * Creates new form GUIModifyDrink
+     * Creates new form GUIModifyDessert
      */
     public GUIModifyDessert() {
         initComponents();
@@ -126,33 +130,94 @@ public class GUIModifyDessert extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_jBtnCancelarActionPerformed
 
     /**
-     * Modifica una bebida con los atributos que tiene el formulario
+     * Modifica un postre con los atributos que tiene el formulario
      *
      * @param evt evento del boton
      */
     private void jBtnModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnModificarActionPerformed
 
-        
+        String nombre = jTxfNombre.getText();
+        String precio = jTxfPrecio.getText();
+        IDessertAccess service = Factory.getInstance().getDessertService();
+        // Inyecta la dependencia
+        DessertService dessertService = new DessertService(service);
+        boolean dish;
+        if (nombre.equals("") || precio.equals("")) {
+            jTxfNombre.requestFocus();
+            Messages.warningMessage("Campos vacios: Error al modificar", "Warning");
+            return;
+        }
+        try {
+            dish = dessertService.updateDessert(
+                    this.jTxfId.getText().trim(),
+                    this.jTxfNombre.getText(),
+                    Double.parseDouble(this.jTxfPrecio.getText()));
+            if (dish == false) {
+                clearControls();
+                this.jTxfId.requestFocus();
+                Messages.warningMessage("No se pudo modificar el postre", "Warning");
+                this.jBtnModificar.setVisible(false);
+                return;
+            }
+        } catch (Exception ex) {
+            clearControls();
+            successMessage(ex.getMessage(), "Atención");
+            return;
+        }
+        clearControls();
+        this.jTxfId.requestFocus();
+        successMessage("Se modifico el postre con exito.", "EXITO");
+        this.jBtnModificar.setVisible(false);
+
     }//GEN-LAST:event_jBtnModificarActionPerformed
 
     /**
-     * Metodo encargado de buscar en la base de datos un identificador de una bebida
+     * Metodo encargado de buscar en la base de datos un identificador de un
+     * postre
      *
      * @param evt Accion evento del formulario, en este caso accion buscar
      */
     private void jBtnBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnBuscarActionPerformed
 
+        String id = jTxfId.getText().trim();
+
+        IDessertAccess service = Factory.getInstance().getDessertService();
+        // Inyecta la dependencia
+        DessertService dessertService = new DessertService(service);
+
+        if (id.equals("")) {
+            jTxfId.requestFocus();
+            Messages.warningMessage("ERROR: El campo Id esta vacio.", "Warning");
+            return;
+        }
+        Dessert dish;
+        try {
+            dish = dessertService.findDessert(id);
+            if (dish == null) {
+                jTxfId.requestFocus();
+                clearControls();
+                Messages.warningMessage("ERROR: No se encontro el postre.", "Warning");
+                return;
+            }
+        } catch (Exception ex) {
+            clearControls();
+            successMessage(ex.getMessage(), "Atención");
+            return;
+        }
+        clearControls();
+        showData(dish);
+        this.jBtnModificar.setVisible(true);
 
     }//GEN-LAST:event_jBtnBuscarActionPerformed
 
     /**
      * Este metodo muestra en el formulario los datos que tiene un objeto
      *
-     * @param mainDish Objeto plato principal
+     * @param dessert Objeto postre principal
      */
-    private void showData(Drink drink) {
-        jTxfNombre.setText(drink.getNameDrink());
-        jTxfPrecio.setText(Double.toString(drink.getDrinkPrice()));
+    private void showData(Dessert dessert) {
+        jTxfNombre.setText(dessert.getName_Dish_Dessert());
+        jTxfPrecio.setText(Double.toString(dessert.getCost_Dish_Dessert()));
 
     }
 
