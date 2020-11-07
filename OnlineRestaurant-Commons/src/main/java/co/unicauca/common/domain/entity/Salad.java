@@ -20,13 +20,20 @@ public class Salad {
     private double costSalad;
     
 
-
-    public Salad(String idSalad, String nameSalad, int costSalad) {
+    /**
+     * Constructor parametrizado
+     * @param idSalad
+     * @param nameSalad
+     * @param costSalad 
+     */
+    public Salad(String idSalad, String nameSalad, double costSalad) {
         this.idSalad = idSalad;
         this.nameSalad = nameSalad;
         this.costSalad = costSalad;
     }
-
+    /**
+     * constructor por defecto
+     */
     public Salad() {
     }
 

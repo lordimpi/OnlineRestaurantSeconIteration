@@ -153,6 +153,7 @@ co\unicauca\onlinerestaurant\client\presentation\GUIModifyDessert$1.class
 co\unicauca\onlinerestaurant\client\presentation\GUIMenuAdmin$5.class
 co\unicauca\onlinerestaurant\client\presentation\GUIModifyDrink.class
 co\unicauca\onlinerestaurant\client\domain\services\CustomerService.class
+co\unicauca\onlinerestaurant\client\access\EntryAccessREST$1.class
 co\unicauca\onlinerestaurant\client\presentation\GUIListRestaurants$2.class
 co\unicauca\onlinerestaurant\client\presentation\GUILogin$4.class
 co\unicauca\onlinerestaurant\client\presentation\GUIMenuCustomer$5.class

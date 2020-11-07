@@ -25,8 +25,8 @@ public class GUIMenuFood extends javax.swing.JInternalFrame {
     /**
      * Guarda la instancia del formulario borrar plato
      */
-    private final GUIDeleteDish DeleteDishe = new GUIDeleteDish();
-
+    private final GUIDeleteDish DeleteDishe = new GUIDeleteDish();  
+   
     /**
      * Constructor para inicializar componentes
      *
@@ -258,7 +258,7 @@ public class GUIMenuFood extends javax.swing.JInternalFrame {
             CreateDishe.setMaximizable(true);
             dskEscritorio.add(CreateDishe);
             CreateDishe.show();
-        }
+        }        
 
     }//GEN-LAST:event_jMenuItemCreateDisheActionPerformed
 
