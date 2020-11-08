@@ -176,9 +176,7 @@ public class GUIDeleteSalad extends javax.swing.JInternalFrame {
                 }
 
             } else {
-
                 return;
-
             }
         } catch (Exception ex) {
             successMessage(ex.getMessage(), "Atención");

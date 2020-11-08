@@ -1,6 +1,7 @@
 co\unicauca\onlinerestaurant\domain\service\DrinkService.class
 co\unicauca\onlinerestaurant\access\IUserRepository.class
 co\unicauca\onlinerestaurant\access\Factory.class
+co\unicauca\onlinerestaurant\access\ISaladRepository.class
 co\unicauca\onlinerestaurant\access\MainDishRepository.class
 co\unicauca\onlinerestaurant\infra\JsonResponse.class
 co\unicauca\onlinerestaurant\presentation\rest\DessertController.class
@@ -19,13 +20,12 @@ co\unicauca\onlinerestaurant\a\ApplicationConfig.class
 co\unicauca\onlinerestaurant\access\DishEntryRepository.class
 co\unicauca\onlinerestaurant\presentation\rest\DishEntryController.class
 co\unicauca\onlinerestaurant\access\IMainDishRepository.class
+co\unicauca\onlinerestaurant\access\SaladRepository.class
 co\unicauca\onlinerestaurant\domain\service\MainDishService.class
-<<<<<<< HEAD
-=======
 co\unicauca\onlinerestaurant\presentation\rest\DrinkController.class
 co\unicauca\onlinerestaurant\presentation\rest\SaladController.class
->>>>>>> 79ddd11d420770913e0a21e05744035bb4a55ef7
 co\unicauca\onlinerestaurant\presentation\rest\UserController.class
 co\unicauca\onlinerestaurant\domain\service\UserService.class
 co\unicauca\onlinerestaurant\domain\validators\ValidationError.class
+co\unicauca\onlinerestaurant\domain\service\SaladService.class
 co\unicauca\onlinerestaurant\infra\Error.class

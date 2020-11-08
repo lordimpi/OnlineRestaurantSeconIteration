@@ -175,7 +175,6 @@ public class GUIDeleteDish extends javax.swing.JInternalFrame {
                 }
 
             } else {
-
                 return;
             }
         } catch (Exception ex) {

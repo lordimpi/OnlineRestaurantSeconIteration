@@ -26,7 +26,6 @@ public class GUIMenuFood extends javax.swing.JInternalFrame {
      * Guarda la instancia del formulario borrar plato
      */
     private final GUIDeleteDish DeleteDishe = new GUIDeleteDish();
-
     /**
      * Guarda la instancia del formulario crear plato de entrada
      */
@@ -483,7 +482,6 @@ public class GUIMenuFood extends javax.swing.JInternalFrame {
         }
     }//GEN-LAST:event_jMenuItemDeleteDessertActionPerformed
 
-<<<<<<< HEAD
     private void jMenuItemCreateDishEntryActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemCreateDishEntryActionPerformed
         if (!CreateDishEntry.isVisible()) {
             CreateDishEntry.setMaximizable(true);
@@ -515,7 +513,8 @@ public class GUIMenuFood extends javax.swing.JInternalFrame {
             DeleteDishEntry.show();
         }
     }//GEN-LAST:event_jMenuItemDeleteDishEntryActionPerformed
-=======
+
+
     private void jMenuItemCreateSaladActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemCreateSaladActionPerformed
         if (!CreateSalad.isVisible()) {
             CreateSalad.setMaximizable(true);
@@ -581,7 +580,6 @@ public class GUIMenuFood extends javax.swing.JInternalFrame {
             DeleteDrink.show();
         }
     }//GEN-LAST:event_jMenuItemDeleteDrinkActionPerformed
->>>>>>> 79ddd11d420770913e0a21e05744035bb4a55ef7
 
     /**
      * Metodo encargado de inicializar el formulario de menu para platos de
