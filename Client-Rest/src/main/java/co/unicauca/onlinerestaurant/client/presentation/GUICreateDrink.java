@@ -1,16 +1,21 @@
 package co.unicauca.onlinerestaurant.client.presentation;
 
+import co.unicauca.common.domain.entity.Drink;
+import co.unicauca.onlinerestaurant.client.access.Factory;
+import co.unicauca.onlinerestaurant.client.access.IDrinkAccess;
+import co.unicauca.onlinerestaurant.client.domain.services.DrinkService;
 import co.unicauca.onlinerestaurant.client.infra.Messages;
 import static co.unicauca.onlinerestaurant.client.infra.Messages.successMessage;
 
 /**
- * Crea una jframe para crear un usuario
- * @author Santiago Acuña
+ * Crea una jframe para crear una bebida
+ *
+ * @author Maria Teresa Trujillo
  */
 public class GUICreateDrink extends javax.swing.JInternalFrame {
 
     /**
-     * Creates new form GUICreateDishe2
+     * Creates new form GUICreateDrink
      */
     public GUICreateDrink() {
         initComponents();
@@ -65,6 +70,11 @@ public class GUICreateDrink extends javax.swing.JInternalFrame {
         jPnSur.setPreferredSize(new java.awt.Dimension(450, 50));
 
         jBtnAgregar.setText("Agregar");
+        jBtnAgregar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBtnAgregarActionPerformed(evt);
+            }
+        });
         jPnSur.add(jBtnAgregar);
 
         jBtnCancelar.setText("Cancelar");
@@ -115,6 +125,40 @@ public class GUICreateDrink extends javax.swing.JInternalFrame {
         this.doDefaultCloseAction();
 
     }//GEN-LAST:event_jBtnCancelarActionPerformed
+
+    private void jBtnAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnAgregarActionPerformed
+        IDrinkAccess service = Factory.getInstance().getDrinkService();
+        // Inyecta la dependencia
+
+        String nombre = jTxfNombre.getText();
+        String id = jTxfId.getText().trim();
+        String precio = JTxfPrecio.getText();
+
+        if (id.equals("") || nombre.equals("") || precio.equals("")) {
+            jTxfId.requestFocus();
+            Messages.warningMessage("ERROR AL CREAR LA BEBIDA: \nCampos vacios", "Warning");
+            return;
+        }
+
+        Double cost;
+        cost = Double.parseDouble(JTxfPrecio.getText());
+        DrinkService drinkService = new DrinkService(service);
+        Drink drink = new Drink();
+        drink.setId_Drink(jTxfId.getText());
+        drink.setNameDrink(jTxfNombre.getText());
+        drink.setDrinkPrice(cost);
+
+        try {
+            if (drinkService.createDrink(drink)) {
+                successMessage("Bebida agregada con éxito.", "Atención");
+            } else {
+                Messages.warningMessage("La bebida no pudo ser agregada", "Warning");
+            }
+            clearControls();
+        } catch (Exception ex) {
+            successMessage(ex.getMessage(), "Atención");
+        }
+    }//GEN-LAST:event_jBtnAgregarActionPerformed
 
     /**
      * Limpia los controlles del formulario

@@ -5,7 +5,6 @@ D:\Unicauca\Ingenieria de Software\Software 2\Laboratorio\Parcial\P2\OnlineResta
 D:\Unicauca\Ingenieria de Software\Software 2\Laboratorio\Parcial\P2\OnlineRestaurantSecondIteration\Client-Rest\src\main\java\co\unicauca\onlinerestaurant\client\domain\services\SaladService.java
 D:\Unicauca\Ingenieria de Software\Software 2\Laboratorio\Parcial\P2\OnlineRestaurantSecondIteration\Client-Rest\src\main\java\co\unicauca\onlinerestaurant\client\domain\services\EntryService.java
 D:\Unicauca\Ingenieria de Software\Software 2\Laboratorio\Parcial\P2\OnlineRestaurantSecondIteration\Client-Rest\src\main\java\co\unicauca\onlinerestaurant\client\presentation\GUICreateDessert.java
-D:\Unicauca\Ingenieria de Software\Software 2\Laboratorio\Parcial\P2\OnlineRestaurantSecondIteration\Client-Rest\src\main\java\co\unicauca\client\ProductJerseyClient.java
 D:\Unicauca\Ingenieria de Software\Software 2\Laboratorio\Parcial\P2\OnlineRestaurantSecondIteration\Client-Rest\src\main\java\co\unicauca\onlinerestaurant\client\access\IMainDishAccess.java
 D:\Unicauca\Ingenieria de Software\Software 2\Laboratorio\Parcial\P2\OnlineRestaurantSecondIteration\Client-Rest\src\main\java\co\unicauca\onlinerestaurant\client\access\RestaurantAccessREST.java
 D:\Unicauca\Ingenieria de Software\Software 2\Laboratorio\Parcial\P2\OnlineRestaurantSecondIteration\Client-Rest\src\main\java\co\unicauca\onlinerestaurant\client\presentation\GUIDeleteDishEntry.java
@@ -15,6 +14,7 @@ D:\Unicauca\Ingenieria de Software\Software 2\Laboratorio\Parcial\P2\OnlineResta
 D:\Unicauca\Ingenieria de Software\Software 2\Laboratorio\Parcial\P2\OnlineRestaurantSecondIteration\Client-Rest\src\main\java\co\unicauca\onlinerestaurant\client\presentation\GUIShowMenu.java
 D:\Unicauca\Ingenieria de Software\Software 2\Laboratorio\Parcial\P2\OnlineRestaurantSecondIteration\Client-Rest\src\main\java\co\unicauca\onlinerestaurant\client\presentation\GUICreateSalad.java
 D:\Unicauca\Ingenieria de Software\Software 2\Laboratorio\Parcial\P2\OnlineRestaurantSecondIteration\Client-Rest\src\main\java\co\unicauca\onlinerestaurant\client\presentation\GUIShowMenuAdmin.java
+D:\Unicauca\Ingenieria de Software\Software 2\Laboratorio\Parcial\P2\OnlineRestaurantSecondIteration\Client-Rest\src\main\java\co\unicauca\client\DrinkJerseyClient.java
 D:\Unicauca\Ingenieria de Software\Software 2\Laboratorio\Parcial\P2\OnlineRestaurantSecondIteration\Client-Rest\src\main\java\co\unicauca\onlinerestaurant\client\presentation\GUIFindDessert.java
 D:\Unicauca\Ingenieria de Software\Software 2\Laboratorio\Parcial\P2\OnlineRestaurantSecondIteration\Client-Rest\src\main\java\co\unicauca\onlinerestaurant\client\presentation\GUIMenuAdmin.java
 D:\Unicauca\Ingenieria de Software\Software 2\Laboratorio\Parcial\P2\OnlineRestaurantSecondIteration\Client-Rest\src\main\java\co\unicauca\client\DessertJerseyClient.java
@@ -46,6 +46,7 @@ D:\Unicauca\Ingenieria de Software\Software 2\Laboratorio\Parcial\P2\OnlineResta
 D:\Unicauca\Ingenieria de Software\Software 2\Laboratorio\Parcial\P2\OnlineRestaurantSecondIteration\Client-Rest\src\main\java\co\unicauca\onlinerestaurant\client\presentation\GUIDeleteSalad.java
 D:\Unicauca\Ingenieria de Software\Software 2\Laboratorio\Parcial\P2\OnlineRestaurantSecondIteration\Client-Rest\src\main\java\co\unicauca\onlinerestaurant\client\presentation\GUILogin.java
 D:\Unicauca\Ingenieria de Software\Software 2\Laboratorio\Parcial\P2\OnlineRestaurantSecondIteration\Client-Rest\src\main\java\co\unicauca\onlinerestaurant\client\access\ISaladAccess.java
+D:\Unicauca\Ingenieria de Software\Software 2\Laboratorio\Parcial\P2\OnlineRestaurantSecondIteration\Client-Rest\src\main\java\co\unicauca\client\SaladJerseyClient.java
 D:\Unicauca\Ingenieria de Software\Software 2\Laboratorio\Parcial\P2\OnlineRestaurantSecondIteration\Client-Rest\src\main\java\co\unicauca\client\UserJerseyClient.java
 D:\Unicauca\Ingenieria de Software\Software 2\Laboratorio\Parcial\P2\OnlineRestaurantSecondIteration\Client-Rest\src\main\java\co\unicauca\onlinerestaurant\client\domain\services\UserService.java
 D:\Unicauca\Ingenieria de Software\Software 2\Laboratorio\Parcial\P2\OnlineRestaurantSecondIteration\Client-Rest\src\main\java\co\unicauca\onlinerestaurant\client\presentation\GUIModifyDessert.java

@@ -174,7 +174,9 @@ public class GUIDeleteDessert extends javax.swing.JInternalFrame {
                     Messages.warningMessage("No se pudo borrar el postre", "Warning");
                     return;
                 }
+            } else {
 
+                return;
             }
         } catch (Exception ex) {
             successMessage(ex.getMessage(), "Atención");

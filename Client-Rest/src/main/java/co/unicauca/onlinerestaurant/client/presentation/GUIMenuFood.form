@@ -99,6 +99,9 @@
                 </Property>
                 <Property name="text" type="java.lang.String" value="Create Drink"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jMenuItemCreateDrinkActionPerformed"/>
+              </Events>
             </MenuItem>
             <MenuItem class="javax.swing.JMenuItem" name="jMenuItemFindDrink">
               <Properties>
@@ -110,6 +113,9 @@
                 </Property>
                 <Property name="text" type="java.lang.String" value="Find Drink"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jMenuItemFindDrinkActionPerformed"/>
+              </Events>
             </MenuItem>
             <MenuItem class="javax.swing.JMenuItem" name="jMenuItemModifyDrink">
               <Properties>
@@ -121,6 +127,9 @@
                 </Property>
                 <Property name="text" type="java.lang.String" value="Modify Drink"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jMenuItemModifyDrinkActionPerformed"/>
+              </Events>
             </MenuItem>
             <MenuItem class="javax.swing.JMenuItem" name="jMenuItemDeleteDrink">
               <Properties>
@@ -132,6 +141,9 @@
                 </Property>
                 <Property name="text" type="java.lang.String" value="Delete Drink"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jMenuItemDeleteDrinkActionPerformed"/>
+              </Events>
             </MenuItem>
           </SubComponents>
         </Menu>
@@ -156,6 +168,9 @@
                 </Property>
                 <Property name="text" type="java.lang.String" value="Create Salad"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jMenuItemCreateSaladActionPerformed"/>
+              </Events>
             </MenuItem>
             <MenuItem class="javax.swing.JMenuItem" name="jMenuItemFindSalad">
               <Properties>
@@ -167,6 +182,9 @@
                 </Property>
                 <Property name="text" type="java.lang.String" value="Find Salad"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jMenuItemFindSaladActionPerformed"/>
+              </Events>
             </MenuItem>
             <MenuItem class="javax.swing.JMenuItem" name="jMenuItemModifySalad">
               <Properties>
@@ -178,6 +196,9 @@
                 </Property>
                 <Property name="text" type="java.lang.String" value="Modify Salad"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jMenuItemModifySaladActionPerformed"/>
+              </Events>
             </MenuItem>
             <MenuItem class="javax.swing.JMenuItem" name="jMenuItemDeleteSalad">
               <Properties>
@@ -189,6 +210,9 @@
                 </Property>
                 <Property name="text" type="java.lang.String" value="Delete Salad"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jMenuItemDeleteSaladActionPerformed"/>
+              </Events>
             </MenuItem>
           </SubComponents>
         </Menu>
