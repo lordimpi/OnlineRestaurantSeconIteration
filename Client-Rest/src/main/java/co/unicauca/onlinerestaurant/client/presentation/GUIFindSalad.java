@@ -1,18 +1,21 @@
 package co.unicauca.onlinerestaurant.client.presentation;
 
 import co.unicauca.common.domain.entity.Salad;
+import co.unicauca.onlinerestaurant.client.access.Factory;
+import co.unicauca.onlinerestaurant.client.access.ISaladAccess;
+import co.unicauca.onlinerestaurant.client.domain.services.SaladService;
 import static co.unicauca.onlinerestaurant.client.infra.Messages.successMessage;
 import co.unicauca.onlinerestaurant.client.infra.Messages;
 
 /**
  * Crea un formulario para buscar una ensalada en la base de datos
  *
- * @author Santiago Acuña
+ * @author Ximena Gallego
  */
 public class GUIFindSalad extends javax.swing.JInternalFrame {
 
     /**
-     * Creates new form GUIFindDrink
+     * Creates new form GUIFindSalad
      */
     public GUIFindSalad() {
         initComponents();
@@ -128,6 +131,33 @@ public class GUIFindSalad extends javax.swing.JInternalFrame {
      */
     private void jBtnBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnBuscarActionPerformed
 
+        String id = jTxfId.getText().trim();
+
+        ISaladAccess service = Factory.getInstance().getSaladService();
+        // Inyecta la dependencia
+        SaladService saladService = new SaladService(service);
+        if (id.equals("")) {
+            jTxfId.requestFocus();
+            Messages.warningMessage("ERROR: El campo Id esta vacio.", "Warning");
+            return;
+        }
+
+        Salad dish;
+        try {
+            dish = saladService.findSalad(id);
+            if (dish == null) {
+                jTxfId.requestFocus();
+                clearControls();
+                Messages.warningMessage("ERROR: No se encontro la ensalada.", "Warning");
+                return;
+            }
+        } catch (Exception ex) {
+            clearControls();
+            successMessage(ex.getMessage(), "Atención");
+            return;
+        }
+        clearControls();
+        showData(dish);
 
     }//GEN-LAST:event_jBtnBuscarActionPerformed
 
@@ -135,7 +165,7 @@ public class GUIFindSalad extends javax.swing.JInternalFrame {
      * Metodo encargado de mostrar los datos de la enssalada principal en el
      * formulario
      *
-     * @param mainDish Objeto ensalada principal para mostrar datos
+     * @param salada Objeto ensalada principal para mostrar datos
      */
     private void showData(Salad salada) {
         jTxfNombre.setText(salada.getNameSalad());

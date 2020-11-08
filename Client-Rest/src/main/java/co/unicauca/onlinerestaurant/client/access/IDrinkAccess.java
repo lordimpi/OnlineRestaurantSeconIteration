@@ -37,4 +37,23 @@ public interface IDrinkAccess {
      */
     public boolean createDrink(Drink drink) throws Exception;
 
+    /**
+     * Actualiza un plato consumiendo un API REST
+     *
+     * @param id Identificador de la bebida
+     * @param name Nombre de la bebida
+     * @param price Precio de la bebida
+     * @return objeto bebida
+     * @throws Exception error al actualizar la bebida
+     */
+    public boolean updateDrink(String id, String name, Double price) throws Exception;
+
+    /**
+     * Lista todos las bebidas consumiendo un API REST
+     *
+     * @return Lista de bebidas
+     * @throws java.lang.Exception
+     */
+    public java.util.List<Drink> list() throws Exception;
+
 }

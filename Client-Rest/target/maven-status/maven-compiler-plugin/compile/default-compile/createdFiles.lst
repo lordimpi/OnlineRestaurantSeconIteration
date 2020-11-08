@@ -1,6 +1,11 @@
 co\unicauca\onlinerestaurant\client\presentation\GUIMenuAdmin$10.class
 co\unicauca\onlinerestaurant\client\presentation\GUIMenuFood$9.class
+<<<<<<< HEAD
+=======
+co\unicauca\onlinerestaurant\client\access\DrinkAccessREST$1.class
+>>>>>>> 79ddd11d420770913e0a21e05744035bb4a55ef7
 co\unicauca\onlinerestaurant\client\presentation\GUIDeleteSalad$5.class
+co\unicauca\onlinerestaurant\client\presentation\GUIMenuFood$15.class
 co\unicauca\onlinerestaurant\client\presentation\GUIModifyDishEntry$3.class
 co\unicauca\onlinerestaurant\client\presentation\GUIDeleteDrink$2.class
 co\unicauca\onlinerestaurant\client\access\SaladAccessREST.class
@@ -42,6 +47,7 @@ co\unicauca\onlinerestaurant\client\access\IDrinkAccess.class
 co\unicauca\onlinerestaurant\client\domain\services\DessertService.class
 co\unicauca\onlinerestaurant\client\presentation\GUIShowMenuAdmin$2.class
 co\unicauca\onlinerestaurant\client\presentation\GUIFindDishEntry$2.class
+co\unicauca\client\DrinkJerseyClient.class
 co\unicauca\onlinerestaurant\client\presentation\GUIDeleteDessert$4.class
 co\unicauca\onlinerestaurant\client\domain\services\RestaurantService.class
 co\unicauca\onlinerestaurant\client\presentation\GUIDeleteDishEntry$1.class
@@ -50,6 +56,7 @@ co\unicauca\onlinerestaurant\client\presentation\GUIModifySalad$2.class
 co\unicauca\onlinerestaurant\client\presentation\GUIShowMenu.class
 co\unicauca\onlinerestaurant\client\presentation\GUICreateDessert.class
 co\unicauca\onlinerestaurant\client\presentation\GUIDeleteDish$3.class
+co\unicauca\onlinerestaurant\client\presentation\GUIMenuFood$13.class
 co\unicauca\onlinerestaurant\client\presentation\GUIShowMenu$1.class
 co\unicauca\onlinerestaurant\client\presentation\GUIDeleteSalad$3.class
 co\unicauca\onlinerestaurant\client\presentation\GUIFindDrink.class
@@ -70,6 +77,7 @@ co\unicauca\onlinerestaurant\client\presentation\GUILogin$6.class
 co\unicauca\onlinerestaurant\client\access\IDessertAccess.class
 co\unicauca\onlinerestaurant\client\presentation\GUIMenuAdmin$8.class
 co\unicauca\onlinerestaurant\client\presentation\GUILogin$1.class
+co\unicauca\onlinerestaurant\client\presentation\GUIMenuFood$14.class
 co\unicauca\onlinerestaurant\client\presentation\GUIDeleteDish$2.class
 co\unicauca\onlinerestaurant\client\presentation\GUIListRestaurants$5.class
 co\unicauca\onlinerestaurant\client\presentation\GUIMenuCustomer$2.class
@@ -88,7 +96,6 @@ co\unicauca\onlinerestaurant\client\presentation\GUICreateDish.class
 co\unicauca\onlinerestaurant\client\presentation\GUICreateSalad.class
 co\unicauca\onlinerestaurant\client\presentation\GUIMenuAdmin$9.class
 co\unicauca\onlinerestaurant\client\presentation\GUIMenuAdmin$13.class
-co\unicauca\client\ProductJerseyClient.class
 co\unicauca\onlinerestaurant\client\presentation\GUICreateSalad$2.class
 co\unicauca\onlinerestaurant\client\presentation\GUIShowMenuAdmin$4.class
 co\unicauca\onlinerestaurant\client\presentation\GUICreateDessert$1.class
@@ -112,6 +119,7 @@ co\unicauca\onlinerestaurant\client\presentation\GUIShowMenuAdmin$1.class
 co\unicauca\onlinerestaurant\client\presentation\GUIFindDishEntry$1.class
 co\unicauca\onlinerestaurant\client\presentation\GUIFindDrink$2.class
 co\unicauca\onlinerestaurant\client\presentation\GUIMenuFood$5.class
+co\unicauca\onlinerestaurant\client\presentation\GUICreateDrink$2.class
 co\unicauca\onlinerestaurant\client\presentation\GUIMenuCustomer.class
 co\unicauca\onlinerestaurant\client\presentation\GUIDeleteSalad.class
 co\unicauca\client\MainDishJerseyClient.class
@@ -130,6 +138,7 @@ co\unicauca\onlinerestaurant\client\presentation\GUIDeleteDish$4.class
 co\unicauca\onlinerestaurant\client\presentation\GUIMenuAdmin$11.class
 co\unicauca\onlinerestaurant\client\presentation\GUIMenuCustomer$9.class
 co\unicauca\onlinerestaurant\client\presentation\GUIModifyDish.class
+co\unicauca\onlinerestaurant\client\presentation\GUIMenuFood$16.class
 co\unicauca\onlinerestaurant\client\presentation\GUIDeleteDrink$3.class
 co\unicauca\onlinerestaurant\client\access\MainDishAccessREST$1.class
 co\unicauca\onlinerestaurant\client\presentation\GUIShowMenuAdmin$9.class
@@ -152,6 +161,7 @@ co\unicauca\onlinerestaurant\client\presentation\GUIDeleteDish.class
 co\unicauca\client\DishEntryJerseyClient.class
 co\unicauca\onlinerestaurant\client\presentation\GUILogin$5.class
 co\unicauca\onlinerestaurant\client\presentation\GUIMenuFood$7.class
+co\unicauca\onlinerestaurant\client\access\SaladAccessREST$1.class
 co\unicauca\onlinerestaurant\client\presentation\GUIDeleteDrink$4.class
 co\unicauca\onlinerestaurant\client\access\DessertAccessREST.class
 co\unicauca\onlinerestaurant\client\presentation\GUIModifyDrink$2.class

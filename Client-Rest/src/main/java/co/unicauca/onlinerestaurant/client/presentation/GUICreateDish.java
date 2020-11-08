@@ -156,7 +156,7 @@ public class GUICreateDish extends javax.swing.JInternalFrame {
             if(maindishService.createMainDish(maindish)){
                 successMessage("Plato agregado con éxito.", "Atención");
             }else{
-                Messages.warningMessage("el planto no pudo ser agregado", "Warning");
+                Messages.warningMessage("el plato no pudo ser agregado", "Warning");
             }
             clearControls();
         } catch (Exception ex) {
