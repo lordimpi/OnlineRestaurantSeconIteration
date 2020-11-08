@@ -3,11 +3,14 @@ package co.unicauca.onlinerestaurant.client.presentation;
 import co.unicauca.onlinerestaurant.client.infra.Messages;
 import static co.unicauca.onlinerestaurant.client.infra.Messages.successMessage;
 import co.unicauca.common.domain.entity.Salad;
+import co.unicauca.onlinerestaurant.client.access.Factory;
+import co.unicauca.onlinerestaurant.client.access.ISaladAccess;
+import co.unicauca.onlinerestaurant.client.domain.services.SaladService;
 
 /**
  * Crea un jframe para modificar una ensalada
  *
- * @author Santiago Acuña
+ * @author Ximena Gallego
  */
 public class GUIModifySalad extends javax.swing.JInternalFrame {
 
@@ -132,23 +135,84 @@ public class GUIModifySalad extends javax.swing.JInternalFrame {
      */
     private void jBtnModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnModificarActionPerformed
 
-        
+        String nombre = jTxfNombre.getText();
+        String precio = jTxfPrecio.getText();
+        ISaladAccess service = Factory.getInstance().getSaladService();
+        // Inyecta la dependencia
+        SaladService saladService = new SaladService(service);
+        boolean dish;
+        if (nombre.equals("") || precio.equals("")) {
+            jTxfNombre.requestFocus();
+            Messages.warningMessage("Campos vacios: Error al modificar", "Warning");
+            return;
+        }
+        try {
+            dish = saladService.updateSalad(
+                    this.jTxfId.getText().trim(),
+                    this.jTxfNombre.getText(),
+                    Double.parseDouble(this.jTxfPrecio.getText()));
+            if (dish == false) {
+                clearControls();
+                this.jTxfId.requestFocus();
+                Messages.warningMessage("No se pudo modificar la ensalada", "Warning");
+                this.jBtnModificar.setVisible(false);
+                return;
+            }
+        } catch (Exception ex) {
+            clearControls();
+            successMessage(ex.getMessage(), "Atención");
+            return;
+        }
+        clearControls();
+        this.jTxfId.requestFocus();
+        successMessage("Se modifico la ensalada con exito.", "EXITO");
+        this.jBtnModificar.setVisible(false);
+
     }//GEN-LAST:event_jBtnModificarActionPerformed
 
     /**
-     * Metodo encargado de buscar en la base de datos un identificador de una ensalada
+     * Metodo encargado de buscar en la base de datos un identificador de una
+     * ensalada
      *
      * @param evt Accion evento del formulario, en este caso accion buscar
      */
     private void jBtnBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnBuscarActionPerformed
 
+        String id = jTxfId.getText().trim();
+
+        ISaladAccess service = Factory.getInstance().getSaladService();
+        // Inyecta la dependencia
+        SaladService saladService = new SaladService(service);
+
+        if (id.equals("")) {
+            jTxfId.requestFocus();
+            Messages.warningMessage("ERROR: El campo Id esta vacio.", "Warning");
+            return;
+        }
+        Salad dish;
+        try {
+            dish = saladService.findSalad(id);
+            if (dish == null) {
+                jTxfId.requestFocus();
+                clearControls();
+                Messages.warningMessage("ERROR: No se encontro la ensalada.", "Warning");
+                return;
+            }
+        } catch (Exception ex) {
+            clearControls();
+            successMessage(ex.getMessage(), "Atención");
+            return;
+        }
+        clearControls();
+        showData(dish);
+        this.jBtnModificar.setVisible(true);
 
     }//GEN-LAST:event_jBtnBuscarActionPerformed
 
     /**
      * Este metodo muestra en el formulario los datos que tiene un objeto
      *
-     * @param mainDish Objeto ensalada principal
+     * @param salad Objeto ensalada principal
      */
     private void showData(Salad salad) {
         jTxfNombre.setText(salad.getNameSalad());

@@ -18,7 +18,7 @@ public class Drink {
     /**
      * Precio de la bebida
      */
-    private double drinkPrice;
+    private Double drinkPrice;
 
     /**
      * Constructor por defecto
@@ -27,7 +27,7 @@ public class Drink {
      * @param nameDrink Nombre de la bebida
      * @param drinkPrice Precio de la bebida
      */
-    public Drink(String id_Drink, String nameDrink, double drinkPrice) {
+    public Drink(String id_Drink, String nameDrink, Double drinkPrice) {
         this.id_Drink = id_Drink;
         this.nameDrink = nameDrink;
         this.drinkPrice = drinkPrice;
@@ -39,7 +39,6 @@ public class Drink {
     public Drink() {
     }
 
-    //GETER AND SETTER
     public String getId_Drink() {
         return id_Drink;
     }
@@ -56,12 +55,13 @@ public class Drink {
         this.nameDrink = nameDrink;
     }
 
-    public double getDrinkPrice() {
+    public Double getDrinkPrice() {
         return drinkPrice;
     }
 
-    public void setDrinkPrice(double drinkPrice) {
+    public void setDrinkPrice(Double drinkPrice) {
         this.drinkPrice = drinkPrice;
     }
 
+    
 }

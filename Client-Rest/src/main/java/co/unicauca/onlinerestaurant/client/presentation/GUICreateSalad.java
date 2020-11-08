@@ -1,11 +1,16 @@
 package co.unicauca.onlinerestaurant.client.presentation;
 
+import co.unicauca.common.domain.entity.Salad;
+import co.unicauca.onlinerestaurant.client.access.Factory;
+import co.unicauca.onlinerestaurant.client.access.ISaladAccess;
+import co.unicauca.onlinerestaurant.client.domain.services.SaladService;
 import co.unicauca.onlinerestaurant.client.infra.Messages;
 import static co.unicauca.onlinerestaurant.client.infra.Messages.successMessage;
 
 /**
  * Crea una jframe para crear un usuario
- * @author Santiago Acuña
+ *
+ * @author Ximena Gallego
  */
 public class GUICreateSalad extends javax.swing.JInternalFrame {
 
@@ -111,9 +116,9 @@ public class GUICreateSalad extends javax.swing.JInternalFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     /**
-     * Boton para cancelar la creacion de un plato
+     * Boton para cancelar la creacion de una ensalada
      *
-     * @param evt Evento para crear un plato
+     * @param evt Evento para crear una ensalada
      */
     private void jBtnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnCancelarActionPerformed
 
@@ -121,8 +126,43 @@ public class GUICreateSalad extends javax.swing.JInternalFrame {
 
     }//GEN-LAST:event_jBtnCancelarActionPerformed
 
+    /**
+     * Boton encargado de crear una ensalada y guardarlo en la base de datos
+     *
+     * @param evt Evento del boton
+     */
     private void jBtnAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnAgregarActionPerformed
-        // TODO add your handling code here:
+        ISaladAccess service = Factory.getInstance().getSaladService();
+        // Inyecta la dependencia
+
+        String nombre = jTxfNombre.getText();
+        String id = jTxfId.getText().trim();
+        String precio = JTxfPrecio.getText();
+
+        if (id.equals("") || nombre.equals("") || precio.equals("")) {
+            jTxfId.requestFocus();
+            Messages.warningMessage("ERROR AL CREAR ENSALADA: \nCampos vacios", "Warning");
+            return;
+        }
+
+        Double cost;
+        cost = Double.parseDouble(JTxfPrecio.getText());
+        SaladService saladService = new SaladService(service);
+        Salad salad = new Salad();
+        salad.setIdSalad(jTxfId.getText());
+        salad.setNameSalad(jTxfNombre.getText());
+        salad.setCostSalad(cost);
+
+        try {
+            if (saladService.createSalad(salad)) {
+                successMessage("Ensalada agregada con éxito.", "Atención");
+            } else {
+                Messages.warningMessage("la ensalada no pudo ser agregado", "Warning");
+            }
+            clearControls();
+        } catch (Exception ex) {
+            successMessage(ex.getMessage(), "Atención");
+        }
     }//GEN-LAST:event_jBtnAgregarActionPerformed
 
     /**

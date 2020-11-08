@@ -13,8 +13,8 @@ import java.util.Properties;
 public class Utilities {
 
     private final String url = "jdbc:mysql://localhost:3306/restaurante";
-    private final String username = "lordimpi";
-    private final String pwd = "lordimpi315";
+    private final String username = "sc";
+    private final String pwd = "1234";
 
     public String getUrl() {
         return url;
@@ -27,7 +27,7 @@ public class Utilities {
     public String getPwd() {
         return pwd;
     }
-    
+
     /**
      * Verifica si un String contiene sólo digitos
      *

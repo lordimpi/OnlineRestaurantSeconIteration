@@ -2,10 +2,11 @@ package co.unicauca.onlinerestaurant.client.domain.services;
 
 import co.unicauca.common.domain.entity.Drink;
 import co.unicauca.onlinerestaurant.client.access.IDrinkAccess;
+import java.util.List;
 
 /**
  *
- * @author Santiago Acuña
+ * @author Maria Teresa Trujillo
  */
 public class DrinkService {
 
@@ -34,15 +35,39 @@ public class DrinkService {
     }
 
     /**
+     * Lista objetos de tipo Drink
+     *
+     * @return lista de objetos drink
+     * @throws Exception se lanza cuando no logra conexión con el servidor
+     */
+    public List<Drink> listDishes() throws Exception {
+        return service.list();
+    }
+
+    /**
+     * Actualiza una bebida en el servidor remoto
+     *
+     * @param id identificador de la bebida
+     * @param name nombre
+     * @param price precio
+     * @return objeto de tipo drink
+     * @throws Exception la excepcio se lanza cuando no logra conexión con el
+     * servidor
+     */
+    public boolean updateDrink(String id, String name, Double price) throws Exception {
+        return service.updateDrink(id, name, price);
+    }
+
+    /**
      * Elimina una bebida en el servidor remoto
      *
      * @param id identificador de la bebida
-     * @throws Exception la excepcion se lanza cuando no logra conexión con el
+     * @return true si se realizo conrrectamente false en caso contrario
+     * @throws Exception la excepcio se lanza cuando no logra conexión con el
      * servidor
      */
-    public void deleteDrink(String id) throws Exception {
-        service.deleteDrink(id);
-
+     public boolean deleteDrink(String id) throws Exception {
+        return service.deleteDrink(id);
     }
 
     /**
