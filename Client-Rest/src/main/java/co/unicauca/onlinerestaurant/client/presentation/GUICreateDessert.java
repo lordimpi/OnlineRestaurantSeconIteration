@@ -1,16 +1,21 @@
 package co.unicauca.onlinerestaurant.client.presentation;
 
+import co.unicauca.common.domain.entity.Dessert;
+import co.unicauca.onlinerestaurant.client.access.Factory;
+import co.unicauca.onlinerestaurant.client.access.IDessertAccess;
+import co.unicauca.onlinerestaurant.client.domain.services.DessertService;
 import co.unicauca.onlinerestaurant.client.infra.Messages;
 import static co.unicauca.onlinerestaurant.client.infra.Messages.successMessage;
 
 /**
  * Crea una jframe para crear un usuario
- * @author Santiago Acuña
+ *
+ * @author Camilo Otaya
  */
 public class GUICreateDessert extends javax.swing.JInternalFrame {
 
     /**
-     * Creates new form GUICreateDishe2
+     * Creates new form GUICreateDessert
      */
     public GUICreateDessert() {
         initComponents();
@@ -123,8 +128,38 @@ public class GUICreateDessert extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_jBtnCancelarActionPerformed
 
     private void jBtnAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnAgregarActionPerformed
-        // TODO add your handling code here:
-        
+        IDessertAccess service = Factory.getInstance().getDessertService();
+        // Inyecta la dependencia
+
+        String nombre = jTxfNombre.getText();
+        String id = jTxfId.getText().trim();
+        String precio = JTxfPrecio.getText();
+
+        if (id.equals("") || nombre.equals("") || precio.equals("")) {
+            jTxfId.requestFocus();
+            Messages.warningMessage("ERROR AL CREAR EL POSTRE: \nCampos vacios", "Warning");
+            return;
+        }
+
+        Double cost;
+        cost = Double.parseDouble(JTxfPrecio.getText());
+        DessertService dessertService = new DessertService(service);
+        Dessert dessert = new Dessert();
+        dessert.setId_Dish_Dessert(jTxfId.getText());
+        dessert.setName_Dish_Dessert(jTxfNombre.getText());
+        dessert.setCost_Dish_Dessert(cost);
+
+        try {
+            if (dessertService.createDessert(dessert)) {
+                successMessage("Postre agregado con éxito.", "Atención");
+            } else {
+                Messages.warningMessage("el postre no pudo ser agregado", "Warning");
+            }
+            clearControls();
+        } catch (Exception ex) {
+            successMessage(ex.getMessage(), "Atención");
+        }
+
     }//GEN-LAST:event_jBtnAgregarActionPerformed
 
     /**

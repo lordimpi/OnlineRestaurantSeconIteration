@@ -1,13 +1,16 @@
 package co.unicauca.onlinerestaurant.client.presentation;
 
 import co.unicauca.common.domain.entity.Drink;
+import co.unicauca.onlinerestaurant.client.access.Factory;
+import co.unicauca.onlinerestaurant.client.access.IDrinkAccess;
+import co.unicauca.onlinerestaurant.client.domain.services.DrinkService;
 import static co.unicauca.onlinerestaurant.client.infra.Messages.successMessage;
 import co.unicauca.onlinerestaurant.client.infra.Messages;
 
 /**
  * Crea un formulario para buscar un plato en la base de datos
  *
- * @author Santiago Acuña
+ * @author Maria Teresa Trujillo
  */
 public class GUIFindDrink extends javax.swing.JInternalFrame {
 
@@ -128,14 +131,40 @@ public class GUIFindDrink extends javax.swing.JInternalFrame {
      */
     private void jBtnBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnBuscarActionPerformed
 
+        String id = jTxfId.getText().trim();
+
+        IDrinkAccess service = Factory.getInstance().getDrinkService();
+        // Inyecta la dependencia
+        DrinkService drinkService = new DrinkService(service);
+        if (id.equals("")) {
+            jTxfId.requestFocus();
+            Messages.warningMessage("ERROR: El campo Id esta vacio.", "Warning");
+            return;
+        }
+
+        Drink dish;
+        try {
+            dish = drinkService.findDrink(id);
+            if (dish == null) {
+                jTxfId.requestFocus();
+                clearControls();
+                Messages.warningMessage("ERROR: No se econtro el plato.", "Warning");
+                return;
+            }
+        } catch (Exception ex) {
+            clearControls();
+            successMessage(ex.getMessage(), "Atención");
+            return;
+        }
+        clearControls();
+        showData(dish);
 
     }//GEN-LAST:event_jBtnBuscarActionPerformed
 
     /**
-     * Metodo encargado de mostrar los datos del plato principal en el
-     * formulario
+     * Metodo encargado de mostrar los datos de las bebidas en el formulario
      *
-     * @param mainDish Objeto plato principal para mostrar datos
+     * @param drink Objeto plato principal para mostrar datos
      */
     private void showData(Drink drink) {
         jTxfNombre.setText(drink.getNameDrink());

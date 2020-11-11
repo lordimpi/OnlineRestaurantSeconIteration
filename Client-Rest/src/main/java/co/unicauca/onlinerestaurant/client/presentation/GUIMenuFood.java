@@ -25,9 +25,8 @@ public class GUIMenuFood extends javax.swing.JInternalFrame {
     /**
      * Guarda la instancia del formulario borrar plato
      */
-    private final GUIDeleteDish DeleteDishe = new GUIDeleteDish();  
-    
-     /**
+    private final GUIDeleteDish DeleteDishe = new GUIDeleteDish();
+    /**
      * Guarda la instancia del formulario crear plato de entrada
      */
     private final GUICreateDishEntry CreateDishEntry = new GUICreateDishEntry();
@@ -42,8 +41,58 @@ public class GUIMenuFood extends javax.swing.JInternalFrame {
     /**
      * Guarda la instancia del formulario borrar plato de Entrada
      */
-    private final GUIDeleteDishEntry DeleteDishEntry = new GUIDeleteDishEntry(); 
-   
+    private final GUIDeleteDishEntry DeleteDishEntry = new GUIDeleteDishEntry();
+
+    /**
+     * Guarda la instancia del formulario crear postre
+     */
+    private final GUICreateDessert CreateDessert = new GUICreateDessert();
+    /**
+     * Guarda la instancia del formulario buscar plato
+     */
+    private final GUIFindDessert FindDessert = new GUIFindDessert();
+    /**
+     * Guarda la instancia del formulario modificar plato
+     */
+    private final GUIModifyDessert ModifyDessert = new GUIModifyDessert();
+    /**
+     * Guarda la instancia del formulario borrar plato
+     */
+    private final GUIDeleteDessert DeleteDessert = new GUIDeleteDessert();
+
+    /**
+     * Guarda la instancia del formulario crear una ensalada
+     */
+    private final GUICreateSalad CreateSalad = new GUICreateSalad();
+    /**
+     * Guarda la instancia del formulario buscar una ensalada
+     */
+    private final GUIFindSalad FindSalad = new GUIFindSalad();
+    /**
+     * Guarda la instancia del formulario modificar una ensalada
+     */
+    private final GUIModifySalad ModifySalad = new GUIModifySalad();
+    /**
+     * Guarda la instancia del formulario borrar una ensalada
+     */
+    private final GUIDeleteSalad DeleteSalad = new GUIDeleteSalad();
+    /**
+     * Guarda la instancia del formulario crear bebida
+     */
+    private final GUICreateDrink CreateDrink = new GUICreateDrink();
+    /**
+     * Guarda la instancia del formulario buscar bebida
+     */
+    private final GUIFindDrink FindDrink = new GUIFindDrink();
+    /**
+     * Guarda la instancia del formulario modificar bebida
+     */
+    private final GUIModifyDrink ModifyDrink = new GUIModifyDrink();
+    /**
+     * Guarda la instancia del formulario borrar una bebida
+     */
+    private final GUIDeleteDrink DeleteDrink = new GUIDeleteDrink();
+
     /**
      * Constructor para inicializar componentes
      *
@@ -162,21 +211,41 @@ public class GUIMenuFood extends javax.swing.JInternalFrame {
         jMenuItemCreateDrink.setBackground(new java.awt.Color(54, 33, 88));
         jMenuItemCreateDrink.setForeground(new java.awt.Color(255, 255, 255));
         jMenuItemCreateDrink.setText("Create Drink");
+        jMenuItemCreateDrink.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItemCreateDrinkActionPerformed(evt);
+            }
+        });
         jMenuDrink.add(jMenuItemCreateDrink);
 
         jMenuItemFindDrink.setBackground(new java.awt.Color(54, 33, 88));
         jMenuItemFindDrink.setForeground(new java.awt.Color(255, 255, 255));
         jMenuItemFindDrink.setText("Find Drink");
+        jMenuItemFindDrink.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItemFindDrinkActionPerformed(evt);
+            }
+        });
         jMenuDrink.add(jMenuItemFindDrink);
 
         jMenuItemModifyDrink.setBackground(new java.awt.Color(54, 33, 88));
         jMenuItemModifyDrink.setForeground(new java.awt.Color(255, 255, 255));
         jMenuItemModifyDrink.setText("Modify Drink");
+        jMenuItemModifyDrink.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItemModifyDrinkActionPerformed(evt);
+            }
+        });
         jMenuDrink.add(jMenuItemModifyDrink);
 
         jMenuItemDeleteDrink.setBackground(new java.awt.Color(54, 33, 88));
         jMenuItemDeleteDrink.setForeground(new java.awt.Color(255, 255, 255));
         jMenuItemDeleteDrink.setText("Delete Drink");
+        jMenuItemDeleteDrink.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItemDeleteDrinkActionPerformed(evt);
+            }
+        });
         jMenuDrink.add(jMenuItemDeleteDrink);
 
         jMenuBar1.add(jMenuDrink);
@@ -188,21 +257,41 @@ public class GUIMenuFood extends javax.swing.JInternalFrame {
         jMenuItemCreateSalad.setBackground(new java.awt.Color(54, 33, 88));
         jMenuItemCreateSalad.setForeground(new java.awt.Color(255, 255, 255));
         jMenuItemCreateSalad.setText("Create Salad");
+        jMenuItemCreateSalad.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItemCreateSaladActionPerformed(evt);
+            }
+        });
         jMenuSalad.add(jMenuItemCreateSalad);
 
         jMenuItemFindSalad.setBackground(new java.awt.Color(54, 33, 88));
         jMenuItemFindSalad.setForeground(new java.awt.Color(255, 255, 255));
         jMenuItemFindSalad.setText("Find Salad");
+        jMenuItemFindSalad.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItemFindSaladActionPerformed(evt);
+            }
+        });
         jMenuSalad.add(jMenuItemFindSalad);
 
         jMenuItemModifySalad.setBackground(new java.awt.Color(54, 33, 88));
         jMenuItemModifySalad.setForeground(new java.awt.Color(255, 255, 255));
         jMenuItemModifySalad.setText("Modify Salad");
+        jMenuItemModifySalad.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItemModifySaladActionPerformed(evt);
+            }
+        });
         jMenuSalad.add(jMenuItemModifySalad);
 
         jMenuItemDeleteSalad.setBackground(new java.awt.Color(54, 33, 88));
         jMenuItemDeleteSalad.setForeground(new java.awt.Color(255, 255, 255));
         jMenuItemDeleteSalad.setText("Delete Salad");
+        jMenuItemDeleteSalad.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItemDeleteSaladActionPerformed(evt);
+            }
+        });
         jMenuSalad.add(jMenuItemDeleteSalad);
 
         jMenuBar1.add(jMenuSalad);
@@ -214,21 +303,41 @@ public class GUIMenuFood extends javax.swing.JInternalFrame {
         jMenuItemCreateDessert.setBackground(new java.awt.Color(54, 33, 88));
         jMenuItemCreateDessert.setForeground(new java.awt.Color(255, 255, 255));
         jMenuItemCreateDessert.setText("Create Dessert");
+        jMenuItemCreateDessert.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItemCreateDessertActionPerformed(evt);
+            }
+        });
         jMenuDessert.add(jMenuItemCreateDessert);
 
         jMenuItemFindDessert.setBackground(new java.awt.Color(54, 33, 88));
         jMenuItemFindDessert.setForeground(new java.awt.Color(255, 255, 255));
         jMenuItemFindDessert.setText("Find Desert");
+        jMenuItemFindDessert.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItemFindDessertActionPerformed(evt);
+            }
+        });
         jMenuDessert.add(jMenuItemFindDessert);
 
         jMenuItemModifyDessert.setBackground(new java.awt.Color(54, 33, 88));
         jMenuItemModifyDessert.setForeground(new java.awt.Color(255, 255, 255));
         jMenuItemModifyDessert.setText("Modify Desert");
+        jMenuItemModifyDessert.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItemModifyDessertActionPerformed(evt);
+            }
+        });
         jMenuDessert.add(jMenuItemModifyDessert);
 
         jMenuItemDeleteDessert.setBackground(new java.awt.Color(54, 33, 88));
         jMenuItemDeleteDessert.setForeground(new java.awt.Color(255, 255, 255));
         jMenuItemDeleteDessert.setText("Delete Desert");
+        jMenuItemDeleteDessert.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItemDeleteDessertActionPerformed(evt);
+            }
+        });
         jMenuDessert.add(jMenuItemDeleteDessert);
 
         jMenuBar1.add(jMenuDessert);
@@ -295,7 +404,7 @@ public class GUIMenuFood extends javax.swing.JInternalFrame {
             CreateDishe.setMaximizable(true);
             dskEscritorio.add(CreateDishe);
             CreateDishe.show();
-        }        
+        }
 
     }//GEN-LAST:event_jMenuItemCreateDisheActionPerformed
 
@@ -341,16 +450,48 @@ public class GUIMenuFood extends javax.swing.JInternalFrame {
 
     }//GEN-LAST:event_jMenuItemDeleteDisheActionPerformed
 
+    private void jMenuItemCreateDessertActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemCreateDessertActionPerformed
+        if (!CreateDessert.isVisible()) {
+            CreateDessert.setMaximizable(true);
+            dskEscritorio.add(CreateDessert);
+            CreateDessert.show();
+        }
+    }//GEN-LAST:event_jMenuItemCreateDessertActionPerformed
+
+    private void jMenuItemFindDessertActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemFindDessertActionPerformed
+        if (!FindDessert.isVisible()) {
+            FindDessert.setMaximizable(true);
+            dskEscritorio.add(FindDessert);
+            FindDessert.show();
+        }
+    }//GEN-LAST:event_jMenuItemFindDessertActionPerformed
+
+    private void jMenuItemModifyDessertActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemModifyDessertActionPerformed
+        if (!ModifyDessert.isVisible()) {
+            ModifyDessert.setMaximizable(true);
+            dskEscritorio.add(ModifyDessert);
+            ModifyDessert.show();
+        }
+    }//GEN-LAST:event_jMenuItemModifyDessertActionPerformed
+
+    private void jMenuItemDeleteDessertActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemDeleteDessertActionPerformed
+        if (!DeleteDessert.isVisible()) {
+            DeleteDessert.setMaximizable(true);
+            dskEscritorio.add(DeleteDessert);
+            DeleteDessert.show();
+        }
+    }//GEN-LAST:event_jMenuItemDeleteDessertActionPerformed
+
     private void jMenuItemCreateDishEntryActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemCreateDishEntryActionPerformed
-           if (!CreateDishEntry.isVisible()) {
+        if (!CreateDishEntry.isVisible()) {
             CreateDishEntry.setMaximizable(true);
             dskEscritorio.add(CreateDishEntry);
             CreateDishEntry.show();
-        }   
+        }
     }//GEN-LAST:event_jMenuItemCreateDishEntryActionPerformed
 
     private void jMenuItemFindDishEntryActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemFindDishEntryActionPerformed
-            if (!FindDishEntry.isVisible()) {
+        if (!FindDishEntry.isVisible()) {
             FindDishEntry.setMaximizable(true);
             dskEscritorio.add(FindDishEntry);
             FindDishEntry.show();
@@ -358,7 +499,7 @@ public class GUIMenuFood extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_jMenuItemFindDishEntryActionPerformed
 
     private void jMenuItemModifyDishEntryActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemModifyDishEntryActionPerformed
-       if (!ModifyDishEntry.isVisible()) {
+        if (!ModifyDishEntry.isVisible()) {
             ModifyDishEntry.setMaximizable(true);
             dskEscritorio.add(ModifyDishEntry);
             ModifyDishEntry.show();
@@ -372,6 +513,73 @@ public class GUIMenuFood extends javax.swing.JInternalFrame {
             DeleteDishEntry.show();
         }
     }//GEN-LAST:event_jMenuItemDeleteDishEntryActionPerformed
+
+
+    private void jMenuItemCreateSaladActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemCreateSaladActionPerformed
+        if (!CreateSalad.isVisible()) {
+            CreateSalad.setMaximizable(true);
+            dskEscritorio.add(CreateSalad);
+            CreateSalad.show();
+        }
+    }//GEN-LAST:event_jMenuItemCreateSaladActionPerformed
+
+    private void jMenuItemFindSaladActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemFindSaladActionPerformed
+        if (!FindSalad.isVisible()) {
+            FindSalad.setMaximizable(true);
+            dskEscritorio.add(FindSalad);
+            FindSalad.show();
+        }
+    }//GEN-LAST:event_jMenuItemFindSaladActionPerformed
+
+    private void jMenuItemModifySaladActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemModifySaladActionPerformed
+        if (!ModifySalad.isVisible()) {
+            ModifySalad.setMaximizable(true);
+            dskEscritorio.add(ModifySalad);
+            ModifySalad.show();
+        }
+    }//GEN-LAST:event_jMenuItemModifySaladActionPerformed
+
+    private void jMenuItemDeleteSaladActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemDeleteSaladActionPerformed
+        if (!DeleteSalad.isVisible()) {
+            DeleteSalad.setMaximizable(true);
+            dskEscritorio.add(DeleteSalad);
+            DeleteSalad.show();
+        }
+    }//GEN-LAST:event_jMenuItemDeleteSaladActionPerformed
+
+    private void jMenuItemCreateDrinkActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemCreateDrinkActionPerformed
+
+        if (!CreateDrink.isVisible()) {
+            CreateDrink.setMaximizable(true);
+            dskEscritorio.add(CreateDrink);
+            CreateDrink.show();
+        }
+    }//GEN-LAST:event_jMenuItemCreateDrinkActionPerformed
+
+    private void jMenuItemFindDrinkActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemFindDrinkActionPerformed
+
+        if (!FindDrink.isVisible()) {
+            FindDrink.setMaximizable(true);
+            dskEscritorio.add(FindDrink);
+            FindDrink.show();
+        }
+    }//GEN-LAST:event_jMenuItemFindDrinkActionPerformed
+
+    private void jMenuItemModifyDrinkActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemModifyDrinkActionPerformed
+        if (!ModifyDrink.isVisible()) {
+            ModifyDrink.setMaximizable(true);
+            dskEscritorio.add(ModifyDrink);
+            ModifyDrink.show();
+        }
+    }//GEN-LAST:event_jMenuItemModifyDrinkActionPerformed
+
+    private void jMenuItemDeleteDrinkActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemDeleteDrinkActionPerformed
+        if (!DeleteDrink.isVisible()) {
+            DeleteDrink.setMaximizable(true);
+            dskEscritorio.add(DeleteDrink);
+            DeleteDrink.show();
+        }
+    }//GEN-LAST:event_jMenuItemDeleteDrinkActionPerformed
 
     /**
      * Metodo encargado de inicializar el formulario de menu para platos de

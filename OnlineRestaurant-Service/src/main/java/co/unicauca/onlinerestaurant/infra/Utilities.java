@@ -27,7 +27,7 @@ public class Utilities {
     public String getPwd() {
         return pwd;
     }
-    
+
     /**
      * Verifica si un String contiene sólo digitos
      *

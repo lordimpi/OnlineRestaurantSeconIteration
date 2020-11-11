@@ -31,8 +31,8 @@ public class Factory {
      *
      * @return una clase hija de la abstracción IRepositorioClientes
      */
-    public ICustomerAccess getCustomerService() {
-        return new CustomerAccessREST();
+    public IUserAccess getCustomerService() {
+        return new UserAccessREST();
     }
 
     /**

@@ -16,8 +16,8 @@ import javax.swing.table.TableModel;
  * @author Santiago Acuña
  */
 public class GUIDeleteDishEntry extends javax.swing.JInternalFrame {
-    
-     private List<DishEntry> platosEntrada = new ArrayList<>();
+
+    private List<DishEntry> platosEntrada = new ArrayList<>();
 
     /**
      * Creates new form GUIUpdateDishe
@@ -161,7 +161,7 @@ public class GUIDeleteDishEntry extends javax.swing.JInternalFrame {
 
         IEntryAccess service = Factory.getInstance().getEntryService();
         // Inyecta la dependencia
-        EntryService EntryService = new  EntryService(service);
+        EntryService EntryService = new EntryService(service);
         if (id.equals("")) {
             jTxfID.requestFocus();
             Messages.warningMessage("Debe ingresar un ID para poder borrar un registro", "Warning");
@@ -175,6 +175,8 @@ public class GUIDeleteDishEntry extends javax.swing.JInternalFrame {
                     return;
                 }
 
+            } else {
+                return;
             }
         } catch (Exception ex) {
             successMessage(ex.getMessage(), "Atención");
