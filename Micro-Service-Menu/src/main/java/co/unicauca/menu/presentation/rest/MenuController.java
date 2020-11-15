@@ -48,14 +48,26 @@ public class MenuController {
 
     /*
         Su uso desde consola mediante client url:
-            curl -X GET http://localhost:8085/Micro-Service-Menu/menu-service/menus/Hunngry 
+            curl -X GET http://localhost:8085/Micro-Service-Menu/menu-service/menus/list/Hunngry 
 
      */
     @GET
-    @Path("{rn}")
+    @Path("/list/{rn}")
     @Produces({MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML})
     public List<Menu> findMbyRN(@PathParam("rn") String rn) {
         return service.findMbyRN(rn);
+    }
+    
+      /*
+        Su uso desde consola mediante client url:
+            curl -X GET http://localhost:8085/Micro-Service-Menu/menu-service/menus/1
+
+     */
+    @GET
+    @Path("{id}")
+    @Produces({MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML})
+    public Menu findById(@PathParam("id") String id) {
+        return service.findById(id);
     }
 
 
