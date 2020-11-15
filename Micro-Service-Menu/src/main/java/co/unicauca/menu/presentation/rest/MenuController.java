@@ -38,7 +38,7 @@ public class MenuController {
 
     /*
         Su uso desde consola mediante client url:
-        curl -X GET http://localhost:8085/OnlineRestaurant-Service/restaurant-service/menus/ 
+        curl -X GET http://localhost:8085/Micro-Service-Menu/menu-service/menus/ 
 
      */
     @GET
@@ -49,7 +49,7 @@ public class MenuController {
 
     /*
         Su uso desde consola mediante client url:
-        curl -X GET http://localhost:8085/OnlineRestaurant-Service/restaurant-service/menus/1 
+        curl -X GET http://localhost:8085/Micro-Service-Menu/menu-service/menus/1 
 
      */
     @GET
@@ -62,9 +62,26 @@ public class MenuController {
     /*
         Su uso desde consola mediante client url:
         curl -X POST \
-          http://localhost:8085/OnlineRestaurant-Service/restaurant-service/menus/ \
+         http://localhost:8085/Micro-Service-Menu/menu-service/menus/ \
           -H 'Content-Type: application/json' \
-        
+        {
+     "dessert": {
+        "id_Dish_Dessert": "2"
+    },
+    "drink": {
+        "id_Drink": "2"   
+    },
+    "entry": {
+        "idDishEntry": "2"
+    },
+    "id_menu": "1000",
+    "maindish": {
+        "id_mainDish": "1"    
+    },
+    "salad": {
+        "idSalad": "1"
+    }
+}
      */
     @POST
     @Consumes({MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON})
@@ -81,12 +98,26 @@ public class MenuController {
     /*
         Su uso desde consola mediante client url:
         curl -X PUT \
-          http://localhost:8085/OnlineRestaurant-Service/restaurant-service/menus/1 \
+          http://localhost:8085/Micro-Service-Menu/menu-service/menus/1000 \
           -H 'Content-Type: application/json' \
           -d '{
-               "name":"Menu de fres REF. JDK3-34-343",
-               "price":6000
-        }'
+    "dessert": {
+        "id_Dish_Dessert": "2"
+    },
+    "drink": {
+        "id_Drink": "2"   
+    },
+    "entry": {
+        "idDishEntry": "2"
+    },
+    "id_menu": "1000",
+    "maindish": {
+        "id_mainDish": "1"    
+    },
+    "salad": {
+        "idSalad": "1"
+    }
+}'
      */
     @PUT
     @Path("{id}")
@@ -104,7 +135,7 @@ public class MenuController {
 
     /*
         Su uso desde consola mediante client url:
-        curl -X DELETE http://localhost:8085/OnlineRestaurant-Service/restaurant-service/menus/1
+        curl -X DELETE http://localhost:8085/Micro-Service-Menu/menu-service/menus/1000
 
      */
     @DELETE
