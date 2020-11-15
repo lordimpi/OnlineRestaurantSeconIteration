@@ -98,4 +98,13 @@ public class Factory {
     public IEntryAccess getEntryService() {
         return new EntryAccessREST();
     }
+
+    /**
+     * Método que crea una instancia concreta de la jerarquia IUserService
+     *
+     * @return una clase hija de la abstracción IRepositorioUser
+     */
+    public IUserAccess getUserService() {
+        return new UserAccessREST();
+    }
 }

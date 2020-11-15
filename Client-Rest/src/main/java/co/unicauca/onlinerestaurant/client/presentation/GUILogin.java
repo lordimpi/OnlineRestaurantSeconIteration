@@ -230,9 +230,16 @@ public class GUILogin extends javax.swing.JFrame {
      */
     private void BtnIngresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnIngresarActionPerformed
 
-
+        IUserAccess service = Factory.getInstance().getUserService();
+        UserService userService = new UserService(service);
+        User user = new User();
+        try {
+            user = userService.findUser("1");
+        } catch (Exception ex) {
+            Logger.getLogger(GUILogin.class.getName()).log(Level.SEVERE, null, ex);
+        }
         //Aqui vendria el analizar si el usuario existe en el sistema
-        if (true) {
+        if ("admin".equals(user.getRol())) {
             java.awt.EventQueue.invokeLater(new Runnable() {
                 public void run() {
                     GUIMenuAdmin ins = null;
