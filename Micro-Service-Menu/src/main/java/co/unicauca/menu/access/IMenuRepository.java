@@ -9,11 +9,22 @@ import java.util.List;
  * @author Julian Rodriguez
  */
 public interface IMenuRepository {
-    
+    /**
+     * Declaracion de busqueda de todos los menus
+     * @return 
+     */
     List<Menu> findAll();
+    
+    /**
+     * Declaracion del metodo buscar todos los menus por restaurante
+     * 
+     * @param resName 
+     * @return 
+     */
+    List<Menu> findMbyRN(String resName);
 
      /**
-     * Declaracion del metodo buscar plato
+     * Declaracion del metodo buscar 
      *
      * @param id Identificador de un menu
      * @return un menu

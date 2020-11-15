@@ -47,6 +47,17 @@ public class MenuService {
         List<Menu> menus = repository.findAll();
         return menus;
     }
+    
+    
+       /**
+     * Busca todos los menus
+     *
+     * @return lista de menus
+     */
+    public List<Menu> findMbyRN(String rsName) {
+        List<Menu> menus = repository.findMbyRN(rsName);
+        return menus;
+    }
 
     /**
      * Crea un nuevo menu

@@ -31,6 +31,8 @@ public class MenuRepository implements IMenuRepository {
     public MenuRepository() {
     }
 
+
+    
     @Override
     public List<Menu> findAll() {
         List<Menu> menus = new ArrayList<>();
@@ -241,5 +243,63 @@ public class MenuRepository implements IMenuRepository {
             Logger.getLogger(MenuRepository.class.getName()).log(Level.SEVERE, "Error al cerrar conexión de la base de datos", ex);
         }
 
+    }
+
+    @Override
+    public List<Menu> findMbyRN(String resName) {
+         List<Menu> menus = new ArrayList<>();
+        try {
+             MainDish md = null;
+            Drink d = null;
+            DishEntry de = null;
+            Salad s = null;
+            Dessert des = null;
+            
+            String sql = "SELECT * from menu join maindish on menu.id_maindish=maindish.id_dish join salad on menu.id_salad=salad.idsalad join dishentry on menu.id_entry=dishentry.idDishEntry join dessert on menu.id_dessert=dessert.id_dessert join drink on menu.id_drink=drink.id_drink join restaurant on menu.id_menu=restaurant.id_lu_menu or menu.id_menu=restaurant.id_ma_menu or menu.id_menu=restaurant.id_mi_menu or menu.id_menu=restaurant.id_ju_menu or menu.id_menu=restaurant.id_vi_menu or menu.id_menu=restaurant.id_sa_menu where restaurant.name_restaurant= '"+resName+ "' ORDER by menu.id_menu"; 
+            this.connect();
+            Statement stmt = conn.createStatement();
+            ResultSet rs = stmt.executeQuery(sql);
+            while (rs.next()) {
+                Menu menu = new Menu();
+                md = new MainDish();
+                d = new Drink();
+                de = new DishEntry();
+                s = new Salad();
+                des = new Dessert();
+                md.setId_mainDish(rs.getString("id_dish"));
+                md.setDishPrice(rs.getDouble("dish_price"));
+                md.setNameDish(rs.getString("dish_name"));
+
+                d.setDrinkPrice(rs.getDouble("drink_price"));
+                d.setId_Drink(rs.getString("id_drink"));
+                d.setNameDrink(rs.getString("drink_name"));
+
+                de.setCostDishEntry(rs.getDouble("costDishEntry"));
+                de.setIdDishEntry(rs.getString("idDishEntry"));
+                de.setNameDishEntry(rs.getString("nameDishEntry"));
+
+                s.setCostSalad(rs.getDouble("pricesalada"));
+                s.setIdSalad(rs.getString("idsalad"));
+                s.setNameSalad(rs.getString("namesalad"));
+
+                des.setCost_Dish_Dessert(rs.getDouble("dessert_price"));
+                des.setId_Dish_Dessert(rs.getString("id_dessert"));
+                des.setName_Dish_Dessert(rs.getString("dessert_name"));
+
+                menu.setId_menu(rs.getString("id_menu"));
+                menu.setMaindish(md);
+                menu.setEntry(de);
+                menu.setDrink(d);
+                menu.setSalad(s);
+                menu.setDessert(des);
+
+                menus.add(menu);
+            }
+            this.disconnect();
+
+        } catch (SQLException ex) {
+            Logger.getLogger(MenuRepository.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return menus;
     }
 }

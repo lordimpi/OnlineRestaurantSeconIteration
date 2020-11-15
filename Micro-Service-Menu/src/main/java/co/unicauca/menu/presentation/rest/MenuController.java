@@ -1,6 +1,5 @@
 package co.unicauca.menu.presentation.rest;
 
-
 import co.unicauca.common.domain.entity.Menu;
 
 import co.unicauca.menu.domain.service.MenuService;
@@ -49,15 +48,16 @@ public class MenuController {
 
     /*
         Su uso desde consola mediante client url:
-        curl -X GET http://localhost:8085/Micro-Service-Menu/menu-service/menus/1 
+            curl -X GET http://localhost:8085/Micro-Service-Menu/menu-service/menus/Hunngry 
 
      */
     @GET
-    @Path("{id}")
+    @Path("{rn}")
     @Produces({MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML})
-    public Menu findById(@PathParam("id") String id) {
-        return service.findById(id);
+    public List<Menu> findMbyRN(@PathParam("rn") String rn) {
+        return service.findMbyRN(rn);
     }
+
 
     /*
         Su uso desde consola mediante client url:
