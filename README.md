@@ -80,7 +80,12 @@ Tables creations
 	ALTER TABLE menu ADD CONSTRAINT FK_IDmaindish FOREIGN KEY (id_maindish) REFERENCES maindish(id_dish);
 	ALTER TABLE menu ADD CONSTRAINT FK_IDdessert FOREIGN KEY (id_dessert) REFERENCES dessert(id_dessert);
 	ALTER TABLE menu ADD CONSTRAINT FK_IDdrink FOREIGN KEY (id_drink) REFERENCES drink(id_drink);
-	ALTER TABLE restaurant ADD CONSTRAINT FK_IDmenu FOREIGN KEY (id_wmenu) REFERENCES menu(id_menu);
+	ALTER TABLE restaurant ADD CONSTRAINT FK_ID_lu_menu FOREIGN KEY (id_lu_menu) REFERENCES menu(id_menu);
+	ALTER TABLE restaurant ADD CONSTRAINT FK_ID_ma_menu FOREIGN KEY (id_ma_menu) REFERENCES menu(id_menu);
+	ALTER TABLE restaurant ADD CONSTRAINT FK_ID_mi_menu FOREIGN KEY (id_mi_menu) REFERENCES menu(id_menu);
+	ALTER TABLE restaurant ADD CONSTRAINT FK_ID_ju_menu FOREIGN KEY (id_ju_menu) REFERENCES menu(id_menu);
+	ALTER TABLE restaurant ADD CONSTRAINT FK_ID_vi_menu FOREIGN KEY (id_vi_menu) REFERENCES menu(id_menu);
+	ALTER TABLE restaurant ADD CONSTRAINT FK_ID_sa_menu FOREIGN KEY (id_sa_menu) REFERENCES menu(id_menu);
 ```
 Inserts
 ```ssh
