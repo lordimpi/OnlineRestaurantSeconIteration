@@ -35,6 +35,16 @@ public class UserService {
     }
 
     /**
+     * Busca un usuario por su Email
+     *
+     * @param email email del usuario
+     * @return usuario, o null, si no lo encuentra
+     */
+    public User findByEmail(String email) {
+        return repository.findByEmail(email);
+    }
+
+    /**
      * Hace la inyeccion de dependencias de forma automatica
      *
      * @param repository Guarda la inyeccion de dependecias

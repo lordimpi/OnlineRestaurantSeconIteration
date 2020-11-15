@@ -37,6 +37,19 @@ public class UserService {
     /**
      * Busca un cliente en el servidor remoto
      *
+     * @param email identificador del cliente
+     * @return Objeto tipo Cliente, null si no lo encuentra
+     * @throws java.lang.Exception la excepcio se lanza cuando no logra conexión
+     * con el servidor
+     */
+    public User findUserEmail(String email) throws Exception {
+        return service.findUserEmail(email);
+
+    }
+
+    /**
+     * Busca un cliente en el servidor remoto
+     *
      * @param id Identificador del usuario
      * @param firstname nombre del usuario
      * @param lastname apellido del usuario
