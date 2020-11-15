@@ -34,12 +34,18 @@ Tables creations
 		`drink_price` INT(40) NOT NULL , 
 		PRIMARY KEY (`id_drink`)) ENGINE = InnoDB;
 
-	CREATE TABLE `restaurante`.`restaurant` ( 
+
+        CREATE TABLE `restaurante`.`restaurant` (  
 		`idres` VARCHAR(10) NOT NULL , 
 		`name_restaurant` VARCHAR(40) NOT NULL , 
 		`address_restaurant` VARCHAR(40) NOT NULL , 
 		`phone` VARCHAR(40) NOT NULL , 
-		`id_wmenu` VARCHAR(10) NULL , 
+		`id_lu_menu` VARCHAR(10) NULL ,
+  		`id_ma_menu` VARCHAR(10) NULL ,
+    		`id_mi_menu` VARCHAR(10) NULL ,
+    		`id_ju_menu` VARCHAR(10) NULL ,
+    		`id_vi_menu` VARCHAR(10) NULL ,
+    		`id_sa_menu` VARCHAR(10) NULL ,
 		PRIMARY KEY (`idres`)) ENGINE = InnoDB;
 
 	CREATE TABLE `restaurante`.`dessert` ( 
