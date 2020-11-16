@@ -2,8 +2,8 @@ package co.unicauca.restaurant.presentation.rest;
 
 import co.unicauca.common.domain.entity.User;
 import co.unicauca.restaurant.domain.service.RestaurantService;
-import co.unicauca.restaurant.infra.DomainErrors;
-import co.unicauca.restaurant.infra.JsonResponse;
+import co.unicauca.common.infra.DomainErrors;
+import co.unicauca.common.infra.JsonResponse;
 import java.util.List;
 import javax.ejb.Stateless;
 import javax.inject.Inject;

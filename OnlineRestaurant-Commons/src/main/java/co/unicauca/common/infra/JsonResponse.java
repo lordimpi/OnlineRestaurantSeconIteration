@@ -1,4 +1,4 @@
-package co.unicauca.user.infra;
+package co.unicauca.common.infra;
 
 import java.util.List;
 

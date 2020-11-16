@@ -8,7 +8,7 @@ import java.util.List;
  * @author Camilo Otaya
  */
 public interface IDessertRepository {
-    
+
     List<Dessert> findAll();
 
     Dessert findById(String id);
@@ -18,5 +18,5 @@ public interface IDessertRepository {
     boolean update(Dessert newDessert);
 
     boolean delete(String id);
-    
+
 }

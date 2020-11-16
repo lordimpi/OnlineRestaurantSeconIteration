@@ -1,10 +1,9 @@
 package co.unicauca.dish.presentation.rest;
 
 import co.unicauca.common.domain.entity.Dessert;
-
 import co.unicauca.dish.domain.service.DessertService;
-import co.unicauca.dish.infra.DomainErrors;
-import co.unicauca.dish.infra.JsonResponse;
+import co.unicauca.common.infra.DomainErrors;
+import co.unicauca.common.infra.JsonResponse;
 import java.util.List;
 import javax.ejb.Stateless;
 import javax.inject.Inject;

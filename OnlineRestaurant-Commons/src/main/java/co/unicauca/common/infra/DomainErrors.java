@@ -1,4 +1,4 @@
-package co.unicauca.dish.infra;
+package co.unicauca.common.infra;
 
 import java.util.ArrayList;
 import java.util.List;

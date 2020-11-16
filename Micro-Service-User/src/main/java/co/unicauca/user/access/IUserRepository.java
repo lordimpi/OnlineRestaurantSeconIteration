@@ -26,6 +26,15 @@ public interface IUserRepository {
     User findById(String id);
 
     /**
+     * Declaracion del metodo buscar usuario por Email para ser utilizado por la
+     * API REST
+     *
+     * @param email Identificador del usuario
+     * @return Retorna un usuario
+     */
+    User findByEmail(String email);
+
+    /**
      * Declaracion del metodo crear usuario para ser utilizado por la API REST
      *
      * @param newUser Objeto de tipo usuario a crear

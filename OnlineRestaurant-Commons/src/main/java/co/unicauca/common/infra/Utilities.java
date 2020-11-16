@@ -1,4 +1,4 @@
-package co.unicauca.menu.infra;
+package co.unicauca.common.infra;
 
 import java.io.FileInputStream;
 import java.io.IOException;

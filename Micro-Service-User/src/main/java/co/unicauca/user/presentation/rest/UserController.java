@@ -2,8 +2,8 @@ package co.unicauca.user.presentation.rest;
 
 import co.unicauca.common.domain.entity.User;
 import co.unicauca.user.domain.service.UserService;
-import co.unicauca.user.infra.DomainErrors;
-import co.unicauca.user.infra.JsonResponse;
+import co.unicauca.common.infra.DomainErrors;
+import co.unicauca.common.infra.JsonResponse;
 import java.util.List;
 import javax.ejb.Stateless;
 import javax.inject.Inject;
@@ -55,6 +55,18 @@ public class UserController {
     @Produces({MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML})
     public User findById(@PathParam("id") String id) {
         return service.findById(id);
+    }
+
+    /*
+        Su uso desde consola mediante client url:
+        curl -X GET http://localhost:8085/Micro-Service-User/user-service/users/email/alejo@rc.com 
+
+     */
+    @GET
+    @Path("/email/{email}")
+    @Produces({MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML})
+    public User findByEmail(@PathParam("email") String email) {
+        return service.findByEmail(email);
     }
 
     /*

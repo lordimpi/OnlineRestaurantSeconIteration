@@ -20,6 +20,15 @@ public interface IUserAccess {
     public User findUser(String id) throws Exception;
 
     /**
+     * Buscar un usuario consumiendo un API REST
+     *
+     * @param email identificado del usuario
+     * @return objeto usuario
+     * @throws Exception error al buscar un usuario
+     */
+    public User findUserEmail(String email) throws Exception;
+
+    /**
      * Actualiza un usuario consumiendo un API REST
      *
      * @param id Identificador del usuario

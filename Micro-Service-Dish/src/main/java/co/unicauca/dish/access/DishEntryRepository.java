@@ -1,7 +1,7 @@
 package co.unicauca.dish.access;
 
 import co.unicauca.common.domain.entity.DishEntry;
-import co.unicauca.dish.infra.Utilities;
+import co.unicauca.common.infra.Utilities;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -181,7 +181,7 @@ public class DishEntryRepository implements IDishEntryRepository {
         try {
             //Class.forName(Utilities.loadProperty("server.db.driver"));
             //crea una instancia de la controlador de la base de datos
-             Utilities ut = new Utilities();
+            Utilities ut = new Utilities();
             conn = DriverManager.getConnection(ut.getUrl(), ut.getUsername(), ut.getPwd());
         } catch (SQLException ex) {
             Logger.getLogger(MainDishRepository.class.getName()).log(Level.SEVERE, null, ex);
