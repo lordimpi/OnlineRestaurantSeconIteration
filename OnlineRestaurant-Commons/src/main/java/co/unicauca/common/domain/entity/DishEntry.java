@@ -64,4 +64,8 @@ public class DishEntry {
         this.costDishEntry = costDishEntry;
     }
 
+    @Override
+    public String toString() {
+        return getNameDishEntry();
+    }
 }

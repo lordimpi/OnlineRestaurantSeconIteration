@@ -63,4 +63,9 @@ public class Drink {
     public void setDrinkPrice(Double drinkPrice) {
         this.drinkPrice = drinkPrice;
     }
+
+    @Override
+    public String toString() {
+        return getNameDrink();
+    }
 }

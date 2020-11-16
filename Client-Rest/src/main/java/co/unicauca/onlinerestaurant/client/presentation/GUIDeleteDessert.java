@@ -175,7 +175,6 @@ public class GUIDeleteDessert extends javax.swing.JInternalFrame {
                     return;
                 }
             } else {
-
                 return;
             }
         } catch (Exception ex) {
@@ -222,7 +221,7 @@ public class GUIDeleteDessert extends javax.swing.JInternalFrame {
         DessertService dessert = new DessertService(service);
 
         try {
-            postres = dessert.listDishes();
+            postres = dessert.listDesserts();
         } catch (Exception ex) {
             successMessage(ex.getMessage(), "Atención");
         }

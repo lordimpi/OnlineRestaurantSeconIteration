@@ -21,6 +21,10 @@ import co.unicauca.common.domain.entity.Drink;
 import co.unicauca.common.domain.entity.MainDish;
 import co.unicauca.common.domain.entity.Menu;
 import co.unicauca.common.domain.entity.Salad;
+import java.util.ArrayList;
+import java.util.List;
+import javax.swing.DefaultComboBoxModel;
+import javax.swing.table.TableModel;
 
 /**
  *
@@ -29,16 +33,46 @@ import co.unicauca.common.domain.entity.Salad;
 public class GUIShowMenuAdmin extends javax.swing.JInternalFrame {
 
     String restaurantname;
-    Menu menu;
+    private Menu menu;
+
+    /**
+     * Lista de menus del restaurante
+     */
+    private List<Menu> menus = new ArrayList<>();
+    /**
+     * Lista de platos del restaurante
+     */
+    private List<MainDish> mainDishes = new ArrayList<>();
+    /**
+     * Lista ensaladas del restaurante
+     */
+    private List<Salad> salads = new ArrayList<>();
+    /**
+     * Lista de postres del restaurante
+     */
+    private List<Dessert> desserts = new ArrayList<>();
+    /**
+     * Lista de entradas del restaurantes
+     */
+    private List<DishEntry> dishEntries = new ArrayList<>();
+    /**
+     * Lista de jugos del restaurante
+     */
+    private List<Drink> drinks = new ArrayList<>();
 
     /**
      * Creates new form GUIUpdateDishe
+     *
+     * @param RestaurantN Nombre del restaurante
+     * @throws java.lang.Exception
      */
     public GUIShowMenuAdmin(String RestaurantN) throws Exception {
         initComponents();
         menu = new Menu();
         restaurantname = RestaurantN;
-//        imprimirMenu();
+        cargarListas();
+        mostrarTabla();
+        loadDataCombo();
     }
 
     /**
@@ -54,46 +88,37 @@ public class GUIShowMenuAdmin extends javax.swing.JInternalFrame {
         jtxtnamerestaurant = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
         jPnSur = new javax.swing.JPanel();
+        BntAgregar = new javax.swing.JButton();
         BntModificar = new javax.swing.JButton();
+        BntEliminar = new javax.swing.JButton();
         jBtnCancelar = new javax.swing.JButton();
+        jBtnRecargarTabla = new javax.swing.JButton();
         jPnCentro = new javax.swing.JPanel();
-        jLabel2 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
-        jLabel5 = new javax.swing.JLabel();
-        jLabel6 = new javax.swing.JLabel();
-        entry = new javax.swing.JTextField();
-        drink = new javax.swing.JTextField();
-        maindish = new javax.swing.JTextField();
-        salad = new javax.swing.JTextField();
-        txtnamedessert = new javax.swing.JTextField();
-        BtnBuscarEntry = new javax.swing.JButton();
-        BtnBuscarDrink = new javax.swing.JButton();
-        BtnBuscarMainDish = new javax.swing.JButton();
-        BtnBuscarSalad = new javax.swing.JButton();
-        BtnBuscarDessert = new javax.swing.JButton();
-        jTxIDDrink = new javax.swing.JTextField();
-        jLabel7 = new javax.swing.JLabel();
-        jTxIDMainDish = new javax.swing.JTextField();
-        jTxIDSalad = new javax.swing.JTextField();
-        jTxIDEntry = new javax.swing.JTextField();
-        jTxIDDessert = new javax.swing.JTextField();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jTblMenus = new javax.swing.JTable();
+        jPnlCenDer = new javax.swing.JPanel();
+        jLbID = new javax.swing.JLabel();
+        jTxfID = new javax.swing.JTextField();
+        jLbPlatoPrincipal = new javax.swing.JLabel();
+        jCbxPlatoPrincipal = new javax.swing.JComboBox<>();
+        jLbBebida = new javax.swing.JLabel();
+        jCbxBebida = new javax.swing.JComboBox<>();
+        jLbEnsalada = new javax.swing.JLabel();
+        jCbxEnsalada = new javax.swing.JComboBox<>();
+        jLbEntrada = new javax.swing.JLabel();
+        jCbxEntrada = new javax.swing.JComboBox<>();
+        jLbPostre = new javax.swing.JLabel();
+        jCbxPostre = new javax.swing.JComboBox<>();
 
         setClosable(true);
         setMaximizable(true);
         setResizable(true);
-        setTitle("Mostrar Menu");
-        setPreferredSize(new java.awt.Dimension(495, 329));
+        setTitle("Menus");
+        setPreferredSize(new java.awt.Dimension(700, 394));
 
         jPnNorte.setBackground(new java.awt.Color(54, 33, 88));
         jPnNorte.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         jPnNorte.setPreferredSize(new java.awt.Dimension(450, 50));
-
-        jtxtnamerestaurant.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jtxtnamerestaurantActionPerformed(evt);
-            }
-        });
 
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setText("Menu de la semana del Restaurante:");
@@ -107,14 +132,14 @@ public class GUIShowMenuAdmin extends javax.swing.JInternalFrame {
                 .addComponent(jLabel1)
                 .addGap(27, 27, 27)
                 .addComponent(jtxtnamerestaurant, javax.swing.GroupLayout.PREFERRED_SIZE, 159, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(175, Short.MAX_VALUE))
+                .addContainerGap(240, Short.MAX_VALUE))
         );
         jPnNorteLayout.setVerticalGroup(
             jPnNorteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPnNorteLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPnNorteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 23, Short.MAX_VALUE)
+                    .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jtxtnamerestaurant, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(14, 14, 14))
         );
@@ -125,6 +150,14 @@ public class GUIShowMenuAdmin extends javax.swing.JInternalFrame {
         jPnSur.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         jPnSur.setPreferredSize(new java.awt.Dimension(450, 50));
 
+        BntAgregar.setText("Agregar");
+        BntAgregar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BntAgregarActionPerformed(evt);
+            }
+        });
+        jPnSur.add(BntAgregar);
+
         BntModificar.setText("Modificar");
         BntModificar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -132,6 +165,14 @@ public class GUIShowMenuAdmin extends javax.swing.JInternalFrame {
             }
         });
         jPnSur.add(BntModificar);
+
+        BntEliminar.setText("Eliminar");
+        BntEliminar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BntEliminarActionPerformed(evt);
+            }
+        });
+        jPnSur.add(BntEliminar);
 
         jBtnCancelar.setText("Cancelar");
         jBtnCancelar.addActionListener(new java.awt.event.ActionListener() {
@@ -141,143 +182,101 @@ public class GUIShowMenuAdmin extends javax.swing.JInternalFrame {
         });
         jPnSur.add(jBtnCancelar);
 
+        jBtnRecargarTabla.setText("Recargar");
+        jBtnRecargarTabla.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBtnRecargarTablaActionPerformed(evt);
+            }
+        });
+        jPnSur.add(jBtnRecargarTabla);
+
         getContentPane().add(jPnSur, java.awt.BorderLayout.PAGE_END);
 
-        jLabel2.setText("Entrada:");
+        jPnCentro.setLayout(new java.awt.BorderLayout());
+        getContentPane().add(jPnCentro, java.awt.BorderLayout.LINE_START);
 
-        jLabel3.setText("Bebida:");
+        jTblMenus = new javax.swing.JTable(){
+            public boolean isCellEditable(int rowIndex, int colIndex){
+                return false;
+            }
+        };
+        jTblMenus.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null}
+            },
+            new String [] {
+                "ID", "Plato Principal", "Bebida", "Ensalada", "Entrada", "Postre"
+            }
+        ) {
+            Class[] types = new Class [] {
+                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
+            };
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false, false, false
+            };
 
-        jLabel4.setText("Plato principal:");
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
 
-        jLabel5.setText("Ensalada:");
-
-        jLabel6.setText("Postre:");
-
-        salad.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                saladActionPerformed(evt);
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
             }
         });
-
-        BtnBuscarEntry.setText("Buscar");
-        BtnBuscarEntry.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BtnBuscarEntryActionPerformed(evt);
+        jTblMenus.setFocusable(false);
+        jTblMenus.setRowHeight(30);
+        jTblMenus.getTableHeader().setReorderingAllowed(false);
+        jTblMenus.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jTblMenusMouseClicked(evt);
             }
         });
+        jScrollPane1.setViewportView(jTblMenus);
 
-        BtnBuscarDrink.setText("Buscar");
-        BtnBuscarDrink.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BtnBuscarDrinkActionPerformed(evt);
-            }
-        });
+        getContentPane().add(jScrollPane1, java.awt.BorderLayout.CENTER);
 
-        BtnBuscarMainDish.setText("Buscar");
-        BtnBuscarMainDish.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BtnBuscarMainDishActionPerformed(evt);
-            }
-        });
+        jPnlCenDer.setPreferredSize(new java.awt.Dimension(200, 290));
+        jPnlCenDer.setLayout(new java.awt.GridLayout(6, 2));
 
-        BtnBuscarSalad.setText("Buscar");
-        BtnBuscarSalad.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BtnBuscarSaladActionPerformed(evt);
-            }
-        });
+        jLbID.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLbID.setText("ID:");
+        jPnlCenDer.add(jLbID);
+        jPnlCenDer.add(jTxfID);
 
-        BtnBuscarDessert.setText("Buscar");
-        BtnBuscarDessert.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BtnBuscarDessertActionPerformed(evt);
-            }
-        });
+        jLbPlatoPrincipal.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLbPlatoPrincipal.setText("Plato Principal:");
+        jPnlCenDer.add(jLbPlatoPrincipal);
 
-        jLabel7.setText("ID");
+        jPnlCenDer.add(jCbxPlatoPrincipal);
 
-        javax.swing.GroupLayout jPnCentroLayout = new javax.swing.GroupLayout(jPnCentro);
-        jPnCentro.setLayout(jPnCentroLayout);
-        jPnCentroLayout.setHorizontalGroup(
-            jPnCentroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPnCentroLayout.createSequentialGroup()
-                .addGap(44, 44, 44)
-                .addGroup(jPnCentroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPnCentroLayout.createSequentialGroup()
-                        .addComponent(jLabel7)
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addGroup(jPnCentroLayout.createSequentialGroup()
-                        .addGroup(jPnCentroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jTxIDMainDish, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jTxIDDrink, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jTxIDSalad, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jTxIDDessert, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jTxIDEntry, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(jPnCentroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel2)
-                            .addComponent(jLabel3)
-                            .addComponent(jLabel4)
-                            .addComponent(jLabel5)
-                            .addComponent(jLabel6))
-                        .addGap(18, 18, 18)
-                        .addGroup(jPnCentroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(entry, javax.swing.GroupLayout.DEFAULT_SIZE, 286, Short.MAX_VALUE)
-                            .addComponent(drink, javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(maindish)
-                            .addComponent(salad)
-                            .addComponent(txtnamedessert))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 77, Short.MAX_VALUE)
-                        .addGroup(jPnCentroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPnCentroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(BtnBuscarEntry, javax.swing.GroupLayout.Alignment.TRAILING)
-                                .addComponent(BtnBuscarDrink, javax.swing.GroupLayout.Alignment.TRAILING)
-                                .addComponent(BtnBuscarMainDish, javax.swing.GroupLayout.Alignment.TRAILING))
-                            .addComponent(BtnBuscarSalad)
-                            .addComponent(BtnBuscarDessert))))
-                .addContainerGap())
-        );
-        jPnCentroLayout.setVerticalGroup(
-            jPnCentroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPnCentroLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 14, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPnCentroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPnCentroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jLabel2)
-                        .addComponent(jTxIDEntry, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPnCentroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(entry, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(BtnBuscarEntry)))
-                .addGap(18, 18, 18)
-                .addGroup(jPnCentroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel3)
-                    .addComponent(drink, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(BtnBuscarDrink)
-                    .addComponent(jTxIDDrink, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(jPnCentroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel4)
-                    .addComponent(maindish, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(BtnBuscarMainDish)
-                    .addComponent(jTxIDMainDish, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(jPnCentroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel5)
-                    .addComponent(salad, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(BtnBuscarSalad)
-                    .addComponent(jTxIDSalad, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(jPnCentroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel6)
-                    .addComponent(txtnamedessert, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(BtnBuscarDessert)
-                    .addComponent(jTxIDDessert, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(33, Short.MAX_VALUE))
-        );
+        jLbBebida.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLbBebida.setText("Bebida:");
+        jPnlCenDer.add(jLbBebida);
 
-        getContentPane().add(jPnCentro, java.awt.BorderLayout.CENTER);
+        jPnlCenDer.add(jCbxBebida);
+
+        jLbEnsalada.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLbEnsalada.setText("Ensalada:");
+        jPnlCenDer.add(jLbEnsalada);
+
+        jPnlCenDer.add(jCbxEnsalada);
+
+        jLbEntrada.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLbEntrada.setText("Entrada:");
+        jPnlCenDer.add(jLbEntrada);
+
+        jPnlCenDer.add(jCbxEntrada);
+
+        jLbPostre.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLbPostre.setText("Postre:");
+        jPnlCenDer.add(jLbPostre);
+
+        jPnlCenDer.add(jCbxPostre);
+
+        getContentPane().add(jPnlCenDer, java.awt.BorderLayout.LINE_END);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -287,181 +286,142 @@ public class GUIShowMenuAdmin extends javax.swing.JInternalFrame {
         this.doDefaultCloseAction();
     }//GEN-LAST:event_jBtnCancelarActionPerformed
 
-    private void jtxtnamerestaurantActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtxtnamerestaurantActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jtxtnamerestaurantActionPerformed
-
-    private void saladActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_saladActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_saladActionPerformed
-
+    /**
+     * Modifica un menu de la base de datos mediante un Id
+     *
+     * @param evt Evento del boton modificar menu
+     */
     private void BntModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BntModificarActionPerformed
-
+        if (jTxfID.getText().equals("")) {
+            Messages.warningMessage("Campos vacios: Error al modificar", "Warning");
+            return;
+        }
         boolean men;
-        String id_dish = jTxIDMainDish.getText();
-        String id_drink = jTxIDDrink.getText();
-        String id_entry = jTxIDEntry.getText();
-        String id_salad = jTxIDSalad.getText();
-        String id_dessert = jTxIDDessert.getText();
 
         IMenuAccess service = Factory.getInstance().getMenuService();
         // Inyecta la dependencia
         MenuService menuService = new MenuService(service);
-
-        if (id_dish.equals("") || id_drink.equals("") || id_entry.equals("") || id_salad.equals("") || id_dessert.equals("")) {
-            Messages.warningMessage("Campos vacios: Error al modificar", "Warning");
-            return;
-        }
+        Menu myMenu = new Menu();
+        myMenu.setId_menu(jTxfID.getText());
+        myMenu.setMaindish((MainDish) jCbxPlatoPrincipal.getSelectedItem());
+        myMenu.setDessert((Dessert) jCbxPostre.getSelectedItem());
+        myMenu.setDrink((Drink) jCbxBebida.getSelectedItem());
+        myMenu.setSalad((Salad) jCbxEnsalada.getSelectedItem());
+        myMenu.setEntry((DishEntry) jCbxEntrada.getSelectedItem());
         men = false;
         try {
-            men = menuService.updateMenu(menu.getId_menu(), id_dish, id_drink, id_entry, id_salad, id_dessert);
+            men = menuService.updateMenu(myMenu.getId_menu(),myMenu);
         } catch (Exception ex) {
 
             successMessage(ex.getMessage(), "Atención");
             return;
         }
         if (men) {
+            eliminarItemMenu(jTxfID.getText());
+            menus.add(myMenu);
+            mostrarTabla();
             successMessage("Se modifico el plato con exito.", "EXITO");
         } else {
             Messages.warningMessage("Error al modificar", "Warning");
         }
-        imprimirMenu();
     }//GEN-LAST:event_BntModificarActionPerformed
 
-    private void BtnBuscarMainDishActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnBuscarMainDishActionPerformed
-        String id = jTxIDMainDish.getText().trim();
+    /**
+     * Almacena el indice fila de la tabla menus
+     *
+     * @param evt Evento click de la tabla menus
+     */
+    private void jTblMenusMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTblMenusMouseClicked
 
-        IMainDishAccess service = Factory.getInstance().getMainDishService();
+        int i = jTblMenus.getSelectedRow();
+        TableModel model = jTblMenus.getModel();
+        this.jTxfID.setText(model.getValueAt(i, 0).toString());
+    }//GEN-LAST:event_jTblMenusMouseClicked
+
+    /**
+     * Elimina un menu en especifico mediante un Id
+     *
+     * @param evt Evento del boton Eliminar menu
+     */
+    private void BntEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BntEliminarActionPerformed
+        if (jTxfID.getText().equals("")) {
+            Messages.warningMessage("El campo Id vacio: Error al agregar", "Warning");
+            return;
+        }
+
+        IMenuAccess service = Factory.getInstance().getMenuService();
         // Inyecta la dependencia
-        MainDishService dishService = new MainDishService(service);
-
-        if (id.equals("")) {
-            jTxIDMainDish.requestFocus();
-            Messages.warningMessage("ERROR: El campo Id esta vacio.", "Warning");
-            return;
-        }
-
-        MainDish dish;
+        MenuService menuService = new MenuService(service);
         try {
-            dish = dishService.findMainDish(id);
-        } catch (Exception ex) {
 
-            successMessage(ex.getMessage(), "Atención");
+            if (Messages.confirmMessage("¿ Desea borrar el registro ?", "Confirm") != 1) {
+                boolean aux = menuService.deleteMenu(jTxfID.getText());
+                if (aux == false) {
+                    Messages.warningMessage("No se pudo borrar el menu", "Warning");
+                    return;
+                }
+            } else {
+                return;
+            }
+        } catch (Exception e) {
+            Messages.warningMessage(e.getMessage(), "Warning");
+        }
+        eliminarItemMenu(jTxfID.getText());
+        mostrarTabla();
+        successMessage("Se borro el menu con exito.", "EXITO");
+    }//GEN-LAST:event_BntEliminarActionPerformed
+
+    /**
+     * Crea un menu y lo guarda en la base de datos
+     *
+     * @param evt Evento del boton agregar menu
+     */
+    private void BntAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BntAgregarActionPerformed
+        if (jTxfID.getText().equals("")) {
+            Messages.warningMessage("El campo Id vacio: Error al agregar", "Warning");
             return;
         }
 
-        jTxIDMainDish.setText(dish.getId_mainDish());
-        maindish.setText(dish.getNameDish());
-
-
-    }//GEN-LAST:event_BtnBuscarMainDishActionPerformed
-
-    private void BtnBuscarDessertActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnBuscarDessertActionPerformed
-        String id = jTxIDDessert.getText().trim();
-
-        System.out.println(id);
-
-        IDessertAccess service = Factory.getInstance().getDessertService();
+        IMenuAccess service = Factory.getInstance().getMenuService();
         // Inyecta la dependencia
-        DessertService dessertService = new DessertService(service);
-        if (id.equals("")) {
-            jTxIDDessert.requestFocus();
-            Messages.warningMessage("ERROR: El campo Id esta vacio.", "Warning");
-            return;
-        }
+        MenuService menuService = new MenuService(service);
+        Menu myMenu = new Menu();
+        myMenu.setId_menu(jTxfID.getText());
+        myMenu.setMaindish((MainDish) jCbxPlatoPrincipal.getSelectedItem());
+        myMenu.setDessert((Dessert) jCbxPostre.getSelectedItem());
+        myMenu.setDrink((Drink) jCbxBebida.getSelectedItem());
+        myMenu.setSalad((Salad) jCbxEnsalada.getSelectedItem());
+        myMenu.setEntry((DishEntry) jCbxEntrada.getSelectedItem());
 
-        Dessert dessert;
         try {
-            dessert = dessertService.findDessert(id);
-        } catch (Exception ex) {
-
-            successMessage(ex.getMessage(), "Atención");
-            return;
+            if (menuService.createMenu(myMenu)) {
+                menus.add(myMenu);
+                mostrarTabla();
+                successMessage("Se creo el menu con exito.", "EXITO");
+            } else {
+                Messages.warningMessage("Error al crear el menu", "Warning");
+            }
+        } catch (Exception e) {
+            Messages.warningMessage(e.getMessage(), "Warning");
         }
 
-        jTxIDDessert.setText(dessert.getId_Dish_Dessert());
-        txtnamedessert.setText(dessert.getName_Dish_Dessert());
-    }//GEN-LAST:event_BtnBuscarDessertActionPerformed
-
-    private void BtnBuscarSaladActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnBuscarSaladActionPerformed
-        String id = jTxIDSalad.getText().trim();
-
-        ISaladAccess service = Factory.getInstance().getSaladService();
-        // Inyecta la dependencia
-        SaladService saladService = new SaladService(service);
-
-        if (id.equals("")) {
-            jTxIDSalad.requestFocus();
-            Messages.warningMessage("ERROR: El campo Id esta vacio.", "Warning");
-            return;
-        }
-
-        Salad dish;
-        try {
-            dish = saladService.findSalad(id);
-        } catch (Exception ex) {
-
-            successMessage(ex.getMessage(), "Atención");
-            return;
-        }
-
-        jTxIDSalad.setText(dish.getIdSalad());
-        salad.setText(dish.getNameSalad());
-    }//GEN-LAST:event_BtnBuscarSaladActionPerformed
-
-    private void BtnBuscarDrinkActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnBuscarDrinkActionPerformed
-        String id = jTxIDDrink.getText().trim();
-
-        System.out.println(id);
-
-        IDrinkAccess service = Factory.getInstance().getDrinkService();
-        // Inyecta la dependencia
-        DrinkService drinkService = new DrinkService(service);
-        if (id.equals("")) {
-            jTxIDDrink.requestFocus();
-            Messages.warningMessage("ERROR: El campo Id esta vacio.", "Warning");
-            return;
-        }
-
-        Drink drink;
-        try {
-            drink = drinkService.findDrink(id);
-        } catch (Exception ex) {
-
-            successMessage(ex.getMessage(), "Atención");
-            return;
-        }
-
-        jTxIDDrink.setText(drink.getId_Drink());
-        this.drink.setText(drink.getNameDrink());
-    }//GEN-LAST:event_BtnBuscarDrinkActionPerformed
-
-    private void BtnBuscarEntryActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnBuscarEntryActionPerformed
-       
-         String id = jTxIDEntry.getText().trim();
-
-        IEntryAccess service = Factory.getInstance().getEntryService();
-        // Inyecta la dependencia
-        EntryService entryService = new EntryService(service);
-        if (id.equals("")) {
-            jTxIDEntry.requestFocus();
-            Messages.warningMessage("ERROR: El campo Id esta vacio.", "Warning");
-            return;
-        }
-
-        DishEntry entry;
-        try {
-            entry = entryService.findEntry(id);
-        } catch (Exception ex) {
-
-            successMessage(ex.getMessage(), "Atención");
-            return;
-        }
-
-        jTxIDEntry.setText(entry.getIdDishEntry());
-        this.entry.setText(entry.getNameDishEntry());
-        
-    }//GEN-LAST:event_BtnBuscarEntryActionPerformed
+    }//GEN-LAST:event_BntAgregarActionPerformed
+    /**
+     * Actualiza la tabla y los combo box con informacion nueva de la base de
+     * datos
+     *
+     * @param evt Evento del boton recargar tabla
+     */
+    private void jBtnRecargarTablaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnRecargarTablaActionPerformed
+        this.jCbxBebida.removeAllItems();
+        this.jCbxEnsalada.removeAllItems();
+        this.jCbxEntrada.removeAllItems();
+        this.jCbxPlatoPrincipal.removeAllItems();
+        this.jCbxPostre.removeAllItems();
+        cargarListas();
+        mostrarTabla();
+        loadDataCombo();
+    }//GEN-LAST:event_jBtnRecargarTablaActionPerformed
 
     private void imprimirMenu() {
         IMenuAccess service = Factory.getInstance().getMenuService();
@@ -474,50 +434,111 @@ public class GUIShowMenuAdmin extends javax.swing.JInternalFrame {
             successMessage(ex.getMessage(), "Atención");
         }
 
-        maindish.setText(menu.getMaindish().getNameDish());
-        txtnamedessert.setText(menu.getDessert().getName_Dish_Dessert());
-        entry.setText(menu.getEntry().getNameDishEntry());
-        salad.setText(menu.getSalad().getNameSalad());
-        drink.setText(menu.getDrink().getNameDrink());
-
-        jTxIDEntry.setText(menu.getEntry().getIdDishEntry());
-        jTxIDDessert.setText(menu.getDessert().getId_Dish_Dessert());
-        jTxIDDrink.setText(menu.getDrink().getId_Drink());
-        jTxIDSalad.setText(menu.getSalad().getIdSalad());
-        jTxIDMainDish.setText(menu.getMaindish().getId_mainDish());
-
         jtxtnamerestaurant.setText(restaurantname);
 
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton BntAgregar;
+    private javax.swing.JButton BntEliminar;
     private javax.swing.JButton BntModificar;
-    private javax.swing.JButton BtnBuscarDessert;
-    private javax.swing.JButton BtnBuscarDrink;
-    private javax.swing.JButton BtnBuscarEntry;
-    private javax.swing.JButton BtnBuscarMainDish;
-    private javax.swing.JButton BtnBuscarSalad;
-    private javax.swing.JTextField drink;
-    private javax.swing.JTextField entry;
     private javax.swing.JButton jBtnCancelar;
+    private javax.swing.JButton jBtnRecargarTabla;
+    private javax.swing.JComboBox<String> jCbxBebida;
+    private javax.swing.JComboBox<String> jCbxEnsalada;
+    private javax.swing.JComboBox<String> jCbxEntrada;
+    private javax.swing.JComboBox<String> jCbxPlatoPrincipal;
+    private javax.swing.JComboBox<String> jCbxPostre;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLbBebida;
+    private javax.swing.JLabel jLbEnsalada;
+    private javax.swing.JLabel jLbEntrada;
+    private javax.swing.JLabel jLbID;
+    private javax.swing.JLabel jLbPlatoPrincipal;
+    private javax.swing.JLabel jLbPostre;
     private javax.swing.JPanel jPnCentro;
     private javax.swing.JPanel jPnNorte;
     private javax.swing.JPanel jPnSur;
-    private javax.swing.JTextField jTxIDDessert;
-    private javax.swing.JTextField jTxIDDrink;
-    private javax.swing.JTextField jTxIDEntry;
-    private javax.swing.JTextField jTxIDMainDish;
-    private javax.swing.JTextField jTxIDSalad;
+    private javax.swing.JPanel jPnlCenDer;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTable jTblMenus;
+    private javax.swing.JTextField jTxfID;
     private javax.swing.JTextField jtxtnamerestaurant;
-    private javax.swing.JTextField maindish;
-    private javax.swing.JTextField salad;
-    private javax.swing.JTextField txtnamedessert;
     // End of variables declaration//GEN-END:variables
+
+    /**
+     * Carga los tipos de comida en el jComboBox
+     */
+    private void loadDataCombo() {
+        this.jCbxPlatoPrincipal.setModel(new DefaultComboBoxModel(mainDishes.toArray()));
+        this.jCbxEntrada.setModel(new DefaultComboBoxModel(dishEntries.toArray()));
+        this.jCbxEnsalada.setModel(new DefaultComboBoxModel(salads.toArray()));
+        this.jCbxBebida.setModel(new DefaultComboBoxModel(drinks.toArray()));
+        this.jCbxPostre.setModel(new DefaultComboBoxModel(desserts.toArray()));
+    }
+
+    /**
+     * Carga un lista usando la API REST
+     */
+    private void cargarListas() {
+        IMenuAccess service = Factory.getInstance().getMenuService();
+        IMainDishAccess mdService = Factory.getInstance().getMainDishService();
+        IEntryAccess entService = Factory.getInstance().getEntryService();
+        ISaladAccess salService = Factory.getInstance().getSaladService();
+        IDrinkAccess drService = Factory.getInstance().getDrinkService();
+        IDessertAccess dsService = Factory.getInstance().getDessertService();
+
+        // Inyecta las dependencias
+        MenuService menuService = new MenuService(service);
+        MainDishService dishService = new MainDishService(mdService);
+        EntryService entryService = new EntryService(entService);
+        SaladService saladService = new SaladService(salService);
+        DrinkService drinkService = new DrinkService(drService);
+        DessertService dessertService = new DessertService(dsService);
+
+        try {
+            menus = menuService.listMenus();
+            mainDishes = dishService.listDishes();
+            dishEntries = entryService.listEntrys();
+            salads = saladService.listSalads();
+            drinks = drinkService.listDrinks();
+            desserts = dessertService.listDesserts();
+        } catch (Exception ex) {
+            successMessage(ex.getMessage(), "Atención");
+        }
+    }
+
+    /**
+     * Metodo encargado de mostrar los datos en un jtable
+     */
+    private void mostrarTabla() {
+        String dataTable[][] = new String[menus.size()][6];
+
+        for (int i = 0; i < menus.size(); i++) {
+            dataTable[i][0] = menus.get(i).getId_menu();
+            dataTable[i][1] = menus.get(i).getMaindish().getNameDish();
+            dataTable[i][2] = menus.get(i).getDrink().getNameDrink();
+            dataTable[i][3] = menus.get(i).getSalad().getNameSalad();
+            dataTable[i][4] = menus.get(i).getEntry().getNameDishEntry();
+            dataTable[i][5] = menus.get(i).getDessert().getName_Dish_Dessert();
+
+        }
+
+        jTblMenus.setModel(new javax.swing.table.DefaultTableModel(
+                dataTable, new String[]{"ID", "Plato Principal", "Bebida", "Ensalada", "Entrada", "Postre"}));
+    }
+
+    /**
+     * Elimina de la lista de menus un menu en especifico
+     *
+     * @param id Identificador del menu a eliminar de la lista
+     */
+    private void eliminarItemMenu(String id) {
+        for (Menu myMenu : menus) {
+            if (id.equals(myMenu.getId_menu())) {
+                menus.remove(myMenu);
+                return;
+            }
+        }
+    }
 }

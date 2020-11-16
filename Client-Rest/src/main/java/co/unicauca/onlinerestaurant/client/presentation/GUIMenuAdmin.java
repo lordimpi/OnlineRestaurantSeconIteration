@@ -53,6 +53,7 @@ public class GUIMenuAdmin extends javax.swing.JFrame {
 
     /**
      * Constructor que inicializa el formulario Menu admin
+     *
      * @throws java.beans.PropertyVetoException
      */
     public GUIMenuAdmin() throws PropertyVetoException {
@@ -565,7 +566,6 @@ public class GUIMenuAdmin extends javax.swing.JFrame {
         resetColor(BtnAccounting);
 
 //        cargarLista();
-
         if (!listRestaurants.isVisible()) {
             listRestaurants.setMaximizable(true);
             dskEscritorio.add(listRestaurants);
@@ -594,14 +594,12 @@ public class GUIMenuAdmin extends javax.swing.JFrame {
         } catch (Exception ex) {
             Logger.getLogger(GUIMenuCustomer.class.getName()).log(Level.SEVERE, null, ex);
         }
-
+        
         if (!ShowMenu.isVisible()) {
             ShowMenu.setMaximizable(true);
             dskEscritorio.add(ShowMenu);
             ShowMenu.show();
         }
-
-
     }//GEN-LAST:event_BtnMenusMousePressed
 
     /**

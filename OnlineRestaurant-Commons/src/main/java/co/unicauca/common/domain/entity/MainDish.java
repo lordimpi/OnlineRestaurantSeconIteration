@@ -65,9 +65,9 @@ public class MainDish {
         this.dishPrice = dishPrice;
     }
 
-        @Override
+    @Override
     public String toString() {
-        return "Main Dish{" + "id=" + id_mainDish + ", name=" + nameDish + ", price=" + dishPrice + '}';
+        return getNameDish();
     }
     
 }
