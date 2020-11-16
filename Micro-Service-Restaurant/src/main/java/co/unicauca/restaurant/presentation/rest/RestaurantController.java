@@ -38,7 +38,7 @@ public class RestaurantController {
 
     /*
         Su uso desde consola mediante client url:
-        curl -X GET http://localhost:8085/OnlineRestaurant-Service/restaurant-service/restaurants/ 
+        curl -X GET http://localhost:8085/Micro-Service-Restaurant/restaurant-service/restaurants/ 
 
      */
     @GET
@@ -49,7 +49,7 @@ public class RestaurantController {
 
     /*
         Su uso desde consola mediante client url:
-        curl -X GET http://localhost:8085/OnlineRestaurant-Service/restaurant-service/restaurants/1 
+        curl -X GET http://localhost:8085/Micro-Service-Restaurant/restaurant-service/restaurants/1 
 
      */
     @GET
@@ -62,11 +62,11 @@ public class RestaurantController {
     /*
         Su uso desde consola mediante client url:
         curl -X POST \
-          http://localhost:8085/OnlineRestaurant-Service/restaurant-service/restaurants/ \
+          http://localhost:8085/Micro-Service-Restaurant/restaurant-service/restaurants/ \
           -H 'Content-Type: application/json' \
           -d '{
                "id":1,
-               "name":"Postre de fresa",
+               "name":" restaurante de fresa",
                "price":6000
         }'
      */
@@ -75,9 +75,9 @@ public class RestaurantController {
     public Response create(Restaurant restaurant) {
         JsonResponse resp;
         if (service.create(restaurant)) {
-            resp = new JsonResponse(true, "Postre creado con éxito", null);
+            resp = new JsonResponse(true, " restaurante creado con éxito", null);
         } else {
-            resp = new JsonResponse(false, "No se pudo crear el postre", DomainErrors.getErrors());
+            resp = new JsonResponse(false, "No se pudo crear el  restaurante", DomainErrors.getErrors());
         }
         return Response.ok().entity(resp).build();
     }
@@ -85,10 +85,10 @@ public class RestaurantController {
     /*
         Su uso desde consola mediante client url:
         curl -X PUT \
-          http://localhost:8085/OnlineRestaurant-Service/restaurant-service/restaurants/1 \
+          http://localhost:8085/Micro-Service-Restaurant/restaurant-service/restaurants/1 \
           -H 'Content-Type: application/json' \
           -d '{
-               "name":"Postre de fres REF. JDK3-34-343",
+               "name":" restaurante de fres REF. JDK3-34-343",
                "price":6000
         }'
      */
@@ -98,9 +98,9 @@ public class RestaurantController {
     public Response edit(@PathParam("id") String id, Restaurant restaurant) {
         JsonResponse resp;
         if (service.update(id, restaurant)) {
-            resp = new JsonResponse(true, "Postre modificado con éxito", null);
+            resp = new JsonResponse(true, " restaurante modificado con éxito", null);
         } else {
-            resp = new JsonResponse(false, "No se pudo modificar el postre", DomainErrors.getErrors());
+            resp = new JsonResponse(false, "No se pudo modificar el  restaurante", DomainErrors.getErrors());
         }
         return Response.ok().entity(resp).build();
 
@@ -108,7 +108,7 @@ public class RestaurantController {
 
     /*
         Su uso desde consola mediante client url:
-        curl -X DELETE http://localhost:8085/Product-Service/product-service/restaurants/1 
+        curl -X DELETE http://localhost:8085/Micro-Service-Restaurant/restaurant-service/restaurants/1 
 
      */
     @DELETE
@@ -117,10 +117,10 @@ public class RestaurantController {
         JsonResponse resp;
 
         if (service.delete(id)) {
-            resp = new JsonResponse(true, "postre eliminado con éxito", null);
+            resp = new JsonResponse(true, " restaurante eliminado con éxito", null);
 
         } else {
-            resp = new JsonResponse(false, "No se pudo eliminar el postre", DomainErrors.getErrors());
+            resp = new JsonResponse(false, "No se pudo eliminar el  restaurante", DomainErrors.getErrors());
         }
         service.delete(id);
 

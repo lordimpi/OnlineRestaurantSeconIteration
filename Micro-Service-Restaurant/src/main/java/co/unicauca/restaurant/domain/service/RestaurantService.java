@@ -10,8 +10,8 @@ import java.util.List;
 import javax.inject.Inject;
 
 /**
- * Servicio de Restaurantes. Es una fachada de acceso al negocio. Lo usa la capa de
- * presentación.
+ * Servicio de Restaurantes. Es una fachada de acceso al negocio. Lo usa la capa
+ * de presentación.
  *
  * @author Camilo Otaya
  */
@@ -120,25 +120,26 @@ public class RestaurantService {
             Error error = new Error(ValidationError.EMPTY_FIELD, "Nombre", "El  nombre del restaurante es obligatorio");
             errors.add(error);
         }
-        if (newRestaurant.getAddressRestaurant()== null || newRestaurant.getAddressRestaurant().isEmpty()) {
+        if (newRestaurant.getAddressRestaurant() == null || newRestaurant.getAddressRestaurant().isEmpty()) {
             Error error = new Error(ValidationError.EMPTY_FIELD, "Direccion", "El precio del restaurante es obligatorio");
             errors.add(error);
         }
-        if (newRestaurant.getPhone()== null || newRestaurant.getPhone().isEmpty()) {
+        if (newRestaurant.getPhone() == null || newRestaurant.getPhone().isEmpty()) {
             Error error = new Error(ValidationError.EMPTY_FIELD, "Telefono", "El telefono del restaurante es obligatorio");
             errors.add(error);
         }
-
 
         //Validar que no exista el restaurante
         if (newRestaurant.getIdRestaurant() != null) {
 
             Restaurant restaurantAux = repository.findById(newRestaurant.getIdRestaurant());
-
             if (restaurantAux != null) {
-                // El restaurante ya existe
-                Error error = new Error(ValidationError.INVALID_FIELD, "id", "El id del restaurante ya existe");
-                errors.add(error);
+                if (restaurantAux.getIdRestaurant().equals( newRestaurant.getIdRestaurant())) {
+                    // El restaurante ya existe
+                    Error error = new Error(ValidationError.INVALID_FIELD, "id", "El id del restaurante ya existe");
+                    errors.add(error);
+                }
+
             }
         }
 
@@ -158,11 +159,11 @@ public class RestaurantService {
             Error error = new Error(ValidationError.EMPTY_FIELD, "Nombre", "El nombre del restaurante es obligatorio");
             errors.add(error);
         }
-        if (newRestaurant.getAddressRestaurant()== null || newRestaurant.getAddressRestaurant().isEmpty()) {
+        if (newRestaurant.getAddressRestaurant() == null || newRestaurant.getAddressRestaurant().isEmpty()) {
             Error error = new Error(ValidationError.EMPTY_FIELD, "direccion", "La direccion del restaurante es obligatorio");
             errors.add(error);
         }
-        if (newRestaurant.getPhone()== null || newRestaurant.getPhone().isEmpty()) {
+        if (newRestaurant.getPhone() == null || newRestaurant.getPhone().isEmpty()) {
             Error error = new Error(ValidationError.EMPTY_FIELD, "telefono", "El telefono del restaurante es obligatorio");
             errors.add(error);
         }

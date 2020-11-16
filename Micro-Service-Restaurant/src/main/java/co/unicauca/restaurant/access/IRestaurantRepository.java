@@ -5,10 +5,10 @@ import java.util.List;
 
 /**
  *
- * @author Julian Rodriguez
+ * @author Camilo Otaya
  */
 public interface IRestaurantRepository {
-
+    
     List<Restaurant> findAll();
 
     Restaurant findById(String id);
@@ -18,5 +18,5 @@ public interface IRestaurantRepository {
     boolean update(Restaurant newRestaurant);
 
     boolean delete(String id);
-
+    
 }
