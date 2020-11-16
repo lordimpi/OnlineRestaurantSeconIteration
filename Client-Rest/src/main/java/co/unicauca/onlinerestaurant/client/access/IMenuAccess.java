@@ -53,10 +53,17 @@ public interface IMenuAccess {
     /**
      * Metodo de Crear menu
      *
-     * @param id identificador del Menu
+     * @param newMenu Objeto de tipo menu
      * @return true creado correctamente y false en caso contrario
      * @throws Exception error al crear el Menu
      */
-    public boolean createMenu(String id) throws Exception;
+    public boolean createMenu(Menu newMenu) throws Exception;
 
+    /**
+     * Lista todos los menus consumiendo un API REST
+     *
+     * @return Lista de menus
+     * @throws java.lang.Exception
+     */
+    public java.util.List<Menu> list() throws Exception;
 }

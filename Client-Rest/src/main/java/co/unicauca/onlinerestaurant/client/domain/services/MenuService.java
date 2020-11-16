@@ -2,6 +2,7 @@ package co.unicauca.onlinerestaurant.client.domain.services;
 
 import co.unicauca.common.domain.entity.Menu;
 import co.unicauca.onlinerestaurant.client.access.IMenuAccess;
+import java.util.List;
 
 /**
  *
@@ -79,13 +80,22 @@ public class MenuService {
     /**
      * Crea un menuen el servidor remoto
      *
-     * @param id identificsdor del menu
+     * @param menu Objeto de tipo menu
      * @return true o false
      * @throws Exception la excepcio se lanza cuando no logra conexión con el
      * servidor
      */
-    public boolean createMenu(String id) throws Exception {
-        return service.createMenu(id);
+    public boolean createMenu(Menu menu) throws Exception {
+        return service.createMenu(menu);
     }
 
+    /**
+     * Lista objetos de tipo Menu
+     *
+     * @return lista de objetos menu
+     * @throws Exception se lanza cuando no logra conexión con el servidor
+     */
+    public List<Menu> listMenus() throws Exception {
+        return service.list();
+    }
 }
