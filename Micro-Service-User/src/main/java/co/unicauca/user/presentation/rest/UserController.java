@@ -59,6 +59,18 @@ public class UserController {
 
     /*
         Su uso desde consola mediante client url:
+        curl -X GET http://localhost:8085/Micro-Service-User/user-service/users/email/alejo@rc.com 
+
+     */
+    @GET
+    @Path("/email/{email}")
+    @Produces({MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML})
+    public User findByEmail(@PathParam("email") String email) {
+        return service.findByEmail(email);
+    }
+
+    /*
+        Su uso desde consola mediante client url:
         curl -X POST \
           http://localhost:8085/Micro-Service-User/user-service/users/ \
           -H 'Content-Type: application/json' \

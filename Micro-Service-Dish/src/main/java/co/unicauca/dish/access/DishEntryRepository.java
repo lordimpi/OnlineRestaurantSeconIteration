@@ -181,7 +181,7 @@ public class DishEntryRepository implements IDishEntryRepository {
         try {
             //Class.forName(Utilities.loadProperty("server.db.driver"));
             //crea una instancia de la controlador de la base de datos
-             Utilities ut = new Utilities();
+            Utilities ut = new Utilities();
             conn = DriverManager.getConnection(ut.getUrl(), ut.getUsername(), ut.getPwd());
         } catch (SQLException ex) {
             Logger.getLogger(MainDishRepository.class.getName()).log(Level.SEVERE, null, ex);

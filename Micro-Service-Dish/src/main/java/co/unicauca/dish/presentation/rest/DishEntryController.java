@@ -1,6 +1,5 @@
 package co.unicauca.dish.presentation.rest;
 
-
 import co.unicauca.common.domain.entity.DishEntry;
 import co.unicauca.dish.domain.service.DishEntryService;
 import co.unicauca.dish.infra.DomainErrors;
@@ -18,20 +17,23 @@ import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
+
 /**
  * API REST- platos de Entrada
- * @author Ximena Gallego 
+ *
+ * @author Ximena Gallego
  */
 @Stateless
 @Path("/dishentrys")
 public class DishEntryController {
-    
+
     @Inject
     private DishEntryService service;
 
     public DishEntryController() {
         service = new DishEntryService();
     }
+
     /*
         Su uso desde consola mediante client url:
         curl -X GET http://localhost:8085/Micro-Service-Dish/dish-service/dishentrys/ 
@@ -42,6 +44,7 @@ public class DishEntryController {
     public List<DishEntry> findAll() {
         return service.findAll();
     }
+
     /*
         Su uso desde consola mediante client url:
         curl -X GET http://localhost:8085/Micro-Service-Dish/dish-service/dishentrys/1 
@@ -53,7 +56,7 @@ public class DishEntryController {
     public DishEntry findById(@PathParam("id") String id) {
         return service.findById(id);
     }
-    
+
     /*
         Su uso desde consola mediante client url:
         curl -X POST \
@@ -65,7 +68,7 @@ public class DishEntryController {
                "price":1000
         }'
      */
-     @POST
+    @POST
     @Consumes({MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON})
     public Response create(DishEntry dishEntry) {
         JsonResponse resp;
@@ -76,8 +79,8 @@ public class DishEntryController {
         }
         return Response.ok().entity(resp).build();
     }
-    
-      /*
+
+    /*
         Su uso desde consola mediante client url:
         curl -X PUT \
           http://localhost:8085/Micro-Service-Dish/dish-service/dishentrys/103 \
@@ -87,7 +90,7 @@ public class DishEntryController {
                "price":2400
         }'
      */
-     @PUT
+    @PUT
     @Path("{id}")
     @Consumes({MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON})
     public Response edit(@PathParam("id") String id, DishEntry dishEntry) {
@@ -100,6 +103,7 @@ public class DishEntryController {
         return Response.ok().entity(resp).build();
 
     }
+
     /*
         Su uso desde consola mediante client url:
         curl -X DELETE http://localhost:8085/Micro-Service-Dish/dish-service/dishentrys/103 
@@ -121,5 +125,5 @@ public class DishEntryController {
         return Response.ok().entity(resp).build();
 
     }
-    
+
 }

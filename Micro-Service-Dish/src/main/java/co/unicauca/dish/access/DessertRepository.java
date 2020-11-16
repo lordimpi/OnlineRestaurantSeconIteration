@@ -64,7 +64,7 @@ public class DessertRepository implements IDessertRepository {
 
             if (rs.next()) {
                 dessert = new Dessert();
-                 dessert.setId_Dish_Dessert(rs.getString("id_dessert"));
+                dessert.setId_Dish_Dessert(rs.getString("id_dessert"));
                 dessert.setName_Dish_Dessert(rs.getString("dessert_name"));
                 dessert.setCost_Dish_Dessert(rs.getDouble("dessert_price"));
             }

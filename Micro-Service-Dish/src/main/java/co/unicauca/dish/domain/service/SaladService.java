@@ -52,7 +52,8 @@ public class SaladService {
         List<Salad> salads = repository.findAll();
         return salads;
     }
-     /**
+
+    /**
      * Crea un nueva Ensalada
      *
      * @param newSalad una ensalada a guardar en la base de datos
@@ -84,7 +85,7 @@ public class SaladService {
         }
         Salad saladAux = this.findById(id);
         saladAux.setNameSalad(newSalad.getNameSalad());
-        saladAux.setCostSalad(newSalad.getCostSalad());        
+        saladAux.setCostSalad(newSalad.getCostSalad());
         repository.update(saladAux);
         return true;
     }
@@ -165,7 +166,7 @@ public class SaladService {
         // Validar que exista el plato principal
         Salad saladAux = repository.findById(id);
 
-        if ( saladAux == null) {
+        if (saladAux == null) {
             // El plato principal no existe
             Error error = new Error(ValidationError.INVALID_FIELD, "id", "El id de la ensalada no existe");
             errors.add(error);
@@ -175,8 +176,7 @@ public class SaladService {
     }
 
     /**
-     * Valida que la ensalada exista antes de eliminarlo de la base de
-     * datos
+     * Valida que la ensalada exista antes de eliminarlo de la base de datos
      *
      * @param id Identificador a validar
      * @return Lista de errores de negocio

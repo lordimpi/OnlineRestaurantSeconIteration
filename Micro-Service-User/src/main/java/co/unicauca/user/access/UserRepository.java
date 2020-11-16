@@ -99,6 +99,41 @@ public class UserRepository implements IUserRepository {
     }
 
     /**
+     * Busca un usuario de la base de datos
+     *
+     * @param email email del usuario
+     * @return Objeto de tipo usuario
+     */
+    @Override
+    public User findByEmail(String email) {
+        User user = null;
+        try {
+
+            String sql = "SELECT id_user, first_name, last_name, address, mobile, email, rol, pws FROM user where email= '"+email+"'";
+            this.connect();
+            Statement stmt = conn.createStatement();
+            ResultSet rs = stmt.executeQuery(sql);
+
+            if (rs.next()) {
+                user = new User();
+                user.setId(rs.getString("id_user"));
+                user.setFirstName(rs.getString("first_name"));
+                user.setLastName(rs.getString("last_name"));
+                user.setAddress(rs.getString("address"));
+                user.setMobile(rs.getString("mobile"));
+                user.setEmail(rs.getString("email"));
+                user.setRol(rs.getString("rol"));
+                user.setPws(rs.getString("pws"));
+            }
+            this.disconnect();
+
+        } catch (SQLException ex) {
+            Logger.getLogger(UserRepository.class.getName()).log(Level.SEVERE, "Error al buscar el usuario en la base de datos", ex);
+        }
+        return user;
+    }
+
+    /**
      * Crea un usuario y lo guarda en la base de datos
      *
      * @param newUser Objeto de tipo User a guardar
