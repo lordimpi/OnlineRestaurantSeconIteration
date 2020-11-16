@@ -18,13 +18,13 @@ import javax.ws.rs.core.Response;
  *        client.close();
  * </pre>
  *
- * @author Camilo Otaya
+ * @author Camilo otoya
  */
 public class UserJerseyClient {
 
     private WebTarget webTarget;
     private Client client;
-    private static final String BASE_URI = "http://localhost:8085/OnlineRestaurant-Service/restaurant-service";
+    private static final String BASE_URI = "http://localhost:8085/Micro-Service-User/user-service";
 
     public UserJerseyClient() {
         client = javax.ws.rs.client.ClientBuilder.newClient();
@@ -59,10 +59,23 @@ public class UserJerseyClient {
         return webTarget.request(javax.ws.rs.core.MediaType.APPLICATION_JSON).post(javax.ws.rs.client.Entity.entity(requestEntity, javax.ws.rs.core.MediaType.APPLICATION_JSON), Response.class);
     }
 
+    public <T> T findByEmail_XML(Class<T> responseType, String email) throws ClientErrorException {
+        WebTarget resource = webTarget;
+        resource = resource.path(java.text.MessageFormat.format("{0}", new Object[]{email}));
+        return resource.request(javax.ws.rs.core.MediaType.APPLICATION_XML).get(responseType);
+    }
+
+    public <T> T findByEmail_JSON(Class<T> responseType, String email) throws ClientErrorException {
+        WebTarget resource = webTarget;
+        resource = resource.path(java.text.MessageFormat.format("{0}", new Object[]{email}));
+        return resource.request(javax.ws.rs.core.MediaType.APPLICATION_JSON).get(responseType);
+    }
+
     public <T> T findAll(Class<T> responseType) throws ClientErrorException {
         WebTarget resource = webTarget;
         return resource.request(javax.ws.rs.core.MediaType.APPLICATION_JSON).get(responseType);
     }
+
     public <T> List<User> findAll(GenericType<List<User>> responseType) throws javax.ws.rs.ClientErrorException {
         WebTarget resource = webTarget;
         return resource.request(javax.ws.rs.core.MediaType.APPLICATION_JSON).get(responseType);
@@ -75,5 +88,5 @@ public class UserJerseyClient {
     public void close() {
         client.close();
     }
-    
+
 }

@@ -31,15 +31,11 @@ public interface IMenuAccess {
      * Metodo encargado de actualizar un Menu
      *
      * @param id identificador del menu
-     * @param id_dish identificador de plato
-     * @param id_drink identificador de la bebida
-     * @param id_entry identificador de la entrada
-     * @param id_salad identificador de la bebida
-     * @param id_dessert identificador del postre
+     * @param newMenu Objeto de tipo menu
      * @return true si se actualizo correctamente y false en caso contrario
      * @throws Exception error al actualizar Menu
      */
-    public boolean updateMenu(String id, String id_dish, String id_drink, String id_entry, String id_salad, String id_dessert) throws Exception;
+    public boolean updateMenu(String id, Menu newMenu) throws Exception;
 
     /**
      * Metodo de Eliminar Un Menu
@@ -53,10 +49,17 @@ public interface IMenuAccess {
     /**
      * Metodo de Crear menu
      *
-     * @param id identificador del Menu
+     * @param newMenu Objeto de tipo menu
      * @return true creado correctamente y false en caso contrario
      * @throws Exception error al crear el Menu
      */
-    public boolean createMenu(String id) throws Exception;
+    public boolean createMenu(Menu newMenu) throws Exception;
 
+    /**
+     * Lista todos los menus consumiendo un API REST
+     *
+     * @return Lista de menus
+     * @throws java.lang.Exception
+     */
+    public java.util.List<Menu> list() throws Exception;
 }

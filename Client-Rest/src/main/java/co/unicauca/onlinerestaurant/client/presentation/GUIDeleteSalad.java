@@ -222,7 +222,7 @@ public class GUIDeleteSalad extends javax.swing.JInternalFrame {
         SaladService salad = new SaladService(service);
 
         try {
-            ensaladas = salad.listDishes();
+            ensaladas = salad.listSalads();
         } catch (Exception ex) {
             successMessage(ex.getMessage(), "Atención");
         }

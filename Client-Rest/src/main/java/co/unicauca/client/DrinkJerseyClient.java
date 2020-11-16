@@ -24,7 +24,7 @@ public class DrinkJerseyClient {
 
     private WebTarget webTarget;
     private Client client;
-    private static final String BASE_URI = "http://localhost:8085/OnlineRestaurant-Service/restaurant-service";
+    private static final String BASE_URI = "http://localhost:8085/Micro-Service-Dish/dish-service";
 
     public DrinkJerseyClient() {
         client = javax.ws.rs.client.ClientBuilder.newClient();

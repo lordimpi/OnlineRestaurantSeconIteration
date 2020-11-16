@@ -40,7 +40,7 @@ public class DessertService {
      * @return lista de objetos dessert
      * @throws Exception se lanza cuando no logra conexión con el servidor
      */
-    public List<Dessert> listDishes() throws Exception {
+    public List<Dessert> listDesserts() throws Exception {
         return service.list();
     }
 

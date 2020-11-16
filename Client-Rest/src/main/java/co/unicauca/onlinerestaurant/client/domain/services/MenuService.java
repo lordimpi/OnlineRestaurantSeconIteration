@@ -2,6 +2,7 @@ package co.unicauca.onlinerestaurant.client.domain.services;
 
 import co.unicauca.common.domain.entity.Menu;
 import co.unicauca.onlinerestaurant.client.access.IMenuAccess;
+import java.util.List;
 
 /**
  *
@@ -50,18 +51,14 @@ public class MenuService {
      * Actualiza un menu en el servidor remoto
      *
      * @param id identificador del menu
-     * @param id_dish identificador del plato
-     * @param id_drink identificador de la bebida
-     * @param id_entry indentificador de la entrada
-     * @param id_salad identificador de la ensalada
-     * @param id_dessert identificador del postre
+     * @param newMenu Objeto de tipo menu
      * @return true si se realizo la actualizacion correctamente o false en caso
      * contrario
      * @throws Exception la excepcio se lanza cuando no logra conexión con el
      * servidor
      */
-    public boolean updateMenu(String id, String id_dish, String id_drink, String id_entry, String id_salad, String id_dessert) throws Exception {
-        return service.updateMenu(id, id_dish, id_drink, id_entry, id_salad, id_dessert);
+    public boolean updateMenu(String id, Menu newMenu) throws Exception {
+        return service.updateMenu(id, newMenu);
     }
 
     /**
@@ -79,13 +76,22 @@ public class MenuService {
     /**
      * Crea un menuen el servidor remoto
      *
-     * @param id identificsdor del menu
+     * @param menu Objeto de tipo menu
      * @return true o false
      * @throws Exception la excepcio se lanza cuando no logra conexión con el
      * servidor
      */
-    public boolean createMenu(String id) throws Exception {
-        return service.createMenu(id);
+    public boolean createMenu(Menu menu) throws Exception {
+        return service.createMenu(menu);
     }
 
+    /**
+     * Lista objetos de tipo Menu
+     *
+     * @return lista de objetos menu
+     * @throws Exception se lanza cuando no logra conexión con el servidor
+     */
+    public List<Menu> listMenus() throws Exception {
+        return service.list();
+    }
 }

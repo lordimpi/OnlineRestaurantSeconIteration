@@ -34,6 +34,19 @@ public class UserAccessREST implements IUserAccess {
     }
 
     /**
+     * Buscar un usuario consumiendo un API REST mediante un cliente jersey
+     *
+     * @param email identificado del usuario
+     * @return objeto usuario
+     * @throws Exception error al buscar un usuario
+     */
+    @Override
+    public User findUserEmail(String email) throws Exception {
+        User user = jersey.findByEmail_JSON(User.class, email);
+        return user;
+    }
+
+    /**
      *
      * @param id Identificador del usuario
      * @param firstname nombre del usuario

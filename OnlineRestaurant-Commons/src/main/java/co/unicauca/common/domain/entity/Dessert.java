@@ -65,4 +65,8 @@ public class Dessert {
         this.cost_Dish_Dessert = cost_Dish_Dessert;
     }
 
+    @Override
+    public String toString() {
+        return getName_Dish_Dessert();
+    }
 }

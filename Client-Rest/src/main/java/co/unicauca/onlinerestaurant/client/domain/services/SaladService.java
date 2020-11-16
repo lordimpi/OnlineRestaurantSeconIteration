@@ -41,7 +41,7 @@ public class SaladService {
      * @return lista de objetos salad
      * @throws Exception se lanza cuando no logra conexión con el servidor
      */
-    public List<Salad> listDishes() throws Exception {
+    public List<Salad> listSalads() throws Exception {
         return service.list();
     }
 
