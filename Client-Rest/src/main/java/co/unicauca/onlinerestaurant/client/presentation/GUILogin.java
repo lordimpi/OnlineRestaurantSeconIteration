@@ -232,10 +232,10 @@ public class GUILogin extends javax.swing.JFrame {
 
         IUserAccess service = Factory.getInstance().getUserService();
         UserService userService = new UserService(service);
-        String aux=TxbUser.toString();
+        String aux=TxbUser.getText();
         User user = new User();
         try {
-            user = userService.findUser("1");
+            user = userService.findUserEmail(aux);
         } catch (Exception ex) {
             Logger.getLogger(GUILogin.class.getName()).log(Level.SEVERE, null, ex);
         }
