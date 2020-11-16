@@ -1,7 +1,7 @@
 package co.unicauca.dish.access;
 
 import co.unicauca.common.domain.entity.Drink;
-import co.unicauca.dish.infra.Utilities;
+import co.unicauca.common.infra.Utilities;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;

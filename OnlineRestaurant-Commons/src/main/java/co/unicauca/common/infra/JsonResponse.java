@@ -1,4 +1,4 @@
-package co.unicauca.dish.infra;
+package co.unicauca.common.infra;
 
 import java.util.List;
 
@@ -8,7 +8,6 @@ import java.util.List;
  * @author Santiago Acuña
  */
 public class JsonResponse {
-
     public final boolean ok;
     public final String message;
     public final List<Error> errors;
@@ -18,5 +17,6 @@ public class JsonResponse {
         this.message = message;
         this.errors = errors;
     }
+
 
 }

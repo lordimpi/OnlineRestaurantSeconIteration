@@ -1,7 +1,7 @@
 package co.unicauca.restaurant.access;
 
 import co.unicauca.common.domain.entity.User;
-import co.unicauca.restaurant.infra.Utilities;
+import co.unicauca.common.infra.Utilities;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;

@@ -3,8 +3,8 @@ package co.unicauca.menu.presentation.rest;
 import co.unicauca.common.domain.entity.Menu;
 
 import co.unicauca.menu.domain.service.MenuService;
-import co.unicauca.menu.infra.DomainErrors;
-import co.unicauca.menu.infra.JsonResponse;
+import co.unicauca.common.infra.DomainErrors;
+import co.unicauca.common.infra.JsonResponse;
 import java.util.List;
 import javax.ejb.Stateless;
 import javax.inject.Inject;

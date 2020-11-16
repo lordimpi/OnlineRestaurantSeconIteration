@@ -234,7 +234,7 @@ public class GUILogin extends javax.swing.JFrame {
         UserService userService = new UserService(service);
         User user = new User();
         try {
-            user = userService.findUser("1");
+            user = userService.findUser("5");
         } catch (Exception ex) {
             Logger.getLogger(GUILogin.class.getName()).log(Level.SEVERE, null, ex);
         }

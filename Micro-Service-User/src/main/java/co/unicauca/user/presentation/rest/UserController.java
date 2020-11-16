@@ -2,8 +2,8 @@ package co.unicauca.user.presentation.rest;
 
 import co.unicauca.common.domain.entity.User;
 import co.unicauca.user.domain.service.UserService;
-import co.unicauca.user.infra.DomainErrors;
-import co.unicauca.user.infra.JsonResponse;
+import co.unicauca.common.infra.DomainErrors;
+import co.unicauca.common.infra.JsonResponse;
 import java.util.List;
 import javax.ejb.Stateless;
 import javax.inject.Inject;

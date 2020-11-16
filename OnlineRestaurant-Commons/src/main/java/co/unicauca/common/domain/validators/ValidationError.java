@@ -1,5 +1,5 @@
 
-package co.unicauca.user.domain.validators;
+package co.unicauca.common.domain.validators;
 
 /**
  * Códigos de error

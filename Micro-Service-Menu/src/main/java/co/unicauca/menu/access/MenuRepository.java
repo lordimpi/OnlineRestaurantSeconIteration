@@ -6,7 +6,7 @@ import co.unicauca.common.domain.entity.Drink;
 import co.unicauca.common.domain.entity.MainDish;
 import co.unicauca.common.domain.entity.Menu;
 import co.unicauca.common.domain.entity.Salad;
-import co.unicauca.menu.infra.Utilities;
+import co.unicauca.common.infra.Utilities;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;

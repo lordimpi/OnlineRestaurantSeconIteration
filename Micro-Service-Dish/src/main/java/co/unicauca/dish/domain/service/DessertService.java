@@ -2,9 +2,9 @@ package co.unicauca.dish.domain.service;
 
 import co.unicauca.common.domain.entity.Dessert;
 import co.unicauca.dish.access.IDessertRepository;
-import co.unicauca.dish.domain.validators.ValidationError;
-import co.unicauca.dish.infra.Error;
-import co.unicauca.dish.infra.DomainErrors;
+import co.unicauca.common.domain.validators.ValidationError;
+import co.unicauca.common.infra.Error;
+import co.unicauca.common.infra.DomainErrors;
 import java.util.ArrayList;
 import java.util.List;
 import javax.inject.Inject;

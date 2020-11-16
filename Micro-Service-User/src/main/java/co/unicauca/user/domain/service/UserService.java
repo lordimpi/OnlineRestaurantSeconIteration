@@ -3,9 +3,9 @@ package co.unicauca.user.domain.service;
 import co.unicauca.common.domain.entity.User;
 import javax.inject.Inject;
 import co.unicauca.user.access.IUserRepository;
-import co.unicauca.user.domain.validators.ValidationError;
-import co.unicauca.user.infra.Error;
-import co.unicauca.user.infra.DomainErrors;
+import co.unicauca.common.domain.validators.ValidationError;
+import co.unicauca.common.infra.Error;
+import co.unicauca.common.infra.DomainErrors;
 import java.util.ArrayList;
 import java.util.List;
 

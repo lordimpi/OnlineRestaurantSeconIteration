@@ -1,6 +1,6 @@
-package co.unicauca.dish.infra;
+package co.unicauca.common.infra;
 
-import co.unicauca.dish.domain.validators.ValidationError;
+import co.unicauca.common.domain.validators.ValidationError;
 
 /**
  * Error al validar una tarea

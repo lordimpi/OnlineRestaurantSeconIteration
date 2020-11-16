@@ -1,10 +1,10 @@
 co\unicauca\common\domain\entity\Salad.class
-co\unicauca\common\domain\entity\User.class
 co\unicauca\common\domain\entity\Dessert.class
 co\unicauca\common\domain\entity\Restaurant.class
-co\unicauca\common\domain\entity\MainDish.class
 co\unicauca\common\domain\entity\DishEntry.class
-co\unicauca\common\domain\entity\Menu.class
 co\unicauca\common\domain\entity\Product.class
+co\unicauca\common\domain\entity\User.class
+co\unicauca\common\domain\entity\MainDish.class
+co\unicauca\common\domain\entity\Menu.class
 co\unicauca\onlinerestaurant\commons\domain\Consumible.class
 co\unicauca\common\domain\entity\Drink.class

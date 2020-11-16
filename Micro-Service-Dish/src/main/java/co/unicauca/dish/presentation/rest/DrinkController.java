@@ -13,8 +13,8 @@ import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 import co.unicauca.dish.domain.service.DrinkService;
 import co.unicauca.common.domain.entity.Drink;
-import co.unicauca.dish.infra.DomainErrors;
-import co.unicauca.dish.infra.JsonResponse;
+import co.unicauca.common.infra.DomainErrors;
+import co.unicauca.common.infra.JsonResponse;
 import javax.inject.Inject;
 import javax.ws.rs.core.Response;
 

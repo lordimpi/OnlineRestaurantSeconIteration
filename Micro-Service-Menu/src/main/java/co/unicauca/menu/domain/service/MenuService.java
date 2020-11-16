@@ -2,9 +2,9 @@ package co.unicauca.menu.domain.service;
 
 import co.unicauca.common.domain.entity.Menu;
 import co.unicauca.menu.access.IMenuRepository;
-import co.unicauca.menu.domain.validators.ValidationError;
-import co.unicauca.menu.infra.Error;
-import co.unicauca.menu.infra.DomainErrors;
+import co.unicauca.common.domain.validators.ValidationError;
+import co.unicauca.common.infra.Error;
+import co.unicauca.common.infra.DomainErrors;
 import java.util.ArrayList;
 import java.util.List;
 import javax.inject.Inject;
