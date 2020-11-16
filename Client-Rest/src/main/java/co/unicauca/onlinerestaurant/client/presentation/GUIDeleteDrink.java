@@ -221,7 +221,7 @@ public class GUIDeleteDrink extends javax.swing.JInternalFrame {
         DrinkService drink = new DrinkService(service);
 
         try {
-            bebidas = drink.listDishes();
+            bebidas = drink.listDrinks();
         } catch (Exception ex) {
             successMessage(ex.getMessage(), "Atención");
         }

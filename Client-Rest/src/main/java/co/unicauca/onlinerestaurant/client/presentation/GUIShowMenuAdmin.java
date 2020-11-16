@@ -23,6 +23,7 @@ import co.unicauca.common.domain.entity.Menu;
 import co.unicauca.common.domain.entity.Salad;
 import java.util.ArrayList;
 import java.util.List;
+import javax.swing.DefaultComboBoxModel;
 import javax.swing.table.TableModel;
 
 /**
@@ -32,11 +33,36 @@ import javax.swing.table.TableModel;
 public class GUIShowMenuAdmin extends javax.swing.JInternalFrame {
 
     String restaurantname;
-    Menu menu;
+    private Menu menu;
+
+    /**
+     * Lista de menus del restaurante
+     */
     private List<Menu> menus = new ArrayList<>();
+    /**
+     * Lista de platos del restaurante
+     */
+    private List<MainDish> mainDishes = new ArrayList<>();
+    /**
+     * Lista ensaladas del restaurante
+     */
+    private List<Salad> salads = new ArrayList<>();
+    /**
+     * Lista de postres del restaurante
+     */
+    private List<Dessert> desserts = new ArrayList<>();
+    /**
+     * Lista de entradas del restaurantes
+     */
+    private List<DishEntry> dishEntries = new ArrayList<>();
+    /**
+     * Lista de jugos del restaurante
+     */
+    private List<Drink> drinks = new ArrayList<>();
 
     /**
      * Creates new form GUIUpdateDishe
+     *
      * @param RestaurantN Nombre del restaurante
      * @throws java.lang.Exception
      */
@@ -44,8 +70,9 @@ public class GUIShowMenuAdmin extends javax.swing.JInternalFrame {
         initComponents();
         menu = new Menu();
         restaurantname = RestaurantN;
-        cargarLista();
+        cargarListas();
         mostrarTabla();
+        loadDataCombo();
     }
 
     /**
@@ -86,18 +113,12 @@ public class GUIShowMenuAdmin extends javax.swing.JInternalFrame {
         setClosable(true);
         setMaximizable(true);
         setResizable(true);
-        setTitle("Mostrar Menu");
-        setPreferredSize(new java.awt.Dimension(495, 329));
+        setTitle("Menus");
+        setPreferredSize(new java.awt.Dimension(700, 394));
 
         jPnNorte.setBackground(new java.awt.Color(54, 33, 88));
         jPnNorte.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         jPnNorte.setPreferredSize(new java.awt.Dimension(450, 50));
-
-        jtxtnamerestaurant.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jtxtnamerestaurantActionPerformed(evt);
-            }
-        });
 
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setText("Menu de la semana del Restaurante:");
@@ -111,7 +132,7 @@ public class GUIShowMenuAdmin extends javax.swing.JInternalFrame {
                 .addComponent(jLabel1)
                 .addGap(27, 27, 27)
                 .addComponent(jtxtnamerestaurant, javax.swing.GroupLayout.PREFERRED_SIZE, 159, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(222, Short.MAX_VALUE))
+                .addContainerGap(240, Short.MAX_VALUE))
         );
         jPnNorteLayout.setVerticalGroup(
             jPnNorteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -229,35 +250,30 @@ public class GUIShowMenuAdmin extends javax.swing.JInternalFrame {
         jLbPlatoPrincipal.setText("Plato Principal:");
         jPnlCenDer.add(jLbPlatoPrincipal);
 
-        jCbxPlatoPrincipal.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         jPnlCenDer.add(jCbxPlatoPrincipal);
 
         jLbBebida.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLbBebida.setText("Bebida:");
         jPnlCenDer.add(jLbBebida);
 
-        jCbxBebida.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         jPnlCenDer.add(jCbxBebida);
 
         jLbEnsalada.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLbEnsalada.setText("Ensalada:");
         jPnlCenDer.add(jLbEnsalada);
 
-        jCbxEnsalada.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         jPnlCenDer.add(jCbxEnsalada);
 
         jLbEntrada.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLbEntrada.setText("Entrada:");
         jPnlCenDer.add(jLbEntrada);
 
-        jCbxEntrada.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         jPnlCenDer.add(jCbxEntrada);
 
         jLbPostre.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLbPostre.setText("Postre:");
         jPnlCenDer.add(jLbPostre);
 
-        jCbxPostre.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         jPnlCenDer.add(jCbxPostre);
 
         getContentPane().add(jPnlCenDer, java.awt.BorderLayout.LINE_END);
@@ -270,38 +286,53 @@ public class GUIShowMenuAdmin extends javax.swing.JInternalFrame {
         this.doDefaultCloseAction();
     }//GEN-LAST:event_jBtnCancelarActionPerformed
 
-    private void jtxtnamerestaurantActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtxtnamerestaurantActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jtxtnamerestaurantActionPerformed
-
+    /**
+     * Modifica un menu de la base de datos mediante un Id
+     *
+     * @param evt Evento del boton modificar menu
+     */
     private void BntModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BntModificarActionPerformed
-
+        if (jTxfID.getText().equals("")) {
+            Messages.warningMessage("Campos vacios: Error al modificar", "Warning");
+            return;
+        }
         boolean men;
 
         IMenuAccess service = Factory.getInstance().getMenuService();
         // Inyecta la dependencia
         MenuService menuService = new MenuService(service);
-
-        if (jTxfID.getText().equals("")) {
-            Messages.warningMessage("Campos vacios: Error al modificar", "Warning");
-            return;
-        }
+        Menu myMenu = new Menu();
+        myMenu.setId_menu(jTxfID.getText());
+        myMenu.setMaindish((MainDish) jCbxPlatoPrincipal.getSelectedItem());
+        myMenu.setDessert((Dessert) jCbxPostre.getSelectedItem());
+        myMenu.setDrink((Drink) jCbxBebida.getSelectedItem());
+        myMenu.setSalad((Salad) jCbxEnsalada.getSelectedItem());
+        myMenu.setEntry((DishEntry) jCbxEntrada.getSelectedItem());
         men = false;
         try {
-            men = true;
+            men = menuService.updateMenu(myMenu.getId_menu(),myMenu.getMaindish().getId_mainDish(), 
+                    myMenu.getDrink().getId_Drink(), myMenu.getSalad().getIdSalad(), 
+                    myMenu.getEntry().getIdDishEntry(), myMenu.getDessert().getId_Dish_Dessert());
         } catch (Exception ex) {
 
             successMessage(ex.getMessage(), "Atención");
             return;
         }
         if (men) {
+            eliminarItemMenu(jTxfID.getText());
+            menus.add(myMenu);
+            mostrarTabla();
             successMessage("Se modifico el plato con exito.", "EXITO");
         } else {
             Messages.warningMessage("Error al modificar", "Warning");
         }
-        imprimirMenu();
     }//GEN-LAST:event_BntModificarActionPerformed
 
+    /**
+     * Almacena el indice fila de la tabla menus
+     *
+     * @param evt Evento click de la tabla menus
+     */
     private void jTblMenusMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTblMenusMouseClicked
 
         int i = jTblMenus.getSelectedRow();
@@ -309,17 +340,89 @@ public class GUIShowMenuAdmin extends javax.swing.JInternalFrame {
         this.jTxfID.setText(model.getValueAt(i, 0).toString());
     }//GEN-LAST:event_jTblMenusMouseClicked
 
+    /**
+     * Elimina un menu en especifico mediante un Id
+     *
+     * @param evt Evento del boton Eliminar menu
+     */
     private void BntEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BntEliminarActionPerformed
-        // TODO add your handling code here:
+        if (jTxfID.getText().equals("")) {
+            Messages.warningMessage("El campo Id vacio: Error al agregar", "Warning");
+            return;
+        }
+
+        IMenuAccess service = Factory.getInstance().getMenuService();
+        // Inyecta la dependencia
+        MenuService menuService = new MenuService(service);
+        try {
+
+            if (Messages.confirmMessage("¿ Desea borrar el registro ?", "Confirm") != 1) {
+                boolean aux = menuService.deleteMenu(jTxfID.getText());
+                if (aux == false) {
+                    Messages.warningMessage("No se pudo borrar el menu", "Warning");
+                    return;
+                }
+            } else {
+                return;
+            }
+        } catch (Exception e) {
+            Messages.warningMessage(e.getMessage(), "Warning");
+        }
+        eliminarItemMenu(jTxfID.getText());
+        mostrarTabla();
+        successMessage("Se borro el menu con exito.", "EXITO");
     }//GEN-LAST:event_BntEliminarActionPerformed
 
+    /**
+     * Crea un menu y lo guarda en la base de datos
+     *
+     * @param evt Evento del boton agregar menu
+     */
     private void BntAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BntAgregarActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_BntAgregarActionPerformed
+        if (jTxfID.getText().equals("")) {
+            Messages.warningMessage("El campo Id vacio: Error al agregar", "Warning");
+            return;
+        }
 
+        IMenuAccess service = Factory.getInstance().getMenuService();
+        // Inyecta la dependencia
+        MenuService menuService = new MenuService(service);
+        Menu myMenu = new Menu();
+        myMenu.setId_menu(jTxfID.getText());
+        myMenu.setMaindish((MainDish) jCbxPlatoPrincipal.getSelectedItem());
+        myMenu.setDessert((Dessert) jCbxPostre.getSelectedItem());
+        myMenu.setDrink((Drink) jCbxBebida.getSelectedItem());
+        myMenu.setSalad((Salad) jCbxEnsalada.getSelectedItem());
+        myMenu.setEntry((DishEntry) jCbxEntrada.getSelectedItem());
+
+        try {
+            if (menuService.createMenu(myMenu)) {
+                menus.add(myMenu);
+                mostrarTabla();
+                successMessage("Se creo el menu con exito.", "EXITO");
+            } else {
+                Messages.warningMessage("Error al crear el menu", "Warning");
+            }
+        } catch (Exception e) {
+            Messages.warningMessage(e.getMessage(), "Warning");
+        }
+
+    }//GEN-LAST:event_BntAgregarActionPerformed
+    /**
+     * Actualiza la tabla y los combo box con informacion nueva de la base de
+     * datos
+     *
+     * @param evt Evento del boton recargar tabla
+     */
     private void jBtnRecargarTablaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnRecargarTablaActionPerformed
-        cargarLista();
+        this.jCbxBebida.removeAllItems();
+        this.jCbxEnsalada.removeAllItems();
+        this.jCbxEntrada.removeAllItems();
+        this.jCbxPlatoPrincipal.removeAllItems();
+        this.jCbxPostre.removeAllItems();
+        cargarListas();
         mostrarTabla();
+        loadDataCombo();
     }//GEN-LAST:event_jBtnRecargarTablaActionPerformed
 
     private void imprimirMenu() {
@@ -366,15 +469,42 @@ public class GUIShowMenuAdmin extends javax.swing.JInternalFrame {
     // End of variables declaration//GEN-END:variables
 
     /**
-     * Carga un lista a traves de un socket
+     * Carga los tipos de comida en el jComboBox
      */
-    private void cargarLista() {
+    private void loadDataCombo() {
+        this.jCbxPlatoPrincipal.setModel(new DefaultComboBoxModel(mainDishes.toArray()));
+        this.jCbxEntrada.setModel(new DefaultComboBoxModel(dishEntries.toArray()));
+        this.jCbxEnsalada.setModel(new DefaultComboBoxModel(salads.toArray()));
+        this.jCbxBebida.setModel(new DefaultComboBoxModel(drinks.toArray()));
+        this.jCbxPostre.setModel(new DefaultComboBoxModel(desserts.toArray()));
+    }
+
+    /**
+     * Carga un lista usando la API REST
+     */
+    private void cargarListas() {
         IMenuAccess service = Factory.getInstance().getMenuService();
-        // Inyecta la dependencia
+        IMainDishAccess mdService = Factory.getInstance().getMainDishService();
+        IEntryAccess entService = Factory.getInstance().getEntryService();
+        ISaladAccess salService = Factory.getInstance().getSaladService();
+        IDrinkAccess drService = Factory.getInstance().getDrinkService();
+        IDessertAccess dsService = Factory.getInstance().getDessertService();
+
+        // Inyecta las dependencias
         MenuService menuService = new MenuService(service);
+        MainDishService dishService = new MainDishService(mdService);
+        EntryService entryService = new EntryService(entService);
+        SaladService saladService = new SaladService(salService);
+        DrinkService drinkService = new DrinkService(drService);
+        DessertService dessertService = new DessertService(dsService);
 
         try {
             menus = menuService.listMenus();
+            mainDishes = dishService.listDishes();
+            dishEntries = entryService.listEntrys();
+            salads = saladService.listSalads();
+            drinks = drinkService.listDrinks();
+            desserts = dessertService.listDesserts();
         } catch (Exception ex) {
             successMessage(ex.getMessage(), "Atención");
         }
@@ -398,5 +528,19 @@ public class GUIShowMenuAdmin extends javax.swing.JInternalFrame {
 
         jTblMenus.setModel(new javax.swing.table.DefaultTableModel(
                 dataTable, new String[]{"ID", "Plato Principal", "Bebida", "Ensalada", "Entrada", "Postre"}));
+    }
+
+    /**
+     * Elimina de la lista de menus un menu en especifico
+     *
+     * @param id Identificador del menu a eliminar de la lista
+     */
+    private void eliminarItemMenu(String id) {
+        for (Menu myMenu : menus) {
+            if (id.equals(myMenu.getId_menu())) {
+                menus.remove(myMenu);
+                return;
+            }
+        }
     }
 }

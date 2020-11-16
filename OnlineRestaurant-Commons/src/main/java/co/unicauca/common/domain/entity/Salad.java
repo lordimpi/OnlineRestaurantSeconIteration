@@ -66,6 +66,6 @@ public class Salad {
 
     @Override
     public String toString() {
-        return "Salad {" + "id=" + idSalad + ", name=" + nameSalad + ", price=" + costSalad + '}';
+        return getNameSalad();
     }
 }

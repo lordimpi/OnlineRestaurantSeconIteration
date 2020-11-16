@@ -5,6 +5,7 @@ package co.unicauca.common.domain.entity;
  * @author Ximena
  */
 public class Restaurant {
+
     /**
      * identificador del restaurante
      */
@@ -16,39 +17,43 @@ public class Restaurant {
     /**
      * direccion del restaurante
      */
-    private String addressRestaurant;    
+    private String addressRestaurant;
     /**
      * telefono del restaurante
      */
     private String phone;
     /**
-     *  id del menu
+     * id del menu
      */
     private String idmenu;
+
     /**
-     * Constructor parametrizado 
-     * @param idRestaurant identificador del restaurante 
+     * Constructor parametrizado
+     *
+     * @param idRestaurant identificador del restaurante
      * @param NameRestaurant nombre del restaurante
-     * @param addressRestaurant direccion 
+     * @param addressRestaurant direccion
      * @param phone telefono
      * @param idmenu menu de la semana
      */
-    public Restaurant(String idRestaurant, String NameRestaurant, String addressRestaurant, String phone,String idmenu) {
+    public Restaurant(String idRestaurant, String NameRestaurant, String addressRestaurant, String phone, String idmenu) {
         this.idRestaurant = idRestaurant;
         this.NameRestaurant = NameRestaurant;
         this.addressRestaurant = addressRestaurant;
         this.phone = phone;
-        this.idmenu=idmenu;
+        this.idmenu = idmenu;
     }
-    
+
     /**
      * Constructor por defecto
      */
     public Restaurant() {
     }
+
     /**
      * Getters and seters
-     * @return 
+     *
+     * @return
      */
     public String getIdRestaurant() {
         return idRestaurant;
@@ -80,7 +85,7 @@ public class Restaurant {
 
     public void setPhone(String phone) {
         this.phone = phone;
-    }   
+    }
 
     public String getIdmenu() {
         return idmenu;
@@ -90,6 +95,8 @@ public class Restaurant {
         this.idmenu = idmenu;
     }
 
-  
-    
+    @Override
+    public String toString() {
+        return getNameRestaurant();
+    }
 }
