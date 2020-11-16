@@ -20,7 +20,7 @@ Tables creations
 		`address` VARCHAR(40) NOT NULL , `mobile` VARCHAR(10) NOT NULL , 
 		`email` VARCHAR(20) NOT NULL , `rol` VARCHAR(10) NOT NULL,
 		`pws` VARCHAR(40) NOT NULL , PRIMARY KEY (`id_user`), 
-	UNIQUE (`first_name`)) ENGINE = InnoDB;
+	UNIQUE (`first_name`), UNIQUE (`email`)) ENGINE = InnoDB;
 
 	CREATE TABLE `restaurante`.`maindish` ( 
 		`id_dish` VARCHAR(10) NOT NULL , 
@@ -118,10 +118,10 @@ Inserts
 	INSERT INTO `salad`(`idsalad`, `namesalad`, `pricesalada`) VALUES ("3","ensalada frutas",1000);
 	INSERT INTO `salad`(`idsalad`, `namesalad`, `pricesalada`) VALUES ("4","ensalada",1000);
 
-	INSERT INTO `user`(`id_user`, `first_name`, `last_name`, `address`, `mobile`, `email`, `rol`,`pws`) VALUES ("1","alejo","rodriguez","calle 10","3166161700","alejo@rc.com","admin","123");
-	INSERT INTO `user`(`id_user`, `first_name`, `last_name`, `address`, `mobile`, `email`, `rol`,`pws`) VALUES ("2","Admin","rodriguez","calle 10","3166161700","alejo@rc.com","admin","123");
-	INSERT INTO `user`(`id_user`, `first_name`, `last_name`, `address`, `mobile`, `email`, `rol`,`pws`) VALUES ("3","User","rodriguez","calle 10","3166161700","alejo@rc.com","user","123");
-	INSERT INTO `user`(`id_user`, `first_name`, `last_name`, `address`, `mobile`, `email`, `rol`,`pws`) VALUES ("4","user2","rodriguez","calle 10","3166161700","alejo@rc.com","user","123");
+	INSERT INTO `user`(`id_user`, `first_name`, `last_name`, `address`, `mobile`, `email`, `rol`,`pws`) VALUES ("1","alejo","rodriguez","calle 10","3166161700","alejo1@rc.com","admin","123");
+	INSERT INTO `user`(`id_user`, `first_name`, `last_name`, `address`, `mobile`, `email`, `rol`,`pws`) VALUES ("2","Admin","rodriguez","calle 10","3166161700","alejo2@rc.com","admin","123");
+	INSERT INTO `user`(`id_user`, `first_name`, `last_name`, `address`, `mobile`, `email`, `rol`,`pws`) VALUES ("3","User","rodriguez","calle 10","3166161700","alejo3@rc.com","user","123");
+	INSERT INTO `user`(`id_user`, `first_name`, `last_name`, `address`, `mobile`, `email`, `rol`,`pws`) VALUES ("4","user2","rodriguez","calle 10","3166161700","alejo4@rc.com","user","123");
 
 	INSERT INTO `menu`(`id_menu`, `id_maindish`, `id_drink`, `id_salad`, `id_entry`, `id_dessert`) VALUES ("1","1","1","1","1","1");
 	INSERT INTO `menu`(`id_menu`, `id_maindish`, `id_drink`, `id_salad`, `id_entry`, `id_dessert`) VALUES ("2","1","2","1","1","1");
