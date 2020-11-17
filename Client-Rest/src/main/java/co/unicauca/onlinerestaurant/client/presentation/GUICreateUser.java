@@ -1,5 +1,13 @@
 package co.unicauca.onlinerestaurant.client.presentation;
 
+import co.unicauca.common.domain.entity.User;
+import co.unicauca.onlinerestaurant.client.access.Factory;
+import co.unicauca.onlinerestaurant.client.access.IUserAccess;
+import co.unicauca.onlinerestaurant.client.domain.services.UserService;
+import co.unicauca.onlinerestaurant.client.infra.Messages;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
 /**
  *
  * @author Santiago Acuña
@@ -11,6 +19,8 @@ public class GUICreateUser extends javax.swing.JFrame {
      */
     public GUICreateUser() {
         initComponents();
+        setLocationRelativeTo(null);
+        
     }
 
     /**
@@ -24,17 +34,26 @@ public class GUICreateUser extends javax.swing.JFrame {
 
         jPnNorte = new javax.swing.JPanel();
         jPnSur = new javax.swing.JPanel();
-        jBtnAgregar = new javax.swing.JButton();
+        jBtnRegistrarse = new javax.swing.JButton();
         jBtnCancelar = new javax.swing.JButton();
         jPnCentro = new javax.swing.JPanel();
-        jLbIdDessert = new javax.swing.JLabel();
-        jTxfId = new javax.swing.JTextField();
         jLbNombre = new javax.swing.JLabel();
         jTxfNombre = new javax.swing.JTextField();
-        jLbPrecio = new javax.swing.JLabel();
-        JTxfPrecio = new javax.swing.JTextField();
+        jLbApellido = new javax.swing.JLabel();
+        jTxfApellido = new javax.swing.JTextField();
+        jLbDireccion = new javax.swing.JLabel();
+        JTxfDireccion = new javax.swing.JTextField();
+        jLbEmail = new javax.swing.JLabel();
+        jTxfEmail = new javax.swing.JTextField();
+        jLbTelefono = new javax.swing.JLabel();
+        jTxfTelefono = new javax.swing.JTextField();
+        jLbPassword = new javax.swing.JLabel();
+        jTxfPassword = new javax.swing.JPasswordField();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setUndecorated(true);
+        setPreferredSize(new java.awt.Dimension(540, 336));
+        setResizable(false);
 
         jPnNorte.setBackground(new java.awt.Color(54, 33, 88));
         jPnNorte.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
@@ -44,7 +63,7 @@ public class GUICreateUser extends javax.swing.JFrame {
         jPnNorte.setLayout(jPnNorteLayout);
         jPnNorteLayout.setHorizontalGroup(
             jPnNorteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 493, Short.MAX_VALUE)
+            .addGap(0, 538, Short.MAX_VALUE)
         );
         jPnNorteLayout.setVerticalGroup(
             jPnNorteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -57,13 +76,13 @@ public class GUICreateUser extends javax.swing.JFrame {
         jPnSur.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         jPnSur.setPreferredSize(new java.awt.Dimension(450, 50));
 
-        jBtnAgregar.setText("Agregar");
-        jBtnAgregar.addActionListener(new java.awt.event.ActionListener() {
+        jBtnRegistrarse.setText("Registrarse");
+        jBtnRegistrarse.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jBtnAgregarActionPerformed(evt);
+                jBtnRegistrarseActionPerformed(evt);
             }
         });
-        jPnSur.add(jBtnAgregar);
+        jPnSur.add(jBtnRegistrarse);
 
         jBtnCancelar.setText("Cancelar");
         jBtnCancelar.addActionListener(new java.awt.event.ActionListener() {
@@ -75,40 +94,99 @@ public class GUICreateUser extends javax.swing.JFrame {
 
         getContentPane().add(jPnSur, java.awt.BorderLayout.PAGE_END);
 
-        jPnCentro.setLayout(new java.awt.GridLayout(3, 2));
-
-        jLbIdDessert.setBackground(new java.awt.Color(255, 255, 255));
-        jLbIdDessert.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLbIdDessert.setText("Id:");
-        jPnCentro.add(jLbIdDessert);
-
-        jTxfId.setToolTipText("txt_id");
-        jPnCentro.add(jTxfId);
+        jPnCentro.setLayout(new java.awt.GridLayout(6, 2));
 
         jLbNombre.setBackground(new java.awt.Color(255, 255, 255));
         jLbNombre.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLbNombre.setText("Nombre:");
         jPnCentro.add(jLbNombre);
+
+        jTxfNombre.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        jTxfNombre.setToolTipText("txt_id");
         jPnCentro.add(jTxfNombre);
 
-        jLbPrecio.setBackground(new java.awt.Color(255, 255, 255));
-        jLbPrecio.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLbPrecio.setText("Precio:");
-        jPnCentro.add(jLbPrecio);
-        jPnCentro.add(JTxfPrecio);
+        jLbApellido.setBackground(new java.awt.Color(255, 255, 255));
+        jLbApellido.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLbApellido.setText("Apellido:");
+        jPnCentro.add(jLbApellido);
+
+        jTxfApellido.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        jPnCentro.add(jTxfApellido);
+
+        jLbDireccion.setBackground(new java.awt.Color(255, 255, 255));
+        jLbDireccion.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLbDireccion.setText("Direccion:");
+        jPnCentro.add(jLbDireccion);
+
+        JTxfDireccion.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        jPnCentro.add(JTxfDireccion);
+
+        jLbEmail.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLbEmail.setText("Email:");
+        jLbEmail.setToolTipText("");
+        jPnCentro.add(jLbEmail);
+
+        jTxfEmail.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        jPnCentro.add(jTxfEmail);
+
+        jLbTelefono.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLbTelefono.setText("Telefono:");
+        jLbTelefono.setToolTipText("");
+        jPnCentro.add(jLbTelefono);
+
+        jTxfTelefono.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        jPnCentro.add(jTxfTelefono);
+
+        jLbPassword.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLbPassword.setText("Contraseña:");
+        jLbPassword.setToolTipText("");
+        jPnCentro.add(jLbPassword);
+
+        jTxfPassword.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        jPnCentro.add(jTxfPassword);
 
         getContentPane().add(jPnCentro, java.awt.BorderLayout.CENTER);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jBtnAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnAgregarActionPerformed
-
+    private void jBtnRegistrarseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnRegistrarseActionPerformed
+        if (JTxfDireccion.getText().isEmpty() || jTxfApellido.getText().isEmpty() || jTxfEmail.getText().isEmpty()
+                || jTxfNombre.getText().isEmpty() || jTxfPassword.getText().isEmpty() || jTxfTelefono.getText().isEmpty()) {
+            Messages.warningMessage("ERROR: Campos vacios", "Warning");
+            return;
+        }
         
-    }//GEN-LAST:event_jBtnAgregarActionPerformed
+        IUserAccess repo = Factory.getInstance().getUserService();
+        UserService service = new UserService(repo);
+        User user = new User();
+        user.setAddress(this.JTxfDireccion.getText());
+        user.setEmail(this.jTxfEmail.getText());
+        user.setFirstName(this.jTxfNombre.getText());
+        user.setLastName(this.jTxfApellido.getText());
+        user.setMobile(this.jTxfTelefono.getText());
+        user.setPws(this.jTxfPassword.getText());
+        user.setRol("user");
+        
+        if (jTxfEmail.getText().contains("@")) {
+            try {
+                if (service.createUser(user)) {
+                    Messages.successMessage("Usuario registrado con exito", "Exito");
+                }else{
+                    Messages.warningMessage("ERROR: No se pudo registrar el usuario", "Error");
+                }
+            } catch (Exception ex) {
+                Logger.getLogger(GUICreateUser.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        } else {
+            Messages.warningMessage("El Email ingresado no es valido", "Warning");
+        }
+
+    }//GEN-LAST:event_jBtnRegistrarseActionPerformed
 
     private void jBtnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnCancelarActionPerformed
-
+        
+        this.dispose();
     }//GEN-LAST:event_jBtnCancelarActionPerformed
 
     /**
@@ -147,16 +225,22 @@ public class GUICreateUser extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JTextField JTxfPrecio;
-    private javax.swing.JButton jBtnAgregar;
+    private javax.swing.JTextField JTxfDireccion;
     private javax.swing.JButton jBtnCancelar;
-    private javax.swing.JLabel jLbIdDessert;
+    private javax.swing.JButton jBtnRegistrarse;
+    private javax.swing.JLabel jLbApellido;
+    private javax.swing.JLabel jLbDireccion;
+    private javax.swing.JLabel jLbEmail;
     private javax.swing.JLabel jLbNombre;
-    private javax.swing.JLabel jLbPrecio;
+    private javax.swing.JLabel jLbPassword;
+    private javax.swing.JLabel jLbTelefono;
     private javax.swing.JPanel jPnCentro;
     private javax.swing.JPanel jPnNorte;
     private javax.swing.JPanel jPnSur;
-    private javax.swing.JTextField jTxfId;
+    private javax.swing.JTextField jTxfApellido;
+    private javax.swing.JTextField jTxfEmail;
     private javax.swing.JTextField jTxfNombre;
+    private javax.swing.JPasswordField jTxfPassword;
+    private javax.swing.JTextField jTxfTelefono;
     // End of variables declaration//GEN-END:variables
 }

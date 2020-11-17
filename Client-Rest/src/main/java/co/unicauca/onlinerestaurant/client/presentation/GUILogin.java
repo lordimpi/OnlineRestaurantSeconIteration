@@ -36,6 +36,7 @@ public class GUILogin extends javax.swing.JFrame {
     public GUILogin() {
         initComponents();
         setLocationRelativeTo(null);
+        this.setFocusable(true);
         ImageIcon img = new ImageIcon("src/main/java/resources/bg2.png");
         Icon icono = new ImageIcon(img.getImage().getScaledInstance(
                 jLbLogo.getWidth(),
@@ -99,6 +100,11 @@ public class GUILogin extends javax.swing.JFrame {
         TxbUser.setText("user@user.com");
         TxbUser.setToolTipText("Enter your user name");
         TxbUser.setBorder(null);
+        TxbUser.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                TxbUserFocusGained(evt);
+            }
+        });
 
         jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(102, 102, 102));
@@ -112,6 +118,11 @@ public class GUILogin extends javax.swing.JFrame {
         jPswField.setText("123456");
         jPswField.setToolTipText("Enter your password");
         jPswField.setBorder(null);
+        jPswField.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                jPswFieldFocusGained(evt);
+            }
+        });
         jPswField.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 jPswFieldKeyPressed(evt);
@@ -294,8 +305,24 @@ public class GUILogin extends javax.swing.JFrame {
     }//GEN-LAST:event_jLblBotonCerrarMouseClicked
 
     private void BtnRegistrarseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnRegistrarseActionPerformed
-        // TODO add your handling code here:
+
+        java.awt.EventQueue.invokeLater(new Runnable() {
+            public void run() {
+                GUICreateUser ins = null;
+                ins = new GUICreateUser();
+                ins.setExtendedState(NORMAL);
+                ins.setVisible(true);
+            }
+        });
     }//GEN-LAST:event_BtnRegistrarseActionPerformed
+
+    private void TxbUserFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_TxbUserFocusGained
+        this.TxbUser.setText("");
+    }//GEN-LAST:event_TxbUserFocusGained
+
+    private void jPswFieldFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jPswFieldFocusGained
+        this.jPswField.setText("");
+    }//GEN-LAST:event_jPswFieldFocusGained
 
     /**
      * @param args the command line arguments
