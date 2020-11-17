@@ -59,7 +59,7 @@ public class GUIMenuAdmin extends javax.swing.JFrame {
     public GUIMenuAdmin() throws PropertyVetoException {
         initComponents();
 //        cargarLista();
-        listRestaurants = new GUIListRestaurants(restaurants);
+        listRestaurants = new GUIListRestaurants();
         setLocationRelativeTo(null);
         initIcons();
     }

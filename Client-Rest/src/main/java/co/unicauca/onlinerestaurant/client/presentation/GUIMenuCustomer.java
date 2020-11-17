@@ -67,7 +67,7 @@ public class GUIMenuCustomer extends javax.swing.JFrame {
     public GUIMenuCustomer() throws PropertyVetoException {
         initComponents();
 //        cargarLista();
-        listRestaurants = new GUIListRestaurants(restaurants);
+        listRestaurants = new GUIListRestaurants();
         setLocationRelativeTo(null);
         this.BtnMenus.setVisible(false);
     }

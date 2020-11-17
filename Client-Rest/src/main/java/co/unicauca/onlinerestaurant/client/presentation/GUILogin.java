@@ -235,7 +235,7 @@ public class GUILogin extends javax.swing.JFrame {
         String aux=TxbUser.toString();
         User user = new User();
         try {
-            user = userService.findUser("1");
+            user = userService.findUser("3");
         } catch (Exception ex) {
             Logger.getLogger(GUILogin.class.getName()).log(Level.SEVERE, null, ex);
         }
