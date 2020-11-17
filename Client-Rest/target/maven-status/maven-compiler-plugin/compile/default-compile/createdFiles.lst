@@ -9,6 +9,7 @@ co\unicauca\onlinerestaurant\client\presentation\GUIModifyDish$3.class
 co\unicauca\onlinerestaurant\client\access\RestaurantAccessREST.class
 co\unicauca\onlinerestaurant\client\domain\services\DrinkService.class
 co\unicauca\onlinerestaurant\client\presentation\GUIShowMenuAdmin$8.class
+co\unicauca\onlinerestaurant\client\presentation\GUIShowMenu$2.class
 co\unicauca\onlinerestaurant\client\presentation\GUIListRestaurants.class
 co\unicauca\client\SaladJerseyClient.class
 co\unicauca\onlinerestaurant\client\domain\services\MainDishService.class
@@ -80,12 +81,14 @@ co\unicauca\onlinerestaurant\client\presentation\GUICreateDishEntry.class
 co\unicauca\onlinerestaurant\client\presentation\GUIDeleteDessert$5.class
 co\unicauca\onlinerestaurant\client\presentation\GUIDeleteDish.class
 co\unicauca\client\DishEntryJerseyClient.class
+co\unicauca\onlinerestaurant\client\presentation\GUIShowMenu$4.class
 co\unicauca\onlinerestaurant\client\access\MenuAccessREST$1.class
 co\unicauca\onlinerestaurant\client\presentation\GUIDeleteDishEntry$5.class
 co\unicauca\onlinerestaurant\client\access\EntryAccessREST$1.class
 co\unicauca\client\UserJerseyClient.class
 co\unicauca\onlinerestaurant\client\access\RestaurantAccessREST$1.class
 co\unicauca\onlinerestaurant\client\presentation\GUIListRestaurants$2.class
+co\unicauca\onlinerestaurant\client\presentation\GUIShowMenu$3.class
 co\unicauca\onlinerestaurant\client\presentation\GUIDeleteDishEntry$4.class
 co\unicauca\onlinerestaurant\client\presentation\GUIMenuFood$17.class
 co\unicauca\onlinerestaurant\client\presentation\GUIMenuFood$1.class
@@ -111,6 +114,7 @@ co\unicauca\onlinerestaurant\client\presentation\GUIMenuCustomer$7.class
 co\unicauca\onlinerestaurant\client\presentation\GUILogin$8.class
 co\unicauca\onlinerestaurant\client\domain\services\MenuService.class
 co\unicauca\onlinerestaurant\client\presentation\GUIShowMenuAdmin$5.class
+co\unicauca\onlinerestaurant\client\presentation\GUIShowMenu$5.class
 co\unicauca\client\DessertJerseyClient.class
 co\unicauca\onlinerestaurant\client\access\DessertAccessREST$1.class
 co\unicauca\onlinerestaurant\client\access\MenuAccessREST$2.class
