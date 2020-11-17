@@ -1,8 +1,6 @@
 package co.unicauca.restaurant.presentation.rest;
 
-
 import co.unicauca.common.domain.entity.Restaurant;
-
 import co.unicauca.restaurant.domain.service.RestaurantService;
 import co.unicauca.common.infra.DomainErrors;
 import co.unicauca.common.infra.JsonResponse;

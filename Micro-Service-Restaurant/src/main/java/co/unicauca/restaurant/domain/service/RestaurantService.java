@@ -132,16 +132,13 @@ public class RestaurantService {
 
         //Validar que no exista el restaurante
         if (newRestaurant.getIdRestaurant() != null) {
-
             Restaurant restaurantAux = repository.findById(newRestaurant.getIdRestaurant());
             if (restaurantAux != null) {
-                if (restaurantAux.getIdRestaurant().equals( newRestaurant.getIdRestaurant())) {
-                    // El restaurante ya existe
-                    Error error = new Error(ValidationError.INVALID_FIELD, "id", "El id del restaurante ya existe");
-                    errors.add(error);
-                }
-
+                // El restaurante ya existe
+                Error error = new Error(ValidationError.INVALID_FIELD, "id", "El id del restaurante ya existe");
+                errors.add(error);
             }
+
         }
 
         return errors;

@@ -35,25 +35,23 @@ public class RestaurantRepository implements IRestaurantRepository {
     @Override
     public List<Restaurant> findAll() {
 
-        Restaurant newrestaurant = new Restaurant();
-
         List<Restaurant> restaurants = new ArrayList<>();
         try {
 
             String sql = "SELECT * FROM restaurant ";
             this.connect();
-            PreparedStatement pstmt = conn.prepareStatement(sql);
-            ResultSet res = pstmt.executeQuery();
+            Statement stmt = conn.createStatement();
+            ResultSet res = stmt.executeQuery(sql);
             while (res.next()) {
+                Restaurant newrestaurant = new Restaurant();
                 newrestaurant.setIdRestaurant(res.getString("idres"));
                 newrestaurant.setNameRestaurant(res.getString("name_restaurant"));
                 newrestaurant.setAddressRestaurant(res.getString("address_restaurant"));
-                newrestaurant.setPhone(res.getString("phone"));     
-
+                newrestaurant.setPhone(res.getString("phone"));
                 restaurants.add(newrestaurant);
+
             }
             this.disconnect();
-
         } catch (SQLException ex) {
             Logger.getLogger(RestaurantRepository.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -62,8 +60,7 @@ public class RestaurantRepository implements IRestaurantRepository {
 
     @Override
     public Restaurant findById(String id) {
-        Restaurant newrestaurant = new Restaurant();
-
+        Restaurant newrestaurant = null;
 
         this.connect();
         try {
@@ -72,6 +69,7 @@ public class RestaurantRepository implements IRestaurantRepository {
             PreparedStatement pstmt = conn.prepareStatement(sql);
             ResultSet res = pstmt.executeQuery();
             while (res.next()) {
+                newrestaurant = new Restaurant();
                 newrestaurant.setIdRestaurant(res.getString("idres"));
                 newrestaurant.setNameRestaurant(res.getString("name_restaurant"));
                 newrestaurant.setAddressRestaurant(res.getString("address_restaurant"));
@@ -96,10 +94,10 @@ public class RestaurantRepository implements IRestaurantRepository {
             pstmt.setString(2, restaurant.getNameRestaurant());
             pstmt.setString(3, restaurant.getAddressRestaurant());
             pstmt.setString(4, restaurant.getPhone());
-            pstmt.setString(5, restaurant.getIdmenuLu());          
-            pstmt.setString(6, restaurant.getIdmenuMa());          
-            pstmt.setString(7, restaurant.getIdmenuMi());           
-            pstmt.setString(8, restaurant.getIdmenuJu());       
+            pstmt.setString(5, restaurant.getIdmenuLu());
+            pstmt.setString(6, restaurant.getIdmenuMa());
+            pstmt.setString(7, restaurant.getIdmenuMi());
+            pstmt.setString(8, restaurant.getIdmenuJu());
             pstmt.setString(9, restaurant.getIdmenuVi());
             pstmt.setString(10, restaurant.getIdmenuSa());
 
@@ -116,15 +114,16 @@ public class RestaurantRepository implements IRestaurantRepository {
     @Override
     public boolean update(Restaurant newRestaurant) {
         try {
+            this.connect();
             String sql = "UPDATE `restaurant` SET `name_restaurant`=?,`address_restaurant`=?,`phone`=?,`id_lu_menu`=?,`id_ma_menu`=?,`id_mi_menu`=?,`id_ju_menu`=?,`id_vi_menu`=?,`id_sa_menu`=? WHERE `idres`=?";
             PreparedStatement pstmt = conn.prepareStatement(sql);
             pstmt.setString(1, newRestaurant.getNameRestaurant());
             pstmt.setString(2, newRestaurant.getAddressRestaurant());
             pstmt.setString(3, newRestaurant.getPhone());
-            pstmt.setString(4,newRestaurant.getIdmenuLu());          
-            pstmt.setString(5, newRestaurant.getIdmenuMa());          
-            pstmt.setString(6, newRestaurant.getIdmenuMi());           
-            pstmt.setString(7, newRestaurant.getIdmenuJu());       
+            pstmt.setString(4, newRestaurant.getIdmenuLu());
+            pstmt.setString(5, newRestaurant.getIdmenuMa());
+            pstmt.setString(6, newRestaurant.getIdmenuMi());
+            pstmt.setString(7, newRestaurant.getIdmenuJu());
             pstmt.setString(8, newRestaurant.getIdmenuVi());
             pstmt.setString(9, newRestaurant.getIdmenuSa());
             pstmt.setString(10, newRestaurant.getIdRestaurant());
