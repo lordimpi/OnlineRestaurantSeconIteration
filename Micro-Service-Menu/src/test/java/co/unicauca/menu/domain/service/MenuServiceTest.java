@@ -5,142 +5,109 @@
  */
 package co.unicauca.menu.domain.service;
 
+import co.unicauca.common.domain.entity.Dessert;
+import co.unicauca.common.domain.entity.DishEntry;
+import co.unicauca.common.domain.entity.Drink;
+import co.unicauca.common.domain.entity.MainDish;
 import co.unicauca.common.domain.entity.Menu;
+import co.unicauca.common.domain.entity.Salad;
 import co.unicauca.menu.access.IMenuRepository;
+import co.unicauca.menu.access.MenuRepository;
+import java.util.ArrayList;
 import java.util.List;
-import org.junit.jupiter.api.AfterEach;
-import org.junit.jupiter.api.AfterAll;
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 
 /**
  *
- * @author Mariat
+ * @author Mariat Trujillo
  */
 public class MenuServiceTest {
-    
+
     public MenuServiceTest() {
     }
-    
-    @BeforeAll
-    public static void setUpClass() {
-    }
-    
-    @AfterAll
-    public static void tearDownClass() {
-    }
-    
-    @BeforeEach
-    public void setUp() {
-    }
-    
-    @AfterEach
-    public void tearDown() {
-    }
-
     /**
-     * Test of findById method, of class MenuService.
+     * test del Menu
      */
     @Test
-    public void testFindById() {
-        System.out.println("findById");
-        String id = "";
-        MenuService instance = new MenuService();
-        Menu expResult = null;
-        Menu result = instance.findById(id);
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
-    }
+    public void testCRUD() {
+        System.out.println("CRUD general");
+        int t;
 
-    /**
-     * Test of setUserRepository method, of class MenuService.
-     */
-    @Test
-    public void testSetUserRepository() {
-        System.out.println("setUserRepository");
-        IMenuRepository repository = null;
+        IMenuRepository repo = new MenuRepository();
         MenuService instance = new MenuService();
-        instance.setUserRepository(repository);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
-    }
+        Menu expResult = new Menu();
 
-    /**
-     * Test of findAll method, of class MenuService.
-     */
-    @Test
-    public void testFindAll() {
-        System.out.println("findAll");
-        MenuService instance = new MenuService();
-        List<Menu> expResult = null;
-        List<Menu> result = instance.findAll();
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
-    }
+        MainDish md = new MainDish();
+        Drink d = new Drink();
+        DishEntry de = new DishEntry();
+        Salad s = new Salad();
+        Dessert des = new Dessert();
 
-    /**
-     * Test of findMbyRN method, of class MenuService.
-     */
-    @Test
-    public void testFindMbyRN() {
-        System.out.println("findMbyRN");
-        String rsName = "";
-        MenuService instance = new MenuService();
-        List<Menu> expResult = null;
-        List<Menu> result = instance.findMbyRN(rsName);
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
-    }
+        instance.setUserRepository(repo);
+        
+        List<Menu> tamaño=new ArrayList(); 
+        tamaño = instance.findAll();
+        t=tamaño.size();
 
-    /**
-     * Test of create method, of class MenuService.
-     */
-    @Test
-    public void testCreate() {
-        System.out.println("create");
-        Menu newMenu = null;
-        MenuService instance = new MenuService();
-        boolean expResult = false;
-        boolean result = instance.create(newMenu);
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
-    }
+        expResult.setId_menu("1000");
+        
+        md.setId_mainDish("1");
+        d.setId_Drink("1");
+        de.setIdDishEntry("1");
+        s.setIdSalad("1");
+        des.setId_Dish_Dessert("1");
+        
+        expResult.setDrink(d);
+        expResult.setDessert(des);
+        expResult.setEntry(de);
+        expResult.setMaindish(md);
+        expResult.setSalad(s);
 
-    /**
-     * Test of update method, of class MenuService.
-     */
-    @Test
-    public void testUpdate() {
-        System.out.println("update");
-        String id = "";
-        Menu newMenu = null;
-        MenuService instance = new MenuService();
-        boolean expResult = false;
-        boolean result = instance.update(id, newMenu);
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
-    }
+        //create crea un nuevo menu 
+        instance.create(expResult);
 
-    /**
-     * Test of delete method, of class MenuService.
-     */
-    @Test
-    public void testDelete() {
-        System.out.println("delete");
-        String id = "";
-        MenuService instance = new MenuService();
-        boolean expResult = false;
-        boolean result = instance.delete(id);
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        //findById busca un menu por id
+        Menu result = instance.findById("1000");
+        assertEquals("1", result.getDrink().getId_Drink());
+        assertEquals("1", result.getEntry().getIdDishEntry());
+        assertEquals("1", result.getMaindish().getId_mainDish());
+        assertEquals("1", result.getSalad().getIdSalad());
+        assertEquals("1", result.getDessert().getId_Dish_Dessert());
+
+
+        //findAll buscar una lista de todos los menus
+        List<Menu> nresult = new ArrayList();
+        nresult = instance.findAll();
+
+        assertEquals(t+1, nresult.size());
+
+        //Update actualizar menu
+        md.setId_mainDish("2");
+        d.setId_Drink("2");
+        de.setIdDishEntry("2");
+        s.setIdSalad("2");
+        des.setId_Dish_Dessert("2");
+        
+        expResult.setDrink(d);
+        expResult.setDessert(des);
+        expResult.setEntry(de);
+        expResult.setMaindish(md);
+        expResult.setSalad(s);
+
+
+        instance.update(expResult.getId_menu(), expResult);
+
+        result = instance.findById("1000");
+        assertEquals("2", result.getDrink().getId_Drink());
+        assertEquals("2", result.getEntry().getIdDishEntry());
+        assertEquals("2", result.getMaindish().getId_mainDish());
+        assertEquals("2", result.getSalad().getIdSalad());
+        assertEquals("2", result.getDessert().getId_Dish_Dessert());;
+
+        //delete borrar el menu de prueba
+        instance.delete("1000");
+        result = instance.findById("1000");
+        assertEquals(null, result);
     }
-    
 }
