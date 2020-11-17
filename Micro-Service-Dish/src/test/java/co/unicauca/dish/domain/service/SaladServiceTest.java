@@ -2,6 +2,8 @@ package co.unicauca.dish.domain.service;
 
 import co.unicauca.common.domain.entity.Salad;
 import co.unicauca.dish.access.ISaladRepository;
+import co.unicauca.dish.access.SaladRepository;
+import java.util.ArrayList;
 import java.util.List;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.AfterAll;
@@ -12,98 +14,38 @@ import static org.junit.jupiter.api.Assertions.*;
 
 /**
  *
- * @author Mariat
+ * @author Mariat Trujillo
  */
 public class SaladServiceTest {
     
     public SaladServiceTest() {
     }
-    /**
-     * Test of findById method, of class SaladService.
-     */
-    @Test
-    public void testFindById() {
-        System.out.println("findById");
-        String id = "";
-        SaladService instance = new SaladService();
-        Salad expResult = null;
-        Salad result = instance.findById(id);
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
-    }
-
-    /**
-     * Test of setSaladRepository method, of class SaladService.
-     */
-    @Test
-    public void testSetSaladRepository() {
-        System.out.println("setSaladRepository");
-        ISaladRepository repository = null;
-        SaladService instance = new SaladService();
-        instance.setSaladRepository(repository);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
-    }
-
-    /**
-     * Test of findAll method, of class SaladService.
-     */
-    @Test
-    public void testFindAll() {
-        System.out.println("findAll");
-        SaladService instance = new SaladService();
-        List<Salad> expResult = null;
-        List<Salad> result = instance.findAll();
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
-    }
-
-    /**
-     * Test of create method, of class SaladService.
-     */
-    @Test
-    public void testCreate() {
-        System.out.println("create");
-        Salad newSalad = null;
-        SaladService instance = new SaladService();
-        boolean expResult = false;
-        boolean result = instance.create(newSalad);
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
-    }
-
-    /**
-     * Test of update method, of class SaladService.
-     */
-    @Test
-    public void testUpdate() {
-        System.out.println("update");
-        String id = "";
-        Salad newSalad = null;
-        SaladService instance = new SaladService();
-        boolean expResult = false;
-        boolean result = instance.update(id, newSalad);
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
-    }
-
-    /**
-     * Test of delete method, of class SaladService.
-     */
-    @Test
-    public void testDelete() {
-        System.out.println("delete");
-        String id = "";
-        SaladService instance = new SaladService();
-        boolean expResult = false;
-        boolean result = instance.delete(id);
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
-    }
     
+  
+     @Test
+    public void testCrudSalads() {
+        System.out.println("CRUD_Salads");
+        int t;
+        SaladService service = new SaladService();
+        ISaladRepository repo= new SaladRepository();
+        service.setSaladRepository(repo);
+        service.delete("100");
+        List<Salad> tamaño = new ArrayList();
+        tamaño = service.findAll();
+        t = tamaño.size();
+        //crete
+        service.create(new Salad("100", "salad1", 500d));
+        //listarlos
+        List<Salad> result = service.findAll();
+        assertEquals(t+1, result.size());
+        //buscar
+        Salad salad = service.findById("100");
+        assertEquals("salad1", salad.getNameSalad());
+        assertEquals(500d, salad.getCostSalad());
+        //delete
+        service.delete("100");
+        salad = service.findById("100");
+        assertEquals(null, salad);
+
+    }
 }
