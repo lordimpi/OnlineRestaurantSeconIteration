@@ -10,6 +10,7 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
@@ -31,25 +32,25 @@ public class RestaurantRepository implements IRestaurantRepository {
     @Override
     public List<Restaurant> findAll() {
 
-        Restaurant newrestaurant = new Restaurant();
+       
 
         List<Restaurant> restaurants = new ArrayList<>();
         try {
 
             String sql = "SELECT * FROM restaurant ";
             this.connect();
-            PreparedStatement pstmt = conn.prepareStatement(sql);
-            ResultSet res = pstmt.executeQuery();
+            Statement stmt = conn.createStatement();
+            ResultSet res = stmt.executeQuery(sql);
             while (res.next()) {
+                Restaurant newrestaurant = new Restaurant();
                 newrestaurant.setIdRestaurant(res.getString("idres"));
                 newrestaurant.setNameRestaurant(res.getString("name_restaurant"));
                 newrestaurant.setAddressRestaurant(res.getString("address_restaurant"));
                 newrestaurant.setPhone(res.getString("phone"));     
-
                 restaurants.add(newrestaurant);
+                
             }
             this.disconnect();
-
         } catch (SQLException ex) {
             Logger.getLogger(RestaurantRepository.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -67,12 +68,12 @@ public class RestaurantRepository implements IRestaurantRepository {
             this.connect();
             PreparedStatement pstmt = conn.prepareStatement(sql);
             ResultSet res = pstmt.executeQuery();
-            while (res.next()) {
+            
                 newrestaurant.setIdRestaurant(res.getString("idres"));
                 newrestaurant.setNameRestaurant(res.getString("name_restaurant"));
                 newrestaurant.setAddressRestaurant(res.getString("address_restaurant"));
                 newrestaurant.setPhone(res.getString("phone"));
-            }
+            
             pstmt.close();
             this.disconnect();
         } catch (SQLException ex) {
