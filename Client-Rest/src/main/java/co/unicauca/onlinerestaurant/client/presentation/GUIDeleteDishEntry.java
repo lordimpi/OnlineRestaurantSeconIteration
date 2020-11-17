@@ -170,7 +170,8 @@ public class GUIDeleteDishEntry extends javax.swing.JInternalFrame {
         try {
             if (Messages.confirmMessage("¿ Desea borrar el registro ?", "Confirm") != 1) {
                 boolean aux = EntryService.deleteDishEntry(id);
-                if (aux == false) {
+                DishEntry aux2 = EntryService.findEntry(id);
+                if (aux2 != null) {
                     Messages.warningMessage("No se pudo borrar el plato de Entrada", "Warning");
                     return;
                 }

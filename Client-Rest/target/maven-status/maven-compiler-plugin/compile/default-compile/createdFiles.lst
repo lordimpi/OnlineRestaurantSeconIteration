@@ -108,6 +108,7 @@ co\unicauca\onlinerestaurant\client\presentation\GUIDeleteDish$5.class
 co\unicauca\onlinerestaurant\client\presentation\GUIMenuFood$3.class
 co\unicauca\onlinerestaurant\client\access\EntryAccessREST.class
 co\unicauca\onlinerestaurant\client\presentation\GUIMenuCustomer$7.class
+co\unicauca\onlinerestaurant\client\presentation\GUILogin$8.class
 co\unicauca\onlinerestaurant\client\domain\services\MenuService.class
 co\unicauca\onlinerestaurant\client\presentation\GUIShowMenuAdmin$5.class
 co\unicauca\client\DessertJerseyClient.class
