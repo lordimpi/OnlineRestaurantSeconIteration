@@ -66,8 +66,8 @@ public class GUIMenuCustomer extends javax.swing.JFrame {
      */
     public GUIMenuCustomer() throws PropertyVetoException {
         initComponents();
-//        cargarLista();
-        listRestaurants = new GUIListRestaurants(restaurants);
+        cargarLista();
+        listRestaurants = new GUIListRestaurants();
         setLocationRelativeTo(null);
         this.BtnMenus.setVisible(false);
     }
@@ -370,7 +370,7 @@ public class GUIMenuCustomer extends javax.swing.JFrame {
         setColor(BtnRestaurant);
         resetColor(BtnMenus);
 
-//        cargarLista();
+        cargarLista();
 
         if (!listRestaurants.isVisible()) {
             listRestaurants.setMaximizable(true);
