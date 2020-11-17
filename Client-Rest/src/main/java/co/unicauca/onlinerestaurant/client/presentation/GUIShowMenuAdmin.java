@@ -89,9 +89,7 @@ public class GUIShowMenuAdmin extends javax.swing.JInternalFrame {
         jLabel1 = new javax.swing.JLabel();
         jLbRestaurantName = new javax.swing.JLabel();
         jPnSur = new javax.swing.JPanel();
-        BntAgregar = new javax.swing.JButton();
         BntModificar = new javax.swing.JButton();
-        BntEliminar = new javax.swing.JButton();
         jBtnCancelar = new javax.swing.JButton();
         jBtnRecargarTabla = new javax.swing.JButton();
         jPnCentro = new javax.swing.JPanel();
@@ -153,14 +151,6 @@ public class GUIShowMenuAdmin extends javax.swing.JInternalFrame {
         jPnSur.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         jPnSur.setPreferredSize(new java.awt.Dimension(450, 50));
 
-        BntAgregar.setText("Agregar");
-        BntAgregar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BntAgregarActionPerformed(evt);
-            }
-        });
-        jPnSur.add(BntAgregar);
-
         BntModificar.setText("Modificar");
         BntModificar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -168,14 +158,6 @@ public class GUIShowMenuAdmin extends javax.swing.JInternalFrame {
             }
         });
         jPnSur.add(BntModificar);
-
-        BntEliminar.setText("Eliminar");
-        BntEliminar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BntEliminarActionPerformed(evt);
-            }
-        });
-        jPnSur.add(BntEliminar);
 
         jBtnCancelar.setText("Cancelar");
         jBtnCancelar.addActionListener(new java.awt.event.ActionListener() {
@@ -341,75 +323,7 @@ public class GUIShowMenuAdmin extends javax.swing.JInternalFrame {
         this.jTxfID.setText(model.getValueAt(i, 1).toString());
     }//GEN-LAST:event_jTblMenusMouseClicked
 
-    /**
-     * Elimina un menu en especifico mediante un Id
-     *
-     * @param evt Evento del boton Eliminar menu
-     */
-    private void BntEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BntEliminarActionPerformed
-        if (jTxfID.getText().equals("")) {
-            Messages.warningMessage("El campo Id vacio: Error al agregar", "Warning");
-            return;
-        }
-
-        IMenuAccess service = Factory.getInstance().getMenuService();
-        // Inyecta la dependencia
-        MenuService menuService = new MenuService(service);
-        try {
-
-            if (Messages.confirmMessage("¿ Desea borrar el registro ?", "Confirm") != 1) {
-                boolean aux = menuService.deleteMenu(jTxfID.getText());
-                if (aux == false) {
-                    Messages.warningMessage("No se pudo borrar el menu", "Warning");
-                    return;
-                }
-            } else {
-                return;
-            }
-        } catch (Exception e) {
-            Messages.warningMessage(e.getMessage(), "Warning");
-        }
-        eliminarItemMenu(jTxfID.getText());
-        mostrarTabla();
-        successMessage("Se borro el menu con exito.", "EXITO");
-    }//GEN-LAST:event_BntEliminarActionPerformed
-
-    /**
-     * Crea un menu y lo guarda en la base de datos
-     *
-     * @param evt Evento del boton agregar menu
-     */
-    private void BntAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BntAgregarActionPerformed
-        if (jTxfID.getText().equals("")) {
-            Messages.warningMessage("El campo Id vacio: Error al agregar", "Warning");
-            return;
-        }
-
-        IMenuAccess service = Factory.getInstance().getMenuService();
-        // Inyecta la dependencia
-        MenuService menuService = new MenuService(service);
-        Menu myMenu = new Menu();
-        myMenu.setId_menu(jTxfID.getText());
-        myMenu.setMaindish((MainDish) jCbxPlatoPrincipal.getSelectedItem());
-        myMenu.setDessert((Dessert) jCbxPostre.getSelectedItem());
-        myMenu.setDrink((Drink) jCbxBebida.getSelectedItem());
-        myMenu.setSalad((Salad) jCbxEnsalada.getSelectedItem());
-        myMenu.setEntry((DishEntry) jCbxEntrada.getSelectedItem());
-
-        try {
-            if (menuService.createMenu(myMenu)) {
-                menus.add(myMenu);
-                mostrarTabla();
-                successMessage("Se creo el menu con exito.", "EXITO");
-            } else {
-                Messages.warningMessage("Error al crear el menu", "Warning");
-            }
-        } catch (Exception e) {
-            Messages.warningMessage(e.getMessage(), "Warning");
-        }
-
-    }//GEN-LAST:event_BntAgregarActionPerformed
-    /**
+   /**
      * Actualiza la tabla y los combo box con informacion nueva de la base de
      * datos
      *
@@ -427,8 +341,6 @@ public class GUIShowMenuAdmin extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_jBtnRecargarTablaActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton BntAgregar;
-    private javax.swing.JButton BntEliminar;
     private javax.swing.JButton BntModificar;
     private javax.swing.JButton jBtnCancelar;
     private javax.swing.JButton jBtnRecargarTabla;
