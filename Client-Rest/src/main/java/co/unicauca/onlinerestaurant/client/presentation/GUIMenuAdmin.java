@@ -58,8 +58,8 @@ public class GUIMenuAdmin extends javax.swing.JFrame {
      */
     public GUIMenuAdmin() throws PropertyVetoException {
         initComponents();
-//        cargarLista();
-        listRestaurants = new GUIListRestaurants(restaurants);
+        cargarLista();
+        listRestaurants = new GUIListRestaurants();
         setLocationRelativeTo(null);
         initIcons();
     }
@@ -565,7 +565,7 @@ public class GUIMenuAdmin extends javax.swing.JFrame {
         resetColor(BtnUsers);
         resetColor(BtnAccounting);
 
-//        cargarLista();
+        cargarLista();
         if (!listRestaurants.isVisible()) {
             listRestaurants.setMaximizable(true);
             dskEscritorio.add(listRestaurants);

@@ -1,17 +1,18 @@
 package co.unicauca.restaurant.domain.service;
 
-import co.unicauca.common.domain.entity.User;
 import javax.inject.Inject;
 import co.unicauca.common.domain.validators.ValidationError;
 import co.unicauca.common.infra.Error;
 import co.unicauca.common.infra.DomainErrors;
+import co.unicauca.common.domain.entity.Restaurant;
+import co.unicauca.restaurant.access.IRestaurantRepository;
 import java.util.ArrayList;
 import java.util.List;
-import co.unicauca.restaurant.access.IRestaurantRepository;
+import javax.inject.Inject;
 
 /**
- * Servicio de usuario. Es una fachada de acceso al negocio. Lo usa la capa de
- * presentación.
+ * Servicio de Restaurantes. Es una fachada de acceso al negocio. Lo usa la capa
+ * de presentación.
  *
  * @author Camilo Otaya
  */
@@ -25,84 +26,75 @@ public class RestaurantService {
     private IRestaurantRepository repository;
 
     /**
-     * Busca un usuario por su Id
+     * Busca un restaurante por su Id
      *
-     * @param id id del usuario
-     * @return usuario, o null, si no lo encuentra
+     * @param id id del restaurante
+     * @return restaurante, o null, si no lo encuentra
      */
-    public User findById(String id) {
+    public Restaurant findById(String id) {
         return repository.findById(id);
     }
 
-    /**
-     * Hace la inyeccion de dependencias de forma automatica
-     *
-     * @param repository Guarda la inyeccion de dependecias
-     */
     public void setUserRepository(IRestaurantRepository repository) {
         this.repository = repository;
     }
 
     /**
-     * Busca todos los usuarios en la base de datos
+     * Busca todos los restaurantes
      *
-     * @return lista de usuarios
+     * @return lista de restaurantes
      */
-    public List<User> findAll() {
-        List<User> users = repository.findAll();
-        return users;
+    public List<Restaurant> findAll() {
+        List<Restaurant> restaurants = repository.findAll();
+        return restaurants;
     }
 
     /**
-     * Crea un nuevo usuario
+     * Crea un nuevo restaurante
      *
-     * @param newUser usuario a guardar en la base de datos
+     * @param newRestaurant restaurante a guardar en la base de datos
      * @return true si lo crea, false si no
      */
-    public boolean create(User newUser) {
-        List<Error> errors = validateCreate(newUser);
+    public boolean create(Restaurant newRestaurant) {
+        List<Error> errors = validateCreate(newRestaurant);
         if (!errors.isEmpty()) {
             DomainErrors.setErrors(errors);
             return false;
         }
         //Si pasa las validaciones se graba en la bd
-        return repository.create(newUser);
+        return repository.create(newRestaurant);
 
     }
 
     /**
-     * Edita o actualiza un usuario
+     * Edita o actualiza un restaurante
      *
-     * @param id identificador del usuario
-     * @param newUser usuario a editar en el sistema
-     * @return True si puedo actualizar, false de lo contrario
+     * @param id identificador del restaurante
+     * @param newRestaurant restaurante a editar en el sistema
+     * @return
      */
-    public boolean update(String id, User newUser) {
-        List<Error> errors = validateUpdate(id, newUser);
+    public boolean update(String id, Restaurant newRestaurant) {
+        List<Error> errors = validateUpdate(id, newRestaurant);
         if (!errors.isEmpty()) {
             DomainErrors.setErrors(errors);
             return false;
         }
-        User userAux = this.findById(id);
-        userAux.setFirstName(newUser.getFirstName());
-        userAux.setLastName(newUser.getLastName());
-        userAux.setAddress(newUser.getAddress());
-        userAux.setMobile(newUser.getMobile());
-        userAux.setEmail(newUser.getEmail());
-        userAux.setRol(newUser.getRol());
-        userAux.setPws(newUser.getPws());
-        repository.update(userAux);
+        Restaurant restaurantAux = this.findById(id);
+        restaurantAux.setNameRestaurant(newRestaurant.getNameRestaurant());
+        restaurantAux.setAddressRestaurant(newRestaurant.getAddressRestaurant());
+        restaurantAux.setPhone(newRestaurant.getPhone());
+        repository.update(restaurantAux);
         return true;
     }
 
     /**
-     * Elimina un usuario de la base de datos
+     * Elimina un restaurante de la base de datos
      *
-     * @param id identificador del usuario
-     * @return True si pudo eliminar, false de lo contrario
+     * @param id identificador del restaurante
+     * @return
      */
     public boolean delete(String id) {
-        //Validate User
+        //Validate restaurant
         List<Error> errors = validateDelete(id);
         if (!errors.isEmpty()) {
             DomainErrors.setErrors(errors);
@@ -113,131 +105,90 @@ public class RestaurantService {
     }
 
     /**
-     * Valida que el usuario esté correcto antes de grabarlo
+     * Valida que el restaurante esté correcto antes de grabarlo
      *
-     * @param newUser usuario
-     * @return lista de errores de negocio
+     * @param newRestaurant restaurante
+     * @return lista de errores
      */
-    private List<Error> validateCreate(User newUser) {
+    private List<Error> validateCreate(Restaurant newRestaurant) {
         List<Error> errors = new ArrayList<>();
-        //Validate User
-        if (newUser.getId() == null || newUser.getId().isEmpty()) {
+        //Validate user
+        if (newRestaurant.getIdRestaurant() == null || newRestaurant.getIdRestaurant().isEmpty()) {
             Error error = new Error(ValidationError.EMPTY_FIELD, "Id", "El id del usuario es obligatorio");
             errors.add(error);
         }
-        if (newUser.getFirstName() == null || newUser.getFirstName().isEmpty()) {
-            Error error = new Error(ValidationError.EMPTY_FIELD, "Nombre", "El nombre del usuario es obligatorio");
+        if (newRestaurant.getNameRestaurant() == null || newRestaurant.getNameRestaurant().isEmpty()) {
+            Error error = new Error(ValidationError.EMPTY_FIELD, "Nombre", "El  nombre del restaurante es obligatorio");
             errors.add(error);
         }
-        if (newUser.getLastName() == null || newUser.getLastName().isEmpty()) {
-            Error error = new Error(ValidationError.EMPTY_FIELD, "Apellido", "El apellido del usuario es obligatorio");
+        if (newRestaurant.getAddressRestaurant() == null || newRestaurant.getAddressRestaurant().isEmpty()) {
+            Error error = new Error(ValidationError.EMPTY_FIELD, "Direccion", "El precio del restaurante es obligatorio");
             errors.add(error);
         }
-        if (newUser.getAddress() == null || newUser.getAddress().isEmpty()) {
-            Error error = new Error(ValidationError.EMPTY_FIELD, "Dirección", "La dirección del usuario es obligatoria");
-            errors.add(error);
-        }
-        if (newUser.getMobile() == null || newUser.getMobile().isEmpty()) {
-            Error error = new Error(ValidationError.EMPTY_FIELD, "Telefono", "El telefono del usuario es obligatorio");
-            errors.add(error);
-        }
-        if (newUser.getEmail() == null || newUser.getEmail().isEmpty()) {
-            Error error = new Error(ValidationError.EMPTY_FIELD, "Email", "El email del usuario es obligatorio");
-            errors.add(error);
-        }
-        if (newUser.getRol() == null || newUser.getRol().isEmpty()) {
-            Error error = new Error(ValidationError.EMPTY_FIELD, "Rol", "El rol del usuario es obligatorio");
-            errors.add(error);
-        }
-        if (newUser.getPws() == null || newUser.getPws().isEmpty()) {
-            Error error = new Error(ValidationError.EMPTY_FIELD, "Contraseña", "La contraseña del usuario es obligatoria");
+        if (newRestaurant.getPhone() == null || newRestaurant.getPhone().isEmpty()) {
+            Error error = new Error(ValidationError.EMPTY_FIELD, "Telefono", "El telefono del restaurante es obligatorio");
             errors.add(error);
         }
 
-        //Validar que no exista el usuario
-        if (newUser.getId() != null) {
-            if (Integer.parseInt(newUser.getId()) > 0) {
-                User userAux = repository.findById(newUser.getId());
-
-                if (userAux != null) {
-                    // El plato usuario ya existe
-                    Error error = new Error(ValidationError.INVALID_FIELD, "id", "El id del usuario ya existe");
-                    errors.add(error);
-                }
+        //Validar que no exista el restaurante
+        if (newRestaurant.getIdRestaurant() != null) {
+            Restaurant restaurantAux = repository.findById(newRestaurant.getIdRestaurant());
+            if (restaurantAux != null) {
+                // El restaurante ya existe
+                Error error = new Error(ValidationError.INVALID_FIELD, "id", "El id del restaurante ya existe");
+                errors.add(error);
             }
+
         }
+
         return errors;
     }
 
     /**
-     * Valida que el usuario esté correcto antes de editarlo en la bd
+     * Valida que el restaurante esté correcto antes de editarlo en la bd
      *
-     * @param newUser usuario
-     * @return lista de errores de negocio
+     * @param newRestaurant restaurante
+     * @return lista de errores
      */
-    private List<Error> validateUpdate(String id, User newUser) {
+    private List<Error> validateUpdate(String id, Restaurant newRestaurant) {
         List<Error> errors = new ArrayList<>();
-        //Validate User
-
-        if (newUser.getFirstName() == null || newUser.getFirstName().isEmpty()) {
-            Error error = new Error(ValidationError.EMPTY_FIELD, "Nombre", "El nombre del usuario es obligatorio");
+        //Validate restaurant
+        if (newRestaurant.getNameRestaurant() == null || newRestaurant.getNameRestaurant().isEmpty()) {
+            Error error = new Error(ValidationError.EMPTY_FIELD, "Nombre", "El nombre del restaurante es obligatorio");
             errors.add(error);
         }
-        if (newUser.getLastName() == null || newUser.getLastName().isEmpty()) {
-            Error error = new Error(ValidationError.EMPTY_FIELD, "Apellido", "El apellido del usuario es obligatorio");
+        if (newRestaurant.getAddressRestaurant() == null || newRestaurant.getAddressRestaurant().isEmpty()) {
+            Error error = new Error(ValidationError.EMPTY_FIELD, "direccion", "La direccion del restaurante es obligatorio");
             errors.add(error);
         }
-        if (newUser.getAddress() == null || newUser.getAddress().isEmpty()) {
-            Error error = new Error(ValidationError.EMPTY_FIELD, "Dirección", "La dirección del usuario es obligatoria");
-            errors.add(error);
-        }
-        if (newUser.getMobile() == null || newUser.getMobile().isEmpty()) {
-            Error error = new Error(ValidationError.EMPTY_FIELD, "Telefono", "El telefono del usuario es obligatorio");
-            errors.add(error);
-        }
-        if (newUser.getEmail() == null || newUser.getEmail().isEmpty()) {
-            Error error = new Error(ValidationError.EMPTY_FIELD, "email", "El email del usuario es obligatorio");
-            errors.add(error);
-        }
-        if (newUser.getRol() == null || newUser.getRol().isEmpty()) {
-            Error error = new Error(ValidationError.EMPTY_FIELD, "Rol", "El rol del usuario es obligatorio");
-            errors.add(error);
-        }
-        if (newUser.getPws() == null || newUser.getPws().isEmpty()) {
-            Error error = new Error(ValidationError.EMPTY_FIELD, "contraseña", "La contraseña del usuario es obligatoria");
+        if (newRestaurant.getPhone() == null || newRestaurant.getPhone().isEmpty()) {
+            Error error = new Error(ValidationError.EMPTY_FIELD, "telefono", "El telefono del restaurante es obligatorio");
             errors.add(error);
         }
 
-        // Validar que exista el usuario
-        User userAux = repository.findById(id);
+        // Validar que exista el restaurante
+        Restaurant restaurantAux = repository.findById(id);
 
-        if (userAux == null) {
+        if (restaurantAux == null) {
             // El usuario no existe
-            Error error = new Error(ValidationError.INVALID_FIELD, "id", "El id del usuario no existe");
+            Error error = new Error(ValidationError.INVALID_FIELD, "id", "El id del restaurante no existe");
             errors.add(error);
         }
 
         return errors;
     }
 
-    /**
-     * Valida que el usuario exista antes de eliminarlo de la base de datos
-     *
-     * @param id Identificador a validar
-     * @return Lista de errores de negocio
-     */
     private List<Error> validateDelete(String id) {
         List<Error> errors = new ArrayList<>();
-        // Validar que exista el usuario
-        User userAux = repository.findById(id);
+        // Validar que exista el restaurante
+        Restaurant restaurantAux = repository.findById(id);
 
-        if (userAux == null) {
-            // El usuario no existe
-            Error error = new Error(ValidationError.INVALID_FIELD, "id", "El id del usuario no existe");
+        if (restaurantAux == null) {
+            // El restaurante no existe
+            Error error = new Error(ValidationError.INVALID_FIELD, "id", "El id del restaurante no existe");
             errors.add(error);
         }
 
         return errors;
     }
-
 }

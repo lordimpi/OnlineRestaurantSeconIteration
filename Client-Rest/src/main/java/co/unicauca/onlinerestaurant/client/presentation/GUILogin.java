@@ -232,9 +232,14 @@ public class GUILogin extends javax.swing.JFrame {
 
         IUserAccess service = Factory.getInstance().getUserService();
         UserService userService = new UserService(service);
+        String aux=TxbUser.toString();
         User user = new User();
         try {
+<<<<<<< HEAD
             user = userService.findUser("2");
+=======
+            user = userService.findUser("1");
+>>>>>>> master
         } catch (Exception ex) {
             Logger.getLogger(GUILogin.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -245,6 +250,20 @@ public class GUILogin extends javax.swing.JFrame {
                     GUIMenuAdmin ins = null;
                     try {
                         ins = new GUIMenuAdmin();
+                    } catch (PropertyVetoException ex) {
+                        Logger.getLogger(GUILogin.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+                    ins.setExtendedState(NORMAL);
+                    ins.setVisible(true);
+                }
+            });
+            this.dispose();
+        }else if ("user".equals(user.getRol())) {
+            java.awt.EventQueue.invokeLater(new Runnable() {
+                public void run() {
+                    GUIMenuCustomer ins = null;
+                    try {
+                        ins = new GUIMenuCustomer();
                     } catch (PropertyVetoException ex) {
                         Logger.getLogger(GUILogin.class.getName()).log(Level.SEVERE, null, ex);
                     }

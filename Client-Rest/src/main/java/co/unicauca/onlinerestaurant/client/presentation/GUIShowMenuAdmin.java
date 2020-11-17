@@ -32,9 +32,10 @@ import javax.swing.table.TableModel;
  */
 public class GUIShowMenuAdmin extends javax.swing.JInternalFrame {
 
+    /**
+     * Nombre del restaurante
+     */
     String restaurantname;
-    private Menu menu;
-
     /**
      * Lista de menus del restaurante
      */
@@ -68,7 +69,6 @@ public class GUIShowMenuAdmin extends javax.swing.JInternalFrame {
      */
     public GUIShowMenuAdmin(String RestaurantN) throws Exception {
         initComponents();
-        menu = new Menu();
         restaurantname = RestaurantN;
         cargarListas();
         mostrarTabla();
@@ -422,21 +422,6 @@ public class GUIShowMenuAdmin extends javax.swing.JInternalFrame {
         mostrarTabla();
         loadDataCombo();
     }//GEN-LAST:event_jBtnRecargarTablaActionPerformed
-
-    private void imprimirMenu() {
-        IMenuAccess service = Factory.getInstance().getMenuService();
-        // Inyecta la dependencia
-        MenuService restaurant = new MenuService(service);
-
-        try {
-            menu = restaurant.findbyMenubyRN(restaurantname);
-        } catch (Exception ex) {
-            successMessage(ex.getMessage(), "Atención");
-        }
-
-        jtxtnamerestaurant.setText(restaurantname);
-
-    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton BntAgregar;

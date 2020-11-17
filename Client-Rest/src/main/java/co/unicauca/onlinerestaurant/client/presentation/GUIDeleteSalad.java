@@ -170,7 +170,8 @@ public class GUIDeleteSalad extends javax.swing.JInternalFrame {
         try {
             if (Messages.confirmMessage("¿ Desea borrar el registro ?", "Confirm") != 1) {
                 boolean aux = saladService.deleteSalad(id);
-                if (aux == false) {
+                Salad aux2 = saladService.findSalad(id);
+                if (aux2 != null) {
                     Messages.warningMessage("No se pudo borrar la ensalada", "Warning");
                     return;
                 }

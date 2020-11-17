@@ -1,4 +1,4 @@
-## In OnlineRestaurant-Service project 
+## In Commos project 
 
 modify Utilities.java
 ```ssh
@@ -16,29 +16,29 @@ Tables creations
 ```ssh
 	CREATE TABLE `restaurante`.`user` ( 
 		`id_user` VARCHAR(10) NOT NULL , 
-		`first_name` VARCHAR(40) NOT NULL , `last_name` VARCHAR(40) NOT NULL , 
-		`address` VARCHAR(40) NOT NULL , `mobile` VARCHAR(10) NOT NULL , 
-		`email` VARCHAR(20) NOT NULL , `rol` VARCHAR(10) NOT NULL,
-		`pws` VARCHAR(40) NOT NULL , PRIMARY KEY (`id_user`), 
-	UNIQUE (`first_name`)) ENGINE = InnoDB;
+		`first_name` VARCHAR(100) NOT NULL , `last_name` VARCHAR(100) NOT NULL , 
+		`address` VARCHAR(100) NOT NULL , `mobile` VARCHAR(10) NOT NULL , 
+		`email` VARCHAR(100) NOT NULL , `rol` VARCHAR(10) NOT NULL,
+		`pws` VARCHAR(20) NOT NULL , PRIMARY KEY (`id_user`), 
+	UNIQUE (`first_name`), UNIQUE (`email`)) ENGINE = InnoDB;
 
 	CREATE TABLE `restaurante`.`maindish` ( 
 		`id_dish` VARCHAR(10) NOT NULL , 
-		`dish_name` VARCHAR(40) NOT NULL , 
+		`dish_name` VARCHAR(100) NOT NULL , 
 		`dish_price` INT(40) NOT NULL , 
 		PRIMARY KEY (`id_dish`)) ENGINE = InnoDB;
 
 	CREATE TABLE `restaurante`.`drink` ( 
 		`id_drink` VARCHAR(10) NOT NULL , 
-		`drink_name` VARCHAR(40) NOT NULL , 
+		`drink_name` VARCHAR(100) NOT NULL , 
 		`drink_price` INT(40) NOT NULL , 
 		PRIMARY KEY (`id_drink`)) ENGINE = InnoDB;
 
 
         CREATE TABLE `restaurante`.`restaurant` (  
 		`idres` VARCHAR(10) NOT NULL , 
-		`name_restaurant` VARCHAR(40) NOT NULL , 
-		`address_restaurant` VARCHAR(40) NOT NULL , 
+		`name_restaurant` VARCHAR(100) NOT NULL , 
+		`address_restaurant` VARCHAR(100) NOT NULL , 
 		`phone` VARCHAR(40) NOT NULL , 
 		`id_lu_menu` VARCHAR(10) NULL ,
   		`id_ma_menu` VARCHAR(10) NULL ,
@@ -50,19 +50,19 @@ Tables creations
 
 	CREATE TABLE `restaurante`.`dessert` ( 
 		`id_dessert` VARCHAR(10) NOT NULL , 
-		`dessert_name` VARCHAR(40) NOT NULL , 
+		`dessert_name` VARCHAR(100) NOT NULL , 
 		`dessert_price` INT(40) NOT NULL , 
 		PRIMARY KEY (`id_dessert`)) ENGINE = InnoDB;
 
 	CREATE TABLE `restaurante`.`dishentry` ( 
 		`idDishEntry` VARCHAR(10) NOT NULL , 
-		`nameDishEntry` VARCHAR(40) NOT NULL , 
+		`nameDishEntry` VARCHAR(100) NOT NULL , 
 		`costDishEntry` INT(40) NOT NULL , 
 		PRIMARY KEY (`idDishEntry`)) ENGINE = InnoDB;
 
 	CREATE TABLE `restaurante`.`salad` ( 
 		`idsalad` VARCHAR(10) NOT NULL , 
-		`namesalad` VARCHAR(40) NOT NULL , 
+		`namesalad` VARCHAR(100) NOT NULL , 
 		`pricesalada` INT(40) NOT NULL , 
 		PRIMARY KEY (`idsalad`)) ENGINE = InnoDB;
 
@@ -118,10 +118,11 @@ Inserts
 	INSERT INTO `salad`(`idsalad`, `namesalad`, `pricesalada`) VALUES ("3","ensalada frutas",1000);
 	INSERT INTO `salad`(`idsalad`, `namesalad`, `pricesalada`) VALUES ("4","ensalada",1000);
 
-	INSERT INTO `user`(`id_user`, `first_name`, `last_name`, `address`, `mobile`, `email`, `rol`,`pws`) VALUES ("1","alejo","rodriguez","calle 10","3166161700","alejo@rc.com","admin","123");
-	INSERT INTO `user`(`id_user`, `first_name`, `last_name`, `address`, `mobile`, `email`, `rol`,`pws`) VALUES ("2","Admin","rodriguez","calle 10","3166161700","alejo@rc.com","admin","123");
-	INSERT INTO `user`(`id_user`, `first_name`, `last_name`, `address`, `mobile`, `email`, `rol`,`pws`) VALUES ("3","User","rodriguez","calle 10","3166161700","alejo@rc.com","user","123");
-	INSERT INTO `user`(`id_user`, `first_name`, `last_name`, `address`, `mobile`, `email`, `rol`,`pws`) VALUES ("4","user2","rodriguez","calle 10","3166161700","alejo@rc.com","user","123");
+	INSERT INTO `user`(`id_user`, `first_name`, `last_name`, `address`, `mobile`, `email`, `rol`,`pws`) VALUES ("1","alejo","rodriguez","calle 10","3166161700","alejo1@rc.com","admin","123");
+	INSERT INTO `user`(`id_user`, `first_name`, `last_name`, `address`, `mobile`, `email`, `rol`,`pws`) VALUES ("5","Santiago","Acuña","calle 10","3166161700","snt-26@hotmail.com","admin","123456");
+	INSERT INTO `user`(`id_user`, `first_name`, `last_name`, `address`, `mobile`, `email`, `rol`,`pws`) VALUES ("2","Admin","rodriguez","calle 10","3166161700","alejo2@rc.com","admin","123");
+	INSERT INTO `user`(`id_user`, `first_name`, `last_name`, `address`, `mobile`, `email`, `rol`,`pws`) VALUES ("3","User","rodriguez","calle 10","3166161700","alejo3@rc.com","user","123");
+	INSERT INTO `user`(`id_user`, `first_name`, `last_name`, `address`, `mobile`, `email`, `rol`,`pws`) VALUES ("4","user2","rodriguez","calle 10","3166161700","alejo4@rc.com","user","123");
 
 	INSERT INTO `menu`(`id_menu`, `id_maindish`, `id_drink`, `id_salad`, `id_entry`, `id_dessert`) VALUES ("1","1","1","1","1","1");
 	INSERT INTO `menu`(`id_menu`, `id_maindish`, `id_drink`, `id_salad`, `id_entry`, `id_dessert`) VALUES ("2","1","2","1","1","1");

@@ -1,6 +1,7 @@
 package co.unicauca.onlinerestaurant.client.access;
 
 import co.unicauca.common.domain.entity.Menu;
+import java.util.List;
 
 /**
  * Interface que define los servicios de persistencia del Menu
@@ -25,7 +26,7 @@ public interface IMenuAccess {
      * @return objeto de tipo Menu
      * @throws Exception error al buscar un Menu y restaurante
      */
-    public Menu findMenubyRN(String name) throws Exception;
+    public List<Menu> findMenubyRN(String name) throws Exception;
 
     /**
      * Metodo encargado de actualizar un Menu
