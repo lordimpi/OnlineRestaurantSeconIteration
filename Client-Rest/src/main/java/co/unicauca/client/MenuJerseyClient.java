@@ -18,7 +18,7 @@ import javax.ws.rs.core.Response;
  *        client.close();
  * </pre>
  *
- * @author soces
+ * @author Santiago Acuña
  */
 public class MenuJerseyClient {
 
@@ -65,13 +65,18 @@ public class MenuJerseyClient {
         return resource.request(javax.ws.rs.core.MediaType.APPLICATION_XML).get(responseType);
     }
 
+    public <T> List<Menu> findMbyRN_JSON(GenericType<List<Menu>> responseType, String rn) throws ClientErrorException {
+        WebTarget resource = webTarget;
+        return resource.request(javax.ws.rs.core.MediaType.APPLICATION_JSON).get(responseType);
+    }
+
     public <T> T findMbyRN_JSON(Class<T> responseType, String rn) throws ClientErrorException {
         WebTarget resource = webTarget;
         resource = resource.path(java.text.MessageFormat.format("list/{0}", new Object[]{rn}));
         return resource.request(javax.ws.rs.core.MediaType.APPLICATION_JSON).get(responseType);
     }
-    
-     public <T> List<Menu> findAll(GenericType<List<Menu>> responseType) throws javax.ws.rs.ClientErrorException {
+
+    public <T> List<Menu> findAll(GenericType<List<Menu>> responseType) throws javax.ws.rs.ClientErrorException {
         WebTarget resource = webTarget;
         return resource.request(javax.ws.rs.core.MediaType.APPLICATION_JSON).get(responseType);
     }
@@ -88,5 +93,5 @@ public class MenuJerseyClient {
     public void close() {
         client.close();
     }
-    
+
 }

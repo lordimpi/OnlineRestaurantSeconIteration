@@ -168,7 +168,6 @@ public class UserService {
         if (newUser.getId() != null) {
             if (Integer.parseInt(newUser.getId()) > 0) {
                 User userAux = repository.findById(newUser.getId());
-
                 if (userAux != null) {
                     // El plato usuario ya existe
                     Error error = new Error(ValidationError.INVALID_FIELD, "id", "El id del usuario ya existe");

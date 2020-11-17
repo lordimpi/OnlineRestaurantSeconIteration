@@ -17,16 +17,6 @@ public interface IRestaurantAccess {
      * @throws Exception error al buscar un restaurante
      */
     public Restaurant findRestaurant(String id) throws Exception;
-
-    /**
-     * Crea un Restaurante
-     *
-     * @param restaurant restaurante
-     * @return devuelve el del restaurante creado
-     * @throws Exception error crear el restaurante
-     */
-    public boolean createRestaurant(Restaurant restaurant) throws Exception;
-
     /**
      * Lista todos los restaurantes
      * @return Lista de restaurantes
