@@ -8,7 +8,6 @@ co\unicauca\onlinerestaurant\client\presentation\GUICreateDish$2.class
 co\unicauca\onlinerestaurant\client\presentation\GUIModifyDish$3.class
 co\unicauca\onlinerestaurant\client\access\RestaurantAccessREST.class
 co\unicauca\onlinerestaurant\client\domain\services\DrinkService.class
-co\unicauca\onlinerestaurant\client\presentation\GUIShowMenuAdmin$8.class
 co\unicauca\onlinerestaurant\client\presentation\GUIShowMenu$2.class
 co\unicauca\onlinerestaurant\client\presentation\GUIListRestaurants.class
 co\unicauca\client\SaladJerseyClient.class
@@ -38,6 +37,7 @@ co\unicauca\onlinerestaurant\client\presentation\GUIModifyDishEntry.class
 co\unicauca\onlinerestaurant\client\presentation\GUILogin$6.class
 co\unicauca\onlinerestaurant\client\presentation\GUIMenuFood$20.class
 co\unicauca\onlinerestaurant\client\presentation\GUIMenuAdmin$8.class
+co\unicauca\onlinerestaurant\client\infra\Secutiry.class
 co\unicauca\onlinerestaurant\client\presentation\GUILogin$1.class
 co\unicauca\onlinerestaurant\client\presentation\GUIDeleteDish$2.class
 co\unicauca\onlinerestaurant\client\access\MenuAccessREST.class
@@ -49,7 +49,6 @@ co\unicauca\onlinerestaurant\client\presentation\GUIMenuAdmin$2.class
 co\unicauca\onlinerestaurant\client\presentation\GUICreateSalad.class
 co\unicauca\onlinerestaurant\client\presentation\GUIMenuAdmin$9.class
 co\unicauca\onlinerestaurant\client\presentation\GUICreateDrink$1.class
-co\unicauca\onlinerestaurant\client\domain\User.class
 co\unicauca\onlinerestaurant\client\presentation\GUILogin$7.class
 co\unicauca\onlinerestaurant\client\presentation\GUIDeleteDessert$3.class
 co\unicauca\onlinerestaurant\client\presentation\GUICreateDishEntry$2.class
@@ -196,4 +195,3 @@ co\unicauca\onlinerestaurant\client\presentation\GUIMenuFood$11.class
 co\unicauca\onlinerestaurant\client\access\IRestaurantAccess.class
 co\unicauca\onlinerestaurant\client\presentation\GUIDeleteDrink$5.class
 co\unicauca\onlinerestaurant\client\presentation\GUIModifyDrink$3.class
-co\unicauca\onlinerestaurant\client\presentation\GUIShowMenuAdmin$7.class
