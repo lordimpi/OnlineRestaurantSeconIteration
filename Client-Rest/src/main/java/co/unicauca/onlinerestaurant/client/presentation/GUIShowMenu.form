@@ -124,6 +124,7 @@
         <Component class="javax.swing.JButton" name="jBtnRecargarTabla">
           <Properties>
             <Property name="text" type="java.lang.String" value="Recargar"/>
+            <Property name="focusPainted" type="boolean" value="false"/>
           </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jBtnRecargarTablaActionPerformed"/>

@@ -75,6 +75,7 @@
         <Component class="javax.swing.JButton" name="jBtnBuscar">
           <Properties>
             <Property name="text" type="java.lang.String" value="Buscar"/>
+            <Property name="focusPainted" type="boolean" value="false"/>
           </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jBtnBuscarActionPerformed"/>
@@ -107,6 +108,7 @@
         <Component class="javax.swing.JButton" name="jBtnCerrar">
           <Properties>
             <Property name="text" type="java.lang.String" value="Cerrar"/>
+            <Property name="focusPainted" type="boolean" value="false"/>
           </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jBtnCerrarActionPerformed"/>

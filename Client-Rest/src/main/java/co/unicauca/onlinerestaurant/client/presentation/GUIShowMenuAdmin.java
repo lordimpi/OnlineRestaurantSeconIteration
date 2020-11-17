@@ -152,6 +152,7 @@ public class GUIShowMenuAdmin extends javax.swing.JInternalFrame {
         jPnSur.setPreferredSize(new java.awt.Dimension(450, 50));
 
         BntModificar.setText("Modificar");
+        BntModificar.setFocusPainted(false);
         BntModificar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 BntModificarActionPerformed(evt);
@@ -160,6 +161,7 @@ public class GUIShowMenuAdmin extends javax.swing.JInternalFrame {
         jPnSur.add(BntModificar);
 
         jBtnCancelar.setText("Cancelar");
+        jBtnCancelar.setFocusPainted(false);
         jBtnCancelar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jBtnCancelarActionPerformed(evt);
@@ -168,6 +170,7 @@ public class GUIShowMenuAdmin extends javax.swing.JInternalFrame {
         jPnSur.add(jBtnCancelar);
 
         jBtnRecargarTabla.setText("Recargar");
+        jBtnRecargarTabla.setFocusPainted(false);
         jBtnRecargarTabla.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jBtnRecargarTablaActionPerformed(evt);
@@ -229,6 +232,8 @@ public class GUIShowMenuAdmin extends javax.swing.JInternalFrame {
         jLbID.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLbID.setText("ID:");
         jPnlCenDer.add(jLbID);
+
+        jTxfID.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         jPnlCenDer.add(jTxfID);
 
         jLbPlatoPrincipal.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);

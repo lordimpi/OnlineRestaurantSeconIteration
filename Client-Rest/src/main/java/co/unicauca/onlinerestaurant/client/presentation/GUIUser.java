@@ -12,15 +12,15 @@ import java.util.logging.Logger;
  *
  * @author Santiago Acuña
  */
-public class GUICreateUser extends javax.swing.JFrame {
+public class GUIUser extends javax.swing.JFrame {
 
     /**
      * Creates new form GUICreateUser
      */
-    public GUICreateUser() {
+    public GUIUser() {
         initComponents();
         setLocationRelativeTo(null);
-        
+        jBtnModificar.setVisible(false);
     }
 
     /**
@@ -34,7 +34,8 @@ public class GUICreateUser extends javax.swing.JFrame {
 
         jPnNorte = new javax.swing.JPanel();
         jPnSur = new javax.swing.JPanel();
-        jBtnRegistrarse = new javax.swing.JButton();
+        jBtnRegistrar = new javax.swing.JButton();
+        jBtnModificar = new javax.swing.JButton();
         jBtnCancelar = new javax.swing.JButton();
         jPnCentro = new javax.swing.JPanel();
         jLbNombre = new javax.swing.JLabel();
@@ -76,15 +77,22 @@ public class GUICreateUser extends javax.swing.JFrame {
         jPnSur.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         jPnSur.setPreferredSize(new java.awt.Dimension(450, 50));
 
-        jBtnRegistrarse.setText("Registrarse");
-        jBtnRegistrarse.addActionListener(new java.awt.event.ActionListener() {
+        jBtnRegistrar.setText("Registrar");
+        jBtnRegistrar.setFocusPainted(false);
+        jBtnRegistrar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jBtnRegistrarseActionPerformed(evt);
+                jBtnRegistrarActionPerformed(evt);
             }
         });
-        jPnSur.add(jBtnRegistrarse);
+        jPnSur.add(jBtnRegistrar);
+
+        jBtnModificar.setText("Modificar");
+        jBtnModificar.setFocusPainted(false);
+        jBtnModificar.setFocusable(false);
+        jPnSur.add(jBtnModificar);
 
         jBtnCancelar.setText("Cancelar");
+        jBtnCancelar.setFocusPainted(false);
         jBtnCancelar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jBtnCancelarActionPerformed(evt);
@@ -150,7 +158,7 @@ public class GUICreateUser extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jBtnRegistrarseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnRegistrarseActionPerformed
+    private void jBtnRegistrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnRegistrarActionPerformed
         if (JTxfDireccion.getText().isEmpty() || jTxfApellido.getText().isEmpty() || jTxfEmail.getText().isEmpty()
                 || jTxfNombre.getText().isEmpty() || jTxfPassword.getText().isEmpty() || jTxfTelefono.getText().isEmpty()) {
             Messages.warningMessage("ERROR: Campos vacios", "Warning");
@@ -176,13 +184,13 @@ public class GUICreateUser extends javax.swing.JFrame {
                     Messages.warningMessage("ERROR: No se pudo registrar el usuario", "Error");
                 }
             } catch (Exception ex) {
-                Logger.getLogger(GUICreateUser.class.getName()).log(Level.SEVERE, null, ex);
+                Logger.getLogger(GUIUser.class.getName()).log(Level.SEVERE, null, ex);
             }
         } else {
             Messages.warningMessage("El Email ingresado no es valido", "Warning");
         }
 
-    }//GEN-LAST:event_jBtnRegistrarseActionPerformed
+    }//GEN-LAST:event_jBtnRegistrarActionPerformed
 
     private void jBtnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnCancelarActionPerformed
         
@@ -206,20 +214,21 @@ public class GUICreateUser extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(GUICreateUser.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(GUIUser.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(GUICreateUser.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(GUIUser.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(GUICreateUser.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(GUIUser.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(GUICreateUser.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(GUIUser.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new GUICreateUser().setVisible(true);
+                new GUIUser().setVisible(true);
             }
         });
     }
@@ -227,7 +236,8 @@ public class GUICreateUser extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField JTxfDireccion;
     private javax.swing.JButton jBtnCancelar;
-    private javax.swing.JButton jBtnRegistrarse;
+    private javax.swing.JButton jBtnModificar;
+    private javax.swing.JButton jBtnRegistrar;
     private javax.swing.JLabel jLbApellido;
     private javax.swing.JLabel jLbDireccion;
     private javax.swing.JLabel jLbEmail;

@@ -63,6 +63,7 @@ public class GUIFindDishe extends javax.swing.JInternalFrame {
         jPnNorte.add(jTxfId);
 
         jBtnBuscar.setText("Buscar");
+        jBtnBuscar.setFocusPainted(false);
         jBtnBuscar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jBtnBuscarActionPerformed(evt);
@@ -77,6 +78,7 @@ public class GUIFindDishe extends javax.swing.JInternalFrame {
         jPnSur.setPreferredSize(new java.awt.Dimension(450, 50));
 
         jBtnCerrar.setText("Cerrar");
+        jBtnCerrar.setFocusPainted(false);
         jBtnCerrar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jBtnCerrarActionPerformed(evt);

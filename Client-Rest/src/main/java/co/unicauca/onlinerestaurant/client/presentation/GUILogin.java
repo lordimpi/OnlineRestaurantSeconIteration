@@ -136,6 +136,7 @@ public class GUILogin extends javax.swing.JFrame {
         BtnIngresar.setToolTipText("Click here to login");
         BtnIngresar.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
         BtnIngresar.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        BtnIngresar.setFocusPainted(false);
         BtnIngresar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 BtnIngresarActionPerformed(evt);
@@ -160,6 +161,7 @@ public class GUILogin extends javax.swing.JFrame {
         BtnRegistrarse.setToolTipText("Click here to register");
         BtnRegistrarse.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
         BtnRegistrarse.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        BtnRegistrarse.setFocusPainted(false);
         BtnRegistrarse.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 BtnRegistrarseActionPerformed(evt);
@@ -308,8 +310,8 @@ public class GUILogin extends javax.swing.JFrame {
 
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                GUICreateUser ins = null;
-                ins = new GUICreateUser();
+                GUIUser ins = null;
+                ins = new GUIUser();
                 ins.setExtendedState(NORMAL);
                 ins.setVisible(true);
             }

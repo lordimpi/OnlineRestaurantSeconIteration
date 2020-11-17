@@ -59,12 +59,11 @@ public class GUIModifyDessert extends javax.swing.JInternalFrame {
         jLbId.setText("Id");
         jPnNorte.add(jLbId);
 
-        jTxfId.setBackground(new java.awt.Color(255, 255, 255));
-        jTxfId.setForeground(new java.awt.Color(0, 0, 0));
         jTxfId.setPreferredSize(new java.awt.Dimension(100, 24));
         jPnNorte.add(jTxfId);
 
         jBtnBuscar.setText("Buscar");
+        jBtnBuscar.setFocusPainted(false);
         jBtnBuscar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jBtnBuscarActionPerformed(evt);
@@ -79,6 +78,7 @@ public class GUIModifyDessert extends javax.swing.JInternalFrame {
         jPnSur.setPreferredSize(new java.awt.Dimension(450, 50));
 
         jBtnModificar.setText("Modificar");
+        jBtnModificar.setFocusPainted(false);
         jBtnModificar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jBtnModificarActionPerformed(evt);
@@ -87,6 +87,7 @@ public class GUIModifyDessert extends javax.swing.JInternalFrame {
         jPnSur.add(jBtnModificar);
 
         jBtnCancelar.setText("Cancelar");
+        jBtnCancelar.setFocusPainted(false);
         jBtnCancelar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jBtnCancelarActionPerformed(evt);
@@ -101,17 +102,11 @@ public class GUIModifyDessert extends javax.swing.JInternalFrame {
         jLbNombre.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLbNombre.setText("Nombre:");
         jPnCentro.add(jLbNombre);
-
-        jTxfNombre.setBackground(new java.awt.Color(255, 255, 255));
-        jTxfNombre.setForeground(new java.awt.Color(0, 0, 0));
         jPnCentro.add(jTxfNombre);
 
         jLbPrecio.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLbPrecio.setText("Precio:");
         jPnCentro.add(jLbPrecio);
-
-        jTxfPrecio.setBackground(new java.awt.Color(255, 255, 255));
-        jTxfPrecio.setForeground(new java.awt.Color(0, 0, 0));
         jPnCentro.add(jTxfPrecio);
 
         getContentPane().add(jPnCentro, java.awt.BorderLayout.CENTER);

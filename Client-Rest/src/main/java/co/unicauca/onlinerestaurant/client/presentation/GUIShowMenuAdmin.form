@@ -116,6 +116,7 @@
         <Component class="javax.swing.JButton" name="BntModificar">
           <Properties>
             <Property name="text" type="java.lang.String" value="Modificar"/>
+            <Property name="focusPainted" type="boolean" value="false"/>
           </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="BntModificarActionPerformed"/>
@@ -124,6 +125,7 @@
         <Component class="javax.swing.JButton" name="jBtnCancelar">
           <Properties>
             <Property name="text" type="java.lang.String" value="Cancelar"/>
+            <Property name="focusPainted" type="boolean" value="false"/>
           </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jBtnCancelarActionPerformed"/>
@@ -132,6 +134,7 @@
         <Component class="javax.swing.JButton" name="jBtnRecargarTabla">
           <Properties>
             <Property name="text" type="java.lang.String" value="Recargar"/>
+            <Property name="focusPainted" type="boolean" value="false"/>
           </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jBtnRecargarTablaActionPerformed"/>
@@ -251,6 +254,9 @@
           </Properties>
         </Component>
         <Component class="javax.swing.JTextField" name="jTxfID">
+          <Properties>
+            <Property name="horizontalAlignment" type="int" value="0"/>
+          </Properties>
         </Component>
         <Component class="javax.swing.JLabel" name="jLbPlatoPrincipal">
           <Properties>

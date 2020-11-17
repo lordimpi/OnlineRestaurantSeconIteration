@@ -58,12 +58,11 @@ public class GUIFindSalad extends javax.swing.JInternalFrame {
         jLbIdSalad.setText("Id:");
         jPnNorte.add(jLbIdSalad);
 
-        jTxfId.setBackground(new java.awt.Color(255, 255, 255));
-        jTxfId.setForeground(new java.awt.Color(0, 0, 0));
         jTxfId.setPreferredSize(new java.awt.Dimension(150, 24));
         jPnNorte.add(jTxfId);
 
         jBtnBuscar.setText("Buscar");
+        jBtnBuscar.setFocusPainted(false);
         jBtnBuscar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jBtnBuscarActionPerformed(evt);
@@ -78,6 +77,7 @@ public class GUIFindSalad extends javax.swing.JInternalFrame {
         jPnSur.setPreferredSize(new java.awt.Dimension(450, 50));
 
         jBtnCerrar.setText("Cerrar");
+        jBtnCerrar.setFocusPainted(false);
         jBtnCerrar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jBtnCerrarActionPerformed(evt);
@@ -96,7 +96,6 @@ public class GUIFindSalad extends javax.swing.JInternalFrame {
 
         jTxfNombre.setEditable(false);
         jTxfNombre.setBackground(new java.awt.Color(255, 255, 255));
-        jTxfNombre.setForeground(new java.awt.Color(0, 0, 0));
         jPnCentro.add(jTxfNombre);
 
         jLbPrecio.setBackground(new java.awt.Color(255, 255, 255));
@@ -106,7 +105,6 @@ public class GUIFindSalad extends javax.swing.JInternalFrame {
 
         jTxfPrecio.setEditable(false);
         jTxfPrecio.setBackground(new java.awt.Color(255, 255, 255));
-        jTxfPrecio.setForeground(new java.awt.Color(0, 0, 0));
         jPnCentro.add(jTxfPrecio);
 
         getContentPane().add(jPnCentro, java.awt.BorderLayout.CENTER);

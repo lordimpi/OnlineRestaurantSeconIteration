@@ -63,6 +63,7 @@ public class GUIModifyDish extends javax.swing.JInternalFrame {
         jPnNorte.add(jTxfId);
 
         jBtnBuscar.setText("Buscar");
+        jBtnBuscar.setFocusPainted(false);
         jBtnBuscar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jBtnBuscarActionPerformed(evt);
@@ -77,6 +78,7 @@ public class GUIModifyDish extends javax.swing.JInternalFrame {
         jPnSur.setPreferredSize(new java.awt.Dimension(450, 50));
 
         jBtnModificar.setText("Modificar");
+        jBtnModificar.setFocusPainted(false);
         jBtnModificar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jBtnModificarActionPerformed(evt);
@@ -85,6 +87,7 @@ public class GUIModifyDish extends javax.swing.JInternalFrame {
         jPnSur.add(jBtnModificar);
 
         jBtnCancelar.setText("Cancelar");
+        jBtnCancelar.setFocusPainted(false);
         jBtnCancelar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jBtnCancelarActionPerformed(evt);

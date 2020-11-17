@@ -146,6 +146,7 @@ public class GUIShowMenu extends javax.swing.JInternalFrame {
         jPnSur.add(jBtnCancelar);
 
         jBtnRecargarTabla.setText("Recargar");
+        jBtnRecargarTabla.setFocusPainted(false);
         jBtnRecargarTabla.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jBtnRecargarTablaActionPerformed(evt);
