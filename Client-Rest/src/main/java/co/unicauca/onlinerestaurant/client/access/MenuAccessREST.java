@@ -26,9 +26,11 @@ public class MenuAccessREST implements IMenuAccess {
     }
 
     @Override
-    public Menu findMenubyRN(String name) throws Exception {
-        Menu menu = jersey.findMbyRN_JSON(Menu.class, name);
-        return menu;
+    public List<Menu> findMenubyRN(String name) throws Exception {
+        GenericType<List<Menu>> listResponseTypeM = new GenericType<List<Menu>>() {
+        };
+        List<Menu> menus = jersey.findMbyRN_JSON(listResponseTypeM, name);
+        return menus;
     }
 
     @Override
@@ -62,7 +64,7 @@ public class MenuAccessREST implements IMenuAccess {
         return true;
     }
 
-        /**
+    /**
      * Lista todos los menus consumiendo un API REST mediante un cliente jersey
      *
      * @return Lista de menus
@@ -75,5 +77,5 @@ public class MenuAccessREST implements IMenuAccess {
         List<Menu> menus = jersey.findAll(listResponseTypeM);
         return menus;
     }
-    
+
 }

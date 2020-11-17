@@ -169,7 +169,8 @@ public class GUIDeleteDrink extends javax.swing.JInternalFrame {
         try {
             if (Messages.confirmMessage("¿ Desea borrar el registro ?", "Confirm") != 1) {
                 boolean aux = drinkService.deleteDrink(id);
-                if (aux == false) {
+                Drink aux2 = drinkService.findDrink(id);
+                if (aux2 != null) {
                     Messages.warningMessage("No se pudo borrar la bebida", "Warning");
                     return;
                 }

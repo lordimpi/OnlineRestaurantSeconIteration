@@ -42,9 +42,8 @@ public class MenuService {
      * @throws Exception la excepcio se lanza cuando no logra conexión con el
      * servidor
      */
-    public Menu findbyMenubyRN(String name) throws Exception {
+    public List<Menu> findbyMenubyRN(String name) throws Exception {
         return service.findMenubyRN(name);
-
     }
 
     /**

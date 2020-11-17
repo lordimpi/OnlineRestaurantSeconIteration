@@ -169,7 +169,8 @@ public class GUIDeleteDish extends javax.swing.JInternalFrame {
         try {
             if (Messages.confirmMessage("¿ Desea borrar el registro ?", "Confirm") != 1) {
                 boolean aux = mainDishService.deleteMainDish(id);
-                if (aux == false) {
+                MainDish aux2 = mainDishService.findMainDish(id);
+                if (aux2 != null) {
                     Messages.warningMessage("No se pudo borrar el plato", "Warning");
                     return;
                 }
