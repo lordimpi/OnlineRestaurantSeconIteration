@@ -214,7 +214,7 @@ public class UserService {
 
         if (userAux == null) {
             // El usuario no existe
-            Error error = new Error(ValidationError.INVALID_FIELD, "id", "El id del usuario no existe");
+            Error error = new Error(ValidationError.INVALID_FIELD, "email", "El email del usuario no existe");
             errors.add(error);
         }
 

@@ -31,28 +31,21 @@ public interface IUserAccess {
     /**
      * Actualiza un usuario consumiendo un API REST
      *
-     * @param id Identificador del usuario
-     * @param firstname nombre del usuario
-     * @param lastname apellido del usuario
-     * @param address dirección del usuario
-     * @param mobile telefono del usuario
      * @param email email del usuario
-     * @param rol rol del usuario
-     * @param pws contraseña del usuario
+     * @param user Objeto de tipo usuario
      * @return objeto usuario
      * @throws Exception error al actualizar el usuario
      */
-    public boolean updateUser(String id, String firstname, String lastname, String address, String mobile, String email, String rol, String pws) throws Exception;
-
+    public boolean updateUser(String email, User user) throws Exception;
     /**
      * Elimina un usuario consumiendo un API REST
      *
-     * @param id Identificador del usuario
+     * @param email Identificador del usuario
      * @return true si se elimino correctamente el usuario o false en caso
      * contrario
      * @throws Exception error al actualizar el usuario
      */
-    public boolean deleteUser(String id) throws Exception;
+    public boolean deleteUser(String email) throws Exception;
 
     /**
      * Crea un usuario consumiendo un API REST

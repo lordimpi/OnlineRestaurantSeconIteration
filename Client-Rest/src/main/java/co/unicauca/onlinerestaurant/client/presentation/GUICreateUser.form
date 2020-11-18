@@ -92,13 +92,6 @@
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jBtnRegistrarActionPerformed"/>
           </Events>
         </Component>
-        <Component class="javax.swing.JButton" name="jBtnModificar">
-          <Properties>
-            <Property name="text" type="java.lang.String" value="Modificar"/>
-            <Property name="focusPainted" type="boolean" value="false"/>
-            <Property name="focusable" type="boolean" value="false"/>
-          </Properties>
-        </Component>
         <Component class="javax.swing.JButton" name="jBtnCancelar">
           <Properties>
             <Property name="text" type="java.lang.String" value="Cancelar"/>
@@ -134,7 +127,7 @@
         <Component class="javax.swing.JTextField" name="jTxfNombre">
           <Properties>
             <Property name="horizontalAlignment" type="int" value="0"/>
-            <Property name="toolTipText" type="java.lang.String" value="txt_id"/>
+            <Property name="toolTipText" type="java.lang.String" value="Your firts name"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JLabel" name="jLbApellido">
@@ -149,6 +142,7 @@
         <Component class="javax.swing.JTextField" name="jTxfApellido">
           <Properties>
             <Property name="horizontalAlignment" type="int" value="0"/>
+            <Property name="toolTipText" type="java.lang.String" value="Your last name"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JLabel" name="jLbDireccion">
@@ -163,6 +157,7 @@
         <Component class="javax.swing.JTextField" name="JTxfDireccion">
           <Properties>
             <Property name="horizontalAlignment" type="int" value="0"/>
+            <Property name="toolTipText" type="java.lang.String" value="Your address"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JLabel" name="jLbEmail">
@@ -175,6 +170,7 @@
         <Component class="javax.swing.JTextField" name="jTxfEmail">
           <Properties>
             <Property name="horizontalAlignment" type="int" value="0"/>
+            <Property name="toolTipText" type="java.lang.String" value="Your email xxxx@xxxx.com"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JLabel" name="jLbTelefono">
@@ -187,6 +183,7 @@
         <Component class="javax.swing.JTextField" name="jTxfTelefono">
           <Properties>
             <Property name="horizontalAlignment" type="int" value="0"/>
+            <Property name="toolTipText" type="java.lang.String" value="Your phone"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JLabel" name="jLbPassword">
@@ -199,6 +196,7 @@
         <Component class="javax.swing.JPasswordField" name="jTxfPassword">
           <Properties>
             <Property name="horizontalAlignment" type="int" value="0"/>
+            <Property name="toolTipText" type="java.lang.String" value="Your password"/>
           </Properties>
         </Component>
       </SubComponents>

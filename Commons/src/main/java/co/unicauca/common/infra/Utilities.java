@@ -13,7 +13,7 @@ import java.util.Properties;
 public class Utilities {
 
     private final String url = "jdbc:mysql://localhost:3306/restaurante";
-    private final String username = "lordimpi";
+    private final String username = "lordimpi315";
     private final String pwd = "lordimpi315";
 
     public String getUrl() {

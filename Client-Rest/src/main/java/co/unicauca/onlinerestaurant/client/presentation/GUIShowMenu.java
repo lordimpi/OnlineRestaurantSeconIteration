@@ -35,7 +35,7 @@ public class GUIShowMenu extends javax.swing.JInternalFrame {
     /**
      * Nombre del restaurante
      */
-    String restaurantname;
+    private String restaurantname;
     /**
      * Lista de menus del restaurante
      */
@@ -65,14 +65,12 @@ public class GUIShowMenu extends javax.swing.JInternalFrame {
      * Creates new form GUIUpdateDishe
      *
      * @param RestaurantN Nombre del restaurante
-     * @throws java.lang.Exception
      */
-    public GUIShowMenu(String RestaurantN) throws Exception {
+    public GUIShowMenu(String RestaurantN) {
         initComponents();
         restaurantname = RestaurantN;
         cargarListas();
         mostrarTabla();
-        loadDataCombo();
         this.jLbRestaurantName.setText(restaurantname);
     }
 
@@ -95,7 +93,6 @@ public class GUIShowMenu extends javax.swing.JInternalFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         jTblMenus = new javax.swing.JTable();
 
-        setClosable(true);
         setMaximizable(true);
         setResizable(true);
         setTitle("Menus");
@@ -138,6 +135,7 @@ public class GUIShowMenu extends javax.swing.JInternalFrame {
         jPnSur.setPreferredSize(new java.awt.Dimension(450, 50));
 
         jBtnCancelar.setText("Cancelar");
+        jBtnCancelar.setFocusPainted(false);
         jBtnCancelar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jBtnCancelarActionPerformed(evt);
@@ -206,8 +204,9 @@ public class GUIShowMenu extends javax.swing.JInternalFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jBtnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnCancelarActionPerformed
-
-        this.doDefaultCloseAction();
+        restaurantname = "";
+        GUIMenuCustomer.ShowMenu = null;
+        this.dispose();
     }//GEN-LAST:event_jBtnCancelarActionPerformed
 
     /**
@@ -219,20 +218,19 @@ public class GUIShowMenu extends javax.swing.JInternalFrame {
 
         int i = jTblMenus.getSelectedRow();
         TableModel model = jTblMenus.getModel();
-       
+
     }//GEN-LAST:event_jTblMenusMouseClicked
 
-   /**
+    /**
      * Actualiza la tabla y los combo box con informacion nueva de la base de
      * datos
      *
      * @param evt Evento del boton recargar tabla
      */
     private void jBtnRecargarTablaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnRecargarTablaActionPerformed
-      
+
         cargarListas();
         mostrarTabla();
-        loadDataCombo();
     }//GEN-LAST:event_jBtnRecargarTablaActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -246,13 +244,6 @@ public class GUIShowMenu extends javax.swing.JInternalFrame {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTblMenus;
     // End of variables declaration//GEN-END:variables
-
-    /**
-     * Carga los tipos de comida en el jComboBox
-     */
-    private void loadDataCombo() {
-       
-    }
 
     /**
      * Carga un lista usando la API REST
@@ -290,13 +281,15 @@ public class GUIShowMenu extends javax.swing.JInternalFrame {
      */
     private void mostrarTabla() {
         String dataTable[][] = new String[menus.size()][6];
-        String[] days= new String[]{"Lunes","Martes","Miercoles","Jueves","Viernes","Sabado"};
-        int j=0;
+        String[] days = new String[]{"Lunes", "Martes", "Miercoles", "Jueves", "Viernes", "Sabado"};
+        int j = 0;
 
         for (int i = 0; i < menus.size(); i++) {
-            if(j==6){j=0;}
+            if (j == 6) {
+                j = 0;
+            }
             dataTable[i][0] = days[j];
-            j=j+1;
+            j = j + 1;
             dataTable[i][1] = menus.get(i).getMaindish().getNameDish();
             dataTable[i][2] = menus.get(i).getDrink().getNameDrink();
             dataTable[i][3] = menus.get(i).getSalad().getNameSalad();

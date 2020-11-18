@@ -12,15 +12,13 @@ import java.util.logging.Logger;
  *
  * @author Santiago Acuña
  */
-public class GUIUser extends javax.swing.JFrame {
-
+public class GUICreateUser extends javax.swing.JFrame {    
     /**
      * Creates new form GUICreateUser
      */
-    public GUIUser() {
+    public GUICreateUser() {
         initComponents();
         setLocationRelativeTo(null);
-        jBtnModificar.setVisible(false);
     }
 
     /**
@@ -35,7 +33,6 @@ public class GUIUser extends javax.swing.JFrame {
         jPnNorte = new javax.swing.JPanel();
         jPnSur = new javax.swing.JPanel();
         jBtnRegistrar = new javax.swing.JButton();
-        jBtnModificar = new javax.swing.JButton();
         jBtnCancelar = new javax.swing.JButton();
         jPnCentro = new javax.swing.JPanel();
         jLbNombre = new javax.swing.JLabel();
@@ -86,11 +83,6 @@ public class GUIUser extends javax.swing.JFrame {
         });
         jPnSur.add(jBtnRegistrar);
 
-        jBtnModificar.setText("Modificar");
-        jBtnModificar.setFocusPainted(false);
-        jBtnModificar.setFocusable(false);
-        jPnSur.add(jBtnModificar);
-
         jBtnCancelar.setText("Cancelar");
         jBtnCancelar.setFocusPainted(false);
         jBtnCancelar.addActionListener(new java.awt.event.ActionListener() {
@@ -110,7 +102,7 @@ public class GUIUser extends javax.swing.JFrame {
         jPnCentro.add(jLbNombre);
 
         jTxfNombre.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        jTxfNombre.setToolTipText("txt_id");
+        jTxfNombre.setToolTipText("Your firts name");
         jPnCentro.add(jTxfNombre);
 
         jLbApellido.setBackground(new java.awt.Color(255, 255, 255));
@@ -119,6 +111,7 @@ public class GUIUser extends javax.swing.JFrame {
         jPnCentro.add(jLbApellido);
 
         jTxfApellido.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        jTxfApellido.setToolTipText("Your last name");
         jPnCentro.add(jTxfApellido);
 
         jLbDireccion.setBackground(new java.awt.Color(255, 255, 255));
@@ -127,6 +120,7 @@ public class GUIUser extends javax.swing.JFrame {
         jPnCentro.add(jLbDireccion);
 
         JTxfDireccion.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        JTxfDireccion.setToolTipText("Your address");
         jPnCentro.add(JTxfDireccion);
 
         jLbEmail.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -135,6 +129,7 @@ public class GUIUser extends javax.swing.JFrame {
         jPnCentro.add(jLbEmail);
 
         jTxfEmail.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        jTxfEmail.setToolTipText("Your email xxxx@xxxx.com");
         jPnCentro.add(jTxfEmail);
 
         jLbTelefono.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -143,6 +138,7 @@ public class GUIUser extends javax.swing.JFrame {
         jPnCentro.add(jLbTelefono);
 
         jTxfTelefono.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        jTxfTelefono.setToolTipText("Your phone");
         jPnCentro.add(jTxfTelefono);
 
         jLbPassword.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -151,6 +147,7 @@ public class GUIUser extends javax.swing.JFrame {
         jPnCentro.add(jLbPassword);
 
         jTxfPassword.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        jTxfPassword.setToolTipText("Your password");
         jPnCentro.add(jTxfPassword);
 
         getContentPane().add(jPnCentro, java.awt.BorderLayout.CENTER);
@@ -158,6 +155,10 @@ public class GUIUser extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    /**
+     * Crea un usuario con rol de user y lo guarda en la base de datos
+     * @param evt Evento del boton
+     */
     private void jBtnRegistrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnRegistrarActionPerformed
         if (JTxfDireccion.getText().isEmpty() || jTxfApellido.getText().isEmpty() || jTxfEmail.getText().isEmpty()
                 || jTxfNombre.getText().isEmpty() || jTxfPassword.getText().isEmpty() || jTxfTelefono.getText().isEmpty()) {
@@ -184,7 +185,7 @@ public class GUIUser extends javax.swing.JFrame {
                     Messages.warningMessage("ERROR: No se pudo registrar el usuario", "Error");
                 }
             } catch (Exception ex) {
-                Logger.getLogger(GUIUser.class.getName()).log(Level.SEVERE, null, ex);
+                Logger.getLogger(GUICreateUser.class.getName()).log(Level.SEVERE, null, ex);
             }
         } else {
             Messages.warningMessage("El Email ingresado no es valido", "Warning");
@@ -193,7 +194,7 @@ public class GUIUser extends javax.swing.JFrame {
     }//GEN-LAST:event_jBtnRegistrarActionPerformed
 
     private void jBtnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnCancelarActionPerformed
-        
+        limpiarCampos();
         this.dispose();
     }//GEN-LAST:event_jBtnCancelarActionPerformed
 
@@ -214,21 +215,23 @@ public class GUIUser extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(GUIUser.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(GUICreateUser.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(GUIUser.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(GUICreateUser.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(GUIUser.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(GUICreateUser.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(GUIUser.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(GUICreateUser.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new GUIUser().setVisible(true);
+                new GUICreateUser().setVisible(true);
             }
         });
     }
@@ -236,7 +239,6 @@ public class GUIUser extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField JTxfDireccion;
     private javax.swing.JButton jBtnCancelar;
-    private javax.swing.JButton jBtnModificar;
     private javax.swing.JButton jBtnRegistrar;
     private javax.swing.JLabel jLbApellido;
     private javax.swing.JLabel jLbDireccion;
@@ -253,4 +255,14 @@ public class GUIUser extends javax.swing.JFrame {
     private javax.swing.JPasswordField jTxfPassword;
     private javax.swing.JTextField jTxfTelefono;
     // End of variables declaration//GEN-END:variables
+
+private void limpiarCampos(){
+    this.JTxfDireccion.setText("");
+    this.jTxfApellido.setText("");
+    this.jTxfEmail.setText("");
+    this.jTxfNombre.setText("");
+    this.jTxfTelefono.setText("");
+    this.jTxfPassword.setText("");
+}
+    
 }

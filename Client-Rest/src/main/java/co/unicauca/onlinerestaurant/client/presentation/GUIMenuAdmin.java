@@ -6,6 +6,7 @@ import co.unicauca.onlinerestaurant.client.domain.services.RestaurantService;
 import static co.unicauca.onlinerestaurant.client.infra.Messages.successMessage;
 import co.unicauca.common.domain.entity.Restaurant;
 import co.unicauca.common.domain.entity.User;
+import co.unicauca.onlinerestaurant.client.infra.Singleton;
 import java.awt.Color;
 import java.awt.Image;
 import java.awt.MouseInfo;
@@ -17,6 +18,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
+import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
@@ -37,11 +39,11 @@ public class GUIMenuAdmin extends javax.swing.JFrame {
     /**
      * Guarda la instancia para mostrar un menu
      */
-    private GUIShowMenuAdmin ShowMenu;
+    public static GUIShowMenuAdmin ShowMenu;
     /**
      * Guarda la instancia de un usuario
      */
-    private static User user;
+    public static User user;
     /**
      * Guarda la coordenada en eje x para poder mover el formulario con el raton
      */
@@ -77,6 +79,11 @@ public class GUIMenuAdmin extends javax.swing.JFrame {
         listRestaurants = new GUIListRestaurants();
         setLocationRelativeTo(null);
         initIcons();
+    }
+
+    // GETTERS AND SETTERS
+    public static User getUser() {
+        return user;
     }
 
     /**
@@ -393,11 +400,21 @@ public class GUIMenuAdmin extends javax.swing.JFrame {
         jLbLogOut.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jLbLogOut.setForeground(new java.awt.Color(204, 204, 204));
         jLbLogOut.setText("Log out");
+        jLbLogOut.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                jLbLogOutMousePressed(evt);
+            }
+        });
         jPnlSide.add(jLbLogOut, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 120, 50, -1));
 
         jLbUserName.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jLbUserName.setForeground(new java.awt.Color(204, 204, 204));
         jLbUserName.setText("User");
+        jLbUserName.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                jLbUserNameMousePressed(evt);
+            }
+        });
         jPnlSide.add(jLbUserName, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 70, 130, -1));
         jPnlSide.add(jLbUserPhoto, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 40, 100, 100));
 
@@ -604,13 +621,8 @@ public class GUIMenuAdmin extends javax.swing.JFrame {
         resetColor(BtnUsers);
         resetColor(BtnAccounting);
 
-        try {
+        if (ShowMenu == null) {
             ShowMenu = new GUIShowMenuAdmin(restaurantName);
-        } catch (Exception ex) {
-            Logger.getLogger(GUIMenuCustomer.class.getName()).log(Level.SEVERE, null, ex);
-        }
-
-        if (!ShowMenu.isVisible()) {
             ShowMenu.setMaximizable(true);
             dskEscritorio.add(ShowMenu);
             ShowMenu.show();
@@ -686,6 +698,36 @@ public class GUIMenuAdmin extends javax.swing.JFrame {
         resetColor(BtnAccounting);
 
     }//GEN-LAST:event_BtnUsersMousePressed
+
+    /**
+     * Metodo encargado de modificar un usuario donde false activa el boton
+     * modificar y apaga el de registrar
+     *
+     * @param evt evento del raton al precionar
+     */
+    private void jLbUserNameMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLbUserNameMousePressed
+        java.awt.EventQueue.invokeLater(new Runnable() {
+            public void run() {
+                JFrame ins = Singleton.getInstModifyUser();
+                ins.setExtendedState(NORMAL);
+                ins.setVisible(true);
+            }
+        });
+    }//GEN-LAST:event_jLbUserNameMousePressed
+
+    /**
+     * Boton encargado de deslogear un usuario
+     * @param evt Evento del boton
+     */
+    private void jLbLogOutMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLbLogOutMousePressed
+        restaurantName="";
+        this.dispose();
+        java.awt.EventQueue.invokeLater(new Runnable() {
+            public void run() {
+                new GUILogin().setVisible(true);
+            }
+        });
+    }//GEN-LAST:event_jLbLogOutMousePressed
 
     /**
      * Inicia el formulario del menu para el admin
