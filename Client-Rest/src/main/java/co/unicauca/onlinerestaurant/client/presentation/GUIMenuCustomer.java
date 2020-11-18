@@ -6,7 +6,7 @@ import co.unicauca.onlinerestaurant.client.domain.services.RestaurantService;
 import static co.unicauca.onlinerestaurant.client.infra.Messages.successMessage;
 import co.unicauca.common.domain.entity.Restaurant;
 import co.unicauca.common.domain.entity.User;
-import co.unicauca.onlinerestaurant.client.infra.UserSingleton;
+import co.unicauca.onlinerestaurant.client.infra.Singleton;
 import java.awt.Color;
 import java.awt.Image;
 import java.awt.MouseInfo;
@@ -47,7 +47,7 @@ public class GUIMenuCustomer extends javax.swing.JFrame {
     /**
      * Guarda la instancia para mostrar un menu
      */
-    private GUIShowMenu ShowMenu;
+    public static GUIShowMenu ShowMenu;
     /**
      * Guarda la instancia del usuario
      */
@@ -80,10 +80,11 @@ public class GUIMenuCustomer extends javax.swing.JFrame {
         setLocationRelativeTo(null);
         this.BtnMenus.setVisible(false);
     }
-    
-    public static User getUser(){
+
+    public static User getUser() {
         return user;
     }
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -236,6 +237,11 @@ public class GUIMenuCustomer extends javax.swing.JFrame {
         jLbLogOut.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jLbLogOut.setForeground(new java.awt.Color(204, 204, 204));
         jLbLogOut.setText("Log out");
+        jLbLogOut.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                jLbLogOutMousePressed(evt);
+            }
+        });
         jPnlSide.add(jLbLogOut, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 120, 50, -1));
 
         jLbUserName.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
@@ -362,19 +368,13 @@ public class GUIMenuCustomer extends javax.swing.JFrame {
         resetColor(BtnHomePage);
         resetColor(BtnRestaurant);
         setColor(BtnMenus);
-        try {
-            ShowMenu = new GUIShowMenu(restaurantName);
-        } catch (Exception ex) {
-            Logger.getLogger(GUIMenuCustomer.class.getName()).log(Level.SEVERE, null, ex);
-        }
 
-        if (!ShowMenu.isVisible()) {
+        if (ShowMenu == null) {
+            ShowMenu = new GUIShowMenu(restaurantName);
             ShowMenu.setMaximizable(true);
             dskEscritorio.add(ShowMenu);
             ShowMenu.show();
         }
-
-
     }//GEN-LAST:event_BtnMenusMousePressed
 
     /**
@@ -461,12 +461,22 @@ public class GUIMenuCustomer extends javax.swing.JFrame {
     private void jLbUserNameMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLbUserNameMousePressed
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                JFrame ins = UserSingleton.getInstModifyUser();
+                JFrame ins = Singleton.getInstModifyUser();
                 ins.setExtendedState(NORMAL);
                 ins.setVisible(true);
             }
         });
     }//GEN-LAST:event_jLbUserNameMousePressed
+
+    private void jLbLogOutMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLbLogOutMousePressed
+        restaurantName = "";
+        this.dispose();
+        java.awt.EventQueue.invokeLater(new Runnable() {
+            public void run() {
+                new GUILogin().setVisible(true);
+            }
+        });
+    }//GEN-LAST:event_jLbLogOutMousePressed
 
     /**
      * Inicializa el formulario menu customer

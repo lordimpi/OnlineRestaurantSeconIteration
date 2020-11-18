@@ -4,7 +4,7 @@ import co.unicauca.common.domain.entity.User;
 import static co.unicauca.onlinerestaurant.client.infra.Messages.successMessage;
 import static co.unicauca.onlinerestaurant.client.infra.Messages.warningMessage;
 import co.unicauca.onlinerestaurant.client.infra.Secutiry;
-import co.unicauca.onlinerestaurant.client.infra.UserSingleton;
+import co.unicauca.onlinerestaurant.client.infra.Singleton;
 import java.awt.Image;
 import java.awt.MouseInfo;
 import java.awt.Point;
@@ -311,7 +311,7 @@ public class GUILogin extends javax.swing.JFrame {
     private void BtnRegistrarseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnRegistrarseActionPerformed
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                JFrame ins = UserSingleton.getInstCreateUser();
+                JFrame ins = Singleton.getInstCreateUser();
                 ins.setExtendedState(NORMAL);
                 ins.setVisible(true);
             }

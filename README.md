@@ -89,10 +89,14 @@ Tables creations
 ```
 Inserts
 ```ssh
-	INSERT INTO `maindish`(`id_dish`, `dish_name`, `dish_price`) VALUES ('1','papitas',2000);
-	INSERT INTO `maindish`(`id_dish`, `dish_name`, `dish_price`) VALUES ('2','mas papitas',2500);
-	INSERT INTO `maindish`(`id_dish`, `dish_name`, `dish_price`) VALUES ('3','aun mas papitas',3000);
-	INSERT INTO `maindish`(`id_dish`, `dish_name`, `dish_price`) VALUES ('4','mega papitas',4500);
+	INSERT INTO `maindish`(`id_dish`, `dish_name`, `dish_price`) VALUES ('1','Arroz chino',2000);
+	INSERT INTO `maindish`(`id_dish`, `dish_name`, `dish_price`) VALUES ('2','Ajiaco',2500);
+	INSERT INTO `maindish`(`id_dish`, `dish_name`, `dish_price`) VALUES ('3','Higado encebollado',3000);
+	INSERT INTO `maindish`(`id_dish`, `dish_name`, `dish_price`) VALUES ('4','Carne sudada con Arroz',4500);
+	INSERT INTO `maindish`(`id_dish`, `dish_name`, `dish_price`) VALUES ('1','Arroz paisa',2000);
+	INSERT INTO `maindish`(`id_dish`, `dish_name`, `dish_price`) VALUES ('2','Sancocho de gallina',2500);
+	INSERT INTO `maindish`(`id_dish`, `dish_name`, `dish_price`) VALUES ('3','Pizza de pollo',3000);
+	INSERT INTO `maindish`(`id_dish`, `dish_name`, `dish_price`) VALUES ('4','Carne asada',4500);
 
 	INSERT INTO `drink`(`id_drink`, `drink_name`, `drink_price`) VALUES ('1','cerveza poker',2500);
 	INSERT INTO `drink`(`id_drink`, `drink_name`, `drink_price`) VALUES ('2','cerveza rubia',3500);
@@ -123,6 +127,7 @@ Inserts
 	INSERT INTO `user`(`id_user`, `first_name`, `last_name`, `address`, `mobile`, `email`, `rol`,`pws`) VALUES (null,"Admin","rodriguez","calle 10","3166161700","alejo2@rc.com","admin","123");
 	INSERT INTO `user`(`id_user`, `first_name`, `last_name`, `address`, `mobile`, `email`, `rol`,`pws`) VALUES (null,"User","rodriguez","calle 10","3166161700","alejo3@rc.com","user","123");
 	INSERT INTO `user`(`id_user`, `first_name`, `last_name`, `address`, `mobile`, `email`, `rol`,`pws`) VALUES (null,"user2","rodriguez","calle 10","3166161700","alejo4@rc.com","user","123");
+	INSERT INTO `user`(`id_user`, `first_name`, `last_name`, `address`, `mobile`, `email`, `rol`,`pws`) VALUES (null,"user4","rodriguez","calle 10","3166161700","user@user.com","user","123456");
 
 	INSERT INTO `menu`(`id_menu`, `id_maindish`, `id_drink`, `id_salad`, `id_entry`, `id_dessert`) VALUES ("1","1","1","1","1","1");
 	INSERT INTO `menu`(`id_menu`, `id_maindish`, `id_drink`, `id_salad`, `id_entry`, `id_dessert`) VALUES ("2","1","2","1","1","1");
@@ -131,24 +136,24 @@ Inserts
 	INSERT INTO `menu`(`id_menu`, `id_maindish`, `id_drink`, `id_salad`, `id_entry`, `id_dessert`) VALUES ("5","1","1","3","3","3");
 	INSERT INTO `menu`(`id_menu`, `id_maindish`, `id_drink`, `id_salad`, `id_entry`, `id_dessert`) VALUES ("6","2","2","3","4","2");
 	INSERT INTO `menu`(`id_menu`, `id_maindish`, `id_drink`, `id_salad`, `id_entry`, `id_dessert`) VALUES ("7","2","4","3","4","1");
-    	INSERT INTO `menu`(`id_menu`, `id_maindish`, `id_drink`, `id_salad`, `id_entry`, `id_dessert`) VALUES ("8","1","1","1","1","1");
+    INSERT INTO `menu`(`id_menu`, `id_maindish`, `id_drink`, `id_salad`, `id_entry`, `id_dessert`) VALUES ("8","1","1","1","1","1");
 	INSERT INTO `menu`(`id_menu`, `id_maindish`, `id_drink`, `id_salad`, `id_entry`, `id_dessert`) VALUES ("9","1","2","1","1","1");
 	INSERT INTO `menu`(`id_menu`, `id_maindish`, `id_drink`, `id_salad`, `id_entry`, `id_dessert`) VALUES ("10","4","1","3","1","1");
 	INSERT INTO `menu`(`id_menu`, `id_maindish`, `id_drink`, `id_salad`, `id_entry`, `id_dessert`) VALUES ("11","1","2","1","1","4");
 	INSERT INTO `menu`(`id_menu`, `id_maindish`, `id_drink`, `id_salad`, `id_entry`, `id_dessert`) VALUES ("12","1","1","3","3","3");
-    	INSERT INTO `menu`(`id_menu`, `id_maindish`, `id_drink`, `id_salad`, `id_entry`, `id_dessert`) VALUES ("13","1","1","1","1","1");
+    INSERT INTO `menu`(`id_menu`, `id_maindish`, `id_drink`, `id_salad`, `id_entry`, `id_dessert`) VALUES ("13","1","1","1","1","1");
 	INSERT INTO `menu`(`id_menu`, `id_maindish`, `id_drink`, `id_salad`, `id_entry`, `id_dessert`) VALUES ("14","1","2","1","1","1");
 	INSERT INTO `menu`(`id_menu`, `id_maindish`, `id_drink`, `id_salad`, `id_entry`, `id_dessert`) VALUES ("15","4","1","3","1","1");
 	INSERT INTO `menu`(`id_menu`, `id_maindish`, `id_drink`, `id_salad`, `id_entry`, `id_dessert`) VALUES ("16","1","2","1","1","4");
 	INSERT INTO `menu`(`id_menu`, `id_maindish`, `id_drink`, `id_salad`, `id_entry`, `id_dessert`) VALUES ("17","1","1","3","3","3");
 	INSERT INTO `menu`(`id_menu`, `id_maindish`, `id_drink`, `id_salad`, `id_entry`, `id_dessert`) VALUES ("18","2","2","3","4","2");
 	INSERT INTO `menu`(`id_menu`, `id_maindish`, `id_drink`, `id_salad`, `id_entry`, `id_dessert`) VALUES ("19","2","4","3","4","1");
-    	INSERT INTO `menu`(`id_menu`, `id_maindish`, `id_drink`, `id_salad`, `id_entry`, `id_dessert`) VALUES ("20","1","1","1","1","1");
+    INSERT INTO `menu`(`id_menu`, `id_maindish`, `id_drink`, `id_salad`, `id_entry`, `id_dessert`) VALUES ("20","1","1","1","1","1");
 	INSERT INTO `menu`(`id_menu`, `id_maindish`, `id_drink`, `id_salad`, `id_entry`, `id_dessert`) VALUES ("21","1","2","1","1","1");
 	INSERT INTO `menu`(`id_menu`, `id_maindish`, `id_drink`, `id_salad`, `id_entry`, `id_dessert`) VALUES ("22","4","1","3","1","1");
 	INSERT INTO `menu`(`id_menu`, `id_maindish`, `id_drink`, `id_salad`, `id_entry`, `id_dessert`) VALUES ("23","1","2","1","1","4");
 	INSERT INTO `menu`(`id_menu`, `id_maindish`, `id_drink`, `id_salad`, `id_entry`, `id_dessert`) VALUES ("24","1","1","3","3","3");
-    	INSERT INTO `menu`(`id_menu`, `id_maindish`, `id_drink`, `id_salad`, `id_entry`, `id_dessert`) VALUES ("25","1","1","1","1","1");
+    INSERT INTO `menu`(`id_menu`, `id_maindish`, `id_drink`, `id_salad`, `id_entry`, `id_dessert`) VALUES ("25","1","1","1","1","1");
 	INSERT INTO `menu`(`id_menu`, `id_maindish`, `id_drink`, `id_salad`, `id_entry`, `id_dessert`) VALUES ("26","1","2","1","1","1");
 	INSERT INTO `menu`(`id_menu`, `id_maindish`, `id_drink`, `id_salad`, `id_entry`, `id_dessert`) VALUES ("27","4","1","3","1","1");
 	INSERT INTO `menu`(`id_menu`, `id_maindish`, `id_drink`, `id_salad`, `id_entry`, `id_dessert`) VALUES ("28","1","2","1","1","4");
@@ -160,7 +165,7 @@ Inserts
 	INSERT INTO `menu`(`id_menu`, `id_maindish`, `id_drink`, `id_salad`, `id_entry`, `id_dessert`) VALUES ("34","4","1","3","1","1");
 	INSERT INTO `menu`(`id_menu`, `id_maindish`, `id_drink`, `id_salad`, `id_entry`, `id_dessert`) VALUES ("35","1","2","1","1","4");
 	INSERT INTO `menu`(`id_menu`, `id_maindish`, `id_drink`, `id_salad`, `id_entry`, `id_dessert`) VALUES ("36","1","1","3","3","3");
-        INSERT INTO `menu`(`id_menu`, `id_maindish`, `id_drink`, `id_salad`, `id_entry`, `id_dessert`) VALUES ("37","1","1","1","1","1");
+    INSERT INTO `menu`(`id_menu`, `id_maindish`, `id_drink`, `id_salad`, `id_entry`, `id_dessert`) VALUES ("37","1","1","1","1","1");
 	INSERT INTO `menu`(`id_menu`, `id_maindish`, `id_drink`, `id_salad`, `id_entry`, `id_dessert`) VALUES ("38","1","2","1","1","1");
 	INSERT INTO `menu`(`id_menu`, `id_maindish`, `id_drink`, `id_salad`, `id_entry`, `id_dessert`) VALUES ("39","4","1","3","1","1");
 	INSERT INTO `menu`(`id_menu`, `id_maindish`, `id_drink`, `id_salad`, `id_entry`, `id_dessert`) VALUES ("40","1","2","1","1","4");

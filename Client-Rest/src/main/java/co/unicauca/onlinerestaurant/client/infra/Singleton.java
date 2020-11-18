@@ -1,6 +1,5 @@
 package co.unicauca.onlinerestaurant.client.infra;
 
-import co.unicauca.onlinerestaurant.client.presentation.GUILogin;
 import co.unicauca.onlinerestaurant.client.presentation.GUICreateUser;
 import co.unicauca.onlinerestaurant.client.presentation.GUIModifyUser;
 import javax.swing.JFrame;
@@ -9,13 +8,13 @@ import javax.swing.JFrame;
  *
  * @author Santiago Acuña
  */
-public class UserSingleton {
+public class Singleton {
 
     private static JFrame Us;
     
     private static JFrame Usm;
-
-    private UserSingleton() {
+    
+    private Singleton() {
 
     }
 

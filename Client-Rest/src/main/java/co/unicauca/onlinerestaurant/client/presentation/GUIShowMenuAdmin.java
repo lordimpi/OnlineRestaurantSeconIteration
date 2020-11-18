@@ -35,7 +35,7 @@ public class GUIShowMenuAdmin extends javax.swing.JInternalFrame {
     /**
      * Nombre del restaurante
      */
-    String restaurantname;
+    private String restaurantname;
     /**
      * Lista de menus del restaurante
      */
@@ -65,9 +65,8 @@ public class GUIShowMenuAdmin extends javax.swing.JInternalFrame {
      * Creates new form GUIUpdateDishe
      *
      * @param RestaurantN Nombre del restaurante
-     * @throws java.lang.Exception
      */
-    public GUIShowMenuAdmin(String RestaurantN) throws Exception {
+    public GUIShowMenuAdmin(String RestaurantN) {
         initComponents();
         restaurantname = RestaurantN;
         cargarListas();
@@ -109,7 +108,6 @@ public class GUIShowMenuAdmin extends javax.swing.JInternalFrame {
         jLbPostre = new javax.swing.JLabel();
         jCbxPostre = new javax.swing.JComboBox<>();
 
-        setClosable(true);
         setMaximizable(true);
         setResizable(true);
         setTitle("Menus");
@@ -272,8 +270,9 @@ public class GUIShowMenuAdmin extends javax.swing.JInternalFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jBtnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnCancelarActionPerformed
-
-        this.doDefaultCloseAction();
+        restaurantname = "";
+        GUIMenuAdmin.ShowMenu = null;
+        this.dispose();
     }//GEN-LAST:event_jBtnCancelarActionPerformed
 
     /**

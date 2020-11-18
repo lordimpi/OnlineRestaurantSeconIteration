@@ -6,7 +6,7 @@ import co.unicauca.onlinerestaurant.client.domain.services.RestaurantService;
 import static co.unicauca.onlinerestaurant.client.infra.Messages.successMessage;
 import co.unicauca.common.domain.entity.Restaurant;
 import co.unicauca.common.domain.entity.User;
-import co.unicauca.onlinerestaurant.client.infra.UserSingleton;
+import co.unicauca.onlinerestaurant.client.infra.Singleton;
 import java.awt.Color;
 import java.awt.Image;
 import java.awt.MouseInfo;
@@ -39,7 +39,7 @@ public class GUIMenuAdmin extends javax.swing.JFrame {
     /**
      * Guarda la instancia para mostrar un menu
      */
-    private GUIShowMenuAdmin ShowMenu;
+    public static GUIShowMenuAdmin ShowMenu;
     /**
      * Guarda la instancia de un usuario
      */
@@ -621,13 +621,8 @@ public class GUIMenuAdmin extends javax.swing.JFrame {
         resetColor(BtnUsers);
         resetColor(BtnAccounting);
 
-        try {
+        if (ShowMenu == null) {
             ShowMenu = new GUIShowMenuAdmin(restaurantName);
-        } catch (Exception ex) {
-            Logger.getLogger(GUIMenuCustomer.class.getName()).log(Level.SEVERE, null, ex);
-        }
-
-        if (!ShowMenu.isVisible()) {
             ShowMenu.setMaximizable(true);
             dskEscritorio.add(ShowMenu);
             ShowMenu.show();
@@ -713,14 +708,19 @@ public class GUIMenuAdmin extends javax.swing.JFrame {
     private void jLbUserNameMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLbUserNameMousePressed
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                JFrame ins = UserSingleton.getInstModifyUser();
+                JFrame ins = Singleton.getInstModifyUser();
                 ins.setExtendedState(NORMAL);
                 ins.setVisible(true);
             }
         });
     }//GEN-LAST:event_jLbUserNameMousePressed
 
+    /**
+     * Boton encargado de deslogear un usuario
+     * @param evt Evento del boton
+     */
     private void jLbLogOutMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLbLogOutMousePressed
+        restaurantName="";
         this.dispose();
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
