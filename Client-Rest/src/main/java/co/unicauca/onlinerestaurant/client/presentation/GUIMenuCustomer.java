@@ -6,6 +6,7 @@ import co.unicauca.onlinerestaurant.client.domain.services.RestaurantService;
 import static co.unicauca.onlinerestaurant.client.infra.Messages.successMessage;
 import co.unicauca.common.domain.entity.Restaurant;
 import co.unicauca.common.domain.entity.User;
+import co.unicauca.onlinerestaurant.client.infra.UserSingleton;
 import java.awt.Color;
 import java.awt.Image;
 import java.awt.MouseInfo;
@@ -17,6 +18,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
+import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
@@ -70,6 +72,7 @@ public class GUIMenuCustomer extends javax.swing.JFrame {
      */
     public GUIMenuCustomer(User user) throws PropertyVetoException {
         initComponents();
+        initIcons();
         this.user = user;
         jLbUserName.setText(user.getFirstName());
         cargarLista();
@@ -77,7 +80,10 @@ public class GUIMenuCustomer extends javax.swing.JFrame {
         setLocationRelativeTo(null);
         this.BtnMenus.setVisible(false);
     }
-
+    
+    public static User getUser(){
+        return user;
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -235,6 +241,11 @@ public class GUIMenuCustomer extends javax.swing.JFrame {
         jLbUserName.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jLbUserName.setForeground(new java.awt.Color(204, 204, 204));
         jLbUserName.setText("User");
+        jLbUserName.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                jLbUserNameMousePressed(evt);
+            }
+        });
         jPnlSide.add(jLbUserName, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 70, 130, -1));
         jPnlSide.add(jLbUserPhoto, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 40, 100, 100));
 
@@ -440,6 +451,22 @@ public class GUIMenuCustomer extends javax.swing.JFrame {
         x = evt.getX();
         y = evt.getY();
     }//GEN-LAST:event_jPnlCMHMousePressed
+
+    /**
+     * Metodo encargado de modificar un usuario donde false activa el boton
+     * modificar y apaga el de registrar
+     *
+     * @param evt evento del raton al precionar
+     */
+    private void jLbUserNameMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLbUserNameMousePressed
+        java.awt.EventQueue.invokeLater(new Runnable() {
+            public void run() {
+                JFrame ins = UserSingleton.getInstModifyUser();
+                ins.setExtendedState(NORMAL);
+                ins.setVisible(true);
+            }
+        });
+    }//GEN-LAST:event_jLbUserNameMousePressed
 
     /**
      * Inicializa el formulario menu customer

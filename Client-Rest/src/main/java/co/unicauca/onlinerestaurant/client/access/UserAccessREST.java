@@ -48,31 +48,29 @@ public class UserAccessREST implements IUserAccess {
 
     /**
      *
-     * @param id Identificador del usuario
-     * @param firstname nombre del usuario
-     * @param lastname apellido del usuario
-     * @param address dirección del usuario
-     * @param mobile telefono del usuario
+     * @param newUser Objeto de tipo usuario
      * @param email email del usuario
-     * @param rol rol del usuario
-     * @param pws contraseña del usuario
-     * @return objeto usuario
+     * @return True si pudo modificar, false de lo contrario
      * @throws Exception error al actualizar el usuario
      */
     @Override
-    public boolean updateUser(String id, String firstname, String lastname, String address, String mobile, String email, String rol, String pws) throws Exception {
-        User user = findUser(id);
+    public boolean updateUser(String email, User newUser) throws Exception {
+        User user = findUserEmail(email);
         if (user == null) {
             return false;
         }
-        user.setFirstName(firstname);
-        user.setLastName(lastname);
-        user.setAddress(address);
-        user.setMobile(mobile);
-        user.setEmail(email);
-        user.setRol(rol);
-        user.setPws(pws);
-        rta = jersey.edit_JSON(user, id);
+        User user2 = findUserEmail(newUser.getEmail());
+        if (user2 != null) {
+            return false;
+        }
+        user.setFirstName(newUser.getFirstName());
+        user.setLastName(newUser.getLastName());
+        user.setAddress(newUser.getAddress());
+        user.setMobile(newUser.getMobile());
+        user.setEmail(newUser.getEmail());
+        user.setRol(newUser.getRol());
+        user.setPws(newUser.getPws());
+        rta = jersey.edit_JSON(user, email);
         return true;
     }
 

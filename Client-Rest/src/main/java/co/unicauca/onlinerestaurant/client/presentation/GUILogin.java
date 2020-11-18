@@ -4,6 +4,7 @@ import co.unicauca.common.domain.entity.User;
 import static co.unicauca.onlinerestaurant.client.infra.Messages.successMessage;
 import static co.unicauca.onlinerestaurant.client.infra.Messages.warningMessage;
 import co.unicauca.onlinerestaurant.client.infra.Secutiry;
+import co.unicauca.onlinerestaurant.client.infra.UserSingleton;
 import java.awt.Image;
 import java.awt.MouseInfo;
 import java.awt.Point;
@@ -13,6 +14,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
+import javax.swing.JFrame;
 
 /**
  * Crea un formulario para el login
@@ -307,11 +309,9 @@ public class GUILogin extends javax.swing.JFrame {
     }//GEN-LAST:event_jLblBotonCerrarMouseClicked
 
     private void BtnRegistrarseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnRegistrarseActionPerformed
-
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                GUIUser ins = null;
-                ins = new GUIUser();
+                JFrame ins = UserSingleton.getInstCreateUser();
                 ins.setExtendedState(NORMAL);
                 ins.setVisible(true);
             }

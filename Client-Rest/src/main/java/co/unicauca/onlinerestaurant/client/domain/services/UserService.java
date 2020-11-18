@@ -76,7 +76,9 @@ public class UserService {
      */
     public boolean createUser(User user) throws Exception {
         return service.createUser(user);
-
     }
-
+    
+    public boolean updateUser(String email, User user) throws Exception{
+        return service.updateUser(email, user);
+    }
 }
