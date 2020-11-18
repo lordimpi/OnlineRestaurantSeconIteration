@@ -64,6 +64,7 @@ public class GUIMenuAdmin extends javax.swing.JFrame {
      * Instancia del formulario para listar restaurantes
      */
     private GUIListRestaurants listRestaurants;
+
     /**
      * Constructor que inicializa el formulario Menu admin
      *
@@ -79,11 +80,12 @@ public class GUIMenuAdmin extends javax.swing.JFrame {
         setLocationRelativeTo(null);
         initIcons();
     }
+
     // GETTERS AND SETTERS
-    public static User getUser(){
+    public static User getUser() {
         return user;
     }
-            
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -398,6 +400,11 @@ public class GUIMenuAdmin extends javax.swing.JFrame {
         jLbLogOut.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jLbLogOut.setForeground(new java.awt.Color(204, 204, 204));
         jLbLogOut.setText("Log out");
+        jLbLogOut.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                jLbLogOutMousePressed(evt);
+            }
+        });
         jPnlSide.add(jLbLogOut, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 120, 50, -1));
 
         jLbUserName.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
@@ -712,6 +719,15 @@ public class GUIMenuAdmin extends javax.swing.JFrame {
             }
         });
     }//GEN-LAST:event_jLbUserNameMousePressed
+
+    private void jLbLogOutMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLbLogOutMousePressed
+        this.dispose();
+        java.awt.EventQueue.invokeLater(new Runnable() {
+            public void run() {
+                new GUILogin().setVisible(true);
+            }
+        });
+    }//GEN-LAST:event_jLbLogOutMousePressed
 
     /**
      * Inicia el formulario del menu para el admin
