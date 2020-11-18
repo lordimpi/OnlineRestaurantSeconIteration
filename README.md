@@ -181,3 +181,48 @@ Inserts
 	INSERT INTO `restaurant`(`idres`, `name_restaurant`, `address_restaurant`, `phone`, `id_lu_menu`, `id_ma_menu`, `id_mi_menu`, `id_ju_menu`, `id_vi_menu`, `id_sa_menu`) VALUES ("7","Andres carne de res","carrera 12 con calle 10","312333222","37","38","39","40","41","42");
 	
 ```
+## Configuring Payara Server 
+
+Copy the driver sql-conector from the repository where installing your Payara Server.
+
+![0](https://user-images.githubusercontent.com/53197926/99511021-bc1e6680-2955-11eb-9f93-cd6a56b6f2d1.png)
+
+Go to Payara Server Console - Common Task in http://localhost:4848/ and click in JBDC , JBDC Connection Pools.
+
+![1](https://user-images.githubusercontent.com/53197926/99511954-ecb2d000-2956-11eb-82ae-3651eb49d32f.png)
+
+Create a new connection pool.
+
+![2](https://user-images.githubusercontent.com/53197926/99512416-6d71cc00-2957-11eb-928e-f1db6ec3faa7.png)
+
+Put your favorite name, select resource type and Database driver vender. Finally click in next
+
+![3](https://user-images.githubusercontent.com/53197926/99512785-deb17f00-2957-11eb-8e54-b8a018add4be.png)
+
+Select all properties and procede to delet, create seven new properties and insert the datas.
+
+![4](https://user-images.githubusercontent.com/53197926/99513541-c2621200-2958-11eb-9021-e2d611e85dd7.png)
+
+Go to back to JBDC and select JBDC Resources.
+
+![5](https://user-images.githubusercontent.com/53197926/99513618-d574e200-2958-11eb-9d16-78b2434b4218.png)
+
+Procede to create a new resource.
+
+![6](https://user-images.githubusercontent.com/53197926/99513644-dad22c80-2958-11eb-94ef-b9a8868149ba.png)
+
+Proce to fill the fields and click in ok.
+
+![7](https://user-images.githubusercontent.com/53197926/99513660-dd348680-2958-11eb-900d-515d6802be49.png)
+
+Go back to JBDC and select JBDC Connection Pools and select your created connection pool.
+
+![8](https://user-images.githubusercontent.com/53197926/99513673-e0c80d80-2958-11eb-8aab-0716285cef68.png)
+
+Don't forget runing xamp services. Procede to click in ping
+
+![9](https://user-images.githubusercontent.com/53197926/99513689-e3c2fe00-2958-11eb-959c-6527a2cf0d62.png)
+
+if everything goes fine, you will see the connection message with the database
+
+![10](https://user-images.githubusercontent.com/53197926/99513702-e6bdee80-2958-11eb-9342-a8abd8b901d2.png)
