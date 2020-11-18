@@ -113,11 +113,11 @@ public class UserController {
         }'
      */
     @PUT
-    @Path("{id}")
+    @Path("{email}")
     @Consumes({MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON})
-    public Response edit(@PathParam("id") String id, User user) {
+    public Response edit(@PathParam("email") String email, User user) {
         JsonResponse resp;
-        if (service.update(id, user)) {
+        if (service.update(email, user)) {
             resp = new JsonResponse(true, "Usuario modificado con éxito", null);
         } else {
             resp = new JsonResponse(false, "No se pudo modificar el usuario", DomainErrors.getErrors());
@@ -132,17 +132,16 @@ public class UserController {
 
      */
     @DELETE
-    @Path("{id}")
-    public Response delete(@PathParam("id") String id) {
+    @Path("{email}")
+    public Response delete(@PathParam("email") String email) {
         JsonResponse resp;
-
-        if (service.delete(id)) {
+        if (service.delete(email)) {
             resp = new JsonResponse(true, "Usuario eliminado con éxito", null);
 
         } else {
             resp = new JsonResponse(false, "No se pudo eliminar el usuario", DomainErrors.getErrors());
         }
-        service.delete(id);
+        service.delete(email);
 
         return Response.ok().entity(resp).build();
 

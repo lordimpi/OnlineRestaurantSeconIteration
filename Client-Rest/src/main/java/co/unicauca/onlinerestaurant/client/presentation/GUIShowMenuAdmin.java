@@ -73,6 +73,7 @@ public class GUIShowMenuAdmin extends javax.swing.JInternalFrame {
         cargarListas();
         mostrarTabla();
         loadDataCombo();
+        this.jLbRestaurantName.setText(restaurantname);
     }
 
     /**
@@ -85,12 +86,10 @@ public class GUIShowMenuAdmin extends javax.swing.JInternalFrame {
     private void initComponents() {
 
         jPnNorte = new javax.swing.JPanel();
-        jtxtnamerestaurant = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
+        jLbRestaurantName = new javax.swing.JLabel();
         jPnSur = new javax.swing.JPanel();
-        BntAgregar = new javax.swing.JButton();
         BntModificar = new javax.swing.JButton();
-        BntEliminar = new javax.swing.JButton();
         jBtnCancelar = new javax.swing.JButton();
         jBtnRecargarTabla = new javax.swing.JButton();
         jPnCentro = new javax.swing.JPanel();
@@ -121,7 +120,9 @@ public class GUIShowMenuAdmin extends javax.swing.JInternalFrame {
         jPnNorte.setPreferredSize(new java.awt.Dimension(450, 50));
 
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel1.setText("Menu de la semana del Restaurante:");
+        jLabel1.setText("Menu del Restaurante:");
+
+        jLbRestaurantName.setForeground(new java.awt.Color(255, 255, 255));
 
         javax.swing.GroupLayout jPnNorteLayout = new javax.swing.GroupLayout(jPnNorte);
         jPnNorte.setLayout(jPnNorteLayout);
@@ -130,18 +131,18 @@ public class GUIShowMenuAdmin extends javax.swing.JInternalFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPnNorteLayout.createSequentialGroup()
                 .addGap(64, 64, 64)
                 .addComponent(jLabel1)
-                .addGap(27, 27, 27)
-                .addComponent(jtxtnamerestaurant, javax.swing.GroupLayout.PREFERRED_SIZE, 159, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(240, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLbRestaurantName, javax.swing.GroupLayout.PREFERRED_SIZE, 175, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(327, Short.MAX_VALUE))
         );
         jPnNorteLayout.setVerticalGroup(
             jPnNorteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPnNorteLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPnNorteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jtxtnamerestaurant, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(14, 14, 14))
+                .addGroup(jPnNorteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 17, Short.MAX_VALUE)
+                    .addComponent(jLbRestaurantName, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(20, 20, 20))
         );
 
         getContentPane().add(jPnNorte, java.awt.BorderLayout.PAGE_START);
@@ -150,15 +151,8 @@ public class GUIShowMenuAdmin extends javax.swing.JInternalFrame {
         jPnSur.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         jPnSur.setPreferredSize(new java.awt.Dimension(450, 50));
 
-        BntAgregar.setText("Agregar");
-        BntAgregar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BntAgregarActionPerformed(evt);
-            }
-        });
-        jPnSur.add(BntAgregar);
-
         BntModificar.setText("Modificar");
+        BntModificar.setFocusPainted(false);
         BntModificar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 BntModificarActionPerformed(evt);
@@ -166,15 +160,8 @@ public class GUIShowMenuAdmin extends javax.swing.JInternalFrame {
         });
         jPnSur.add(BntModificar);
 
-        BntEliminar.setText("Eliminar");
-        BntEliminar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BntEliminarActionPerformed(evt);
-            }
-        });
-        jPnSur.add(BntEliminar);
-
         jBtnCancelar.setText("Cancelar");
+        jBtnCancelar.setFocusPainted(false);
         jBtnCancelar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jBtnCancelarActionPerformed(evt);
@@ -183,6 +170,7 @@ public class GUIShowMenuAdmin extends javax.swing.JInternalFrame {
         jPnSur.add(jBtnCancelar);
 
         jBtnRecargarTabla.setText("Recargar");
+        jBtnRecargarTabla.setFocusPainted(false);
         jBtnRecargarTabla.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jBtnRecargarTablaActionPerformed(evt);
@@ -202,20 +190,20 @@ public class GUIShowMenuAdmin extends javax.swing.JInternalFrame {
         };
         jTblMenus.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null}
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null}
             },
             new String [] {
-                "ID", "Plato Principal", "Bebida", "Ensalada", "Entrada", "Postre"
+                "Dia", "ID", "Plato Principal", "Bebida", "Ensalada", "Entrada", "Postre"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
+                java.lang.Object.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
             };
             boolean[] canEdit = new boolean [] {
-                false, false, false, false, false, false
+                false, false, false, false, false, false, false
             };
 
             public Class getColumnClass(int columnIndex) {
@@ -244,6 +232,8 @@ public class GUIShowMenuAdmin extends javax.swing.JInternalFrame {
         jLbID.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLbID.setText("ID:");
         jPnlCenDer.add(jLbID);
+
+        jTxfID.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         jPnlCenDer.add(jTxfID);
 
         jLbPlatoPrincipal.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -335,78 +325,10 @@ public class GUIShowMenuAdmin extends javax.swing.JInternalFrame {
 
         int i = jTblMenus.getSelectedRow();
         TableModel model = jTblMenus.getModel();
-        this.jTxfID.setText(model.getValueAt(i, 0).toString());
+        this.jTxfID.setText(model.getValueAt(i, 1).toString());
     }//GEN-LAST:event_jTblMenusMouseClicked
 
-    /**
-     * Elimina un menu en especifico mediante un Id
-     *
-     * @param evt Evento del boton Eliminar menu
-     */
-    private void BntEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BntEliminarActionPerformed
-        if (jTxfID.getText().equals("")) {
-            Messages.warningMessage("El campo Id vacio: Error al agregar", "Warning");
-            return;
-        }
-
-        IMenuAccess service = Factory.getInstance().getMenuService();
-        // Inyecta la dependencia
-        MenuService menuService = new MenuService(service);
-        try {
-
-            if (Messages.confirmMessage("¿ Desea borrar el registro ?", "Confirm") != 1) {
-                boolean aux = menuService.deleteMenu(jTxfID.getText());
-                if (aux == false) {
-                    Messages.warningMessage("No se pudo borrar el menu", "Warning");
-                    return;
-                }
-            } else {
-                return;
-            }
-        } catch (Exception e) {
-            Messages.warningMessage(e.getMessage(), "Warning");
-        }
-        eliminarItemMenu(jTxfID.getText());
-        mostrarTabla();
-        successMessage("Se borro el menu con exito.", "EXITO");
-    }//GEN-LAST:event_BntEliminarActionPerformed
-
-    /**
-     * Crea un menu y lo guarda en la base de datos
-     *
-     * @param evt Evento del boton agregar menu
-     */
-    private void BntAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BntAgregarActionPerformed
-        if (jTxfID.getText().equals("")) {
-            Messages.warningMessage("El campo Id vacio: Error al agregar", "Warning");
-            return;
-        }
-
-        IMenuAccess service = Factory.getInstance().getMenuService();
-        // Inyecta la dependencia
-        MenuService menuService = new MenuService(service);
-        Menu myMenu = new Menu();
-        myMenu.setId_menu(jTxfID.getText());
-        myMenu.setMaindish((MainDish) jCbxPlatoPrincipal.getSelectedItem());
-        myMenu.setDessert((Dessert) jCbxPostre.getSelectedItem());
-        myMenu.setDrink((Drink) jCbxBebida.getSelectedItem());
-        myMenu.setSalad((Salad) jCbxEnsalada.getSelectedItem());
-        myMenu.setEntry((DishEntry) jCbxEntrada.getSelectedItem());
-
-        try {
-            if (menuService.createMenu(myMenu)) {
-                menus.add(myMenu);
-                mostrarTabla();
-                successMessage("Se creo el menu con exito.", "EXITO");
-            } else {
-                Messages.warningMessage("Error al crear el menu", "Warning");
-            }
-        } catch (Exception e) {
-            Messages.warningMessage(e.getMessage(), "Warning");
-        }
-
-    }//GEN-LAST:event_BntAgregarActionPerformed
-    /**
+   /**
      * Actualiza la tabla y los combo box con informacion nueva de la base de
      * datos
      *
@@ -424,8 +346,6 @@ public class GUIShowMenuAdmin extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_jBtnRecargarTablaActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton BntAgregar;
-    private javax.swing.JButton BntEliminar;
     private javax.swing.JButton BntModificar;
     private javax.swing.JButton jBtnCancelar;
     private javax.swing.JButton jBtnRecargarTabla;
@@ -441,6 +361,7 @@ public class GUIShowMenuAdmin extends javax.swing.JInternalFrame {
     private javax.swing.JLabel jLbID;
     private javax.swing.JLabel jLbPlatoPrincipal;
     private javax.swing.JLabel jLbPostre;
+    private javax.swing.JLabel jLbRestaurantName;
     private javax.swing.JPanel jPnCentro;
     private javax.swing.JPanel jPnNorte;
     private javax.swing.JPanel jPnSur;
@@ -448,7 +369,6 @@ public class GUIShowMenuAdmin extends javax.swing.JInternalFrame {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTblMenus;
     private javax.swing.JTextField jTxfID;
-    private javax.swing.JTextField jtxtnamerestaurant;
     // End of variables declaration//GEN-END:variables
 
     /**
@@ -482,7 +402,7 @@ public class GUIShowMenuAdmin extends javax.swing.JInternalFrame {
         DessertService dessertService = new DessertService(dsService);
 
         try {
-            menus = menuService.listMenus();
+            menus = menuService.findbyMenubyRN(restaurantname);
             mainDishes = dishService.listDishes();
             dishEntries = entryService.listEntrys();
             salads = saladService.listSalads();
@@ -497,20 +417,25 @@ public class GUIShowMenuAdmin extends javax.swing.JInternalFrame {
      * Metodo encargado de mostrar los datos en un jtable
      */
     private void mostrarTabla() {
-        String dataTable[][] = new String[menus.size()][6];
+        String dataTable[][] = new String[menus.size()][7];
+        String[] days= new String[]{"Lunes","Martes","Miercoles","Jueves","Viernes","Sabado"};
+        int j=0;
 
         for (int i = 0; i < menus.size(); i++) {
-            dataTable[i][0] = menus.get(i).getId_menu();
-            dataTable[i][1] = menus.get(i).getMaindish().getNameDish();
-            dataTable[i][2] = menus.get(i).getDrink().getNameDrink();
-            dataTable[i][3] = menus.get(i).getSalad().getNameSalad();
-            dataTable[i][4] = menus.get(i).getEntry().getNameDishEntry();
-            dataTable[i][5] = menus.get(i).getDessert().getName_Dish_Dessert();
+            if(j==6){j=0;}
+            dataTable[i][0] = days[j];
+            j=j+1;
+            dataTable[i][1] = menus.get(i).getId_menu();
+            dataTable[i][2] = menus.get(i).getMaindish().getNameDish();
+            dataTable[i][3] = menus.get(i).getDrink().getNameDrink();
+            dataTable[i][4] = menus.get(i).getSalad().getNameSalad();
+            dataTable[i][5] = menus.get(i).getEntry().getNameDishEntry();
+            dataTable[i][6] = menus.get(i).getDessert().getName_Dish_Dessert();
 
         }
 
         jTblMenus.setModel(new javax.swing.table.DefaultTableModel(
-                dataTable, new String[]{"ID", "Plato Principal", "Bebida", "Ensalada", "Entrada", "Postre"}));
+                dataTable, new String[]{"Dia","ID", "Plato Principal", "Bebida", "Ensalada", "Entrada", "Postre"}));
     }
 
     /**

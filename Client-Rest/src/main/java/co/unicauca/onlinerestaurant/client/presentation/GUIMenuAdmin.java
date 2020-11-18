@@ -5,6 +5,7 @@ import co.unicauca.onlinerestaurant.client.access.IRestaurantAccess;
 import co.unicauca.onlinerestaurant.client.domain.services.RestaurantService;
 import static co.unicauca.onlinerestaurant.client.infra.Messages.successMessage;
 import co.unicauca.common.domain.entity.Restaurant;
+import co.unicauca.common.domain.entity.User;
 import java.awt.Color;
 import java.awt.Image;
 import java.awt.MouseInfo;
@@ -33,9 +34,14 @@ public class GUIMenuAdmin extends javax.swing.JFrame {
      * Guarda la instancia del formulario Menu platos principales
      */
     private GUIMenuFood MenuFoodDishes = new GUIMenuFood();
-
+    /**
+     * Guarda la instancia para mostrar un menu
+     */
     private GUIShowMenuAdmin ShowMenu;
-
+    /**
+     * Guarda la instancia de un usuario
+     */
+    private static User user;
     /**
      * Guarda la coordenada en eje x para poder mover el formulario con el raton
      */
@@ -44,20 +50,29 @@ public class GUIMenuAdmin extends javax.swing.JFrame {
      * Guarda la coordenada en eje y para poder mover el formulario con el raton
      */
     private int y = 0;
-
+    /**
+     * Guarda el nombre del restaurante seleccionado
+     */
     public static String restaurantName;
-
+    /**
+     * Lista de los restaurantes
+     */
     private List<Restaurant> restaurants;
-
+    /**
+     * Instancia del formulario para listar restaurantes
+     */
     private GUIListRestaurants listRestaurants;
 
     /**
      * Constructor que inicializa el formulario Menu admin
      *
+     * @param user Usuario administrador
      * @throws java.beans.PropertyVetoException
      */
-    public GUIMenuAdmin() throws PropertyVetoException {
+    public GUIMenuAdmin(User user) throws PropertyVetoException {
         initComponents();
+        this.user = user;
+        jLbUserName.setText(this.user.getFirstName());
         cargarLista();
         listRestaurants = new GUIListRestaurants();
         setLocationRelativeTo(null);
@@ -594,7 +609,7 @@ public class GUIMenuAdmin extends javax.swing.JFrame {
         } catch (Exception ex) {
             Logger.getLogger(GUIMenuCustomer.class.getName()).log(Level.SEVERE, null, ex);
         }
-        
+
         if (!ShowMenu.isVisible()) {
             ShowMenu.setMaximizable(true);
             dskEscritorio.add(ShowMenu);
@@ -705,7 +720,7 @@ public class GUIMenuAdmin extends javax.swing.JFrame {
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 try {
-                    new GUIMenuAdmin().setVisible(true);
+                    new GUIMenuAdmin(user).setVisible(true);
                 } catch (PropertyVetoException ex) {
                     Logger.getLogger(GUIMenuAdmin.class.getName()).log(Level.SEVERE, null, ex);
                 }

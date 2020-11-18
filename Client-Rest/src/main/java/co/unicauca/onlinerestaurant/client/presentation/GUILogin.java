@@ -1,10 +1,9 @@
 package co.unicauca.onlinerestaurant.client.presentation;
 
-import co.unicauca.onlinerestaurant.client.access.Factory;
-import co.unicauca.onlinerestaurant.client.domain.services.UserService;
+import co.unicauca.common.domain.entity.User;
 import static co.unicauca.onlinerestaurant.client.infra.Messages.successMessage;
 import static co.unicauca.onlinerestaurant.client.infra.Messages.warningMessage;
-import co.unicauca.common.domain.entity.User;
+import co.unicauca.onlinerestaurant.client.infra.Secutiry;
 import java.awt.Image;
 import java.awt.MouseInfo;
 import java.awt.Point;
@@ -14,7 +13,6 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
-import co.unicauca.onlinerestaurant.client.access.IUserAccess;
 
 /**
  * Crea un formulario para el login
@@ -38,6 +36,7 @@ public class GUILogin extends javax.swing.JFrame {
     public GUILogin() {
         initComponents();
         setLocationRelativeTo(null);
+        this.setFocusable(true);
         ImageIcon img = new ImageIcon("src/main/java/resources/bg2.png");
         Icon icono = new ImageIcon(img.getImage().getScaledInstance(
                 jLbLogo.getWidth(),
@@ -67,6 +66,7 @@ public class GUILogin extends javax.swing.JFrame {
         jPswField = new javax.swing.JPasswordField();
         BtnIngresar = new javax.swing.JButton();
         jLblBotonCerrar = new javax.swing.JLabel();
+        BtnRegistrarse = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBounds(new java.awt.Rectangle(0, 0, 0, 0));
@@ -97,22 +97,32 @@ public class GUILogin extends javax.swing.JFrame {
 
         TxbUser.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
         TxbUser.setForeground(new java.awt.Color(102, 102, 102));
-        TxbUser.setText("User");
+        TxbUser.setText("user@user.com");
         TxbUser.setToolTipText("Enter your user name");
         TxbUser.setBorder(null);
+        TxbUser.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                TxbUserFocusGained(evt);
+            }
+        });
 
         jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(102, 102, 102));
-        jLabel2.setText("User");
+        jLabel2.setText("Email");
 
         jLabel3.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(102, 102, 102));
         jLabel3.setText("Password");
 
         jPswField.setForeground(new java.awt.Color(102, 102, 102));
-        jPswField.setText("jPasswordField1");
+        jPswField.setText("123456");
         jPswField.setToolTipText("Enter your password");
         jPswField.setBorder(null);
+        jPswField.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                jPswFieldFocusGained(evt);
+            }
+        });
         jPswField.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 jPswFieldKeyPressed(evt);
@@ -126,6 +136,7 @@ public class GUILogin extends javax.swing.JFrame {
         BtnIngresar.setToolTipText("Click here to login");
         BtnIngresar.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
         BtnIngresar.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        BtnIngresar.setFocusPainted(false);
         BtnIngresar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 BtnIngresarActionPerformed(evt);
@@ -140,6 +151,20 @@ public class GUILogin extends javax.swing.JFrame {
         jLblBotonCerrar.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jLblBotonCerrarMouseClicked(evt);
+            }
+        });
+
+        BtnRegistrarse.setBackground(new java.awt.Color(255, 255, 255));
+        BtnRegistrarse.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        BtnRegistrarse.setForeground(new java.awt.Color(51, 102, 255));
+        BtnRegistrarse.setText("Resgistrarse");
+        BtnRegistrarse.setToolTipText("Click here to register");
+        BtnRegistrarse.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
+        BtnRegistrarse.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        BtnRegistrarse.setFocusPainted(false);
+        BtnRegistrarse.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BtnRegistrarseActionPerformed(evt);
             }
         });
 
@@ -168,7 +193,10 @@ public class GUILogin extends javax.swing.JFrame {
                                 .addComponent(jSeparator2, javax.swing.GroupLayout.DEFAULT_SIZE, 201, Short.MAX_VALUE)
                                 .addComponent(BtnIngresar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                             .addGap(53, 53, 53)))
-                    .addComponent(jLblBotonCerrar, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addComponent(jLblBotonCerrar, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                        .addComponent(BtnRegistrarse, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(105, 105, 105))))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -189,7 +217,9 @@ public class GUILogin extends javax.swing.JFrame {
                 .addComponent(jPswField, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(56, 56, 56)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(BtnRegistrarse)
+                .addGap(22, 22, 22)
                 .addComponent(BtnIngresar, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(55, Short.MAX_VALUE))
         );
@@ -230,46 +260,29 @@ public class GUILogin extends javax.swing.JFrame {
      */
     private void BtnIngresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnIngresarActionPerformed
 
-        IUserAccess service = Factory.getInstance().getUserService();
-        UserService userService = new UserService(service);
-        String aux=TxbUser.toString();
-        User user = new User();
-        try {
-            user = userService.findUser("1");
-        } catch (Exception ex) {
-            Logger.getLogger(GUILogin.class.getName()).log(Level.SEVERE, null, ex);
-        }
+        String email = TxbUser.getText();
+        String password = jPswField.getText();
+        Secutiry sc = new Secutiry();
         //Aqui vendria el analizar si el usuario existe en el sistema
-        if ("admin".equals(user.getRol())) {
-            java.awt.EventQueue.invokeLater(new Runnable() {
-                public void run() {
-                    GUIMenuAdmin ins = null;
-                    try {
-                        ins = new GUIMenuAdmin();
-                    } catch (PropertyVetoException ex) {
-                        Logger.getLogger(GUILogin.class.getName()).log(Level.SEVERE, null, ex);
+        if (sc.validarEmail(TxbUser.getText())) {
+            try {
+                if (sc.validarUsuario(email, password)) {
+                    switch (sc.getUser().getRol()) {
+                        case "admin":
+                            iniciarModoAdmin(sc.getUser());
+                            break;
+                        case "user":
+                            iniciarModoUser(sc.getUser());
+                            break;
                     }
-                    ins.setExtendedState(NORMAL);
-                    ins.setVisible(true);
+                } else {
+                    warningMessage("Usuario o Contraseña incorrectas", "Atención");
                 }
-            });
-            this.dispose();
-        }else if ("user".equals(user.getRol())) {
-            java.awt.EventQueue.invokeLater(new Runnable() {
-                public void run() {
-                    GUIMenuCustomer ins = null;
-                    try {
-                        ins = new GUIMenuCustomer();
-                    } catch (PropertyVetoException ex) {
-                        Logger.getLogger(GUILogin.class.getName()).log(Level.SEVERE, null, ex);
-                    }
-                    ins.setExtendedState(NORMAL);
-                    ins.setVisible(true);
-                }
-            });
-            this.dispose();
+            } catch (Exception ex) {
+                Logger.getLogger(GUILogin.class.getName()).log(Level.SEVERE, null, ex);
+            }
         } else {
-            warningMessage("Usuario o Contraseña incorrectas", "Atención");
+            warningMessage("El email ingresado no es valido", "Atención");
         }
     }//GEN-LAST:event_BtnIngresarActionPerformed
 
@@ -292,6 +305,26 @@ public class GUILogin extends javax.swing.JFrame {
     private void jLblBotonCerrarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLblBotonCerrarMouseClicked
         System.exit(0);
     }//GEN-LAST:event_jLblBotonCerrarMouseClicked
+
+    private void BtnRegistrarseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnRegistrarseActionPerformed
+
+        java.awt.EventQueue.invokeLater(new Runnable() {
+            public void run() {
+                GUIUser ins = null;
+                ins = new GUIUser();
+                ins.setExtendedState(NORMAL);
+                ins.setVisible(true);
+            }
+        });
+    }//GEN-LAST:event_BtnRegistrarseActionPerformed
+
+    private void TxbUserFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_TxbUserFocusGained
+        this.TxbUser.setText("");
+    }//GEN-LAST:event_TxbUserFocusGained
+
+    private void jPswFieldFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jPswFieldFocusGained
+        this.jPswField.setText("");
+    }//GEN-LAST:event_jPswFieldFocusGained
 
     /**
      * @param args the command line arguments
@@ -337,6 +370,7 @@ public class GUILogin extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton BtnIngresar;
+    private javax.swing.JButton BtnRegistrarse;
     private javax.swing.JTextField TxbUser;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
@@ -349,4 +383,35 @@ public class GUILogin extends javax.swing.JFrame {
     private javax.swing.JSeparator jSeparator2;
     // End of variables declaration//GEN-END:variables
 
+    private void iniciarModoAdmin(User user) {
+        java.awt.EventQueue.invokeLater(new Runnable() {
+            public void run() {
+                GUIMenuAdmin ins = null;
+                try {
+                    ins = new GUIMenuAdmin(user);
+                } catch (PropertyVetoException ex) {
+                    Logger.getLogger(GUILogin.class.getName()).log(Level.SEVERE, null, ex);
+                }
+                ins.setExtendedState(NORMAL);
+                ins.setVisible(true);
+            }
+        });
+        this.dispose();
+    }
+
+    private void iniciarModoUser(User user) {
+        java.awt.EventQueue.invokeLater(new Runnable() {
+            public void run() {
+                GUIMenuCustomer ins = null;
+                try {
+                    ins = new GUIMenuCustomer(user);
+                } catch (PropertyVetoException ex) {
+                    Logger.getLogger(GUILogin.class.getName()).log(Level.SEVERE, null, ex);
+                }
+                ins.setExtendedState(NORMAL);
+                ins.setVisible(true);
+            }
+        });
+        this.dispose();
+    }
 }

@@ -23,8 +23,8 @@ public class Restaurant {
      */
     private String phone;
     /**
-     * id del menu
-     */
+    *  id del menu lunes
+    */
     private String id_menu_lu;
     /**
      * id del menu
@@ -43,11 +43,11 @@ public class Restaurant {
      */
     private String id_menu_vi;
     /**
-     * id del menu
+     *  id del menu
      */
     private String id_menu_sa;
 
-    /**
+   /**
      * Constructor parametrizado
      *
      * @param idRestaurant identificador del restaurante
@@ -61,20 +61,17 @@ public class Restaurant {
      * @param id_menu_vi menu viernes
      * @param id_menu_sa menu sabado
      */
-    public Restaurant(String idRestaurant, String NameRestaurant,
-            String addressRestaurant, String phone, String id_menu_lu,
-            String id_menu_ma, String id_menu_mi, String id_menu_ju,
-            String id_menu_vi, String id_menu_sa) {
+ public Restaurant(String idRestaurant, String NameRestaurant, String addressRestaurant, String phone,String id_menu_lu,String id_menu_ma,String id_menu_mi,String id_menu_ju,String id_menu_vi,String id_menu_sa) {
         this.idRestaurant = idRestaurant;
         this.NameRestaurant = NameRestaurant;
         this.addressRestaurant = addressRestaurant;
-        this.phone = phone;        
-        this.id_menu_lu = id_menu_lu;
-        this.id_menu_ma = id_menu_lu;
-        this.id_menu_mi = id_menu_lu;
-        this.id_menu_ju = id_menu_lu;
-        this.id_menu_vi = id_menu_lu;
-        this.id_menu_sa = id_menu_lu;
+        this.phone = phone;
+        this.id_menu_lu=id_menu_lu;
+        this.id_menu_ma=id_menu_lu;
+        this.id_menu_mi=id_menu_lu;
+        this.id_menu_ju=id_menu_lu;
+        this.id_menu_vi=id_menu_lu;
+        this.id_menu_sa=id_menu_lu;
     }
 
     /**

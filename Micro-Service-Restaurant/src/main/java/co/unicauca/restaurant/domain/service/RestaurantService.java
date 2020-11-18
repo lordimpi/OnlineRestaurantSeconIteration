@@ -1,5 +1,6 @@
 package co.unicauca.restaurant.domain.service;
 
+import co.unicauca.common.domain.entity.User;
 import javax.inject.Inject;
 import co.unicauca.common.domain.validators.ValidationError;
 import co.unicauca.common.infra.Error;

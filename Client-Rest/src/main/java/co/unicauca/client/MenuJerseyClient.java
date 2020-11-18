@@ -67,6 +67,7 @@ public class MenuJerseyClient {
 
     public <T> List<Menu> findMbyRN_JSON(GenericType<List<Menu>> responseType, String rn) throws ClientErrorException {
         WebTarget resource = webTarget;
+        resource = resource.path(java.text.MessageFormat.format("list/{0}", new Object[]{rn}));
         return resource.request(javax.ws.rs.core.MediaType.APPLICATION_JSON).get(responseType);
     }
 

@@ -83,17 +83,17 @@ public class UserService {
     /**
      * Edita o actualiza un usuario
      *
-     * @param id identificador del usuario
+     * @param email email del usuario
      * @param newUser usuario a editar en el sistema
      * @return True si puedo actualizar, false de lo contrario
      */
-    public boolean update(String id, User newUser) {
-        List<Error> errors = validateUpdate(id, newUser);
+    public boolean update(String email, User newUser) {
+        List<Error> errors = validateUpdate(email,newUser);
         if (!errors.isEmpty()) {
             DomainErrors.setErrors(errors);
             return false;
         }
-        User userAux = this.findById(id);
+        User userAux = this.findByEmail(email);
         userAux.setFirstName(newUser.getFirstName());
         userAux.setLastName(newUser.getLastName());
         userAux.setAddress(newUser.getAddress());
@@ -131,10 +131,6 @@ public class UserService {
     private List<Error> validateCreate(User newUser) {
         List<Error> errors = new ArrayList<>();
         //Validate User
-        if (newUser.getId() == null || newUser.getId().isEmpty()) {
-            Error error = new Error(ValidationError.EMPTY_FIELD, "Id", "El id del usuario es obligatorio");
-            errors.add(error);
-        }
         if (newUser.getFirstName() == null || newUser.getFirstName().isEmpty()) {
             Error error = new Error(ValidationError.EMPTY_FIELD, "Nombre", "El nombre del usuario es obligatorio");
             errors.add(error);
@@ -165,15 +161,11 @@ public class UserService {
         }
 
         //Validar que no exista el usuario
-        if (newUser.getId() != null) {
-            if (Integer.parseInt(newUser.getId()) > 0) {
-                User userAux = repository.findById(newUser.getId());
-                if (userAux != null) {
-                    // El plato usuario ya existe
-                    Error error = new Error(ValidationError.INVALID_FIELD, "id", "El id del usuario ya existe");
-                    errors.add(error);
-                }
-            }
+        User userAux = repository.findByEmail(newUser.getEmail());
+        if (userAux != null) {
+            // El plato usuario ya existe
+            Error error = new Error(ValidationError.INVALID_FIELD, "email", "El email del usuario ya existe");
+            errors.add(error);
         }
         return errors;
     }
@@ -184,7 +176,7 @@ public class UserService {
      * @param newUser usuario
      * @return lista de errores de negocio
      */
-    private List<Error> validateUpdate(String id, User newUser) {
+    private List<Error> validateUpdate(String email, User newUser) {
         List<Error> errors = new ArrayList<>();
         //Validate User
 
@@ -218,7 +210,7 @@ public class UserService {
         }
 
         // Validar que exista el usuario
-        User userAux = repository.findById(id);
+        User userAux = repository.findByEmail(email);
 
         if (userAux == null) {
             // El usuario no existe
@@ -232,13 +224,13 @@ public class UserService {
     /**
      * Valida que el usuario exista antes de eliminarlo de la base de datos
      *
-     * @param id Identificador a validar
+     * @param email Email a validar
      * @return Lista de errores de negocio
      */
-    private List<Error> validateDelete(String id) {
+    private List<Error> validateDelete(String email) {
         List<Error> errors = new ArrayList<>();
         // Validar que exista el usuario
-        User userAux = repository.findById(id);
+        User userAux = repository.findByEmail(email);
 
         if (userAux == null) {
             // El usuario no existe

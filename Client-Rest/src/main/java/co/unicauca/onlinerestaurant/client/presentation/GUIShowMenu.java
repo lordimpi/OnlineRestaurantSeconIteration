@@ -1,16 +1,33 @@
 package co.unicauca.onlinerestaurant.client.presentation;
 
 import co.unicauca.onlinerestaurant.client.access.Factory;
+import co.unicauca.onlinerestaurant.client.access.IDessertAccess;
+import co.unicauca.onlinerestaurant.client.access.IDrinkAccess;
+import co.unicauca.onlinerestaurant.client.access.IEntryAccess;
 import co.unicauca.onlinerestaurant.client.access.IMainDishAccess;
 import co.unicauca.onlinerestaurant.client.access.IMenuAccess;
+import co.unicauca.onlinerestaurant.client.access.ISaladAccess;
+import co.unicauca.onlinerestaurant.client.domain.services.DessertService;
+import co.unicauca.onlinerestaurant.client.domain.services.DrinkService;
+import co.unicauca.onlinerestaurant.client.domain.services.EntryService;
 import co.unicauca.onlinerestaurant.client.domain.services.MainDishService;
 import co.unicauca.onlinerestaurant.client.domain.services.MenuService;
+import co.unicauca.onlinerestaurant.client.domain.services.SaladService;
+import co.unicauca.onlinerestaurant.client.infra.Messages;
 import static co.unicauca.onlinerestaurant.client.infra.Messages.successMessage;
+import co.unicauca.common.domain.entity.Dessert;
+import co.unicauca.common.domain.entity.DishEntry;
+import co.unicauca.common.domain.entity.Drink;
 import co.unicauca.common.domain.entity.MainDish;
 import co.unicauca.common.domain.entity.Menu;
+import co.unicauca.common.domain.entity.Salad;
+import java.util.ArrayList;
+import java.util.List;
+import javax.swing.DefaultComboBoxModel;
+import javax.swing.table.TableModel;
 
 /**
- * Crea un formulario para mostrar el menu del dia
+ *
  * @author Santiago Acuña
  */
 public class GUIShowMenu extends javax.swing.JInternalFrame {
@@ -20,34 +37,43 @@ public class GUIShowMenu extends javax.swing.JInternalFrame {
      */
     String restaurantname;
     /**
-     * Guarda un menu
+     * Lista de menus del restaurante
      */
-    Menu menu;
+    private List<Menu> menus = new ArrayList<>();
+    /**
+     * Lista de platos del restaurante
+     */
+    private List<MainDish> mainDishes = new ArrayList<>();
+    /**
+     * Lista ensaladas del restaurante
+     */
+    private List<Salad> salads = new ArrayList<>();
+    /**
+     * Lista de postres del restaurante
+     */
+    private List<Dessert> desserts = new ArrayList<>();
+    /**
+     * Lista de entradas del restaurantes
+     */
+    private List<DishEntry> dishEntries = new ArrayList<>();
+    /**
+     * Lista de jugos del restaurante
+     */
+    private List<Drink> drinks = new ArrayList<>();
 
     /**
      * Creates new form GUIUpdateDishe
+     *
+     * @param RestaurantN Nombre del restaurante
+     * @throws java.lang.Exception
      */
     public GUIShowMenu(String RestaurantN) throws Exception {
         initComponents();
-        menu = new Menu();
         restaurantname = RestaurantN;
-//        IMenuAccess service = Factory.getInstance().getMenuService();
-//        // Inyecta la dependencia
-//        MenuService restaurant = new MenuService(service);
-//
-//        try {
-//            menu = restaurant.findbyMenubyRN(restaurantname);
-//        } catch (Exception ex) {
-//            successMessage(ex.getMessage(), "Atención");
-//        }
-//
-//        maindish.setText(menu.getMaindish().getNameDishe());
-//        dessert.setText(menu.getDessert().getName_Dish_Dessert());
-//        entry.setText(menu.getEntry().getNameDishEntry());
-//        salad.setText(menu.getSalad().getNameSalad());
-//        drink.setText(menu.getDrink().getNameDrink());
-//        jtxtnamerestaurant.setText(restaurantname);
-
+        cargarListas();
+        mostrarTabla();
+        loadDataCombo();
+        this.jLbRestaurantName.setText(restaurantname);
     }
 
     /**
@@ -60,34 +86,29 @@ public class GUIShowMenu extends javax.swing.JInternalFrame {
     private void initComponents() {
 
         jPnNorte = new javax.swing.JPanel();
-        jtxtnamerestaurant = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
+        jLbRestaurantName = new javax.swing.JLabel();
         jPnSur = new javax.swing.JPanel();
         jBtnCancelar = new javax.swing.JButton();
+        jBtnRecargarTabla = new javax.swing.JButton();
         jPnCentro = new javax.swing.JPanel();
-        jLabel2 = new javax.swing.JLabel();
-        entry = new javax.swing.JTextField();
-        jLabel3 = new javax.swing.JLabel();
-        drink = new javax.swing.JTextField();
-        jLabel4 = new javax.swing.JLabel();
-        maindish = new javax.swing.JTextField();
-        jLabel5 = new javax.swing.JLabel();
-        salad = new javax.swing.JTextField();
-        jLabel6 = new javax.swing.JLabel();
-        dessert = new javax.swing.JTextField();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jTblMenus = new javax.swing.JTable();
 
         setClosable(true);
         setMaximizable(true);
         setResizable(true);
-        setTitle("Mostrar Menu");
-        setPreferredSize(new java.awt.Dimension(495, 329));
+        setTitle("Menus");
+        setPreferredSize(new java.awt.Dimension(700, 394));
 
         jPnNorte.setBackground(new java.awt.Color(54, 33, 88));
         jPnNorte.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         jPnNorte.setPreferredSize(new java.awt.Dimension(450, 50));
 
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel1.setText("Menu de la semana del Restaurante:");
+        jLabel1.setText("Menu del Restaurante:");
+
+        jLbRestaurantName.setForeground(new java.awt.Color(255, 255, 255));
 
         javax.swing.GroupLayout jPnNorteLayout = new javax.swing.GroupLayout(jPnNorte);
         jPnNorte.setLayout(jPnNorteLayout);
@@ -96,18 +117,18 @@ public class GUIShowMenu extends javax.swing.JInternalFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPnNorteLayout.createSequentialGroup()
                 .addGap(64, 64, 64)
                 .addComponent(jLabel1)
-                .addGap(27, 27, 27)
-                .addComponent(jtxtnamerestaurant, javax.swing.GroupLayout.PREFERRED_SIZE, 159, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(37, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addComponent(jLbRestaurantName, javax.swing.GroupLayout.PREFERRED_SIZE, 221, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(269, Short.MAX_VALUE))
         );
         jPnNorteLayout.setVerticalGroup(
             jPnNorteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPnNorteLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPnNorteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jtxtnamerestaurant, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(14, 14, 14))
+                .addGroup(jPnNorteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 17, Short.MAX_VALUE)
+                    .addComponent(jLbRestaurantName, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(20, 20, 20))
         );
 
         getContentPane().add(jPnNorte, java.awt.BorderLayout.PAGE_START);
@@ -124,36 +145,62 @@ public class GUIShowMenu extends javax.swing.JInternalFrame {
         });
         jPnSur.add(jBtnCancelar);
 
+        jBtnRecargarTabla.setText("Recargar");
+        jBtnRecargarTabla.setFocusPainted(false);
+        jBtnRecargarTabla.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBtnRecargarTablaActionPerformed(evt);
+            }
+        });
+        jPnSur.add(jBtnRecargarTabla);
+
         getContentPane().add(jPnSur, java.awt.BorderLayout.PAGE_END);
 
-        jPnCentro.setLayout(new java.awt.GridLayout(5, 2));
+        jPnCentro.setLayout(new java.awt.BorderLayout());
+        getContentPane().add(jPnCentro, java.awt.BorderLayout.LINE_START);
 
-        jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel2.setText("Entrada:");
-        jPnCentro.add(jLabel2);
-        jPnCentro.add(entry);
+        jTblMenus = new javax.swing.JTable(){
+            public boolean isCellEditable(int rowIndex, int colIndex){
+                return false;
+            }
+        };
+        jTblMenus.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null}
+            },
+            new String [] {
+                "Dia", "Plato Principal", "Bebida", "Ensalada", "Entrada", "Postre"
+            }
+        ) {
+            Class[] types = new Class [] {
+                java.lang.Object.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
+            };
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false, false, false
+            };
 
-        jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel3.setText("Bebida:");
-        jPnCentro.add(jLabel3);
-        jPnCentro.add(drink);
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
 
-        jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel4.setText("Plato principal:");
-        jPnCentro.add(jLabel4);
-        jPnCentro.add(maindish);
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        jTblMenus.setFocusable(false);
+        jTblMenus.setRowHeight(30);
+        jTblMenus.getTableHeader().setReorderingAllowed(false);
+        jTblMenus.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jTblMenusMouseClicked(evt);
+            }
+        });
+        jScrollPane1.setViewportView(jTblMenus);
 
-        jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel5.setText("Ensalada:");
-        jPnCentro.add(jLabel5);
-        jPnCentro.add(salad);
-
-        jLabel6.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel6.setText("Postre:");
-        jPnCentro.add(jLabel6);
-        jPnCentro.add(dessert);
-
-        getContentPane().add(jPnCentro, java.awt.BorderLayout.CENTER);
+        getContentPane().add(jScrollPane1, java.awt.BorderLayout.CENTER);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -163,23 +210,116 @@ public class GUIShowMenu extends javax.swing.JInternalFrame {
         this.doDefaultCloseAction();
     }//GEN-LAST:event_jBtnCancelarActionPerformed
 
+    /**
+     * Almacena el indice fila de la tabla menus
+     *
+     * @param evt Evento click de la tabla menus
+     */
+    private void jTblMenusMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTblMenusMouseClicked
+
+        int i = jTblMenus.getSelectedRow();
+        TableModel model = jTblMenus.getModel();
+       
+    }//GEN-LAST:event_jTblMenusMouseClicked
+
+   /**
+     * Actualiza la tabla y los combo box con informacion nueva de la base de
+     * datos
+     *
+     * @param evt Evento del boton recargar tabla
+     */
+    private void jBtnRecargarTablaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnRecargarTablaActionPerformed
+      
+        cargarListas();
+        mostrarTabla();
+        loadDataCombo();
+    }//GEN-LAST:event_jBtnRecargarTablaActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JTextField dessert;
-    private javax.swing.JTextField drink;
-    private javax.swing.JTextField entry;
     private javax.swing.JButton jBtnCancelar;
+    private javax.swing.JButton jBtnRecargarTabla;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLbRestaurantName;
     private javax.swing.JPanel jPnCentro;
     private javax.swing.JPanel jPnNorte;
     private javax.swing.JPanel jPnSur;
-    private javax.swing.JTextField jtxtnamerestaurant;
-    private javax.swing.JTextField maindish;
-    private javax.swing.JTextField salad;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTable jTblMenus;
     // End of variables declaration//GEN-END:variables
+
+    /**
+     * Carga los tipos de comida en el jComboBox
+     */
+    private void loadDataCombo() {
+       
+    }
+
+    /**
+     * Carga un lista usando la API REST
+     */
+    private void cargarListas() {
+        IMenuAccess service = Factory.getInstance().getMenuService();
+        IMainDishAccess mdService = Factory.getInstance().getMainDishService();
+        IEntryAccess entService = Factory.getInstance().getEntryService();
+        ISaladAccess salService = Factory.getInstance().getSaladService();
+        IDrinkAccess drService = Factory.getInstance().getDrinkService();
+        IDessertAccess dsService = Factory.getInstance().getDessertService();
+
+        // Inyecta las dependencias
+        MenuService menuService = new MenuService(service);
+        MainDishService dishService = new MainDishService(mdService);
+        EntryService entryService = new EntryService(entService);
+        SaladService saladService = new SaladService(salService);
+        DrinkService drinkService = new DrinkService(drService);
+        DessertService dessertService = new DessertService(dsService);
+
+        try {
+            menus = menuService.findbyMenubyRN(restaurantname);
+            mainDishes = dishService.listDishes();
+            dishEntries = entryService.listEntrys();
+            salads = saladService.listSalads();
+            drinks = drinkService.listDrinks();
+            desserts = dessertService.listDesserts();
+        } catch (Exception ex) {
+            successMessage(ex.getMessage(), "Atención");
+        }
+    }
+
+    /**
+     * Metodo encargado de mostrar los datos en un jtable
+     */
+    private void mostrarTabla() {
+        String dataTable[][] = new String[menus.size()][6];
+        String[] days= new String[]{"Lunes","Martes","Miercoles","Jueves","Viernes","Sabado"};
+        int j=0;
+
+        for (int i = 0; i < menus.size(); i++) {
+            if(j==6){j=0;}
+            dataTable[i][0] = days[j];
+            j=j+1;
+            dataTable[i][1] = menus.get(i).getMaindish().getNameDish();
+            dataTable[i][2] = menus.get(i).getDrink().getNameDrink();
+            dataTable[i][3] = menus.get(i).getSalad().getNameSalad();
+            dataTable[i][4] = menus.get(i).getEntry().getNameDishEntry();
+            dataTable[i][5] = menus.get(i).getDessert().getName_Dish_Dessert();
+
+        }
+
+        jTblMenus.setModel(new javax.swing.table.DefaultTableModel(
+                dataTable, new String[]{"Dia", "Plato Principal", "Bebida", "Ensalada", "Entrada", "Postre"}));
+    }
+
+    /**
+     * Elimina de la lista de menus un menu en especifico
+     *
+     * @param id Identificador del menu a eliminar de la lista
+     */
+    private void eliminarItemMenu(String id) {
+        for (Menu myMenu : menus) {
+            if (id.equals(myMenu.getId_menu())) {
+                menus.remove(myMenu);
+                return;
+            }
+        }
+    }
 }

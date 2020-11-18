@@ -5,6 +5,7 @@ import co.unicauca.onlinerestaurant.client.access.IRestaurantAccess;
 import co.unicauca.onlinerestaurant.client.domain.services.RestaurantService;
 import static co.unicauca.onlinerestaurant.client.infra.Messages.successMessage;
 import co.unicauca.common.domain.entity.Restaurant;
+import co.unicauca.common.domain.entity.User;
 import java.awt.Color;
 import java.awt.Image;
 import java.awt.MouseInfo;
@@ -45,7 +46,10 @@ public class GUIMenuCustomer extends javax.swing.JFrame {
      * Guarda la instancia para mostrar un menu
      */
     private GUIShowMenu ShowMenu;
-
+    /**
+     * Guarda la instancia del usuario
+     */
+    private static User user;
     /**
      * Bandera para cerrar o minimizar una ventana
      */
@@ -64,8 +68,10 @@ public class GUIMenuCustomer extends javax.swing.JFrame {
      *
      * @throws PropertyVetoException
      */
-    public GUIMenuCustomer() throws PropertyVetoException {
+    public GUIMenuCustomer(User user) throws PropertyVetoException {
         initComponents();
+        this.user = user;
+        jLbUserName.setText(user.getFirstName());
         cargarLista();
         listRestaurants = new GUIListRestaurants();
         setLocationRelativeTo(null);
@@ -468,7 +474,7 @@ public class GUIMenuCustomer extends javax.swing.JFrame {
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 try {
-                    new GUIMenuCustomer().setVisible(true);
+                    new GUIMenuCustomer(user).setVisible(true);
                 } catch (PropertyVetoException ex) {
                     Logger.getLogger(GUIMenuCustomer.class.getName()).log(Level.SEVERE, null, ex);
                 }

@@ -103,7 +103,7 @@ public class UserAccessREST implements IUserAccess {
      */
     @Override
     public boolean createUser(User user) throws Exception {
-        User users = findUser(user.getId());
+        User users = findUserEmail(user.getEmail());
         if (users != null) {
             return false;
         }

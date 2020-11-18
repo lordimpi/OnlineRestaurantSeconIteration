@@ -69,6 +69,7 @@ public class GUICreateDish extends javax.swing.JInternalFrame {
         jPnSur.setPreferredSize(new java.awt.Dimension(450, 50));
 
         jBtnAgregar.setText("Agregar");
+        jBtnAgregar.setFocusPainted(false);
         jBtnAgregar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jBtnAgregarActionPerformed(evt);
@@ -77,6 +78,7 @@ public class GUICreateDish extends javax.swing.JInternalFrame {
         jPnSur.add(jBtnAgregar);
 
         jBtnCancelar.setText("Cancelar");
+        jBtnCancelar.setFocusPainted(false);
         jBtnCancelar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jBtnCancelarActionPerformed(evt);

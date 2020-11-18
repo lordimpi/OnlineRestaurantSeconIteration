@@ -96,6 +96,7 @@ public class GUIListRestaurants extends javax.swing.JInternalFrame {
         jPnSur.add(jBtnSeleccionarRestaurante);
 
         jBtnCancelar.setText("Cancelar");
+        jBtnCancelar.setFocusPainted(false);
         jBtnCancelar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jBtnCancelarActionPerformed(evt);
@@ -139,15 +140,12 @@ public class GUIListRestaurants extends javax.swing.JInternalFrame {
         jPanel2.setBackground(new java.awt.Color(255, 255, 255));
 
         jLblRestaurantNombre.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        jLblRestaurantNombre.setForeground(new java.awt.Color(0, 0, 0));
         jLblRestaurantNombre.setText("Nombre");
 
         jLblRestaurantDireccion.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        jLblRestaurantDireccion.setForeground(new java.awt.Color(0, 0, 0));
         jLblRestaurantDireccion.setText("Direccion");
 
         jLblRestaurantTelefono.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        jLblRestaurantTelefono.setForeground(new java.awt.Color(0, 0, 0));
         jLblRestaurantTelefono.setText("Telefono");
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);

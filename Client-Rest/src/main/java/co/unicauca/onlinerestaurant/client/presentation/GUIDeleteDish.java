@@ -72,6 +72,7 @@ public class GUIDeleteDish extends javax.swing.JInternalFrame {
         jPnSur.setPreferredSize(new java.awt.Dimension(450, 50));
 
         jBtnEliminar.setText("Borrar");
+        jBtnEliminar.setFocusPainted(false);
         jBtnEliminar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jBtnEliminarActionPerformed(evt);
@@ -80,6 +81,7 @@ public class GUIDeleteDish extends javax.swing.JInternalFrame {
         jPnSur.add(jBtnEliminar);
 
         jBtnRecargarTabla.setText("Recargar");
+        jBtnRecargarTabla.setFocusPainted(false);
         jBtnRecargarTabla.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jBtnRecargarTablaActionPerformed(evt);
