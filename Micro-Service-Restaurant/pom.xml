@@ -42,7 +42,7 @@
         </dependency>
         <dependency>
             <groupId>co.unicauca.restaurant</groupId>
-            <artifactId>OnlineRestaurant-Commons</artifactId>
+            <artifactId>Commons</artifactId>
             <version>1</version>
         </dependency>
         <dependency>

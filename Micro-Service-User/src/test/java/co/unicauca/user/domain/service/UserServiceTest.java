@@ -73,7 +73,7 @@ public class UserServiceTest {
         //findAll encontrar una lista de usuarios
         List<User> nresult=new ArrayList(); 
         nresult = instance.findAll();
-        assertEquals(t+1, nresult.size()); 
+        assertEquals(t, nresult.size()); 
         
         
         //Update actualizar un usuario
