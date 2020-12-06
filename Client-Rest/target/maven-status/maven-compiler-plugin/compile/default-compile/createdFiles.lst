@@ -53,6 +53,7 @@ co\unicauca\onlinerestaurant\client\presentation\GUIFindSalad$1.class
 co\unicauca\onlinerestaurant\client\presentation\GUIMenuAdmin$2.class
 co\unicauca\onlinerestaurant\client\presentation\GUICreateSalad.class
 co\unicauca\onlinerestaurant\client\presentation\GUIMenuAdmin$9.class
+co\unicauca\onlinerestaurant\client\domain\chainofResponsibility\LevelFour.class
 co\unicauca\onlinerestaurant\client\presentation\GUICreateDrink$1.class
 co\unicauca\onlinerestaurant\client\presentation\GUILogin$7.class
 co\unicauca\onlinerestaurant\client\presentation\GUIModifyUser$2.class
@@ -115,6 +116,7 @@ co\unicauca\onlinerestaurant\client\presentation\GUIDeleteSalad$5.class
 co\unicauca\onlinerestaurant\client\presentation\GUIMenuFood$15.class
 co\unicauca\onlinerestaurant\client\presentation\GUIModifyDishEntry$3.class
 co\unicauca\onlinerestaurant\client\presentation\GUIDeleteDrink$2.class
+co\unicauca\onlinerestaurant\client\domain\chainofResponsibility\LevelTwo.class
 co\unicauca\onlinerestaurant\client\access\SaladAccessREST.class
 co\unicauca\onlinerestaurant\client\presentation\GUIDeleteDishEntry$3.class
 co\unicauca\onlinerestaurant\client\presentation\GUICreateDessert$2.class
@@ -123,6 +125,7 @@ co\unicauca\onlinerestaurant\client\presentation\GUIMenuAdmin$6.class
 co\unicauca\onlinerestaurant\client\presentation\GUICreateSalad$1.class
 co\unicauca\onlinerestaurant\client\presentation\GUIDeleteDrink.class
 co\unicauca\onlinerestaurant\client\presentation\GUILogin$3.class
+co\unicauca\onlinerestaurant\client\domain\chainofResponsibility\ClaimManager.class
 co\unicauca\onlinerestaurant\client\presentation\GUIDeleteDish$5.class
 co\unicauca\onlinerestaurant\client\presentation\GUIMenuFood$3.class
 co\unicauca\onlinerestaurant\client\access\EntryAccessREST.class
@@ -148,7 +151,10 @@ co\unicauca\onlinerestaurant\client\presentation\GUICreateUser$3.class
 co\unicauca\onlinerestaurant\client\presentation\GUIMenuAdmin$1.class
 co\unicauca\onlinerestaurant\client\presentation\GUIFindDishEntry.class
 co\unicauca\onlinerestaurant\client\presentation\GUIMenuCustomer$1.class
+co\unicauca\onlinerestaurant\client\domain\chainofResponsibility\ClaimHandler.class
 co\unicauca\onlinerestaurant\client\presentation\GUIMenuAdmin$12.class
+co\unicauca\onlinerestaurant\client\domain\chainofResponsibility\TypeEnum.class
+co\unicauca\onlinerestaurant\client\domain\chainofResponsibility\Claim.class
 co\unicauca\onlinerestaurant\client\presentation\GUIMenuAdmin.class
 co\unicauca\onlinerestaurant\client\access\DrinkAccessREST.class
 co\unicauca\onlinerestaurant\client\access\IDessertAccess.class
@@ -163,6 +169,7 @@ co\unicauca\onlinerestaurant\client\presentation\GUIModifyUser$3.class
 co\unicauca\onlinerestaurant\client\access\UserAccessREST$1.class
 co\unicauca\onlinerestaurant\client\presentation\GUIDeleteDessert$2.class
 co\unicauca\onlinerestaurant\client\presentation\GUICreateDish.class
+co\unicauca\onlinerestaurant\client\domain\chainofResponsibility\LevelOne.class
 co\unicauca\onlinerestaurant\client\presentation\GUIMenuAdmin$13.class
 co\unicauca\onlinerestaurant\client\presentation\GUICreateSalad$2.class
 co\unicauca\onlinerestaurant\client\presentation\GUIShowMenuAdmin$4.class
@@ -182,9 +189,11 @@ co\unicauca\onlinerestaurant\client\presentation\GUIModifyDishEntry$2.class
 co\unicauca\onlinerestaurant\client\presentation\GUIDeleteDishEntry.class
 co\unicauca\onlinerestaurant\client\presentation\GUIMenuAdmin$7.class
 co\unicauca\onlinerestaurant\client\presentation\GUIMenuAdmin$11.class
+co\unicauca\onlinerestaurant\client\infra\Utilities.class
 co\unicauca\onlinerestaurant\client\presentation\GUIDeleteDrink$3.class
 co\unicauca\onlinerestaurant\client\access\MainDishAccessREST$1.class
 co\unicauca\onlinerestaurant\client\presentation\GUIMenuCustomer$3.class
+co\unicauca\onlinerestaurant\client\domain\chainofResponsibility\LevelThree.class
 co\unicauca\onlinerestaurant\client\presentation\GUIMenuAdmin$4.class
 co\unicauca\onlinerestaurant\client\presentation\GUIModifyDessert$2.class
 co\unicauca\onlinerestaurant\client\presentation\GUIDeleteDessert.class
