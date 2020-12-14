@@ -61,24 +61,14 @@ public class DeliveryController {
     /*
         Su uso desde consola mediante client url:
         curl -X POST \ http://localhost:8085/Micro-Service-Delivery/delivery-service/deliveries/
-       {
-             "dessert": {
-                "id_Dish_Dessert": "2"
-            },
-            "drink": {
-                "id_Drink": "2"   
-            },
-            "entry": {
-                "idDishEntry": "2"
-            },
-            "id_menu": "1000",
-            "maindish": {
-                "id_mainDish": "1"    
-            },
-            "salad": {
-                "idSalad": "1"
-            }
-        }
+             {
+                    "cantidad": 122,
+                    "descripcion": "LLevar en un tarrito de axion con salsa de ajo",
+                    "direccionEnvio": "calle jirafa",
+                    "miMenu": {
+                        "id_menu": "1"
+                    }
+              }
      */
     @POST
     @Consumes({MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON})
@@ -97,24 +87,14 @@ public class DeliveryController {
         curl -X PUT \
           http://localhost:8085/Micro-Service-Delivery/delivery-service/deliveries/4 \
           -H 'Content-Type: application/json' \
-          -d '{
-                    "dessert": {
-                        "id_Dish_Dessert": "2"
-                    },
-                    "drink": {
-                        "id_Drink": "2"   
-                    },
-                    "entry": {
-                        "idDishEntry": "2"
-                    },
-                    "id_menu": "1000",
-                    "maindish": {
-                        "id_mainDish": "1"    
-                    },
-                    "salad": {
-                        "idSalad": "1"
+          -d {
+                    "cantidad": 122,
+                    "descripcion": "LLevar en un tarrito de axion con salsa de ajo y piña",
+                    "direccionEnvio": "calle espinaca",
+                    "miMenu": {
+                        "id_menu": "2"
                     }
-                }'
+              }
      */
     @PUT
     @Path("{id}")
