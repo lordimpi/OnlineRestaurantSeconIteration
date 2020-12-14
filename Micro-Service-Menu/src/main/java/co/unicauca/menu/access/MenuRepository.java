@@ -31,18 +31,16 @@ public class MenuRepository implements IMenuRepository {
     public MenuRepository() {
     }
 
-
-    
     @Override
     public List<Menu> findAll() {
         List<Menu> menus = new ArrayList<>();
         try {
-             MainDish md = null;
+            MainDish md = null;
             Drink d = null;
             DishEntry de = null;
             Salad s = null;
             Dessert des = null;
-            
+
             String sql = "SELECT * from menu join maindish on menu.id_maindish=maindish.id_dish  join salad on menu.id_salad=salad.idsalad join dishentry on menu.id_entry=dishentry.idDishEntry  join dessert on menu.id_dessert=dessert.id_dessert   join drink on menu.id_drink=drink.id_drink ";
             this.connect();
 
@@ -247,15 +245,15 @@ public class MenuRepository implements IMenuRepository {
 
     @Override
     public List<Menu> findMbyRN(String resName) {
-         List<Menu> menus = new ArrayList<>();
+        List<Menu> menus = new ArrayList<>();
         try {
-             MainDish md = null;
+            MainDish md = null;
             Drink d = null;
             DishEntry de = null;
             Salad s = null;
             Dessert des = null;
-            
-            String sql = "SELECT * from menu join maindish on menu.id_maindish=maindish.id_dish join salad on menu.id_salad=salad.idsalad join dishentry on menu.id_entry=dishentry.idDishEntry join dessert on menu.id_dessert=dessert.id_dessert join drink on menu.id_drink=drink.id_drink join restaurant on menu.id_menu=restaurant.id_lu_menu or menu.id_menu=restaurant.id_ma_menu or menu.id_menu=restaurant.id_mi_menu or menu.id_menu=restaurant.id_ju_menu or menu.id_menu=restaurant.id_vi_menu or menu.id_menu=restaurant.id_sa_menu where restaurant.name_restaurant= '"+resName+ "' ORDER by menu.id_menu"; 
+
+            String sql = "SELECT * from menu join maindish on menu.id_maindish=maindish.id_dish join salad on menu.id_salad=salad.idsalad join dishentry on menu.id_entry=dishentry.idDishEntry join dessert on menu.id_dessert=dessert.id_dessert join drink on menu.id_drink=drink.id_drink join restaurant on menu.id_menu=restaurant.id_lu_menu or menu.id_menu=restaurant.id_ma_menu or menu.id_menu=restaurant.id_mi_menu or menu.id_menu=restaurant.id_ju_menu or menu.id_menu=restaurant.id_vi_menu or menu.id_menu=restaurant.id_sa_menu where restaurant.name_restaurant= '" + resName + "' ORDER by menu.id_menu";
             this.connect();
             Statement stmt = conn.createStatement();
             ResultSet rs = stmt.executeQuery(sql);
