@@ -35,17 +35,17 @@ Tables creations
 		PRIMARY KEY (`id_drink`)) ENGINE = InnoDB;
 
 
-        CREATE TABLE `restaurante`.`restaurant` (  
+    CREATE TABLE `restaurante`.`restaurant` (  
 		`idres` VARCHAR(10) NOT NULL , 
 		`name_restaurant` VARCHAR(100) NOT NULL , 
 		`address_restaurant` VARCHAR(100) NOT NULL , 
 		`phone` VARCHAR(40) NOT NULL , 
 		`id_lu_menu` VARCHAR(10) NULL ,
   		`id_ma_menu` VARCHAR(10) NULL ,
-    		`id_mi_menu` VARCHAR(10) NULL ,
-    		`id_ju_menu` VARCHAR(10) NULL ,
-    		`id_vi_menu` VARCHAR(10) NULL ,
-    		`id_sa_menu` VARCHAR(10) NULL ,
+    	`id_mi_menu` VARCHAR(10) NULL ,
+    	`id_ju_menu` VARCHAR(10) NULL ,
+    	`id_vi_menu` VARCHAR(10) NULL ,
+    	`id_sa_menu` VARCHAR(10) NULL ,
 		PRIMARY KEY (`idres`)) ENGINE = InnoDB;
 
 	CREATE TABLE `restaurante`.`dessert` ( 
@@ -75,6 +75,15 @@ Tables creations
 		`id_dessert` VARCHAR(10) NULL, 
 		PRIMARY KEY (`id_menu`)) ENGINE = InnoDB;
 
+	CREATE TABLE `restaurante`.`delivery` ( 
+		`id_delivery` INT AUTO_INCREMENT, 
+		`descripcion` VARCHAR(300) NULL, 
+		`cantidad` INTEGER NOT NULL, 
+		`direccion_envio` VARCHAR(100) NOT NULL,
+		`fecha` DATE NOT NULL, 
+		`id_menu` VARCHAR(10) NOT NULL, 
+		PRIMARY KEY (`id_delivery`)) ENGINE = InnoDB;
+
 	ALTER TABLE menu ADD CONSTRAINT FK_IDentry FOREIGN KEY (id_entry) REFERENCES dishentry(idDishEntry);
 	ALTER TABLE menu ADD CONSTRAINT FK_IDsalad FOREIGN KEY (id_salad) REFERENCES salad(idsalad);
 	ALTER TABLE menu ADD CONSTRAINT FK_IDmaindish FOREIGN KEY (id_maindish) REFERENCES maindish(id_dish);
@@ -86,6 +95,7 @@ Tables creations
 	ALTER TABLE restaurant ADD CONSTRAINT FK_ID_ju_menu FOREIGN KEY (id_ju_menu) REFERENCES menu(id_menu);
 	ALTER TABLE restaurant ADD CONSTRAINT FK_ID_vi_menu FOREIGN KEY (id_vi_menu) REFERENCES menu(id_menu);
 	ALTER TABLE restaurant ADD CONSTRAINT FK_ID_sa_menu FOREIGN KEY (id_sa_menu) REFERENCES menu(id_menu);
+	ALTER TABLE delivery ADD CONSTRAINT FK_ID_menu FOREIGN KEY (id_menu) REFERENCES menu(id_menu);
 ```
 Inserts
 ```ssh
@@ -180,6 +190,9 @@ Inserts
 	INSERT INTO `restaurant`(`idres`, `name_restaurant`, `address_restaurant`, `phone`, `id_lu_menu`, `id_ma_menu`, `id_mi_menu`, `id_ju_menu`, `id_vi_menu`, `id_sa_menu`) VALUES ("6","pollo sorpresa","carrera 10","312333222","31","32","33","34","35","36");
 	INSERT INTO `restaurant`(`idres`, `name_restaurant`, `address_restaurant`, `phone`, `id_lu_menu`, `id_ma_menu`, `id_mi_menu`, `id_ju_menu`, `id_vi_menu`, `id_sa_menu`) VALUES ("7","Andres carne de res","carrera 12 con calle 10","312333222","37","38","39","40","41","42");
 	
+	INSERT INTO `delivery`(`id_delivery`, `descripcion`, `cantidad`, `direccion_envio`, `fecha`, `id_menu`) VALUES(NULL,"Pendiente por agregar", 4, "calle iguana", '2020/12/12',"1");
+	INSERT INTO `delivery`(`id_delivery`, `descripcion`, `cantidad`, `direccion_envio`, `fecha`, `id_menu`) VALUES(NULL,"Pendiente por agregar", 2, "calle perico", '2020/12/11',"2");
+	INSERT INTO `delivery`(`id_delivery`, `descripcion`, `cantidad`, `direccion_envio`, `fecha`, `id_menu`) VALUES(NULL,"Pendiente por agregar", 1, "calle elefante", '2020/12/13',"3");		
 ```
 ## Configuring Payara Server 
 
