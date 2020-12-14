@@ -41,13 +41,13 @@ public class DeliveryRepository implements IDeliveryRepository {
         List<Delivery> deliveries = new ArrayList<>();
         try {
             String idMenu;
-            String sql = "SELECT * FROM delivery ";
+            String sql = "SELECT * FROM delivery";
             this.connect();
             Statement stmt = conn.createStatement();
             ResultSet res = stmt.executeQuery(sql);
             while (res.next()) {
                 Delivery newDelivery = new Delivery();
-                newDelivery.setId_Delivery(Integer.toString(res.getInt("id_delivery ")));
+                newDelivery.setId_Delivery(Integer.toString(res.getInt("id_delivery")));
                 newDelivery.setDescripcion(res.getString("descripcion"));
                 newDelivery.setCantidad(res.getInt("cantidad"));
                 newDelivery.setDireccionEnvio(res.getString("direccion_envio"));
@@ -68,7 +68,6 @@ public class DeliveryRepository implements IDeliveryRepository {
     public Delivery findById(String id) {
         Delivery newDelivery = null;
         String idMenu;
-
         this.connect();
         try {
             String sql = "SELECT * FROM delivery where id_delivery = " + id;
@@ -76,7 +75,8 @@ public class DeliveryRepository implements IDeliveryRepository {
             PreparedStatement pstmt = conn.prepareStatement(sql);
             ResultSet res = pstmt.executeQuery();
             if (res.next()) {
-                newDelivery.setId_Delivery(Integer.toString(res.getInt("id_delivery ")));
+                newDelivery = new Delivery();
+                newDelivery.setId_Delivery(Integer.toString(res.getInt("id_delivery")));
                 newDelivery.setDescripcion(res.getString("descripcion"));
                 newDelivery.setCantidad(res.getInt("cantidad"));
                 newDelivery.setDireccionEnvio(res.getString("direccion_envio"));
