@@ -78,7 +78,7 @@ public class GUIMenuCustomer extends javax.swing.JFrame {
         cargarLista();
         listRestaurants = new GUIListRestaurants();
         setLocationRelativeTo(null);
-        this.BtnMenus.setVisible(false);
+        this.BtnPedidos.setVisible(false);
     }
 
     public static User getUser() {
@@ -99,9 +99,9 @@ public class GUIMenuCustomer extends javax.swing.JFrame {
         BtnHomePage = new javax.swing.JPanel();
         jLbHomePageIcono = new javax.swing.JLabel();
         jLbHomePage = new javax.swing.JLabel();
-        BtnMenus = new javax.swing.JPanel();
+        BtnPedidos = new javax.swing.JPanel();
         jLbMenusIcon = new javax.swing.JLabel();
-        jLbMenus = new javax.swing.JLabel();
+        jLbPedidos = new javax.swing.JLabel();
         BtnRestaurant = new javax.swing.JPanel();
         jLbRestaurantIcon = new javax.swing.JLabel();
         jLbRestaurant = new javax.swing.JLabel();
@@ -109,6 +109,10 @@ public class GUIMenuCustomer extends javax.swing.JFrame {
         jLbUserName = new javax.swing.JLabel();
         jLbUserPhoto = new javax.swing.JLabel();
         jSeparator1 = new javax.swing.JSeparator();
+        jLbMenus1 = new javax.swing.JLabel();
+        BtnMenus1 = new javax.swing.JPanel();
+        jLbMenusIcon1 = new javax.swing.JLabel();
+        jLbMenus2 = new javax.swing.JLabel();
         jPnlCMH = new javax.swing.JPanel();
         jLbMaxMin = new javax.swing.JLabel();
         jLbHide = new javax.swing.JLabel();
@@ -160,42 +164,49 @@ public class GUIMenuCustomer extends javax.swing.JFrame {
 
         jPnlSide.add(BtnHomePage, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 300, 280, 40));
 
-        BtnMenus.setBackground(new java.awt.Color(64, 43, 100));
-        BtnMenus.addMouseListener(new java.awt.event.MouseAdapter() {
+        BtnPedidos.setBackground(new java.awt.Color(64, 43, 100));
+        BtnPedidos.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
-                BtnMenusMousePressed(evt);
+                BtnPedidosMousePressed(evt);
             }
         });
 
         jLbMenusIcon.setPreferredSize(new java.awt.Dimension(34, 35));
 
-        jLbMenus.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jLbMenus.setForeground(new java.awt.Color(204, 204, 204));
-        jLbMenus.setText("Menus");
+        jLbPedidos.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jLbPedidos.setForeground(new java.awt.Color(204, 204, 204));
+        jLbPedidos.setText("Pedidos");
+        jLbPedidos.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                jLbPedidosMousePressed(evt);
+            }
+        });
 
-        javax.swing.GroupLayout BtnMenusLayout = new javax.swing.GroupLayout(BtnMenus);
-        BtnMenus.setLayout(BtnMenusLayout);
-        BtnMenusLayout.setHorizontalGroup(
-            BtnMenusLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(BtnMenusLayout.createSequentialGroup()
+        javax.swing.GroupLayout BtnPedidosLayout = new javax.swing.GroupLayout(BtnPedidos);
+        BtnPedidos.setLayout(BtnPedidosLayout);
+        BtnPedidosLayout.setHorizontalGroup(
+            BtnPedidosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(BtnPedidosLayout.createSequentialGroup()
                 .addGap(35, 35, 35)
                 .addComponent(jLbMenusIcon, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jLbMenus, javax.swing.GroupLayout.PREFERRED_SIZE, 163, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jLbPedidos, javax.swing.GroupLayout.PREFERRED_SIZE, 163, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(36, Short.MAX_VALUE))
         );
-        BtnMenusLayout.setVerticalGroup(
-            BtnMenusLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(BtnMenusLayout.createSequentialGroup()
-                .addGroup(BtnMenusLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        BtnPedidosLayout.setVerticalGroup(
+            BtnPedidosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(BtnPedidosLayout.createSequentialGroup()
+                .addGroup(BtnPedidosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLbMenusIcon, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(BtnMenusLayout.createSequentialGroup()
+                    .addGroup(BtnPedidosLayout.createSequentialGroup()
                         .addContainerGap()
-                        .addComponent(jLbMenus)))
+                        .addComponent(jLbPedidos)))
                 .addGap(21, 21, 21))
         );
 
-        jPnlSide.add(BtnMenus, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 380, -1, 40));
+        jLbPedidos.getAccessibleContext().setAccessibleParent(null);
+
+        jPnlSide.add(BtnPedidos, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 420, -1, 40));
 
         BtnRestaurant.setBackground(new java.awt.Color(64, 43, 100));
         BtnRestaurant.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -257,6 +268,48 @@ public class GUIMenuCustomer extends javax.swing.JFrame {
 
         jSeparator1.setForeground(new java.awt.Color(204, 204, 204));
         jPnlSide.add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 160, 260, 10));
+
+        jLbMenus1.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jLbMenus1.setForeground(new java.awt.Color(204, 204, 204));
+        jLbMenus1.setText("Menus");
+        jPnlSide.add(jLbMenus1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
+
+        BtnMenus1.setBackground(new java.awt.Color(64, 43, 100));
+        BtnMenus1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                BtnMenus1MousePressed(evt);
+            }
+        });
+
+        jLbMenusIcon1.setPreferredSize(new java.awt.Dimension(34, 35));
+
+        jLbMenus2.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jLbMenus2.setForeground(new java.awt.Color(204, 204, 204));
+        jLbMenus2.setText("Menus");
+
+        javax.swing.GroupLayout BtnMenus1Layout = new javax.swing.GroupLayout(BtnMenus1);
+        BtnMenus1.setLayout(BtnMenus1Layout);
+        BtnMenus1Layout.setHorizontalGroup(
+            BtnMenus1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(BtnMenus1Layout.createSequentialGroup()
+                .addGap(35, 35, 35)
+                .addComponent(jLbMenusIcon1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jLbMenus2, javax.swing.GroupLayout.PREFERRED_SIZE, 163, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(36, Short.MAX_VALUE))
+        );
+        BtnMenus1Layout.setVerticalGroup(
+            BtnMenus1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(BtnMenus1Layout.createSequentialGroup()
+                .addGroup(BtnMenus1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLbMenusIcon1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(BtnMenus1Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jLbMenus2)))
+                .addGap(21, 21, 21))
+        );
+
+        jPnlSide.add(BtnMenus1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 380, -1, 40));
 
         jPnlBg.add(jPnlSide, java.awt.BorderLayout.LINE_START);
 
@@ -356,7 +409,7 @@ public class GUIMenuCustomer extends javax.swing.JFrame {
     private void BtnHomePageMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BtnHomePageMousePressed
         setColor(BtnHomePage);
         resetColor(BtnRestaurant);
-        resetColor(BtnMenus);
+        resetColor(BtnPedidos);
     }//GEN-LAST:event_BtnHomePageMousePressed
 
     /**
@@ -364,10 +417,10 @@ public class GUIMenuCustomer extends javax.swing.JFrame {
      *
      * @param evt evento del boton
      */
-    private void BtnMenusMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BtnMenusMousePressed
+    private void BtnPedidosMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BtnPedidosMousePressed
         resetColor(BtnHomePage);
         resetColor(BtnRestaurant);
-        setColor(BtnMenus);
+        setColor(BtnPedidos);
 
         if (ShowMenu == null) {
             ShowMenu = new GUIShowMenu(restaurantName);
@@ -375,7 +428,7 @@ public class GUIMenuCustomer extends javax.swing.JFrame {
             dskEscritorio.add(ShowMenu);
             ShowMenu.show();
         }
-    }//GEN-LAST:event_BtnMenusMousePressed
+    }//GEN-LAST:event_BtnPedidosMousePressed
 
     /**
      * Boton para mostrar una lista de restaurantes
@@ -385,7 +438,7 @@ public class GUIMenuCustomer extends javax.swing.JFrame {
     private void BtnRestaurantMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BtnRestaurantMousePressed
         resetColor(BtnHomePage);
         setColor(BtnRestaurant);
-        resetColor(BtnMenus);
+        resetColor(BtnPedidos);
 
         cargarLista();
 
@@ -393,7 +446,7 @@ public class GUIMenuCustomer extends javax.swing.JFrame {
             listRestaurants.setMaximizable(true);
             dskEscritorio.add(listRestaurants);
             listRestaurants.show();
-            this.BtnMenus.setVisible(true);
+            this.BtnPedidos.setVisible(true);
         }
     }//GEN-LAST:event_BtnRestaurantMousePressed
 
@@ -478,6 +531,14 @@ public class GUIMenuCustomer extends javax.swing.JFrame {
         });
     }//GEN-LAST:event_jLbLogOutMousePressed
 
+    private void BtnMenus1MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BtnMenus1MousePressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_BtnMenus1MousePressed
+
+    private void jLbPedidosMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLbPedidosMousePressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jLbPedidosMousePressed
+
     /**
      * Inicializa el formulario menu customer
      *
@@ -521,7 +582,8 @@ public class GUIMenuCustomer extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel BtnHomePage;
-    private javax.swing.JPanel BtnMenus;
+    private javax.swing.JPanel BtnMenus1;
+    private javax.swing.JPanel BtnPedidos;
     private javax.swing.JPanel BtnRestaurant;
     private javax.swing.JDesktopPane dskEscritorio;
     private javax.swing.JLabel jLbClose1;
@@ -530,8 +592,11 @@ public class GUIMenuCustomer extends javax.swing.JFrame {
     private javax.swing.JLabel jLbHomePageIcono;
     private javax.swing.JLabel jLbLogOut;
     private javax.swing.JLabel jLbMaxMin;
-    private javax.swing.JLabel jLbMenus;
+    private javax.swing.JLabel jLbMenus1;
+    private javax.swing.JLabel jLbMenus2;
     private javax.swing.JLabel jLbMenusIcon;
+    private javax.swing.JLabel jLbMenusIcon1;
+    private javax.swing.JLabel jLbPedidos;
     private javax.swing.JLabel jLbRestaurant;
     private javax.swing.JLabel jLbRestaurantIcon;
     private javax.swing.JLabel jLbUserName;
