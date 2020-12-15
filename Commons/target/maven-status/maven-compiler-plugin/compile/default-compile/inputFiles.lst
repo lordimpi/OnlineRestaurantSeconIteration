@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 D:\Unicauca\Ingenieria de Software\Software 2\Laboratorio\Parcial\P2\OnlineRestaurantSecondIteration\Commons\src\main\java\co\unicauca\common\domain\validators\ValidationError.java
 D:\Unicauca\Ingenieria de Software\Software 2\Laboratorio\Parcial\P2\OnlineRestaurantSecondIteration\Commons\src\main\java\co\unicauca\common\domain\entity\Drink.java
 D:\Unicauca\Ingenieria de Software\Software 2\Laboratorio\Parcial\P2\OnlineRestaurantSecondIteration\Commons\src\main\java\co\unicauca\common\infra\JsonResponse.java
@@ -13,3 +14,19 @@ D:\Unicauca\Ingenieria de Software\Software 2\Laboratorio\Parcial\P2\OnlineResta
 D:\Unicauca\Ingenieria de Software\Software 2\Laboratorio\Parcial\P2\OnlineRestaurantSecondIteration\Commons\src\main\java\co\unicauca\common\domain\entity\Dessert.java
 D:\Unicauca\Ingenieria de Software\Software 2\Laboratorio\Parcial\P2\OnlineRestaurantSecondIteration\Commons\src\main\java\co\unicauca\common\domain\entity\Delivery.java
 D:\Unicauca\Ingenieria de Software\Software 2\Laboratorio\Parcial\P2\OnlineRestaurantSecondIteration\Commons\src\main\java\co\unicauca\common\infra\Utilities.java
+=======
+D:\corte3\OnlineRestaurantSecondIteration\Commons\src\main\java\co\unicauca\common\domain\entity\Salad.java
+D:\corte3\OnlineRestaurantSecondIteration\Commons\src\main\java\co\unicauca\common\domain\entity\Menu.java
+D:\corte3\OnlineRestaurantSecondIteration\Commons\src\main\java\co\unicauca\common\infra\Error.java
+D:\corte3\OnlineRestaurantSecondIteration\Commons\src\main\java\co\unicauca\common\domain\entity\Dessert.java
+D:\corte3\OnlineRestaurantSecondIteration\Commons\src\main\java\co\unicauca\common\infra\DomainErrors.java
+D:\corte3\OnlineRestaurantSecondIteration\Commons\src\main\java\co\unicauca\common\infra\Utilities.java
+D:\corte3\OnlineRestaurantSecondIteration\Commons\src\main\java\co\unicauca\common\domain\entity\Restaurant.java
+D:\corte3\OnlineRestaurantSecondIteration\Commons\src\main\java\co\unicauca\common\infra\JsonResponse.java
+D:\corte3\OnlineRestaurantSecondIteration\Commons\src\main\java\co\unicauca\common\domain\entity\User.java
+D:\corte3\OnlineRestaurantSecondIteration\Commons\src\main\java\co\unicauca\common\domain\validators\ValidationError.java
+D:\corte3\OnlineRestaurantSecondIteration\Commons\src\main\java\co\unicauca\common\domain\entity\DishEntry.java
+D:\corte3\OnlineRestaurantSecondIteration\Commons\src\main\java\co\unicauca\common\domain\entity\MainDish.java
+D:\corte3\OnlineRestaurantSecondIteration\Commons\src\main\java\co\unicauca\common\domain\entity\Product.java
+D:\corte3\OnlineRestaurantSecondIteration\Commons\src\main\java\co\unicauca\common\domain\entity\Drink.java
+>>>>>>> e3d78cf341cb03a520228477f55555d9165ccfa6
