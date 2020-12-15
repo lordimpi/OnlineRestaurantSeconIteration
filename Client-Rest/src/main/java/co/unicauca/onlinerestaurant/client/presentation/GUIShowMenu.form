@@ -130,6 +130,14 @@
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jBtnRecargarTablaActionPerformed"/>
           </Events>
         </Component>
+        <Component class="javax.swing.JButton" name="jBtnRealizarPedido">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Realizar Pedido"/>
+          </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jBtnRealizarPedidoActionPerformed"/>
+          </Events>
+        </Component>
       </SubComponents>
     </Container>
     <Container class="javax.swing.JPanel" name="jPnCentro">
@@ -168,7 +176,7 @@
             <Property name="columnModel" type="javax.swing.table.TableColumnModel" editor="org.netbeans.modules.form.editors2.TableColumnModelEditor">
               <TableColumnModel selectionModel="0">
                 <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
-                  <Title/>
+                  <Title value="Dia"/>
                   <Editor/>
                   <Renderer/>
                 </Column>

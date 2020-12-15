@@ -21,9 +21,12 @@ import co.unicauca.common.domain.entity.Drink;
 import co.unicauca.common.domain.entity.MainDish;
 import co.unicauca.common.domain.entity.Menu;
 import co.unicauca.common.domain.entity.Salad;
+import co.unicauca.onlinerestaurant.client.infra.Singleton;
+import static java.awt.Frame.NORMAL;
 import java.util.ArrayList;
 import java.util.List;
 import javax.swing.DefaultComboBoxModel;
+import javax.swing.JFrame;
 import javax.swing.table.TableModel;
 
 /**
@@ -61,6 +64,8 @@ public class GUIShowMenu extends javax.swing.JInternalFrame {
      */
     private List<Drink> drinks = new ArrayList<>();
 
+    private String filaSeleccionada = null;
+
     /**
      * Creates new form GUIUpdateDishe
      *
@@ -89,6 +94,7 @@ public class GUIShowMenu extends javax.swing.JInternalFrame {
         jPnSur = new javax.swing.JPanel();
         jBtnCancelar = new javax.swing.JButton();
         jBtnRecargarTabla = new javax.swing.JButton();
+        jBtnRealizarPedido = new javax.swing.JButton();
         jPnCentro = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTblMenus = new javax.swing.JTable();
@@ -152,6 +158,14 @@ public class GUIShowMenu extends javax.swing.JInternalFrame {
         });
         jPnSur.add(jBtnRecargarTabla);
 
+        jBtnRealizarPedido.setText("Realizar Pedido");
+        jBtnRealizarPedido.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBtnRealizarPedidoActionPerformed(evt);
+            }
+        });
+        jPnSur.add(jBtnRealizarPedido);
+
         getContentPane().add(jPnSur, java.awt.BorderLayout.PAGE_END);
 
         jPnCentro.setLayout(new java.awt.BorderLayout());
@@ -197,6 +211,9 @@ public class GUIShowMenu extends javax.swing.JInternalFrame {
             }
         });
         jScrollPane1.setViewportView(jTblMenus);
+        if (jTblMenus.getColumnModel().getColumnCount() > 0) {
+            jTblMenus.getColumnModel().getColumn(0).setHeaderValue("Dia");
+        }
 
         getContentPane().add(jScrollPane1, java.awt.BorderLayout.CENTER);
 
@@ -214,10 +231,12 @@ public class GUIShowMenu extends javax.swing.JInternalFrame {
      *
      * @param evt Evento click de la tabla menus
      */
+
     private void jTblMenusMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTblMenusMouseClicked
 
         int i = jTblMenus.getSelectedRow();
         TableModel model = jTblMenus.getModel();
+        filaSeleccionada = model.getValueAt(i, 1).toString();
 
     }//GEN-LAST:event_jTblMenusMouseClicked
 
@@ -233,8 +252,29 @@ public class GUIShowMenu extends javax.swing.JInternalFrame {
         mostrarTabla();
     }//GEN-LAST:event_jBtnRecargarTablaActionPerformed
 
+    private void jBtnRealizarPedidoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnRealizarPedidoActionPerformed
+
+        Menu menu = new Menu();
+        menu = ObtenerMenu(filaSeleccionada);
+
+        if (menu == null) {
+
+            return;
+
+        }
+
+        java.awt.EventQueue.invokeLater(new Runnable() {
+            public void run() {
+                JFrame ins = Singleton.getInstRealizarPedidos();
+                ins.setExtendedState(NORMAL);
+                ins.setVisible(true);
+            }
+        });
+    }//GEN-LAST:event_jBtnRealizarPedidoActionPerformed
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jBtnCancelar;
+    private javax.swing.JButton jBtnRealizarPedido;
     private javax.swing.JButton jBtnRecargarTabla;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLbRestaurantName;
@@ -314,5 +354,17 @@ public class GUIShowMenu extends javax.swing.JInternalFrame {
                 return;
             }
         }
+    }
+
+    private Menu ObtenerMenu(String id) {
+
+        for (Menu myMenu : menus) {
+            if (id.equals(myMenu.getId_menu())) {
+
+                return myMenu;
+            }
+
+        }
+        return null;
     }
 }
