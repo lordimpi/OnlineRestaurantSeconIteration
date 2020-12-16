@@ -71,6 +71,15 @@ public class Factory {
     public IDessertAccess getDessertService() {
         return new DessertAccessREST();
     }
+    
+      /**
+     * Método que crea una instancia concreta de la jerarquia IDeliveryService
+     *
+     * @return una clase hija de la abstracción IRepositorioPedidos
+     */
+    public IDeliveryAccess getDeliveryService() {
+        return new DeliveryAccessREST();
+    }
 
     /**
      * Método que crea una instancia concreta de la jerarquia ISaladService
