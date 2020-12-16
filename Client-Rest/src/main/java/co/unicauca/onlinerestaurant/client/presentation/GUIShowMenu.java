@@ -25,6 +25,8 @@ import co.unicauca.onlinerestaurant.client.infra.Singleton;
 import static java.awt.Frame.NORMAL;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JFrame;
 import javax.swing.table.TableModel;
@@ -64,7 +66,7 @@ public class GUIShowMenu extends javax.swing.JInternalFrame {
      */
     private List<Drink> drinks = new ArrayList<>();
 
-    private String filaSeleccionada = null;
+    private int filaSeleccionada = -1;
 
     /**
      * Creates new form GUIUpdateDishe
@@ -236,7 +238,7 @@ public class GUIShowMenu extends javax.swing.JInternalFrame {
 
         int i = jTblMenus.getSelectedRow();
         TableModel model = jTblMenus.getModel();
-        filaSeleccionada = model.getValueAt(i, 1).toString();
+        filaSeleccionada = i;
 
     }//GEN-LAST:event_jTblMenusMouseClicked
 
@@ -254,20 +256,21 @@ public class GUIShowMenu extends javax.swing.JInternalFrame {
 
     private void jBtnRealizarPedidoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnRealizarPedidoActionPerformed
 
-        Menu menu = new Menu();
-        menu = ObtenerMenu(filaSeleccionada);
-
+        Menu menu = menus.get(filaSeleccionada);
         if (menu == null) {
-
             return;
-
         }
 
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                JFrame ins = Singleton.getInstRealizarPedidos();
-                ins.setExtendedState(NORMAL);
-                ins.setVisible(true);
+                GUIShowPedidos ins;
+                try {
+                    ins = new GUIShowPedidos(menu.getId_menu());
+                    ins.setExtendedState(NORMAL);
+                    ins.setVisible(true);
+                } catch (Exception ex) {
+                    Logger.getLogger(GUIShowMenu.class.getName()).log(Level.SEVERE, null, ex);
+                }
             }
         });
     }//GEN-LAST:event_jBtnRealizarPedidoActionPerformed
@@ -354,17 +357,5 @@ public class GUIShowMenu extends javax.swing.JInternalFrame {
                 return;
             }
         }
-    }
-
-    private Menu ObtenerMenu(String id) {
-
-        for (Menu myMenu : menus) {
-            if (id.equals(myMenu.getId_menu())) {
-
-                return myMenu;
-            }
-
-        }
-        return null;
     }
 }

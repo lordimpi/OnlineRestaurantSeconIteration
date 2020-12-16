@@ -44,7 +44,8 @@ public class GUIReclamos extends javax.swing.JFrame {
         jTexCausa = new javax.swing.JTextField();
         jComboRestauran = new javax.swing.JComboBox<>();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setResizable(false);
 
         jLabel1.setText("RECLAMOS");
 

@@ -1,5 +1,17 @@
 package co.unicauca.onlinerestaurant.client.presentation;
 
+import co.unicauca.common.domain.entity.Delivery;
+import co.unicauca.common.domain.entity.Menu;
+import co.unicauca.onlinerestaurant.client.access.Factory;
+import co.unicauca.onlinerestaurant.client.access.IDeliveryAccess;
+import co.unicauca.onlinerestaurant.client.access.IMenuAccess;
+import co.unicauca.onlinerestaurant.client.domain.services.DeliveryService;
+import co.unicauca.onlinerestaurant.client.domain.services.MenuService;
+import co.unicauca.onlinerestaurant.client.infra.Messages;
+import static co.unicauca.onlinerestaurant.client.infra.Messages.successMessage;
+import static java.awt.Frame.NORMAL;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.table.TableModel;
 
 /**
@@ -8,14 +20,25 @@ import javax.swing.table.TableModel;
  */
 public class GUIShowPedidos extends javax.swing.JFrame {
 
+    private static String idMenu;
+
+    private Menu miMenu;
+
     /**
      * Creates new form GUIShowPedidos1
+     *
+     * @param id Un id menu
+     * @throws java.lang.Exception
      */
-    public GUIShowPedidos() {
+    public GUIShowPedidos(String id) throws Exception {
+        idMenu = id;
         initComponents();
+        setLocationRelativeTo(null);
+        cargarMenu();
+        mostrarTabla();
+
     }
-    
-    
+
     /**
      * Nombre del restaurante
      */
@@ -39,15 +62,18 @@ public class GUIShowPedidos extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         jTblMenus = new javax.swing.JTable();
         JPanelDerecho = new javax.swing.JPanel();
-        jTxtCantidad = new javax.swing.JTextField();
-        jScrollPane2 = new javax.swing.JScrollPane();
-        jTextArea1 = new javax.swing.JTextArea();
-        jTxtDireccion = new javax.swing.JTextField();
+        jPanel1 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        jTxtDescripcion = new javax.swing.JTextArea();
+        jPanel2 = new javax.swing.JPanel();
         jLabel3 = new javax.swing.JLabel();
+        jTxtCantidad = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
+        jTxtDireccion = new javax.swing.JTextField();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setResizable(false);
 
         jPnNorte.setBackground(new java.awt.Color(54, 33, 88));
         jPnNorte.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
@@ -75,7 +101,7 @@ public class GUIShowPedidos extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPnNorteLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPnNorteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 17, Short.MAX_VALUE)
+                    .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 22, Short.MAX_VALUE)
                     .addComponent(jLbRestaurantName, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(20, 20, 20))
         );
@@ -94,6 +120,11 @@ public class GUIShowPedidos extends javax.swing.JFrame {
         jPnSur.add(jBtnCancelar);
 
         jBtnRealizarPedido.setText("Realizar Pedido");
+        jBtnRealizarPedido.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBtnRealizarPedidoActionPerformed(evt);
+            }
+        });
         jPnSur.add(jBtnRealizarPedido);
 
         jTblMenus = new javax.swing.JTable(){
@@ -140,50 +171,50 @@ public class GUIShowPedidos extends javax.swing.JFrame {
         JPanelDerecho.setMinimumSize(new java.awt.Dimension(500, 100));
         JPanelDerecho.setPreferredSize(new java.awt.Dimension(300, 264));
 
-        jTextArea1.setColumns(20);
-        jTextArea1.setRows(5);
-        jScrollPane2.setViewportView(jTextArea1);
+        jPanel1.setLayout(new java.awt.GridLayout(1, 0));
 
+        jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel2.setText("Descripción:");
+        jPanel1.add(jLabel2);
 
+        jTxtDescripcion.setColumns(20);
+        jTxtDescripcion.setRows(5);
+        jScrollPane2.setViewportView(jTxtDescripcion);
+
+        jPanel1.add(jScrollPane2);
+
+        jPanel2.setLayout(new java.awt.GridLayout(2, 2));
+
+        jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel3.setText("Cantidad:");
+        jPanel2.add(jLabel3);
+        jPanel2.add(jTxtCantidad);
 
+        jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel4.setText("Dirección de Envío:");
+        jPanel2.add(jLabel4);
+        jPanel2.add(jTxtDireccion);
 
         javax.swing.GroupLayout JPanelDerechoLayout = new javax.swing.GroupLayout(JPanelDerecho);
         JPanelDerecho.setLayout(JPanelDerechoLayout);
         JPanelDerechoLayout.setHorizontalGroup(
             JPanelDerechoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(JPanelDerechoLayout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(JPanelDerechoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jLabel2)
-                    .addComponent(jLabel3)
-                    .addComponent(jLabel4))
-                .addGap(36, 36, 36)
-                .addGroup(JPanelDerechoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jTxtDireccion, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 218, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTxtCantidad, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(JPanelDerechoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                    .addComponent(jPanel2, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(JPanelDerechoLayout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 292, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         JPanelDerechoLayout.setVerticalGroup(
             JPanelDerechoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(JPanelDerechoLayout.createSequentialGroup()
-                .addGroup(JPanelDerechoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(JPanelDerechoLayout.createSequentialGroup()
-                        .addGap(47, 47, 47)
-                        .addComponent(jLabel2)))
+                .addContainerGap()
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addGroup(JPanelDerechoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTxtCantidad, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel3))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(JPanelDerechoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTxtDireccion, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel4))
-                .addGap(0, 81, Short.MAX_VALUE))
+                .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, 95, Short.MAX_VALUE)
+                .addContainerGap())
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -222,7 +253,6 @@ public class GUIShowPedidos extends javax.swing.JFrame {
 
     private void jBtnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnCancelarActionPerformed
         restaurantname = "";
-        GUIMenuCustomer.ShowMenu = null;
         this.dispose();
     }//GEN-LAST:event_jBtnCancelarActionPerformed
 
@@ -231,6 +261,41 @@ public class GUIShowPedidos extends javax.swing.JFrame {
         int i = jTblMenus.getSelectedRow();
         TableModel model = jTblMenus.getModel();
     }//GEN-LAST:event_jTblMenusMouseClicked
+
+    private void jBtnRealizarPedidoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnRealizarPedidoActionPerformed
+
+        IDeliveryAccess service = Factory.getInstance().getDeliveryService();
+        // Inyecta la dependencia
+
+        String descripcion = jTxtDescripcion.getText();
+        String cantidad = jTxtCantidad.getText();
+        String direccionEnvio = jTxtDireccion.getText();
+
+        if (descripcion.equals("") || cantidad.equals("") || direccionEnvio.equals("")) {
+            jTxtDescripcion.requestFocus();
+            Messages.warningMessage("ERROR AL REALIZAR EL PEDIDO: \nCampos vacios", "Warning");
+            return;
+        }
+
+        DeliveryService deliveryService = new DeliveryService(service);
+        Delivery delivery = new Delivery();
+        delivery.setDescripcion(descripcion);
+        delivery.setCantidad(Integer.parseInt(cantidad));
+        delivery.setDireccionEnvio(direccionEnvio);
+        delivery.setMiMenu(miMenu);
+
+        try {
+            if (deliveryService.createDelivery(delivery)) {
+                successMessage("Pedido realizado con éxito.", "Atención");
+            } else {
+                Messages.warningMessage("el pedido no pudo ser realizado", "Warning");
+            }
+        } catch (Exception ex) {
+            successMessage(ex.getMessage(), "Atención");
+        }
+
+        this.dispose();
+    }//GEN-LAST:event_jBtnRealizarPedidoActionPerformed
 
     /**
      * @param args the command line arguments
@@ -263,7 +328,14 @@ public class GUIShowPedidos extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new GUIShowPedidos().setVisible(true);
+                GUIShowPedidos ins;
+                try {
+                    ins = new GUIShowPedidos(idMenu);
+                    ins.setExtendedState(NORMAL);
+                    ins.setVisible(true);
+                } catch (Exception ex) {
+                    Logger.getLogger(GUIShowPedidos.class.getName()).log(Level.SEVERE, null, ex);
+                }
             }
         });
     }
@@ -277,13 +349,41 @@ public class GUIShowPedidos extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLbRestaurantName;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPnNorte;
     private javax.swing.JPanel jPnSur;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTable jTblMenus;
-    private javax.swing.JTextArea jTextArea1;
     private javax.swing.JTextField jTxtCantidad;
+    private javax.swing.JTextArea jTxtDescripcion;
     private javax.swing.JTextField jTxtDireccion;
     // End of variables declaration//GEN-END:variables
+
+    /**
+     * Metodo encargado de mostrar los datos en un jtable
+     */
+    private void mostrarTabla() {
+        String dataTable[][] = new String[5][5];
+
+        dataTable[0][0] = miMenu.getMaindish().getNameDish();
+        dataTable[0][1] = miMenu.getDrink().getNameDrink();
+        dataTable[0][2] = miMenu.getSalad().getNameSalad();
+        dataTable[0][3] = miMenu.getEntry().getNameDishEntry();
+        dataTable[0][4] = miMenu.getDessert().getName_Dish_Dessert();
+
+        jTblMenus.setModel(new javax.swing.table.DefaultTableModel(
+                dataTable, new String[]{"Plato Principal", "Bebida", "Ensalada", "Entrada", "Postre"}));
+    }
+
+    private void cargarMenu() throws Exception {
+        IMenuAccess service = Factory.getInstance().getMenuService();
+
+        // Inyecta las dependencias
+        MenuService menuService = new MenuService(service);
+
+        miMenu = menuService.findMenu(idMenu);
+
+    }
 }

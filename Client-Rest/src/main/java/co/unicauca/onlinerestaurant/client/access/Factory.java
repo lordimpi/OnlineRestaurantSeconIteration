@@ -107,4 +107,13 @@ public class Factory {
     public IUserAccess getUserService() {
         return new UserAccessREST();
     }
+
+    /**
+     * Método que crea una instancia concreta de la jerarquia IDeliveryService
+     *
+     * @return una clase hija de la abstracción IRepositorioPedidos
+     */
+    public IDeliveryAccess getDeliveryService() {
+        return new DeliveryAccessREST();
+    }
 }
