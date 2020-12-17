@@ -5,7 +5,7 @@
 
 [3. Connection data base](#3-Connection-data-base)
 
-[4. Configuring Payara Server](#3-Configuring-Payara-Server)
+[4. Configuring Payara Server](#4-Configuring-Payara-Server)
 
 
 ## 1. Introduction
