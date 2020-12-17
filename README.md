@@ -8,16 +8,16 @@
 [4. Configuring Payara Server](#3-Configuring-Payara-Server)
 
 
-## Introduction
+## 1. Introduction
 El sistema de Restaurantes Online - SRO ha sido tomado como el caso de estudio del
 curso de laboratorio de ingeniería de software II del Departamento de sistemas de la
 Universidad del Cauca.
 
 
-## Document information
+## 2. Document information
 (https://github.com/lordimpi/OnlineRestaurantSecondIteration/files/5707173/Document.information.pdf)
 
-## Connection data base
+## 3. Connection data base
 
 ### In Commons project 
 
@@ -215,7 +215,7 @@ Inserts
 	INSERT INTO `delivery`(`id_delivery`, `descripcion`, `cantidad`, `direccion_envio`, `fecha`, `id_menu`) VALUES(NULL,"Pendiente por agregar", 2, "calle perico", '2020/12/11',"2");
 	INSERT INTO `delivery`(`id_delivery`, `descripcion`, `cantidad`, `direccion_envio`, `fecha`, `id_menu`) VALUES(NULL,"Pendiente por agregar", 1, "calle elefante", '2020/12/13',"3");		
 ```
-## Configuring Payara Server 
+## 4. Configuring Payara Server 
 
 Copy the driver sql-conector from the repository where installing your Payara Server.
 
