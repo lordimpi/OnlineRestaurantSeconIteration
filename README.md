@@ -1,4 +1,25 @@
-## In Commons project 
+## Table of contents
+[1. Introduction](#1-Introduction)
+
+[2. Document information](#2-Document-information)
+
+[3. Connection data base](#3-Connection-data-base)
+
+[4. Configuring Payara Server](#3-Configuring-Payara-Server)
+
+
+## Introduction
+El sistema de Restaurantes Online - SRO ha sido tomado como el caso de estudio del
+curso de laboratorio de ingeniería de software II del Departamento de sistemas de la
+Universidad del Cauca.
+
+
+## Document information
+(https://github.com/lordimpi/OnlineRestaurantSecondIteration/files/5707173/Document.information.pdf)
+
+## Connection data base
+
+### In Commons project 
 
 modify Utilities.java
 ```ssh
@@ -6,7 +27,7 @@ modify Utilities.java
     private final String pwd = "Insert here you password from MySql";
 ```
 
-## Run this script in mysql
+### Script MySQL
 
 Database creation
 ```ssh
